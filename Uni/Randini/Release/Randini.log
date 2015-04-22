@@ -1,0 +1,29 @@
+﻿Build started 21/03/2015 17:22:00.
+     1>Project "D:\documents\Visual Studio 2012\Projects\Uni\Randini\Randini.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\documents\Visual Studio 2013\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt SpriteLoader.cpp
+         SpriteLoader.cpp
+     1>SpriteLoader.cpp(47): warning C4018: '<' : signed/unsigned mismatch
+     1>SpriteLoader.cpp(69): warning C4018: '<' : signed/unsigned mismatch
+     1>SpriteLoader.cpp(132): warning C4018: '<' : signed/unsigned mismatch
+       Lib:
+         D:\documents\Visual Studio 2013\VC\bin\Lib.exe /OUT:"D:\documents\Visual Studio 2012\Projects\Uni\Release\Randini.lib" /NOLOGO /LTCG Release\Camera2D.obj
+         Release\Errors.obj
+         Release\GLSLProgram.obj
+         Release\ImageLoader.obj
+         Release\InputControl.obj
+         Release\IOManager.obj
+         Release\picoPNG.obj
+         Release\Randini.obj
+         Release\ResourceManager.obj
+         Release\Sprite.obj
+         Release\SpriteLoader.obj
+         Release\TextureCache.obj
+         Release\Timer.obj
+         Release\Window.obj
+         Randini.vcxproj -> D:\documents\Visual Studio 2012\Projects\Uni\Release\Randini.lib
+     1>Done Building Project "D:\documents\Visual Studio 2012\Projects\Uni\Randini\Randini.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.85
