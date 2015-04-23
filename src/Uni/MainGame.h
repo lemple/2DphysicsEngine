@@ -1,4 +1,5 @@
 #pragma once
+
 #include <src/Randini/Camera2D.h>
 #include <src/Randini/SpriteLoader.h>
 #include <src/Randini/InputControl.h>
@@ -11,6 +12,13 @@
 #include "BallRenderer.h"
 #include "BallGrid.h"
 
+#include "boost/random.hpp"
+#include "boost/generator_iterator.hpp"
+
+typedef boost::uniform_real<float> RandomDistribution;
+typedef boost::uniform_int<int> RandomDistributionInt;
+typedef boost::mt19937 RNGType;
+
 enum class GameState
 {
   PLAY,
@@ -19,12 +27,15 @@ enum class GameState
 
 const int CELL_SIZE = 12;
 
-
-
-
 class MainGame
 {
 public:
+  MainGame() :
+    m_screenWidth(0), m_screenHeight(0), m_currentController(0), m_fps(0.0f), _gameState(GameState::PLAY), m_currentRenderer(0)
+  {
+    m_currentRenderer = 0;
+  }
+
   ~MainGame();
   void run();
 
@@ -49,9 +60,9 @@ private:
   void processInput();
 
 
-  int _screenWidth = 0, _screenHeight = 0;
-  int m_currentRenderer = 0;
-  int m_currentController = 0;
+  int m_screenWidth/* = 0*/, m_screenHeight/* = 0*/;
+  int m_currentRenderer/* = 0*/;
+  int m_currentController/* = 0*/;
   std::vector<Ball> _ball;
 
   //BallControl m_ballControl;
@@ -71,9 +82,9 @@ private:
   Randini::GLSLProgram m_textureProgram;
   Randini::FPSLimiter m_fpsLimiter;
 	
-  float m_fps = 0.0f;
+  float m_fps/* = 0.0f*/;
 
-  GameState _gameState = GameState::PLAY;
+  GameState _gameState/* = GameState::PLAY*/;
 
 
 };

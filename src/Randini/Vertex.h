@@ -6,7 +6,7 @@
 
 namespace Randini
 {
-	//having these outside means we can reuse them elsewhere
+  //having these outside means I can reuse them elsewhere
 	//as they are pretty generic structs
 	struct Position
 	{

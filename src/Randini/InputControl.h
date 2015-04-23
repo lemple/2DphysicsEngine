@@ -1,9 +1,11 @@
 #pragma once
 #include <glm/glm.hpp>
 
+#include <map>
 
+//#include <unordered_map>
 
-#include <unordered_map>
+typedef std::map<unsigned int, bool> KeyPair;
 
 namespace Randini
 {
@@ -47,8 +49,8 @@ namespace Randini
 		//using unordered map as it works faster then a map container as it need to access
 		//individual elements since it stores it as a hash table rather then a tree
 		//This method uses up more space but works faster and since its a small engine this is not an issue
-    std::unordered_map<unsigned int, bool> _keyMap;
-		std::unordered_map<unsigned int, bool> _previousKeyMap;
+    KeyPair _keyMap;
+    KeyPair _previousKeyMap;
 		//gets the mouse coordinates for shooting
 		glm::vec2 _mouseCoords;
 	};

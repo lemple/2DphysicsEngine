@@ -8,19 +8,16 @@ namespace Randini
 	class Camera2D
 	{
 	public:
-		Camera2D();
+    Camera2D();
 		~Camera2D();
 
 		//init the camera needs to pass in screenWidht and height 
 		void init(int _screenWidth, int _screenHeight);
 
-
 		void updateCamera();
 
 		//this takes the screen coordinates convert to the world cooridnates and returns the value
 		glm::vec2 getWorldScreenCoords(glm::vec2 screenCoords);
-
-
 
 		//setter function to set the position of the camera to the new position
 		//pass it in by reference so I don't have to copy two floats

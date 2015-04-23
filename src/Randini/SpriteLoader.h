@@ -11,7 +11,7 @@ namespace Randini
 {
 	//set an enum class for all the sorting types that wil be used in 
 	//the sprite loader
-	enum class GlyphSortType
+  enum class GlyphSortType
 	{
 		//none for no sorting
 		//sorting fron to back
@@ -96,7 +96,7 @@ namespace Randini
 
 		//calls for whenever we are ready to call
 		//sets up everything for drawing
-		void begin(GlyphSortType sortType = GlyphSortType::TEXTURE);
+    void begin(GlyphSortType sortType = GlyphSortType::TEXTURE);
 
 		//sorts the images out 
 		void end();

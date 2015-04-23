@@ -1,18 +1,13 @@
-// (GLSL stands for openGL shading language)
-/*
-first we create the program
-then we attach the shaders to the correct shader e.g. frag and vert 
-then we call link program and link the shaders
 
-
-*/
+//first create the program
+//then attach the shaders to the correct shader e.g. frag and vert
+//then call link program and link the shaders
 
 
 #include "GLSLProgram.h"
 #include "Errors.h"
 
 #include <vector>
-
 #include <fstream>
 
 namespace Randini
@@ -161,7 +156,7 @@ namespace Randini
 	{
 
 		//open the file using an ifstream
-		std::ifstream shaderFile(filePath);
+    std::ifstream shaderFile( filePath.c_str() );
 		//if the file path cannot be found then return and error
 		if (shaderFile.fail())
 		{
@@ -192,7 +187,7 @@ namespace Randini
 		const char* contentsPtr = fileContents.c_str();
 		//tell opengl that I want to use fileContents as the contents of the shader file
 		//grabs the ID of the shaders, number of strings which is 1, since I have one string just pass as nullptr
-		glShaderSource(id, 1, &contentsPtr, nullptr);
+    glShaderSource(id, 1, &contentsPtr, NULL);
 
 		//compile the shader and pass the id
 		glCompileShader(id);

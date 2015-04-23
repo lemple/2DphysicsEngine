@@ -45,15 +45,15 @@ namespace Randini
 		//In this case the arguments passed are the window name, the position of the screen for x and y, screenWidth, height and then any flags such as fullscreen etc
 		_sdlWindow = SDL_CreateWindow(windowName.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, flags);
 		//If the window does not return a pointer we call the fatal error class. This iverall helps with debugging!
-		if (_sdlWindow == nullptr)
+    if (_sdlWindow == NULL)
 		{
 			fatalError("SDL Window could not be created");
 		}
 		//gives the context to the window
 		//bounds the context to the window and links it with _window varible
 		//overall sets og the GL context and gives it to the window
-		SDL_GLContext glContex = SDL_GL_CreateContext(_sdlWindow);
-		if (glContex == nullptr)
+    SDL_GLContext glContext = SDL_GL_CreateContext(_sdlWindow);
+    if (glContext == NULL)
 		{
 			fatalError("SDL_GL_context could not be created");
 		}

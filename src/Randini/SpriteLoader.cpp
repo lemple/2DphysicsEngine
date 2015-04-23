@@ -164,7 +164,7 @@ namespace Randini
 		//this makes oprhaning much more efficent.
 		//uploads the vertex buffer data
 		//use dynamic draw as the data store contents will be modified repeatedly and used many times.
-		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), NULL, GL_DYNAMIC_DRAW);
 		// Upload a range of data 
 		//paramters: where the uplaod will be, the size, and finaslly the data
 		glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.size() * sizeof(Vertex), vertices.data());

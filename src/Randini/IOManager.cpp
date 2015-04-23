@@ -7,7 +7,7 @@ namespace Randini
 	{
 		//use ifstream as it constructs and object thats not associated with a file
 		//parameters: call the filePath varible, and use ios binary as it tell the program we are readong the file in binary data
-		std::ifstream file(filePath, std::ios::binary);
+    std::ifstream file( filePath.c_str(), std::ios::binary );
 		//error check to see if the file was read
 		if (file.fail())
 		{

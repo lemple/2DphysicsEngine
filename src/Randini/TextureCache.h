@@ -1,5 +1,6 @@
 #pragma once
 #include <map>
+#include <string>
 #include "GLTexture.h"
 
 namespace Randini
@@ -15,7 +16,6 @@ namespace Randini
 		//the texture internally stores the GLuint ID which is a pointer to the actual texture
 		//if it dosent create a new which will push it back onto the texture map.
 		GLTexture getTexture(std::string texturePath);
-
 
 	private:
 		//takes two elements. first element is the filepath and the name

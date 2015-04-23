@@ -19,9 +19,12 @@ namespace Randini
 	void InputControl::update()
 	{
 		//  Loops through _keyMap using a for each loop and copy it over to _previousKeyMap
-		for (auto& it : _keyMap)
+//    for(auto& it : _keyMap)
+    for( KeyPair::const_iterator key = _keyMap.begin();
+         key != _keyMap.end();
+         key++)
 		{
-			_previousKeyMap[it.first] = it.second;
+      _previousKeyMap[(*key).first] = (*key).second;
 		}
 	}
 

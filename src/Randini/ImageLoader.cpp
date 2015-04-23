@@ -38,11 +38,11 @@ namespace Randini
 		int errorCode = decodePNG(out, width, height, &(in[0]), in.size());
 
 		//error checking for so set to 0 since decodePNG returns 0 whenever theres no error
-		if (errorCode != 0)
-		{
-			//use fatal error and enter the erroCode from loadPNG but need to convert the integer into a string
-			fatalError("DecodePNG failed eith error " + std::to_string(errorCode));
-		}
+//		if (errorCode != 0)
+//		{
+//			//use fatal error and enter the erroCode from loadPNG but need to convert the integer into a string
+//			fatalError("DecodePNG failed eith error " + std::to_string(errorCode));
+//		}
 
 		//need to generate the openGL
 		//parameters: how many textures the program is using in this case one. 

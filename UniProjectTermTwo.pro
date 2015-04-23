@@ -5,16 +5,24 @@
 #-------------------------------------------------
 QT       += core
 QT       -= gui
-TARGET = UniProjectTermTwo
+TARGET = 2DphysicsEngine
 CONFIG   += console
 CONFIG   -= app_bundle
-CONFIG += c++11
-QMAKE_CXXFLAGS += -mmacosx-version-min=10.7 -std=c++11 -stdlib=libc++ -std=c++1y
-LIBS += -mmacosx-version-min=10.7 -stdlib=libc++
+#CONFIG += c++11
+#CONFIG += -std=gnu++0x
+
 TEMPLATE = app
 INCLUDEPATH += /usr/local/include \
                /src/
+
 QMAKE_CXXFLAGS += $$system(sdl2-config --cflags)
+QMAKE_CXXFLAGS += -std=c++0x
+
+LIBS += -lGLEW
+LIBS += $$system(sdl2-config --libs)
+LIBS += -lSDL2
+
+
 HEADERS += src/Randini/GLSLProgram.h \
 src/Randini/Camera2D.h \
 src/Randini/Errors.h \
@@ -56,6 +64,3 @@ src/Randini/SpriteLoader.cpp \
 src/Randini/TextureCache.cpp \
 src/Randini/Timer.cpp \
 src/Randini/Window.cpp
-LIBS += $$system(sdl2-config --libs)
-LIBS += -lSDL2 -lglew
-LIBS += -framework OpenGL

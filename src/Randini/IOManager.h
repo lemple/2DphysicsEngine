@@ -1,5 +1,8 @@
 #pragma once
+
 #include <vector>
+#include <string>
+
 //main purpose of this class is to be able to read a file into a buffer
 //wihtout having to rewrite the code everytime
 //I made this class a static class as there only needs to be one instance of the class
