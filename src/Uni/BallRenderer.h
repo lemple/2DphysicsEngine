@@ -22,8 +22,8 @@ public:
   virtual void renderBalls(Randini::SpriteLoader& spriteLoader, const std::vector <Ball>& balls, const glm::mat4& projectionMatrix);
 
 protected:
-  //std::unique_ptr<Randini::GLSLProgram> m_program;
-  Randini::GLSLProgram* m_program /*= nullptr*/; //stuff...
+  std::unique_ptr<Randini::GLSLProgram> m_program;
+ // Randini::GLSLProgram* m_program /*= nullptr*/; //stuff...
 
 };
 

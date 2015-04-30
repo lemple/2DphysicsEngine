@@ -16,7 +16,8 @@ void BallRenderer::initShaders()
   if (m_program == NULL)
   {
     //m_program = std::make_unique<Randini::GLSLProgram>();
-    m_program = new Randini::GLSLProgram();
+    //m_program = new Randini::GLSLProgram();
+    m_program = std::unique_ptr<Randini::GLSLProgram>(new Randini::GLSLProgram());
     m_program->compileShaders("Shaders/textureShading.vert", "Shaders/textureShading.frag");
     m_program ->addAttribute("vertexPosition");
     m_program->addAttribute("vertexColor");

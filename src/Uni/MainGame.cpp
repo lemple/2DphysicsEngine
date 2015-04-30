@@ -211,7 +211,7 @@ void MainGame::initBalls()
   possibleBalls.emplace_back(__VA_ARGS__);
 
   //number of balls to spawn
-  const int NUM_BALLS = 15000;
+  const int NUM_BALLS = 10000;
 
   //random engine
   RNGType randomEngine((unsigned int)time(NULL));
