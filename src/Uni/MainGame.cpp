@@ -21,6 +21,11 @@ const float MS_PER_SECOND = 1000;
 const float DESIRED_FRAMETIME = MS_PER_SECOND / DESIRED_FPS;
 const float MAX_DELTA_TIME = 1.0f;
 
+MainGame::MainGame()  :
+  m_screenWidth(0), m_screenHeight(0), m_currentRenderer(0), m_currentController(0), m_fps(0.0f), _gameState(GameState::PLAY)
+{
+}
+
 MainGame::~MainGame()
 {
   for (int i = 0; i < m_ballRenderers.size(); i++)
@@ -173,11 +178,12 @@ void MainGame::drawGame()
   //GLint pUniform = m_textureProgram.getUniformLocation("P");
   //glUniformMatrix4fv(pUniform, 1, GL_FALSE, &projectionMatrix[0][0]);
 
-//	m_spriteLoader.begin();
+  //m_spriteLoader.begin();
 
   //draw balls
 
-  m_currentRenderer = 0;
+
+  //m_currentRenderer = 0;
   m_ballRenderers[m_currentRenderer]->renderBalls(m_spriteLoader, _ball, projectionMatrix);
 	
 

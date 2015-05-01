@@ -30,11 +30,7 @@ const int CELL_SIZE = 12;
 class MainGame
 {
 public:
-  MainGame() :
-    m_screenWidth(0), m_screenHeight(0), m_currentController(0), m_fps(0.0f), _gameState(GameState::PLAY), m_currentRenderer(0)
-  {
-    m_currentRenderer = 0;
-  }
+  MainGame();
 
   ~MainGame();
   void run();
