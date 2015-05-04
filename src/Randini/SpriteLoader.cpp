@@ -1,12 +1,23 @@
+/*
+ Copyright © 2015 Philip Gifford
+ SDAGE 1st year 2nd PPP Assignment 2015
+*/
+
 #include "SpriteLoader.h"
 #include <algorithm>
+
+// ---------------------------------------------------------------------------------------
+/// @file ImageLoader.cpp
+/// @brief Draws, renders, sorts glyphs and allows them to be called in one draw call
+// ---------------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------------------
 
 namespace Randini
 {
 	SpriteLoader::SpriteLoader() :
 					_vbo(0),
 					_vao(0)
-					//_sortType(0)
 	{
 
 	}
@@ -28,14 +39,11 @@ namespace Randini
 	{
 		//set up any state the program needs to begin rendering
 		//runs the sorting process for the glyphs whenever begin is called using sortype function
-
 		_sortType = sortType;
 		//clears all of the vectors to prevetn overflow
 		_renderLoader.clear();
 		//clears all glyphs so the program has no memory leaks
 		_glyphs.clear();
-
-
 	}
 
 	void SpriteLoader::end()
@@ -93,7 +101,7 @@ namespace Randini
 		//the memory for the vertices needed from glyphs 
 		// Resize the buffer to the exact size we need so the program will treat
 		// it like an array
-		//treating it like and array means the program can simply step though the array rather then calling psuh.back repeatedly 
+    //treating it like and array means the program can simply step though the array rather then calling push.back repeatedly
 		vertices.resize(_glyphPointers.size() * 6);
 
 		//checks if there are any glyphs avalible
@@ -157,6 +165,7 @@ namespace Randini
 
 		// Bind the VBO
 		glBindBuffer(GL_ARRAY_BUFFER, _vbo);
+
 		// Orphan the buffer since the program is using the same vertex of buffers
 		//Orphaning reallocates the buffer object before it beings modifying
 		//allocating its fatser then synchronization. and since nullptr is passed theres no need to sync

@@ -1,3 +1,7 @@
+// picoPNG version 20101224
+// Copyright (c) 2005-2010 Lode Vandevenne
+//
+
 #include <vector>
 
 namespace Randini

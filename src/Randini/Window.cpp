@@ -1,5 +1,17 @@
+/*
+ Copyright © 2015 Philip Gifford
+ SDAGE 1st year 2nd PPP Assignment 2015
+*/
+
 #include "Window.h"
 #include "Errors.h"
+
+// ---------------------------------------------------------------------------------------
+/// @file Window.cpp
+/// @brief Creates the window and allows handles to be manipulated
+// ---------------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------------------
 
 namespace Randini
 {

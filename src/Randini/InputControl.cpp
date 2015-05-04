@@ -1,10 +1,21 @@
+/*
+ Copyright © 2015 Philip Gifford
+ SDAGE 1st year 2nd PPP Assignment 2015
+*/
+
 #include "InputControl.h"
+
+// ---------------------------------------------------------------------------------------
+/// @file InputControl.cpp
+/// @brief Stores SDL_keys in keymap creating smoother controls
+// ---------------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------------------
 
 // Input manager stores a key map that maps SDL_Keys to bools
 // If the value in the key map is true, then the key is pressed
 // Otherwise, it is released this will improve the smoothness of the controls
 //and stops them from feeling clunky
-
 namespace Randini
 {
 	InputControl::InputControl() : _mouseCoords(0.0f)

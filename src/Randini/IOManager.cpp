@@ -1,5 +1,17 @@
+/*
+ Copyright © 2015 Philip Gifford
+ SDAGE 1st year 2nd PPP Assignment 2015
+*/
+
 #include "IOManager.h"
 #include <fstream>
+
+// ---------------------------------------------------------------------------------------
+/// @file IOManager.cpp
+/// @brief Searches for the size of the buffer and returns erro if it fails
+// ---------------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------------------
 
 namespace Randini
 {
@@ -15,10 +27,10 @@ namespace Randini
 			return false;
 		}
 
-		//now the progrma reads the entire contents of the file into the buffer
+    //now the program reads the entire contents of the file into the buffer
 		//Assume the buffer has a size of 0
-		//use seekg to find out the actual size of the buffer
-		//parameters: byte off set set to 0 as the next paramter I set what the operator will be relative to,
+    //use seek to find out the actual size of the buffer
+    //parameters: byte off set to 0 as the next paramter I set what the operator will be relative to,
 		//take the file pointer and puts it right at the end
 		file.seekg(0, std::ios::end);
 
@@ -33,16 +45,19 @@ namespace Randini
 
 		//resize the buffer to the filesize
 		buffer.resize(fileSize);
+
 		//reads a number of bytes into a buffer
-		//pramters: takes an array of chars. Have to make it a char * as its just a pointer pointing to memeory. althought this a buffer of unsgined char im pretending
-		//pretneding its a buffer of chars. so going to read in everything as tho it was chars to start using it as a unsgined char 
-		//buffer[0] is telling the progrma to get the first element in buffers at the beggining of the memoery array
+    //pramters: takes an array of chars. Have to make it a char * as its just a pointer pointing to memeory.
+    //Although this a buffer of unsgined char im pretending
+    //pretneding its a buffer of chars.
+    //Therefore going to read in everything as tho it was chars to start using it as a unsgined char
+    //buffer[0] is telling the program to get the first element in buffers at the beggining of the memoery array
 		//and say what the adress of this element is
-		//how many bytes we wanner read
+    //and how many bytes we wanner read
 		file.read((char *)&(buffer[0]), fileSize);
 		file.close();
 
-		//return true since the program succcefulklyu opend the file
+    //return true since the program succesfully opend the file
 		return true;
 	}
 }

@@ -1,10 +1,21 @@
+/*
+ Copyright © 2015 Philip Gifford
+ SDAGE 1st year 2nd PPP Assignment 2015
+*/
+
+// ---------------------------------------------------------------------------------------
+/// @file MainGame.cpp
+/// @brief Calls certain files from game engine. Deals with user input and spawsn the balls
+// ---------------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------------------
 
 #define _CRT_SECURE_NO_WARNINGS // To shut up the compiler about sprintf...
 #include "MainGame.h"
  
 
-#include <src/Randini/ResourceManager.h>
-#include <src/Randini/Randini.h>
+#include <Include/Randini/ResourceManager.h>
+#include <Include/Randini/Randini.h>
 
 #include "MainGame.h"
 
@@ -14,6 +25,8 @@
 #include <ctime>
 #include <algorithm>
 #include <cmath>
+
+
 
 const float DESIRED_FPS = 60.0f;
 const int MAX_PHYSICS_STEPS = 6;
@@ -29,13 +42,13 @@ MainGame::MainGame()  :
 MainGame::~MainGame()
 {
   //deletes all newly created renderes
-  for (int i = 0; i < m_ballRenderers.size(); i++)
+  for (int i = 0; i < (int)m_ballRenderers.size(); i++)
   {
     delete m_ballRenderers[i];
   }
 
   //deletes all newly created controllers
-  for (int i = 0; i < m_ballControllers.size(); i++)
+  for (int i = 0; i < (int)m_ballControllers.size(); i++)
   {
     delete m_ballControllers[i];
   }
@@ -170,8 +183,8 @@ struct BallSpawnSystem
   color(color),
   radius(radius),
   mass(mass),
-  randSpeed(minSpeed, maxSpeed),
-  probability(prob)
+  probability(prob),
+  randSpeed(minSpeed, maxSpeed)
   {
 
   }
@@ -401,7 +414,7 @@ void MainGame::update(float deltaTime)
   if (m_inputControl.isKeyPressed(SDLK_1))
   {
     m_currentRenderer++;
-    if (m_currentRenderer >= m_ballRenderers.size())
+    if (m_currentRenderer >= (int)m_ballRenderers.size())
     {
       m_currentRenderer = 0;
     }
@@ -413,7 +426,7 @@ void MainGame::update(float deltaTime)
   if (m_inputControl.isKeyPressed(SDLK_2))
   {
     m_currentController++;
-    if (m_currentController >= m_ballControllers.size())
+    if (m_currentController >= (int)m_ballControllers.size())
     {
       m_currentController = 0;
     }

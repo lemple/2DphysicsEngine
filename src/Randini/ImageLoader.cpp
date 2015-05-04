@@ -1,7 +1,19 @@
+/*
+ Copyright © 2015 Philip Gifford
+ SDAGE 1st year 2nd PPP Assignment 2015
+*/
+
 #include "ImageLoader.h"
 #include "picoPNG.h"
 #include "IOManager.h"
 #include "Errors.h"
+
+// ---------------------------------------------------------------------------------------
+/// @file ImageLoader.cpp
+/// @brief Reads/Loads PNG file to output data needed for textures
+// ---------------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------------------
 
 namespace Randini
 {
@@ -36,13 +48,6 @@ namespace Randini
 		//need to give pointer to the first element so you adress of in[0], 
 		//finally size of in and the number of bytes
 		int errorCode = decodePNG(out, width, height, &(in[0]), in.size());
-
-		//error checking for so set to 0 since decodePNG returns 0 whenever theres no error
-//		if (errorCode != 0)
-//		{
-//			//use fatal error and enter the erroCode from loadPNG but need to convert the integer into a string
-//			fatalError("DecodePNG failed eith error " + std::to_string(errorCode));
-//		}
 
 		//need to generate the openGL
 		//parameters: how many textures the program is using in this case one. 

@@ -1,4 +1,17 @@
+/*
+ Copyright © 2015 Philip Gifford
+ SDAGE 1st year 2nd PPP Assignment 2015
+*/
+
+
 #include "Camera2D.h"
+
+// ---------------------------------------------------------------------------------------
+/// @file Camera2D.cpp
+/// @brief Implements the camera and retrives the screen coordinates
+// ---------------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------------------
 
 namespace Randini
 {

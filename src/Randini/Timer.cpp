@@ -1,7 +1,18 @@
+/*
+ Copyright © 2015 Philip Gifford
+ SDAGE 1st year 2nd PPP Assignment 2015
+*/
+
 #include "Timer.h"
 
 #include <SDL2/SDL.h>
 
+// ---------------------------------------------------------------------------------------
+/// @file Timer.cpp
+/// @brief Calculates FPS and ticks then procceeds to cap it at 60
+// ---------------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------------------
 
 namespace Randini
 {

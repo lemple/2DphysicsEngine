@@ -1,6 +1,18 @@
+/*
+ Copyright © 2015 Philip Gifford
+ SDAGE 1st year 2nd PPP Assignment 2015
+*/
+
 #include "TextureCache.h"
 #include "ImageLoader.h"
 #include <iostream>
+
+// ---------------------------------------------------------------------------------------
+/// @file TextureCache.cpp
+/// @brief Check if texture is in texture path and creates if there isnt
+// ---------------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------------------
 
 namespace Randini
 {
@@ -30,14 +42,11 @@ namespace Randini
 			//paramters: current texture path and the new addedtexture to the program 
       _textureMap.insert(make_pair(texturePath, newTexture));
 
-		//	std::cout << "Loaded Texture!\n";
-
 			//return the newTexture thats been created
 			return newTexture;
 		}
-	//	std::cout << "Loaded Cached Texture!\n";
-		//since mit is not pointing to texturemap.end it is pointing to the texture that the program wants
-		//so return mit to the second pair which will return the texture
+    //since mit is not pointing to texturemap.end it is pointing to the texture
+    //Therefore return mit to the second pair which will return the texture
 		return mit->second;
 
 

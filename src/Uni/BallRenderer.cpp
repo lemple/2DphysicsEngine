@@ -1,5 +1,16 @@
+/*
+ Copyright © 2015 Philip Gifford
+ SDAGE 1st year 2nd PPP Assignment 2015
+*/
 
 #include "BallRenderer.h"
+
+// ---------------------------------------------------------------------------------------
+/// @file BallRenderer.cpp
+/// @brief Outputs different rederers, applys shaders to the balls and renders all the balls
+// ---------------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------------------
 
 void BallRenderer::initShaders()
 {

@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIE $(DEFINES)
 CXXFLAGS      = -pipe -I/usr/local/include/SDL2 -D_REENTRANT -std=c++0x -g -Wall -W -D_REENTRANT -fPIE $(DEFINES)
-INCPATH       = -I/opt/Qt/5.3/gcc_64/mkspecs/linux-g++ -I. -I/usr/local/include -I/src/ -I/opt/Qt/5.3/gcc_64/include -I/opt/Qt/5.3/gcc_64/include/QtCore -I.
+INCPATH       = -I/opt/Qt/5.3/gcc_64/mkspecs/linux-g++ -I. -I/usr/local/include -Isrc -IInclude -IInclude/BallGame -IInclude/Randini -I/opt/Qt/5.3/gcc_64/include -I/opt/Qt/5.3/gcc_64/include/QtCore -I.
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/opt/Qt/5.3/gcc_64 -Wl,-rpath,/opt/Qt/5.3/gcc_64/lib
 LIBS          = $(SUBLIBS) -lGLEW -L/usr/local/lib -Wl,-rpath,/usr/local/lib -lSDL2 -L/opt/Qt/5.3/gcc_64/lib -lQt5Core -lpthread 
@@ -60,7 +60,6 @@ SOURCES       = src/Uni/main.cpp \
 		src/Randini/picoPNG.cpp \
 		src/Randini/Randini.cpp \
 		src/Randini/ResourceManager.cpp \
-		src/Randini/Sprite.cpp \
 		src/Randini/SpriteLoader.cpp \
 		src/Randini/TextureCache.cpp \
 		src/Randini/Timer.cpp \
@@ -80,7 +79,6 @@ OBJECTS       = main.o \
 		picoPNG.o \
 		Randini.o \
 		ResourceManager.o \
-		Sprite.o \
 		SpriteLoader.o \
 		TextureCache.o \
 		Timer.o \
@@ -205,7 +203,6 @@ DIST          = /opt/Qt/5.3/gcc_64/mkspecs/features/spec_pre.prf \
 		src/Randini/picoPNG.cpp \
 		src/Randini/Randini.cpp \
 		src/Randini/ResourceManager.cpp \
-		src/Randini/Sprite.cpp \
 		src/Randini/SpriteLoader.cpp \
 		src/Randini/TextureCache.cpp \
 		src/Randini/Timer.cpp \
@@ -464,7 +461,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/2DphysicsEngine1.0.0 || mkdir -p .tmp/2DphysicsEngine1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/2DphysicsEngine1.0.0/ && $(COPY_FILE) --parents src/Randini/GLSLProgram.h src/Randini/Camera2D.h src/Randini/Errors.h src/Randini/GLTexture.h src/Randini/ImageLoader.h src/Randini/InputControl.h src/Randini/IOManager.h src/Randini/picoPNG.h src/Randini/Randini.h src/Randini/ResourceManager.h src/Randini/Sprite.h src/Randini/SpriteLoader.h src/Randini/TextureCache.h src/Randini/Timer.h src/Randini/Vertex.h src/Randini/Window.h src/Uni/Ball.h src/Uni/BallControl.h src/Uni/BallRenderer.h src/Uni/BallGrid.h src/Uni/MainGame.h .tmp/2DphysicsEngine1.0.0/ && $(COPY_FILE) --parents src/Uni/main.cpp src/Uni/Ball.cpp src/Uni/BallControl.cpp src/Uni/BallRenderer.cpp src/Uni/BallGrid.cpp src/Uni/MainGame.cpp src/Randini/GLSLProgram.cpp src/Randini/Camera2D.cpp src/Randini/Errors.cpp src/Randini/ImageLoader.cpp src/Randini/InputControl.cpp src/Randini/IOManager.cpp src/Randini/picoPNG.cpp src/Randini/Randini.cpp src/Randini/ResourceManager.cpp src/Randini/Sprite.cpp src/Randini/SpriteLoader.cpp src/Randini/TextureCache.cpp src/Randini/Timer.cpp src/Randini/Window.cpp .tmp/2DphysicsEngine1.0.0/ && (cd `dirname .tmp/2DphysicsEngine1.0.0` && $(TAR) 2DphysicsEngine1.0.0.tar 2DphysicsEngine1.0.0 && $(COMPRESS) 2DphysicsEngine1.0.0.tar) && $(MOVE) `dirname .tmp/2DphysicsEngine1.0.0`/2DphysicsEngine1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/2DphysicsEngine1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/2DphysicsEngine1.0.0/ && $(COPY_FILE) --parents Include/Randini/GLSLProgram.h Include/Randini/Camera2D.h Include/Randini/Errors.h Include/Randini/GLTexture.h Include/Randini/ImageLoader.h Include/Randini/InputControl.h Include/Randini/IOManager.h Include/Randini/picoPNG.h Include/Randini/Randini.h Include/Randini/ResourceManager.h Include/Randini/SpriteLoader.h Include/Randini/TextureCache.h Include/Randini/Timer.h Include/Randini/Vertex.h Include/Randini/Window.h Include/BallGame/Ball.h Include/BallGame/BallControl.h Include/BallGame/BallRenderer.h Include/BallGame/BallGrid.h Include/BallGame/MainGame.h .tmp/2DphysicsEngine1.0.0/ && $(COPY_FILE) --parents src/Uni/main.cpp src/Uni/Ball.cpp src/Uni/BallControl.cpp src/Uni/BallRenderer.cpp src/Uni/BallGrid.cpp src/Uni/MainGame.cpp src/Randini/GLSLProgram.cpp src/Randini/Camera2D.cpp src/Randini/Errors.cpp src/Randini/ImageLoader.cpp src/Randini/InputControl.cpp src/Randini/IOManager.cpp src/Randini/picoPNG.cpp src/Randini/Randini.cpp src/Randini/ResourceManager.cpp src/Randini/SpriteLoader.cpp src/Randini/TextureCache.cpp src/Randini/Timer.cpp src/Randini/Window.cpp .tmp/2DphysicsEngine1.0.0/ && (cd `dirname .tmp/2DphysicsEngine1.0.0` && $(TAR) 2DphysicsEngine1.0.0.tar 2DphysicsEngine1.0.0 && $(COMPRESS) 2DphysicsEngine1.0.0.tar) && $(MOVE) `dirname .tmp/2DphysicsEngine1.0.0`/2DphysicsEngine1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/2DphysicsEngine1.0.0
 
 
 clean:compiler_clean 
@@ -501,29 +498,1141 @@ compiler_clean:
 
 ####### Compile
 
-main.o: src/Uni/main.cpp 
+main.o: src/Uni/main.cpp /usr/local/include/SDL2/SDL.h \
+		/usr/local/include/SDL2/SDL_main.h \
+		/usr/local/include/SDL2/SDL_stdinc.h \
+		/usr/local/include/SDL2/SDL_config.h \
+		/usr/local/include/SDL2/SDL_platform.h \
+		/usr/local/include/SDL2/begin_code.h \
+		/usr/local/include/SDL2/close_code.h \
+		/usr/local/include/SDL2/SDL_assert.h \
+		/usr/local/include/SDL2/SDL_atomic.h \
+		/usr/local/include/SDL2/SDL_audio.h \
+		/usr/local/include/SDL2/SDL_error.h \
+		/usr/local/include/SDL2/SDL_endian.h \
+		/usr/local/include/SDL2/SDL_mutex.h \
+		/usr/local/include/SDL2/SDL_thread.h \
+		/usr/local/include/SDL2/SDL_rwops.h \
+		/usr/local/include/SDL2/SDL_clipboard.h \
+		/usr/local/include/SDL2/SDL_cpuinfo.h \
+		/usr/local/include/SDL2/SDL_events.h \
+		/usr/local/include/SDL2/SDL_video.h \
+		/usr/local/include/SDL2/SDL_pixels.h \
+		/usr/local/include/SDL2/SDL_rect.h \
+		/usr/local/include/SDL2/SDL_surface.h \
+		/usr/local/include/SDL2/SDL_blendmode.h \
+		/usr/local/include/SDL2/SDL_keyboard.h \
+		/usr/local/include/SDL2/SDL_keycode.h \
+		/usr/local/include/SDL2/SDL_scancode.h \
+		/usr/local/include/SDL2/SDL_mouse.h \
+		/usr/local/include/SDL2/SDL_joystick.h \
+		/usr/local/include/SDL2/SDL_gamecontroller.h \
+		/usr/local/include/SDL2/SDL_quit.h \
+		/usr/local/include/SDL2/SDL_gesture.h \
+		/usr/local/include/SDL2/SDL_touch.h \
+		/usr/local/include/SDL2/SDL_haptic.h \
+		/usr/local/include/SDL2/SDL_hints.h \
+		/usr/local/include/SDL2/SDL_loadso.h \
+		/usr/local/include/SDL2/SDL_log.h \
+		/usr/local/include/SDL2/SDL_messagebox.h \
+		/usr/local/include/SDL2/SDL_power.h \
+		/usr/local/include/SDL2/SDL_render.h \
+		/usr/local/include/SDL2/SDL_system.h \
+		/usr/local/include/SDL2/SDL_timer.h \
+		/usr/local/include/SDL2/SDL_version.h \
+		Include/BallGame/MainGame.h \
+		Include/Randini/Camera2D.h \
+		/usr/local/include/glm/glm.hpp \
+		/usr/local/include/glm/core/_fixes.hpp \
+		/usr/local/include/glm/core/setup.hpp \
+		/usr/local/include/glm/core/_detail.hpp \
+		/usr/local/include/glm/core/_vectorize.hpp \
+		/usr/local/include/glm/core/type.hpp \
+		/usr/local/include/glm/core/type_half.hpp \
+		/usr/local/include/glm/core/type_half.inl \
+		/usr/local/include/glm/core/type_float.hpp \
+		/usr/local/include/glm/core/type_int.hpp \
+		/usr/local/include/glm/core/type_gentype.hpp \
+		/usr/local/include/glm/core/type_size.hpp \
+		/usr/local/include/glm/core/type_vec1.hpp \
+		/usr/local/include/glm/core/type_vec.hpp \
+		/usr/local/include/glm/core/_swizzle.hpp \
+		/usr/local/include/glm/core/_swizzle_func.hpp \
+		/usr/local/include/glm/core/type_vec1.inl \
+		/usr/local/include/glm/core/type_vec2.hpp \
+		/usr/local/include/glm/core/type_vec2.inl \
+		/usr/local/include/glm/core/type_vec3.hpp \
+		/usr/local/include/glm/core/type_vec3.inl \
+		/usr/local/include/glm/core/type_vec4.hpp \
+		/usr/local/include/glm/core/type_vec4.inl \
+		/usr/local/include/glm/core/type_mat2x2.hpp \
+		/usr/local/include/glm/core/type_mat.hpp \
+		/usr/local/include/glm/core/type_mat2x2.inl \
+		/usr/local/include/glm/core/type_mat2x3.hpp \
+		/usr/local/include/glm/core/type_mat2x3.inl \
+		/usr/local/include/glm/core/type_mat2x4.hpp \
+		/usr/local/include/glm/core/type_mat2x4.inl \
+		/usr/local/include/glm/core/type_mat3x2.hpp \
+		/usr/local/include/glm/core/type_mat3x2.inl \
+		/usr/local/include/glm/core/type_mat3x3.hpp \
+		/usr/local/include/glm/core/type_mat3x3.inl \
+		/usr/local/include/glm/core/type_mat3x4.hpp \
+		/usr/local/include/glm/core/type_mat3x4.inl \
+		/usr/local/include/glm/core/type_mat4x2.hpp \
+		/usr/local/include/glm/core/type_mat4x2.inl \
+		/usr/local/include/glm/core/type_mat4x3.hpp \
+		/usr/local/include/glm/core/type_mat4x3.inl \
+		/usr/local/include/glm/core/type_mat4x4.hpp \
+		/usr/local/include/glm/core/type_mat4x4.inl \
+		/usr/local/include/glm/core/func_trigonometric.hpp \
+		/usr/local/include/glm/core/func_trigonometric.inl \
+		/usr/local/include/glm/core/func_exponential.hpp \
+		/usr/local/include/glm/core/func_exponential.inl \
+		/usr/local/include/glm/core/func_common.hpp \
+		/usr/local/include/glm/core/func_common.inl \
+		/usr/local/include/glm/core/func_packing.hpp \
+		/usr/local/include/glm/core/func_packing.inl \
+		/usr/local/include/glm/core/func_geometric.hpp \
+		/usr/local/include/glm/core/func_geometric.inl \
+		/usr/local/include/glm/core/func_matrix.hpp \
+		/usr/local/include/glm/core/func_matrix.inl \
+		/usr/local/include/glm/core/func_vector_relational.hpp \
+		/usr/local/include/glm/core/func_vector_relational.inl \
+		/usr/local/include/glm/core/func_integer.hpp \
+		/usr/local/include/glm/core/func_integer.inl \
+		/usr/local/include/glm/core/func_noise.hpp \
+		/usr/local/include/glm/core/func_noise.inl \
+		/usr/local/include/glm/gtc/matrix_transform.hpp \
+		/usr/local/include/glm/gtc/matrix_transform.inl \
+		Include/Randini/SpriteLoader.h \
+		Include/Randini/Vertex.h \
+		Include/Randini/InputControl.h \
+		Include/Randini/Window.h \
+		Include/Randini/GLSLProgram.h \
+		Include/Randini/Timer.h \
+		Include/BallGame/BallControl.h \
+		Include/BallGame/Ball.h \
+		Include/BallGame/BallRenderer.h \
+		Include/BallGame/BallGrid.h \
+		/usr/local/include/boost/random.hpp \
+		/usr/local/include/boost/random/linear_congruential.hpp \
+		/usr/local/include/boost/config.hpp \
+		/usr/local/include/boost/config/select_compiler_config.hpp \
+		/usr/local/include/boost/config/select_stdlib_config.hpp \
+		/usr/local/include/boost/config/no_tr1/utility.hpp \
+		/usr/local/include/boost/config/select_platform_config.hpp \
+		/usr/local/include/boost/config/posix_features.hpp \
+		/usr/local/include/boost/config/suffix.hpp \
+		/usr/local/include/boost/type.hpp \
+		/usr/local/include/boost/non_type.hpp \
+		/usr/local/include/boost/limits.hpp \
+		/usr/local/include/boost/detail/limits.hpp \
+		/usr/local/include/boost/detail/endian.hpp \
+		/usr/local/include/boost/static_assert.hpp \
+		/usr/local/include/boost/detail/workaround.hpp \
+		/usr/local/include/boost/random/detail/config.hpp \
+		/usr/local/include/boost/random/detail/const_mod.hpp \
+		/usr/local/include/boost/cstdint.hpp \
+		/usr/local/include/boost/integer_traits.hpp \
+		/usr/local/include/boost/random/detail/disable_warnings.hpp \
+		/usr/local/include/boost/random/detail/enable_warnings.hpp \
+		/usr/local/include/boost/random/additive_combine.hpp \
+		/usr/local/include/boost/random/inversive_congruential.hpp \
+		/usr/local/include/boost/random/shuffle_output.hpp \
+		/usr/local/include/boost/random/mersenne_twister.hpp \
+		/usr/local/include/boost/random/detail/ptr_helper.hpp \
+		/usr/local/include/boost/random/detail/seed.hpp \
+		/usr/local/include/boost/utility/enable_if.hpp \
+		/usr/local/include/boost/type_traits/is_arithmetic.hpp \
+		/usr/local/include/boost/type_traits/is_integral.hpp \
+		/usr/local/include/boost/type_traits/detail/bool_trait_def.hpp \
+		/usr/local/include/boost/type_traits/detail/template_arity_spec.hpp \
+		/usr/local/include/boost/mpl/int.hpp \
+		/usr/local/include/boost/mpl/int_fwd.hpp \
+		/usr/local/include/boost/mpl/aux_/adl_barrier.hpp \
+		/usr/local/include/boost/mpl/aux_/config/adl.hpp \
+		/usr/local/include/boost/mpl/aux_/config/msvc.hpp \
+		/usr/local/include/boost/mpl/aux_/config/intel.hpp \
+		/usr/local/include/boost/mpl/aux_/config/gcc.hpp \
+		/usr/local/include/boost/mpl/aux_/config/workaround.hpp \
+		/usr/local/include/boost/mpl/aux_/nttp_decl.hpp \
+		/usr/local/include/boost/mpl/aux_/config/nttp.hpp \
+		/usr/local/include/boost/preprocessor/cat.hpp \
+		/usr/local/include/boost/preprocessor/config/config.hpp \
+		/usr/local/include/boost/mpl/aux_/integral_wrapper.hpp \
+		/usr/local/include/boost/mpl/integral_c_tag.hpp \
+		/usr/local/include/boost/mpl/aux_/config/static_constant.hpp \
+		/usr/local/include/boost/mpl/aux_/static_cast.hpp \
+		/usr/local/include/boost/mpl/aux_/template_arity_fwd.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/params.hpp \
+		/usr/local/include/boost/mpl/aux_/config/preprocessor.hpp \
+		/usr/local/include/boost/preprocessor/comma_if.hpp \
+		/usr/local/include/boost/preprocessor/punctuation/comma_if.hpp \
+		/usr/local/include/boost/preprocessor/control/if.hpp \
+		/usr/local/include/boost/preprocessor/control/iif.hpp \
+		/usr/local/include/boost/preprocessor/logical/bool.hpp \
+		/usr/local/include/boost/preprocessor/facilities/empty.hpp \
+		/usr/local/include/boost/preprocessor/punctuation/comma.hpp \
+		/usr/local/include/boost/preprocessor/repeat.hpp \
+		/usr/local/include/boost/preprocessor/repetition/repeat.hpp \
+		/usr/local/include/boost/preprocessor/debug/error.hpp \
+		/usr/local/include/boost/preprocessor/detail/auto_rec.hpp \
+		/usr/local/include/boost/preprocessor/detail/dmc/auto_rec.hpp \
+		/usr/local/include/boost/preprocessor/tuple/eat.hpp \
+		/usr/local/include/boost/preprocessor/inc.hpp \
+		/usr/local/include/boost/preprocessor/arithmetic/inc.hpp \
+		/usr/local/include/boost/mpl/aux_/config/lambda.hpp \
+		/usr/local/include/boost/mpl/aux_/config/ttp.hpp \
+		/usr/local/include/boost/mpl/aux_/config/ctps.hpp \
+		/usr/local/include/boost/mpl/aux_/config/overload_resolution.hpp \
+		/usr/local/include/boost/type_traits/integral_constant.hpp \
+		/usr/local/include/boost/mpl/bool.hpp \
+		/usr/local/include/boost/mpl/bool_fwd.hpp \
+		/usr/local/include/boost/mpl/integral_c.hpp \
+		/usr/local/include/boost/mpl/integral_c_fwd.hpp \
+		/usr/local/include/boost/mpl/aux_/lambda_support.hpp \
+		/usr/local/include/boost/mpl/aux_/yes_no.hpp \
+		/usr/local/include/boost/mpl/aux_/config/arrays.hpp \
+		/usr/local/include/boost/mpl/aux_/na_fwd.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/enum.hpp \
+		/usr/local/include/boost/preprocessor/tuple/to_list.hpp \
+		/usr/local/include/boost/preprocessor/list/for_each_i.hpp \
+		/usr/local/include/boost/preprocessor/list/adt.hpp \
+		/usr/local/include/boost/preprocessor/detail/is_binary.hpp \
+		/usr/local/include/boost/preprocessor/detail/check.hpp \
+		/usr/local/include/boost/preprocessor/logical/compl.hpp \
+		/usr/local/include/boost/preprocessor/repetition/for.hpp \
+		/usr/local/include/boost/preprocessor/repetition/detail/edg/for.hpp \
+		/usr/local/include/boost/preprocessor/repetition/detail/msvc/for.hpp \
+		/usr/local/include/boost/preprocessor/repetition/detail/dmc/for.hpp \
+		/usr/local/include/boost/preprocessor/control/expr_iif.hpp \
+		/usr/local/include/boost/preprocessor/repetition/detail/for.hpp \
+		/usr/local/include/boost/preprocessor/tuple/elem.hpp \
+		/usr/local/include/boost/preprocessor/tuple/rem.hpp \
+		/usr/local/include/boost/type_traits/detail/bool_trait_undef.hpp \
+		/usr/local/include/boost/type_traits/is_float.hpp \
+		/usr/local/include/boost/type_traits/detail/ice_or.hpp \
+		/usr/local/include/boost/random/lagged_fibonacci.hpp \
+		/usr/local/include/boost/config/no_tr1/cmath.hpp \
+		/usr/local/include/boost/random/uniform_01.hpp \
+		/usr/local/include/boost/random/detail/pass_through_engine.hpp \
+		/usr/local/include/boost/random/ranlux.hpp \
+		/usr/local/include/boost/random/subtract_with_carry.hpp \
+		/usr/local/include/boost/random/discard_block.hpp \
+		/usr/local/include/boost/random/linear_feedback_shift.hpp \
+		/usr/local/include/boost/random/xor_combine.hpp \
+		/usr/local/include/boost/random/variate_generator.hpp \
+		/usr/local/include/boost/random/detail/uniform_int_float.hpp \
+		/usr/local/include/boost/random/random_number_generator.hpp \
+		/usr/local/include/boost/random/uniform_int.hpp \
+		/usr/local/include/boost/random/detail/signed_unsigned_tools.hpp \
+		/usr/local/include/boost/type_traits/make_unsigned.hpp \
+		/usr/local/include/boost/mpl/if.hpp \
+		/usr/local/include/boost/mpl/aux_/value_wknd.hpp \
+		/usr/local/include/boost/mpl/aux_/config/integral.hpp \
+		/usr/local/include/boost/mpl/aux_/config/eti.hpp \
+		/usr/local/include/boost/mpl/aux_/na_spec.hpp \
+		/usr/local/include/boost/mpl/lambda_fwd.hpp \
+		/usr/local/include/boost/mpl/void_fwd.hpp \
+		/usr/local/include/boost/mpl/aux_/na.hpp \
+		/usr/local/include/boost/mpl/aux_/lambda_arity_param.hpp \
+		/usr/local/include/boost/mpl/aux_/arity.hpp \
+		/usr/local/include/boost/mpl/aux_/config/dtp.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp \
+		/usr/local/include/boost/mpl/limits/arity.hpp \
+		/usr/local/include/boost/preprocessor/logical/and.hpp \
+		/usr/local/include/boost/preprocessor/logical/bitand.hpp \
+		/usr/local/include/boost/preprocessor/identity.hpp \
+		/usr/local/include/boost/preprocessor/facilities/identity.hpp \
+		/usr/local/include/boost/preprocessor/empty.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/filter_params.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/sub.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/tuple.hpp \
+		/usr/local/include/boost/preprocessor/arithmetic/sub.hpp \
+		/usr/local/include/boost/preprocessor/arithmetic/dec.hpp \
+		/usr/local/include/boost/preprocessor/control/while.hpp \
+		/usr/local/include/boost/preprocessor/list/fold_left.hpp \
+		/usr/local/include/boost/preprocessor/list/detail/edg/fold_left.hpp \
+		/usr/local/include/boost/preprocessor/list/detail/dmc/fold_left.hpp \
+		/usr/local/include/boost/preprocessor/list/detail/fold_left.hpp \
+		/usr/local/include/boost/preprocessor/list/fold_right.hpp \
+		/usr/local/include/boost/preprocessor/list/detail/edg/fold_right.hpp \
+		/usr/local/include/boost/preprocessor/list/detail/fold_right.hpp \
+		/usr/local/include/boost/preprocessor/list/reverse.hpp \
+		/usr/local/include/boost/preprocessor/control/detail/edg/while.hpp \
+		/usr/local/include/boost/preprocessor/control/detail/msvc/while.hpp \
+		/usr/local/include/boost/preprocessor/control/detail/dmc/while.hpp \
+		/usr/local/include/boost/preprocessor/control/detail/while.hpp \
+		/usr/local/include/boost/preprocessor/arithmetic/add.hpp \
+		/usr/local/include/boost/type_traits/is_signed.hpp \
+		/usr/local/include/boost/type_traits/remove_cv.hpp \
+		/usr/local/include/boost/type_traits/broken_compiler_spec.hpp \
+		/usr/local/include/boost/type_traits/detail/type_trait_undef.hpp \
+		/usr/local/include/boost/type_traits/detail/cv_traits_impl.hpp \
+		/usr/local/include/boost/type_traits/detail/yes_no_type.hpp \
+		/usr/local/include/boost/type_traits/msvc/remove_cv.hpp \
+		/usr/local/include/boost/type_traits/msvc/typeof.hpp \
+		/usr/local/include/boost/type_traits/is_volatile.hpp \
+		/usr/local/include/boost/type_traits/remove_bounds.hpp \
+		/usr/local/include/boost/type_traits/msvc/remove_bounds.hpp \
+		/usr/local/include/boost/type_traits/is_array.hpp \
+		/usr/local/include/boost/type_traits/config.hpp \
+		/usr/local/include/boost/type_traits/detail/wrap.hpp \
+		/usr/local/include/boost/type_traits/detail/type_trait_def.hpp \
+		/usr/local/include/boost/type_traits/is_reference.hpp \
+		/usr/local/include/boost/type_traits/is_lvalue_reference.hpp \
+		/usr/local/include/boost/type_traits/is_rvalue_reference.hpp \
+		/usr/local/include/boost/type_traits/ice.hpp \
+		/usr/local/include/boost/type_traits/detail/ice_and.hpp \
+		/usr/local/include/boost/type_traits/detail/ice_not.hpp \
+		/usr/local/include/boost/type_traits/detail/ice_eq.hpp \
+		/usr/local/include/boost/type_traits/detail/false_result.hpp \
+		/usr/local/include/boost/type_traits/is_const.hpp \
+		/usr/local/include/boost/type_traits/is_pointer.hpp \
+		/usr/local/include/boost/type_traits/is_member_pointer.hpp \
+		/usr/local/include/boost/type_traits/is_member_function_pointer.hpp \
+		/usr/local/include/boost/type_traits/detail/is_mem_fun_pointer_impl.hpp \
+		/usr/local/include/boost/preprocessor/iterate.hpp \
+		/usr/local/include/boost/preprocessor/iteration/iterate.hpp \
+		/usr/local/include/boost/preprocessor/array/elem.hpp \
+		/usr/local/include/boost/preprocessor/array/data.hpp \
+		/usr/local/include/boost/preprocessor/array/size.hpp \
+		/usr/local/include/boost/preprocessor/slot/slot.hpp \
+		/usr/local/include/boost/preprocessor/slot/detail/def.hpp \
+		/usr/local/include/boost/preprocessor/enum_params.hpp \
+		/usr/local/include/boost/preprocessor/repetition/enum_params.hpp \
+		/usr/local/include/boost/type_traits/detail/is_mem_fun_pointer_tester.hpp \
+		/usr/local/include/boost/type_traits/detail/is_function_ptr_tester.hpp \
+		/usr/local/include/boost/type_traits/is_enum.hpp \
+		/usr/local/include/boost/type_traits/intrinsics.hpp \
+		/usr/local/include/boost/type_traits/is_same.hpp \
+		/usr/local/include/boost/type_traits/is_void.hpp \
+		/usr/local/include/boost/type_traits/add_reference.hpp \
+		/usr/local/include/boost/type_traits/is_convertible.hpp \
+		/usr/local/include/boost/type_traits/is_abstract.hpp \
+		/usr/local/include/boost/type_traits/is_class.hpp \
+		/usr/local/include/boost/type_traits/is_union.hpp \
+		/usr/local/include/boost/type_traits/is_scalar.hpp \
+		/usr/local/include/boost/type_traits/is_function.hpp \
+		/usr/local/include/boost/type_traits/detail/is_function_ptr_helper.hpp \
+		/usr/local/include/boost/type_traits/is_polymorphic.hpp \
+		/usr/local/include/boost/type_traits/remove_reference.hpp \
+		/usr/local/include/boost/type_traits/msvc/remove_reference.hpp \
+		/usr/local/include/boost/type_traits/is_unsigned.hpp \
+		/usr/local/include/boost/type_traits/add_const.hpp \
+		/usr/local/include/boost/type_traits/add_volatile.hpp \
+		/usr/local/include/boost/random/uniform_smallint.hpp \
+		/usr/local/include/boost/random/uniform_real.hpp \
+		/usr/local/include/boost/random/triangle_distribution.hpp \
+		/usr/local/include/boost/random/bernoulli_distribution.hpp \
+		/usr/local/include/boost/random/cauchy_distribution.hpp \
+		/usr/local/include/boost/random/exponential_distribution.hpp \
+		/usr/local/include/boost/random/geometric_distribution.hpp \
+		/usr/local/include/boost/random/normal_distribution.hpp \
+		/usr/local/include/boost/random/lognormal_distribution.hpp \
+		/usr/local/include/boost/random/poisson_distribution.hpp \
+		/usr/local/include/boost/random/gamma_distribution.hpp \
+		/usr/local/include/boost/random/binomial_distribution.hpp \
+		/usr/local/include/boost/random/uniform_on_sphere.hpp \
+		/usr/local/include/boost/generator_iterator.hpp \
+		/usr/local/include/boost/iterator/iterator_facade.hpp \
+		/usr/local/include/boost/iterator.hpp \
+		/usr/local/include/boost/iterator/interoperable.hpp \
+		/usr/local/include/boost/mpl/or.hpp \
+		/usr/local/include/boost/mpl/aux_/config/use_preprocessed.hpp \
+		/usr/local/include/boost/mpl/aux_/nested_type_wknd.hpp \
+		/usr/local/include/boost/mpl/aux_/include_preprocessed.hpp \
+		/usr/local/include/boost/mpl/aux_/config/compiler.hpp \
+		/usr/local/include/boost/preprocessor/stringize.hpp \
+		/usr/local/include/boost/mpl/aux_/logical_op.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/ext_params.hpp \
+		/usr/local/include/boost/preprocessor/dec.hpp \
+		/usr/local/include/boost/iterator/detail/config_def.hpp \
+		/usr/local/include/boost/iterator/detail/config_undef.hpp \
+		/usr/local/include/boost/iterator/iterator_traits.hpp \
+		/usr/local/include/boost/detail/iterator.hpp \
+		/usr/local/include/boost/type_traits/remove_const.hpp \
+		/usr/local/include/boost/type_traits/msvc/remove_const.hpp \
+		/usr/local/include/boost/type_traits/remove_pointer.hpp \
+		/usr/local/include/boost/type_traits/msvc/remove_pointer.hpp \
+		/usr/local/include/boost/type_traits/is_base_and_derived.hpp \
+		/usr/local/include/boost/mpl/has_xxx.hpp \
+		/usr/local/include/boost/mpl/aux_/type_wrapper.hpp \
+		/usr/local/include/boost/mpl/aux_/config/has_xxx.hpp \
+		/usr/local/include/boost/mpl/aux_/config/msvc_typename.hpp \
+		/usr/local/include/boost/preprocessor/repetition/enum_trailing_params.hpp \
+		/usr/local/include/boost/iterator/detail/facade_iterator_category.hpp \
+		/usr/local/include/boost/iterator/iterator_categories.hpp \
+		/usr/local/include/boost/mpl/eval_if.hpp \
+		/usr/local/include/boost/mpl/identity.hpp \
+		/usr/local/include/boost/mpl/placeholders.hpp \
+		/usr/local/include/boost/mpl/arg.hpp \
+		/usr/local/include/boost/mpl/arg_fwd.hpp \
+		/usr/local/include/boost/mpl/aux_/na_assert.hpp \
+		/usr/local/include/boost/mpl/assert.hpp \
+		/usr/local/include/boost/mpl/not.hpp \
+		/usr/local/include/boost/mpl/aux_/config/pp_counter.hpp \
+		/usr/local/include/boost/mpl/aux_/arity_spec.hpp \
+		/usr/local/include/boost/mpl/aux_/arg_typedef.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/default_params.hpp \
+		/usr/local/include/boost/mpl/and.hpp \
+		/usr/local/include/boost/detail/indirect_traits.hpp \
+		/usr/local/include/boost/detail/is_function_ref_tester.hpp \
+		/usr/local/include/boost/iterator/detail/enable_if.hpp \
+		/usr/local/include/boost/implicit_cast.hpp \
+		/usr/local/include/boost/type_traits/add_pointer.hpp \
+		/usr/local/include/boost/type_traits/is_pod.hpp \
+		/usr/local/include/boost/mpl/always.hpp \
+		/usr/local/include/boost/mpl/apply.hpp \
+		/usr/local/include/boost/mpl/apply_fwd.hpp \
+		/usr/local/include/boost/mpl/apply_wrap.hpp \
+		/usr/local/include/boost/mpl/aux_/has_apply.hpp \
+		/usr/local/include/boost/mpl/aux_/config/has_apply.hpp \
+		/usr/local/include/boost/mpl/aux_/msvc_never_true.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/add.hpp \
+		/usr/local/include/boost/mpl/aux_/config/bcc.hpp \
+		/usr/local/include/boost/mpl/aux_/msvc_dtw.hpp \
+		/usr/local/include/boost/mpl/lambda.hpp \
+		/usr/local/include/boost/mpl/bind.hpp \
+		/usr/local/include/boost/mpl/bind_fwd.hpp \
+		/usr/local/include/boost/mpl/aux_/config/bind.hpp \
+		/usr/local/include/boost/mpl/aux_/config/dmc_ambiguous_ctps.hpp \
+		/usr/local/include/boost/mpl/next.hpp \
+		/usr/local/include/boost/mpl/next_prior.hpp \
+		/usr/local/include/boost/mpl/aux_/common_name_wknd.hpp \
+		/usr/local/include/boost/mpl/protect.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/partial_spec_params.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/repeat.hpp \
+		/usr/local/include/boost/mpl/aux_/count_args.hpp \
+		/usr/local/include/boost/preprocessor/expr_if.hpp \
+		/usr/local/include/boost/preprocessor/control/expr_if.hpp \
+		/usr/local/include/boost/preprocessor/enum_shifted_params.hpp \
+		/usr/local/include/boost/preprocessor/repetition/enum_shifted_params.hpp \
+		/usr/local/include/boost/mpl/aux_/full_lambda.hpp \
+		/usr/local/include/boost/mpl/quote.hpp \
+		/usr/local/include/boost/mpl/void.hpp \
+		/usr/local/include/boost/mpl/aux_/has_type.hpp \
+		/usr/local/include/boost/mpl/aux_/template_arity.hpp \
+		/usr/local/include/boost/mpl/aux_/has_rebind.hpp \
+		/usr/local/include/boost/mpl/aux_/msvc_is_class.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/range.hpp \
+		/usr/local/include/boost/preprocessor/seq/subseq.hpp \
+		/usr/local/include/boost/preprocessor/seq/first_n.hpp \
+		/usr/local/include/boost/preprocessor/seq/detail/split.hpp \
+		/usr/local/include/boost/preprocessor/seq/rest_n.hpp \
+		/usr/local/include/boost/preprocessor/seq/fold_left.hpp \
+		/usr/local/include/boost/preprocessor/seq/seq.hpp \
+		/usr/local/include/boost/preprocessor/seq/elem.hpp \
+		/usr/local/include/boost/preprocessor/seq/size.hpp \
+		/usr/local/include/boost/mpl/aux_/lambda_no_ctps.hpp \
+		/usr/local/include/boost/mpl/is_placeholder.hpp \
+		/usr/local/include/boost/ref.hpp \
+		/usr/local/include/boost/utility/addressof.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o src/Uni/main.cpp
 
-Ball.o: src/Uni/Ball.cpp 
+Ball.o: src/Uni/Ball.cpp Include/BallGame/Ball.h \
+		/usr/local/include/glm/glm.hpp \
+		/usr/local/include/glm/core/_fixes.hpp \
+		/usr/local/include/glm/core/setup.hpp \
+		/usr/local/include/glm/core/_detail.hpp \
+		/usr/local/include/glm/core/_vectorize.hpp \
+		/usr/local/include/glm/core/type.hpp \
+		/usr/local/include/glm/core/type_half.hpp \
+		/usr/local/include/glm/core/type_half.inl \
+		/usr/local/include/glm/core/type_float.hpp \
+		/usr/local/include/glm/core/type_int.hpp \
+		/usr/local/include/glm/core/type_gentype.hpp \
+		/usr/local/include/glm/core/type_size.hpp \
+		/usr/local/include/glm/core/type_vec1.hpp \
+		/usr/local/include/glm/core/type_vec.hpp \
+		/usr/local/include/glm/core/_swizzle.hpp \
+		/usr/local/include/glm/core/_swizzle_func.hpp \
+		/usr/local/include/glm/core/type_vec1.inl \
+		/usr/local/include/glm/core/type_vec2.hpp \
+		/usr/local/include/glm/core/type_vec2.inl \
+		/usr/local/include/glm/core/type_vec3.hpp \
+		/usr/local/include/glm/core/type_vec3.inl \
+		/usr/local/include/glm/core/type_vec4.hpp \
+		/usr/local/include/glm/core/type_vec4.inl \
+		/usr/local/include/glm/core/type_mat2x2.hpp \
+		/usr/local/include/glm/core/type_mat.hpp \
+		/usr/local/include/glm/core/type_mat2x2.inl \
+		/usr/local/include/glm/core/type_mat2x3.hpp \
+		/usr/local/include/glm/core/type_mat2x3.inl \
+		/usr/local/include/glm/core/type_mat2x4.hpp \
+		/usr/local/include/glm/core/type_mat2x4.inl \
+		/usr/local/include/glm/core/type_mat3x2.hpp \
+		/usr/local/include/glm/core/type_mat3x2.inl \
+		/usr/local/include/glm/core/type_mat3x3.hpp \
+		/usr/local/include/glm/core/type_mat3x3.inl \
+		/usr/local/include/glm/core/type_mat3x4.hpp \
+		/usr/local/include/glm/core/type_mat3x4.inl \
+		/usr/local/include/glm/core/type_mat4x2.hpp \
+		/usr/local/include/glm/core/type_mat4x2.inl \
+		/usr/local/include/glm/core/type_mat4x3.hpp \
+		/usr/local/include/glm/core/type_mat4x3.inl \
+		/usr/local/include/glm/core/type_mat4x4.hpp \
+		/usr/local/include/glm/core/type_mat4x4.inl \
+		/usr/local/include/glm/core/func_trigonometric.hpp \
+		/usr/local/include/glm/core/func_trigonometric.inl \
+		/usr/local/include/glm/core/func_exponential.hpp \
+		/usr/local/include/glm/core/func_exponential.inl \
+		/usr/local/include/glm/core/func_common.hpp \
+		/usr/local/include/glm/core/func_common.inl \
+		/usr/local/include/glm/core/func_packing.hpp \
+		/usr/local/include/glm/core/func_packing.inl \
+		/usr/local/include/glm/core/func_geometric.hpp \
+		/usr/local/include/glm/core/func_geometric.inl \
+		/usr/local/include/glm/core/func_matrix.hpp \
+		/usr/local/include/glm/core/func_matrix.inl \
+		/usr/local/include/glm/core/func_vector_relational.hpp \
+		/usr/local/include/glm/core/func_vector_relational.inl \
+		/usr/local/include/glm/core/func_integer.hpp \
+		/usr/local/include/glm/core/func_integer.inl \
+		/usr/local/include/glm/core/func_noise.hpp \
+		/usr/local/include/glm/core/func_noise.inl \
+		Include/Randini/Vertex.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Ball.o src/Uni/Ball.cpp
 
-BallControl.o: src/Uni/BallControl.cpp 
+BallControl.o: src/Uni/BallControl.cpp Include/BallGame/BallControl.h \
+		Include/BallGame/Ball.h \
+		/usr/local/include/glm/glm.hpp \
+		/usr/local/include/glm/core/_fixes.hpp \
+		/usr/local/include/glm/core/setup.hpp \
+		/usr/local/include/glm/core/_detail.hpp \
+		/usr/local/include/glm/core/_vectorize.hpp \
+		/usr/local/include/glm/core/type.hpp \
+		/usr/local/include/glm/core/type_half.hpp \
+		/usr/local/include/glm/core/type_half.inl \
+		/usr/local/include/glm/core/type_float.hpp \
+		/usr/local/include/glm/core/type_int.hpp \
+		/usr/local/include/glm/core/type_gentype.hpp \
+		/usr/local/include/glm/core/type_size.hpp \
+		/usr/local/include/glm/core/type_vec1.hpp \
+		/usr/local/include/glm/core/type_vec.hpp \
+		/usr/local/include/glm/core/_swizzle.hpp \
+		/usr/local/include/glm/core/_swizzle_func.hpp \
+		/usr/local/include/glm/core/type_vec1.inl \
+		/usr/local/include/glm/core/type_vec2.hpp \
+		/usr/local/include/glm/core/type_vec2.inl \
+		/usr/local/include/glm/core/type_vec3.hpp \
+		/usr/local/include/glm/core/type_vec3.inl \
+		/usr/local/include/glm/core/type_vec4.hpp \
+		/usr/local/include/glm/core/type_vec4.inl \
+		/usr/local/include/glm/core/type_mat2x2.hpp \
+		/usr/local/include/glm/core/type_mat.hpp \
+		/usr/local/include/glm/core/type_mat2x2.inl \
+		/usr/local/include/glm/core/type_mat2x3.hpp \
+		/usr/local/include/glm/core/type_mat2x3.inl \
+		/usr/local/include/glm/core/type_mat2x4.hpp \
+		/usr/local/include/glm/core/type_mat2x4.inl \
+		/usr/local/include/glm/core/type_mat3x2.hpp \
+		/usr/local/include/glm/core/type_mat3x2.inl \
+		/usr/local/include/glm/core/type_mat3x3.hpp \
+		/usr/local/include/glm/core/type_mat3x3.inl \
+		/usr/local/include/glm/core/type_mat3x4.hpp \
+		/usr/local/include/glm/core/type_mat3x4.inl \
+		/usr/local/include/glm/core/type_mat4x2.hpp \
+		/usr/local/include/glm/core/type_mat4x2.inl \
+		/usr/local/include/glm/core/type_mat4x3.hpp \
+		/usr/local/include/glm/core/type_mat4x3.inl \
+		/usr/local/include/glm/core/type_mat4x4.hpp \
+		/usr/local/include/glm/core/type_mat4x4.inl \
+		/usr/local/include/glm/core/func_trigonometric.hpp \
+		/usr/local/include/glm/core/func_trigonometric.inl \
+		/usr/local/include/glm/core/func_exponential.hpp \
+		/usr/local/include/glm/core/func_exponential.inl \
+		/usr/local/include/glm/core/func_common.hpp \
+		/usr/local/include/glm/core/func_common.inl \
+		/usr/local/include/glm/core/func_packing.hpp \
+		/usr/local/include/glm/core/func_packing.inl \
+		/usr/local/include/glm/core/func_geometric.hpp \
+		/usr/local/include/glm/core/func_geometric.inl \
+		/usr/local/include/glm/core/func_matrix.hpp \
+		/usr/local/include/glm/core/func_matrix.inl \
+		/usr/local/include/glm/core/func_vector_relational.hpp \
+		/usr/local/include/glm/core/func_vector_relational.inl \
+		/usr/local/include/glm/core/func_integer.hpp \
+		/usr/local/include/glm/core/func_integer.inl \
+		/usr/local/include/glm/core/func_noise.hpp \
+		/usr/local/include/glm/core/func_noise.inl \
+		Include/Randini/Vertex.h \
+		Include/BallGame/BallGrid.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o BallControl.o src/Uni/BallControl.cpp
 
-BallRenderer.o: src/Uni/BallRenderer.cpp 
+BallRenderer.o: src/Uni/BallRenderer.cpp Include/BallGame/BallRenderer.h \
+		Include/Randini/SpriteLoader.h \
+		Include/Randini/Vertex.h \
+		/usr/local/include/glm/glm.hpp \
+		/usr/local/include/glm/core/_fixes.hpp \
+		/usr/local/include/glm/core/setup.hpp \
+		/usr/local/include/glm/core/_detail.hpp \
+		/usr/local/include/glm/core/_vectorize.hpp \
+		/usr/local/include/glm/core/type.hpp \
+		/usr/local/include/glm/core/type_half.hpp \
+		/usr/local/include/glm/core/type_half.inl \
+		/usr/local/include/glm/core/type_float.hpp \
+		/usr/local/include/glm/core/type_int.hpp \
+		/usr/local/include/glm/core/type_gentype.hpp \
+		/usr/local/include/glm/core/type_size.hpp \
+		/usr/local/include/glm/core/type_vec1.hpp \
+		/usr/local/include/glm/core/type_vec.hpp \
+		/usr/local/include/glm/core/_swizzle.hpp \
+		/usr/local/include/glm/core/_swizzle_func.hpp \
+		/usr/local/include/glm/core/type_vec1.inl \
+		/usr/local/include/glm/core/type_vec2.hpp \
+		/usr/local/include/glm/core/type_vec2.inl \
+		/usr/local/include/glm/core/type_vec3.hpp \
+		/usr/local/include/glm/core/type_vec3.inl \
+		/usr/local/include/glm/core/type_vec4.hpp \
+		/usr/local/include/glm/core/type_vec4.inl \
+		/usr/local/include/glm/core/type_mat2x2.hpp \
+		/usr/local/include/glm/core/type_mat.hpp \
+		/usr/local/include/glm/core/type_mat2x2.inl \
+		/usr/local/include/glm/core/type_mat2x3.hpp \
+		/usr/local/include/glm/core/type_mat2x3.inl \
+		/usr/local/include/glm/core/type_mat2x4.hpp \
+		/usr/local/include/glm/core/type_mat2x4.inl \
+		/usr/local/include/glm/core/type_mat3x2.hpp \
+		/usr/local/include/glm/core/type_mat3x2.inl \
+		/usr/local/include/glm/core/type_mat3x3.hpp \
+		/usr/local/include/glm/core/type_mat3x3.inl \
+		/usr/local/include/glm/core/type_mat3x4.hpp \
+		/usr/local/include/glm/core/type_mat3x4.inl \
+		/usr/local/include/glm/core/type_mat4x2.hpp \
+		/usr/local/include/glm/core/type_mat4x2.inl \
+		/usr/local/include/glm/core/type_mat4x3.hpp \
+		/usr/local/include/glm/core/type_mat4x3.inl \
+		/usr/local/include/glm/core/type_mat4x4.hpp \
+		/usr/local/include/glm/core/type_mat4x4.inl \
+		/usr/local/include/glm/core/func_trigonometric.hpp \
+		/usr/local/include/glm/core/func_trigonometric.inl \
+		/usr/local/include/glm/core/func_exponential.hpp \
+		/usr/local/include/glm/core/func_exponential.inl \
+		/usr/local/include/glm/core/func_common.hpp \
+		/usr/local/include/glm/core/func_common.inl \
+		/usr/local/include/glm/core/func_packing.hpp \
+		/usr/local/include/glm/core/func_packing.inl \
+		/usr/local/include/glm/core/func_geometric.hpp \
+		/usr/local/include/glm/core/func_geometric.inl \
+		/usr/local/include/glm/core/func_matrix.hpp \
+		/usr/local/include/glm/core/func_matrix.inl \
+		/usr/local/include/glm/core/func_vector_relational.hpp \
+		/usr/local/include/glm/core/func_vector_relational.inl \
+		/usr/local/include/glm/core/func_integer.hpp \
+		/usr/local/include/glm/core/func_integer.inl \
+		/usr/local/include/glm/core/func_noise.hpp \
+		/usr/local/include/glm/core/func_noise.inl \
+		Include/Randini/GLSLProgram.h \
+		Include/BallGame/Ball.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o BallRenderer.o src/Uni/BallRenderer.cpp
 
-BallGrid.o: src/Uni/BallGrid.cpp 
+BallGrid.o: src/Uni/BallGrid.cpp Include/BallGame/BallGrid.h \
+		Include/BallGame/Ball.h \
+		/usr/local/include/glm/glm.hpp \
+		/usr/local/include/glm/core/_fixes.hpp \
+		/usr/local/include/glm/core/setup.hpp \
+		/usr/local/include/glm/core/_detail.hpp \
+		/usr/local/include/glm/core/_vectorize.hpp \
+		/usr/local/include/glm/core/type.hpp \
+		/usr/local/include/glm/core/type_half.hpp \
+		/usr/local/include/glm/core/type_half.inl \
+		/usr/local/include/glm/core/type_float.hpp \
+		/usr/local/include/glm/core/type_int.hpp \
+		/usr/local/include/glm/core/type_gentype.hpp \
+		/usr/local/include/glm/core/type_size.hpp \
+		/usr/local/include/glm/core/type_vec1.hpp \
+		/usr/local/include/glm/core/type_vec.hpp \
+		/usr/local/include/glm/core/_swizzle.hpp \
+		/usr/local/include/glm/core/_swizzle_func.hpp \
+		/usr/local/include/glm/core/type_vec1.inl \
+		/usr/local/include/glm/core/type_vec2.hpp \
+		/usr/local/include/glm/core/type_vec2.inl \
+		/usr/local/include/glm/core/type_vec3.hpp \
+		/usr/local/include/glm/core/type_vec3.inl \
+		/usr/local/include/glm/core/type_vec4.hpp \
+		/usr/local/include/glm/core/type_vec4.inl \
+		/usr/local/include/glm/core/type_mat2x2.hpp \
+		/usr/local/include/glm/core/type_mat.hpp \
+		/usr/local/include/glm/core/type_mat2x2.inl \
+		/usr/local/include/glm/core/type_mat2x3.hpp \
+		/usr/local/include/glm/core/type_mat2x3.inl \
+		/usr/local/include/glm/core/type_mat2x4.hpp \
+		/usr/local/include/glm/core/type_mat2x4.inl \
+		/usr/local/include/glm/core/type_mat3x2.hpp \
+		/usr/local/include/glm/core/type_mat3x2.inl \
+		/usr/local/include/glm/core/type_mat3x3.hpp \
+		/usr/local/include/glm/core/type_mat3x3.inl \
+		/usr/local/include/glm/core/type_mat3x4.hpp \
+		/usr/local/include/glm/core/type_mat3x4.inl \
+		/usr/local/include/glm/core/type_mat4x2.hpp \
+		/usr/local/include/glm/core/type_mat4x2.inl \
+		/usr/local/include/glm/core/type_mat4x3.hpp \
+		/usr/local/include/glm/core/type_mat4x3.inl \
+		/usr/local/include/glm/core/type_mat4x4.hpp \
+		/usr/local/include/glm/core/type_mat4x4.inl \
+		/usr/local/include/glm/core/func_trigonometric.hpp \
+		/usr/local/include/glm/core/func_trigonometric.inl \
+		/usr/local/include/glm/core/func_exponential.hpp \
+		/usr/local/include/glm/core/func_exponential.inl \
+		/usr/local/include/glm/core/func_common.hpp \
+		/usr/local/include/glm/core/func_common.inl \
+		/usr/local/include/glm/core/func_packing.hpp \
+		/usr/local/include/glm/core/func_packing.inl \
+		/usr/local/include/glm/core/func_geometric.hpp \
+		/usr/local/include/glm/core/func_geometric.inl \
+		/usr/local/include/glm/core/func_matrix.hpp \
+		/usr/local/include/glm/core/func_matrix.inl \
+		/usr/local/include/glm/core/func_vector_relational.hpp \
+		/usr/local/include/glm/core/func_vector_relational.inl \
+		/usr/local/include/glm/core/func_integer.hpp \
+		/usr/local/include/glm/core/func_integer.inl \
+		/usr/local/include/glm/core/func_noise.hpp \
+		/usr/local/include/glm/core/func_noise.inl \
+		Include/Randini/Vertex.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o BallGrid.o src/Uni/BallGrid.cpp
 
-MainGame.o: src/Uni/MainGame.cpp 
+MainGame.o: src/Uni/MainGame.cpp Include/BallGame/MainGame.h \
+		Include/Randini/Camera2D.h \
+		/usr/local/include/glm/glm.hpp \
+		/usr/local/include/glm/core/_fixes.hpp \
+		/usr/local/include/glm/core/setup.hpp \
+		/usr/local/include/glm/core/_detail.hpp \
+		/usr/local/include/glm/core/_vectorize.hpp \
+		/usr/local/include/glm/core/type.hpp \
+		/usr/local/include/glm/core/type_half.hpp \
+		/usr/local/include/glm/core/type_half.inl \
+		/usr/local/include/glm/core/type_float.hpp \
+		/usr/local/include/glm/core/type_int.hpp \
+		/usr/local/include/glm/core/type_gentype.hpp \
+		/usr/local/include/glm/core/type_size.hpp \
+		/usr/local/include/glm/core/type_vec1.hpp \
+		/usr/local/include/glm/core/type_vec.hpp \
+		/usr/local/include/glm/core/_swizzle.hpp \
+		/usr/local/include/glm/core/_swizzle_func.hpp \
+		/usr/local/include/glm/core/type_vec1.inl \
+		/usr/local/include/glm/core/type_vec2.hpp \
+		/usr/local/include/glm/core/type_vec2.inl \
+		/usr/local/include/glm/core/type_vec3.hpp \
+		/usr/local/include/glm/core/type_vec3.inl \
+		/usr/local/include/glm/core/type_vec4.hpp \
+		/usr/local/include/glm/core/type_vec4.inl \
+		/usr/local/include/glm/core/type_mat2x2.hpp \
+		/usr/local/include/glm/core/type_mat.hpp \
+		/usr/local/include/glm/core/type_mat2x2.inl \
+		/usr/local/include/glm/core/type_mat2x3.hpp \
+		/usr/local/include/glm/core/type_mat2x3.inl \
+		/usr/local/include/glm/core/type_mat2x4.hpp \
+		/usr/local/include/glm/core/type_mat2x4.inl \
+		/usr/local/include/glm/core/type_mat3x2.hpp \
+		/usr/local/include/glm/core/type_mat3x2.inl \
+		/usr/local/include/glm/core/type_mat3x3.hpp \
+		/usr/local/include/glm/core/type_mat3x3.inl \
+		/usr/local/include/glm/core/type_mat3x4.hpp \
+		/usr/local/include/glm/core/type_mat3x4.inl \
+		/usr/local/include/glm/core/type_mat4x2.hpp \
+		/usr/local/include/glm/core/type_mat4x2.inl \
+		/usr/local/include/glm/core/type_mat4x3.hpp \
+		/usr/local/include/glm/core/type_mat4x3.inl \
+		/usr/local/include/glm/core/type_mat4x4.hpp \
+		/usr/local/include/glm/core/type_mat4x4.inl \
+		/usr/local/include/glm/core/func_trigonometric.hpp \
+		/usr/local/include/glm/core/func_trigonometric.inl \
+		/usr/local/include/glm/core/func_exponential.hpp \
+		/usr/local/include/glm/core/func_exponential.inl \
+		/usr/local/include/glm/core/func_common.hpp \
+		/usr/local/include/glm/core/func_common.inl \
+		/usr/local/include/glm/core/func_packing.hpp \
+		/usr/local/include/glm/core/func_packing.inl \
+		/usr/local/include/glm/core/func_geometric.hpp \
+		/usr/local/include/glm/core/func_geometric.inl \
+		/usr/local/include/glm/core/func_matrix.hpp \
+		/usr/local/include/glm/core/func_matrix.inl \
+		/usr/local/include/glm/core/func_vector_relational.hpp \
+		/usr/local/include/glm/core/func_vector_relational.inl \
+		/usr/local/include/glm/core/func_integer.hpp \
+		/usr/local/include/glm/core/func_integer.inl \
+		/usr/local/include/glm/core/func_noise.hpp \
+		/usr/local/include/glm/core/func_noise.inl \
+		/usr/local/include/glm/gtc/matrix_transform.hpp \
+		/usr/local/include/glm/gtc/matrix_transform.inl \
+		Include/Randini/SpriteLoader.h \
+		Include/Randini/Vertex.h \
+		Include/Randini/InputControl.h \
+		Include/Randini/Window.h \
+		/usr/local/include/SDL2/SDL.h \
+		/usr/local/include/SDL2/SDL_main.h \
+		/usr/local/include/SDL2/SDL_stdinc.h \
+		/usr/local/include/SDL2/SDL_config.h \
+		/usr/local/include/SDL2/SDL_platform.h \
+		/usr/local/include/SDL2/begin_code.h \
+		/usr/local/include/SDL2/close_code.h \
+		/usr/local/include/SDL2/SDL_assert.h \
+		/usr/local/include/SDL2/SDL_atomic.h \
+		/usr/local/include/SDL2/SDL_audio.h \
+		/usr/local/include/SDL2/SDL_error.h \
+		/usr/local/include/SDL2/SDL_endian.h \
+		/usr/local/include/SDL2/SDL_mutex.h \
+		/usr/local/include/SDL2/SDL_thread.h \
+		/usr/local/include/SDL2/SDL_rwops.h \
+		/usr/local/include/SDL2/SDL_clipboard.h \
+		/usr/local/include/SDL2/SDL_cpuinfo.h \
+		/usr/local/include/SDL2/SDL_events.h \
+		/usr/local/include/SDL2/SDL_video.h \
+		/usr/local/include/SDL2/SDL_pixels.h \
+		/usr/local/include/SDL2/SDL_rect.h \
+		/usr/local/include/SDL2/SDL_surface.h \
+		/usr/local/include/SDL2/SDL_blendmode.h \
+		/usr/local/include/SDL2/SDL_keyboard.h \
+		/usr/local/include/SDL2/SDL_keycode.h \
+		/usr/local/include/SDL2/SDL_scancode.h \
+		/usr/local/include/SDL2/SDL_mouse.h \
+		/usr/local/include/SDL2/SDL_joystick.h \
+		/usr/local/include/SDL2/SDL_gamecontroller.h \
+		/usr/local/include/SDL2/SDL_quit.h \
+		/usr/local/include/SDL2/SDL_gesture.h \
+		/usr/local/include/SDL2/SDL_touch.h \
+		/usr/local/include/SDL2/SDL_haptic.h \
+		/usr/local/include/SDL2/SDL_hints.h \
+		/usr/local/include/SDL2/SDL_loadso.h \
+		/usr/local/include/SDL2/SDL_log.h \
+		/usr/local/include/SDL2/SDL_messagebox.h \
+		/usr/local/include/SDL2/SDL_power.h \
+		/usr/local/include/SDL2/SDL_render.h \
+		/usr/local/include/SDL2/SDL_system.h \
+		/usr/local/include/SDL2/SDL_timer.h \
+		/usr/local/include/SDL2/SDL_version.h \
+		Include/Randini/GLSLProgram.h \
+		Include/Randini/Timer.h \
+		Include/BallGame/BallControl.h \
+		Include/BallGame/Ball.h \
+		Include/BallGame/BallRenderer.h \
+		Include/BallGame/BallGrid.h \
+		/usr/local/include/boost/random.hpp \
+		/usr/local/include/boost/random/linear_congruential.hpp \
+		/usr/local/include/boost/config.hpp \
+		/usr/local/include/boost/config/select_compiler_config.hpp \
+		/usr/local/include/boost/config/select_stdlib_config.hpp \
+		/usr/local/include/boost/config/no_tr1/utility.hpp \
+		/usr/local/include/boost/config/select_platform_config.hpp \
+		/usr/local/include/boost/config/posix_features.hpp \
+		/usr/local/include/boost/config/suffix.hpp \
+		/usr/local/include/boost/type.hpp \
+		/usr/local/include/boost/non_type.hpp \
+		/usr/local/include/boost/limits.hpp \
+		/usr/local/include/boost/detail/limits.hpp \
+		/usr/local/include/boost/detail/endian.hpp \
+		/usr/local/include/boost/static_assert.hpp \
+		/usr/local/include/boost/detail/workaround.hpp \
+		/usr/local/include/boost/random/detail/config.hpp \
+		/usr/local/include/boost/random/detail/const_mod.hpp \
+		/usr/local/include/boost/cstdint.hpp \
+		/usr/local/include/boost/integer_traits.hpp \
+		/usr/local/include/boost/random/detail/disable_warnings.hpp \
+		/usr/local/include/boost/random/detail/enable_warnings.hpp \
+		/usr/local/include/boost/random/additive_combine.hpp \
+		/usr/local/include/boost/random/inversive_congruential.hpp \
+		/usr/local/include/boost/random/shuffle_output.hpp \
+		/usr/local/include/boost/random/mersenne_twister.hpp \
+		/usr/local/include/boost/random/detail/ptr_helper.hpp \
+		/usr/local/include/boost/random/detail/seed.hpp \
+		/usr/local/include/boost/utility/enable_if.hpp \
+		/usr/local/include/boost/type_traits/is_arithmetic.hpp \
+		/usr/local/include/boost/type_traits/is_integral.hpp \
+		/usr/local/include/boost/type_traits/detail/bool_trait_def.hpp \
+		/usr/local/include/boost/type_traits/detail/template_arity_spec.hpp \
+		/usr/local/include/boost/mpl/int.hpp \
+		/usr/local/include/boost/mpl/int_fwd.hpp \
+		/usr/local/include/boost/mpl/aux_/adl_barrier.hpp \
+		/usr/local/include/boost/mpl/aux_/config/adl.hpp \
+		/usr/local/include/boost/mpl/aux_/config/msvc.hpp \
+		/usr/local/include/boost/mpl/aux_/config/intel.hpp \
+		/usr/local/include/boost/mpl/aux_/config/gcc.hpp \
+		/usr/local/include/boost/mpl/aux_/config/workaround.hpp \
+		/usr/local/include/boost/mpl/aux_/nttp_decl.hpp \
+		/usr/local/include/boost/mpl/aux_/config/nttp.hpp \
+		/usr/local/include/boost/preprocessor/cat.hpp \
+		/usr/local/include/boost/preprocessor/config/config.hpp \
+		/usr/local/include/boost/mpl/aux_/integral_wrapper.hpp \
+		/usr/local/include/boost/mpl/integral_c_tag.hpp \
+		/usr/local/include/boost/mpl/aux_/config/static_constant.hpp \
+		/usr/local/include/boost/mpl/aux_/static_cast.hpp \
+		/usr/local/include/boost/mpl/aux_/template_arity_fwd.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/params.hpp \
+		/usr/local/include/boost/mpl/aux_/config/preprocessor.hpp \
+		/usr/local/include/boost/preprocessor/comma_if.hpp \
+		/usr/local/include/boost/preprocessor/punctuation/comma_if.hpp \
+		/usr/local/include/boost/preprocessor/control/if.hpp \
+		/usr/local/include/boost/preprocessor/control/iif.hpp \
+		/usr/local/include/boost/preprocessor/logical/bool.hpp \
+		/usr/local/include/boost/preprocessor/facilities/empty.hpp \
+		/usr/local/include/boost/preprocessor/punctuation/comma.hpp \
+		/usr/local/include/boost/preprocessor/repeat.hpp \
+		/usr/local/include/boost/preprocessor/repetition/repeat.hpp \
+		/usr/local/include/boost/preprocessor/debug/error.hpp \
+		/usr/local/include/boost/preprocessor/detail/auto_rec.hpp \
+		/usr/local/include/boost/preprocessor/detail/dmc/auto_rec.hpp \
+		/usr/local/include/boost/preprocessor/tuple/eat.hpp \
+		/usr/local/include/boost/preprocessor/inc.hpp \
+		/usr/local/include/boost/preprocessor/arithmetic/inc.hpp \
+		/usr/local/include/boost/mpl/aux_/config/lambda.hpp \
+		/usr/local/include/boost/mpl/aux_/config/ttp.hpp \
+		/usr/local/include/boost/mpl/aux_/config/ctps.hpp \
+		/usr/local/include/boost/mpl/aux_/config/overload_resolution.hpp \
+		/usr/local/include/boost/type_traits/integral_constant.hpp \
+		/usr/local/include/boost/mpl/bool.hpp \
+		/usr/local/include/boost/mpl/bool_fwd.hpp \
+		/usr/local/include/boost/mpl/integral_c.hpp \
+		/usr/local/include/boost/mpl/integral_c_fwd.hpp \
+		/usr/local/include/boost/mpl/aux_/lambda_support.hpp \
+		/usr/local/include/boost/mpl/aux_/yes_no.hpp \
+		/usr/local/include/boost/mpl/aux_/config/arrays.hpp \
+		/usr/local/include/boost/mpl/aux_/na_fwd.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/enum.hpp \
+		/usr/local/include/boost/preprocessor/tuple/to_list.hpp \
+		/usr/local/include/boost/preprocessor/list/for_each_i.hpp \
+		/usr/local/include/boost/preprocessor/list/adt.hpp \
+		/usr/local/include/boost/preprocessor/detail/is_binary.hpp \
+		/usr/local/include/boost/preprocessor/detail/check.hpp \
+		/usr/local/include/boost/preprocessor/logical/compl.hpp \
+		/usr/local/include/boost/preprocessor/repetition/for.hpp \
+		/usr/local/include/boost/preprocessor/repetition/detail/edg/for.hpp \
+		/usr/local/include/boost/preprocessor/repetition/detail/msvc/for.hpp \
+		/usr/local/include/boost/preprocessor/repetition/detail/dmc/for.hpp \
+		/usr/local/include/boost/preprocessor/control/expr_iif.hpp \
+		/usr/local/include/boost/preprocessor/repetition/detail/for.hpp \
+		/usr/local/include/boost/preprocessor/tuple/elem.hpp \
+		/usr/local/include/boost/preprocessor/tuple/rem.hpp \
+		/usr/local/include/boost/type_traits/detail/bool_trait_undef.hpp \
+		/usr/local/include/boost/type_traits/is_float.hpp \
+		/usr/local/include/boost/type_traits/detail/ice_or.hpp \
+		/usr/local/include/boost/random/lagged_fibonacci.hpp \
+		/usr/local/include/boost/config/no_tr1/cmath.hpp \
+		/usr/local/include/boost/random/uniform_01.hpp \
+		/usr/local/include/boost/random/detail/pass_through_engine.hpp \
+		/usr/local/include/boost/random/ranlux.hpp \
+		/usr/local/include/boost/random/subtract_with_carry.hpp \
+		/usr/local/include/boost/random/discard_block.hpp \
+		/usr/local/include/boost/random/linear_feedback_shift.hpp \
+		/usr/local/include/boost/random/xor_combine.hpp \
+		/usr/local/include/boost/random/variate_generator.hpp \
+		/usr/local/include/boost/random/detail/uniform_int_float.hpp \
+		/usr/local/include/boost/random/random_number_generator.hpp \
+		/usr/local/include/boost/random/uniform_int.hpp \
+		/usr/local/include/boost/random/detail/signed_unsigned_tools.hpp \
+		/usr/local/include/boost/type_traits/make_unsigned.hpp \
+		/usr/local/include/boost/mpl/if.hpp \
+		/usr/local/include/boost/mpl/aux_/value_wknd.hpp \
+		/usr/local/include/boost/mpl/aux_/config/integral.hpp \
+		/usr/local/include/boost/mpl/aux_/config/eti.hpp \
+		/usr/local/include/boost/mpl/aux_/na_spec.hpp \
+		/usr/local/include/boost/mpl/lambda_fwd.hpp \
+		/usr/local/include/boost/mpl/void_fwd.hpp \
+		/usr/local/include/boost/mpl/aux_/na.hpp \
+		/usr/local/include/boost/mpl/aux_/lambda_arity_param.hpp \
+		/usr/local/include/boost/mpl/aux_/arity.hpp \
+		/usr/local/include/boost/mpl/aux_/config/dtp.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp \
+		/usr/local/include/boost/mpl/limits/arity.hpp \
+		/usr/local/include/boost/preprocessor/logical/and.hpp \
+		/usr/local/include/boost/preprocessor/logical/bitand.hpp \
+		/usr/local/include/boost/preprocessor/identity.hpp \
+		/usr/local/include/boost/preprocessor/facilities/identity.hpp \
+		/usr/local/include/boost/preprocessor/empty.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/filter_params.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/sub.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/tuple.hpp \
+		/usr/local/include/boost/preprocessor/arithmetic/sub.hpp \
+		/usr/local/include/boost/preprocessor/arithmetic/dec.hpp \
+		/usr/local/include/boost/preprocessor/control/while.hpp \
+		/usr/local/include/boost/preprocessor/list/fold_left.hpp \
+		/usr/local/include/boost/preprocessor/list/detail/edg/fold_left.hpp \
+		/usr/local/include/boost/preprocessor/list/detail/dmc/fold_left.hpp \
+		/usr/local/include/boost/preprocessor/list/detail/fold_left.hpp \
+		/usr/local/include/boost/preprocessor/list/fold_right.hpp \
+		/usr/local/include/boost/preprocessor/list/detail/edg/fold_right.hpp \
+		/usr/local/include/boost/preprocessor/list/detail/fold_right.hpp \
+		/usr/local/include/boost/preprocessor/list/reverse.hpp \
+		/usr/local/include/boost/preprocessor/control/detail/edg/while.hpp \
+		/usr/local/include/boost/preprocessor/control/detail/msvc/while.hpp \
+		/usr/local/include/boost/preprocessor/control/detail/dmc/while.hpp \
+		/usr/local/include/boost/preprocessor/control/detail/while.hpp \
+		/usr/local/include/boost/preprocessor/arithmetic/add.hpp \
+		/usr/local/include/boost/type_traits/is_signed.hpp \
+		/usr/local/include/boost/type_traits/remove_cv.hpp \
+		/usr/local/include/boost/type_traits/broken_compiler_spec.hpp \
+		/usr/local/include/boost/type_traits/detail/type_trait_undef.hpp \
+		/usr/local/include/boost/type_traits/detail/cv_traits_impl.hpp \
+		/usr/local/include/boost/type_traits/detail/yes_no_type.hpp \
+		/usr/local/include/boost/type_traits/msvc/remove_cv.hpp \
+		/usr/local/include/boost/type_traits/msvc/typeof.hpp \
+		/usr/local/include/boost/type_traits/is_volatile.hpp \
+		/usr/local/include/boost/type_traits/remove_bounds.hpp \
+		/usr/local/include/boost/type_traits/msvc/remove_bounds.hpp \
+		/usr/local/include/boost/type_traits/is_array.hpp \
+		/usr/local/include/boost/type_traits/config.hpp \
+		/usr/local/include/boost/type_traits/detail/wrap.hpp \
+		/usr/local/include/boost/type_traits/detail/type_trait_def.hpp \
+		/usr/local/include/boost/type_traits/is_reference.hpp \
+		/usr/local/include/boost/type_traits/is_lvalue_reference.hpp \
+		/usr/local/include/boost/type_traits/is_rvalue_reference.hpp \
+		/usr/local/include/boost/type_traits/ice.hpp \
+		/usr/local/include/boost/type_traits/detail/ice_and.hpp \
+		/usr/local/include/boost/type_traits/detail/ice_not.hpp \
+		/usr/local/include/boost/type_traits/detail/ice_eq.hpp \
+		/usr/local/include/boost/type_traits/detail/false_result.hpp \
+		/usr/local/include/boost/type_traits/is_const.hpp \
+		/usr/local/include/boost/type_traits/is_pointer.hpp \
+		/usr/local/include/boost/type_traits/is_member_pointer.hpp \
+		/usr/local/include/boost/type_traits/is_member_function_pointer.hpp \
+		/usr/local/include/boost/type_traits/detail/is_mem_fun_pointer_impl.hpp \
+		/usr/local/include/boost/preprocessor/iterate.hpp \
+		/usr/local/include/boost/preprocessor/iteration/iterate.hpp \
+		/usr/local/include/boost/preprocessor/array/elem.hpp \
+		/usr/local/include/boost/preprocessor/array/data.hpp \
+		/usr/local/include/boost/preprocessor/array/size.hpp \
+		/usr/local/include/boost/preprocessor/slot/slot.hpp \
+		/usr/local/include/boost/preprocessor/slot/detail/def.hpp \
+		/usr/local/include/boost/preprocessor/enum_params.hpp \
+		/usr/local/include/boost/preprocessor/repetition/enum_params.hpp \
+		/usr/local/include/boost/type_traits/detail/is_mem_fun_pointer_tester.hpp \
+		/usr/local/include/boost/type_traits/detail/is_function_ptr_tester.hpp \
+		/usr/local/include/boost/type_traits/is_enum.hpp \
+		/usr/local/include/boost/type_traits/intrinsics.hpp \
+		/usr/local/include/boost/type_traits/is_same.hpp \
+		/usr/local/include/boost/type_traits/is_void.hpp \
+		/usr/local/include/boost/type_traits/add_reference.hpp \
+		/usr/local/include/boost/type_traits/is_convertible.hpp \
+		/usr/local/include/boost/type_traits/is_abstract.hpp \
+		/usr/local/include/boost/type_traits/is_class.hpp \
+		/usr/local/include/boost/type_traits/is_union.hpp \
+		/usr/local/include/boost/type_traits/is_scalar.hpp \
+		/usr/local/include/boost/type_traits/is_function.hpp \
+		/usr/local/include/boost/type_traits/detail/is_function_ptr_helper.hpp \
+		/usr/local/include/boost/type_traits/is_polymorphic.hpp \
+		/usr/local/include/boost/type_traits/remove_reference.hpp \
+		/usr/local/include/boost/type_traits/msvc/remove_reference.hpp \
+		/usr/local/include/boost/type_traits/is_unsigned.hpp \
+		/usr/local/include/boost/type_traits/add_const.hpp \
+		/usr/local/include/boost/type_traits/add_volatile.hpp \
+		/usr/local/include/boost/random/uniform_smallint.hpp \
+		/usr/local/include/boost/random/uniform_real.hpp \
+		/usr/local/include/boost/random/triangle_distribution.hpp \
+		/usr/local/include/boost/random/bernoulli_distribution.hpp \
+		/usr/local/include/boost/random/cauchy_distribution.hpp \
+		/usr/local/include/boost/random/exponential_distribution.hpp \
+		/usr/local/include/boost/random/geometric_distribution.hpp \
+		/usr/local/include/boost/random/normal_distribution.hpp \
+		/usr/local/include/boost/random/lognormal_distribution.hpp \
+		/usr/local/include/boost/random/poisson_distribution.hpp \
+		/usr/local/include/boost/random/gamma_distribution.hpp \
+		/usr/local/include/boost/random/binomial_distribution.hpp \
+		/usr/local/include/boost/random/uniform_on_sphere.hpp \
+		/usr/local/include/boost/generator_iterator.hpp \
+		/usr/local/include/boost/iterator/iterator_facade.hpp \
+		/usr/local/include/boost/iterator.hpp \
+		/usr/local/include/boost/iterator/interoperable.hpp \
+		/usr/local/include/boost/mpl/or.hpp \
+		/usr/local/include/boost/mpl/aux_/config/use_preprocessed.hpp \
+		/usr/local/include/boost/mpl/aux_/nested_type_wknd.hpp \
+		/usr/local/include/boost/mpl/aux_/include_preprocessed.hpp \
+		/usr/local/include/boost/mpl/aux_/config/compiler.hpp \
+		/usr/local/include/boost/preprocessor/stringize.hpp \
+		/usr/local/include/boost/mpl/aux_/logical_op.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/ext_params.hpp \
+		/usr/local/include/boost/preprocessor/dec.hpp \
+		/usr/local/include/boost/iterator/detail/config_def.hpp \
+		/usr/local/include/boost/iterator/detail/config_undef.hpp \
+		/usr/local/include/boost/iterator/iterator_traits.hpp \
+		/usr/local/include/boost/detail/iterator.hpp \
+		/usr/local/include/boost/type_traits/remove_const.hpp \
+		/usr/local/include/boost/type_traits/msvc/remove_const.hpp \
+		/usr/local/include/boost/type_traits/remove_pointer.hpp \
+		/usr/local/include/boost/type_traits/msvc/remove_pointer.hpp \
+		/usr/local/include/boost/type_traits/is_base_and_derived.hpp \
+		/usr/local/include/boost/mpl/has_xxx.hpp \
+		/usr/local/include/boost/mpl/aux_/type_wrapper.hpp \
+		/usr/local/include/boost/mpl/aux_/config/has_xxx.hpp \
+		/usr/local/include/boost/mpl/aux_/config/msvc_typename.hpp \
+		/usr/local/include/boost/preprocessor/repetition/enum_trailing_params.hpp \
+		/usr/local/include/boost/iterator/detail/facade_iterator_category.hpp \
+		/usr/local/include/boost/iterator/iterator_categories.hpp \
+		/usr/local/include/boost/mpl/eval_if.hpp \
+		/usr/local/include/boost/mpl/identity.hpp \
+		/usr/local/include/boost/mpl/placeholders.hpp \
+		/usr/local/include/boost/mpl/arg.hpp \
+		/usr/local/include/boost/mpl/arg_fwd.hpp \
+		/usr/local/include/boost/mpl/aux_/na_assert.hpp \
+		/usr/local/include/boost/mpl/assert.hpp \
+		/usr/local/include/boost/mpl/not.hpp \
+		/usr/local/include/boost/mpl/aux_/config/pp_counter.hpp \
+		/usr/local/include/boost/mpl/aux_/arity_spec.hpp \
+		/usr/local/include/boost/mpl/aux_/arg_typedef.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/default_params.hpp \
+		/usr/local/include/boost/mpl/and.hpp \
+		/usr/local/include/boost/detail/indirect_traits.hpp \
+		/usr/local/include/boost/detail/is_function_ref_tester.hpp \
+		/usr/local/include/boost/iterator/detail/enable_if.hpp \
+		/usr/local/include/boost/implicit_cast.hpp \
+		/usr/local/include/boost/type_traits/add_pointer.hpp \
+		/usr/local/include/boost/type_traits/is_pod.hpp \
+		/usr/local/include/boost/mpl/always.hpp \
+		/usr/local/include/boost/mpl/apply.hpp \
+		/usr/local/include/boost/mpl/apply_fwd.hpp \
+		/usr/local/include/boost/mpl/apply_wrap.hpp \
+		/usr/local/include/boost/mpl/aux_/has_apply.hpp \
+		/usr/local/include/boost/mpl/aux_/config/has_apply.hpp \
+		/usr/local/include/boost/mpl/aux_/msvc_never_true.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/add.hpp \
+		/usr/local/include/boost/mpl/aux_/config/bcc.hpp \
+		/usr/local/include/boost/mpl/aux_/msvc_dtw.hpp \
+		/usr/local/include/boost/mpl/lambda.hpp \
+		/usr/local/include/boost/mpl/bind.hpp \
+		/usr/local/include/boost/mpl/bind_fwd.hpp \
+		/usr/local/include/boost/mpl/aux_/config/bind.hpp \
+		/usr/local/include/boost/mpl/aux_/config/dmc_ambiguous_ctps.hpp \
+		/usr/local/include/boost/mpl/next.hpp \
+		/usr/local/include/boost/mpl/next_prior.hpp \
+		/usr/local/include/boost/mpl/aux_/common_name_wknd.hpp \
+		/usr/local/include/boost/mpl/protect.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/partial_spec_params.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/repeat.hpp \
+		/usr/local/include/boost/mpl/aux_/count_args.hpp \
+		/usr/local/include/boost/preprocessor/expr_if.hpp \
+		/usr/local/include/boost/preprocessor/control/expr_if.hpp \
+		/usr/local/include/boost/preprocessor/enum_shifted_params.hpp \
+		/usr/local/include/boost/preprocessor/repetition/enum_shifted_params.hpp \
+		/usr/local/include/boost/mpl/aux_/full_lambda.hpp \
+		/usr/local/include/boost/mpl/quote.hpp \
+		/usr/local/include/boost/mpl/void.hpp \
+		/usr/local/include/boost/mpl/aux_/has_type.hpp \
+		/usr/local/include/boost/mpl/aux_/template_arity.hpp \
+		/usr/local/include/boost/mpl/aux_/has_rebind.hpp \
+		/usr/local/include/boost/mpl/aux_/msvc_is_class.hpp \
+		/usr/local/include/boost/mpl/aux_/preprocessor/range.hpp \
+		/usr/local/include/boost/preprocessor/seq/subseq.hpp \
+		/usr/local/include/boost/preprocessor/seq/first_n.hpp \
+		/usr/local/include/boost/preprocessor/seq/detail/split.hpp \
+		/usr/local/include/boost/preprocessor/seq/rest_n.hpp \
+		/usr/local/include/boost/preprocessor/seq/fold_left.hpp \
+		/usr/local/include/boost/preprocessor/seq/seq.hpp \
+		/usr/local/include/boost/preprocessor/seq/elem.hpp \
+		/usr/local/include/boost/preprocessor/seq/size.hpp \
+		/usr/local/include/boost/mpl/aux_/lambda_no_ctps.hpp \
+		/usr/local/include/boost/mpl/is_placeholder.hpp \
+		/usr/local/include/boost/ref.hpp \
+		/usr/local/include/boost/utility/addressof.hpp \
+		Include/Randini/ResourceManager.h \
+		Include/Randini/TextureCache.h \
+		Include/Randini/GLTexture.h \
+		Include/Randini/Randini.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MainGame.o src/Uni/MainGame.cpp
 
-GLSLProgram.o: src/Randini/GLSLProgram.cpp src/Randini/GLSLProgram.h \
-		src/Randini/Errors.h
+GLSLProgram.o: src/Randini/GLSLProgram.cpp Include/Randini/GLSLProgram.h \
+		Include/Randini/Errors.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GLSLProgram.o src/Randini/GLSLProgram.cpp
 
-Camera2D.o: src/Randini/Camera2D.cpp src/Randini/Camera2D.h \
+Camera2D.o: src/Randini/Camera2D.cpp Include/Randini/Camera2D.h \
 		/usr/local/include/glm/glm.hpp \
 		/usr/local/include/glm/core/_fixes.hpp \
 		/usr/local/include/glm/core/setup.hpp \
@@ -588,7 +1697,7 @@ Camera2D.o: src/Randini/Camera2D.cpp src/Randini/Camera2D.h \
 		/usr/local/include/glm/gtc/matrix_transform.inl
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Camera2D.o src/Randini/Camera2D.cpp
 
-Errors.o: src/Randini/Errors.cpp src/Randini/Errors.h \
+Errors.o: src/Randini/Errors.cpp Include/Randini/Errors.h \
 		/usr/local/include/SDL2/SDL.h \
 		/usr/local/include/SDL2/SDL_main.h \
 		/usr/local/include/SDL2/SDL_stdinc.h \
@@ -633,14 +1742,14 @@ Errors.o: src/Randini/Errors.cpp src/Randini/Errors.h \
 		/usr/local/include/SDL2/SDL_version.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Errors.o src/Randini/Errors.cpp
 
-ImageLoader.o: src/Randini/ImageLoader.cpp src/Randini/ImageLoader.h \
-		src/Randini/GLTexture.h \
-		src/Randini/picoPNG.h \
-		src/Randini/IOManager.h \
-		src/Randini/Errors.h
+ImageLoader.o: src/Randini/ImageLoader.cpp Include/Randini/ImageLoader.h \
+		Include/Randini/GLTexture.h \
+		Include/Randini/picoPNG.h \
+		Include/Randini/IOManager.h \
+		Include/Randini/Errors.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ImageLoader.o src/Randini/ImageLoader.cpp
 
-InputControl.o: src/Randini/InputControl.cpp src/Randini/InputControl.h \
+InputControl.o: src/Randini/InputControl.cpp Include/Randini/InputControl.h \
 		/usr/local/include/glm/glm.hpp \
 		/usr/local/include/glm/core/_fixes.hpp \
 		/usr/local/include/glm/core/setup.hpp \
@@ -703,25 +1812,22 @@ InputControl.o: src/Randini/InputControl.cpp src/Randini/InputControl.h \
 		/usr/local/include/glm/core/func_noise.inl
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o InputControl.o src/Randini/InputControl.cpp
 
-IOManager.o: src/Randini/IOManager.cpp src/Randini/IOManager.h
+IOManager.o: src/Randini/IOManager.cpp Include/Randini/IOManager.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o IOManager.o src/Randini/IOManager.cpp
 
 picoPNG.o: src/Randini/picoPNG.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o picoPNG.o src/Randini/picoPNG.cpp
 
-Randini.o: src/Randini/Randini.cpp src/Randini/Randini.h
+Randini.o: src/Randini/Randini.cpp Include/Randini/Randini.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Randini.o src/Randini/Randini.cpp
 
-ResourceManager.o: src/Randini/ResourceManager.cpp src/Randini/ResourceManager.h \
-		src/Randini/TextureCache.h \
-		src/Randini/GLTexture.h
+ResourceManager.o: src/Randini/ResourceManager.cpp Include/Randini/ResourceManager.h \
+		Include/Randini/TextureCache.h \
+		Include/Randini/GLTexture.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ResourceManager.o src/Randini/ResourceManager.cpp
 
-Sprite.o: src/Randini/Sprite.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Sprite.o src/Randini/Sprite.cpp
-
-SpriteLoader.o: src/Randini/SpriteLoader.cpp src/Randini/SpriteLoader.h \
-		src/Randini/Vertex.h \
+SpriteLoader.o: src/Randini/SpriteLoader.cpp Include/Randini/SpriteLoader.h \
+		Include/Randini/Vertex.h \
 		/usr/local/include/glm/glm.hpp \
 		/usr/local/include/glm/core/_fixes.hpp \
 		/usr/local/include/glm/core/setup.hpp \
@@ -784,12 +1890,12 @@ SpriteLoader.o: src/Randini/SpriteLoader.cpp src/Randini/SpriteLoader.h \
 		/usr/local/include/glm/core/func_noise.inl
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SpriteLoader.o src/Randini/SpriteLoader.cpp
 
-TextureCache.o: src/Randini/TextureCache.cpp src/Randini/TextureCache.h \
-		src/Randini/GLTexture.h \
-		src/Randini/ImageLoader.h
+TextureCache.o: src/Randini/TextureCache.cpp Include/Randini/TextureCache.h \
+		Include/Randini/GLTexture.h \
+		Include/Randini/ImageLoader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TextureCache.o src/Randini/TextureCache.cpp
 
-Timer.o: src/Randini/Timer.cpp src/Randini/Timer.h \
+Timer.o: src/Randini/Timer.cpp Include/Randini/Timer.h \
 		/usr/local/include/SDL2/SDL.h \
 		/usr/local/include/SDL2/SDL_main.h \
 		/usr/local/include/SDL2/SDL_stdinc.h \
@@ -834,7 +1940,7 @@ Timer.o: src/Randini/Timer.cpp src/Randini/Timer.h \
 		/usr/local/include/SDL2/SDL_version.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Timer.o src/Randini/Timer.cpp
 
-Window.o: src/Randini/Window.cpp src/Randini/Window.h \
+Window.o: src/Randini/Window.cpp Include/Randini/Window.h \
 		/usr/local/include/SDL2/SDL.h \
 		/usr/local/include/SDL2/SDL_main.h \
 		/usr/local/include/SDL2/SDL_stdinc.h \
@@ -877,7 +1983,7 @@ Window.o: src/Randini/Window.cpp src/Randini/Window.h \
 		/usr/local/include/SDL2/SDL_system.h \
 		/usr/local/include/SDL2/SDL_timer.h \
 		/usr/local/include/SDL2/SDL_version.h \
-		src/Randini/Errors.h
+		Include/Randini/Errors.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Window.o src/Randini/Window.cpp
 
 ####### Install

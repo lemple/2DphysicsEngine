@@ -1,9 +1,20 @@
+/*
+ Copyright © 2015 Philip Gifford
+ SDAGE 1st year 2nd PPP Assignment 2015
+*/
+
 #include "Errors.h"
 
 #include <cstdlib>
-
 #include <iostream>
 #include <SDL2/SDL.h>
+
+// ---------------------------------------------------------------------------------------
+/// @file Errors.cpp
+/// @brief Implements error checking for all classes
+// ---------------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------------------
 
 namespace Randini
 {
@@ -20,7 +31,7 @@ namespace Randini
 		int tmp;
 		std::cin >> tmp;
 		SDL_Quit();
-		exit(69);
+    exit(22);
 
 	}
 }

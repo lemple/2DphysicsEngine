@@ -1,5 +1,16 @@
+/*
+ Copyright © 2015 Philip Gifford
+ SDAGE 1st year 2nd PPP Assignment 2015
+*/
 
 #include "BallGrid.h"
+
+// ---------------------------------------------------------------------------------------
+/// @file BallGrid.cpp
+/// @brief Implements 2D grid and stores balls in cells to allow spatial partioning
+// ---------------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------------------
 
 
 BallGrid::BallGrid(int width, int height, int cellSize) :

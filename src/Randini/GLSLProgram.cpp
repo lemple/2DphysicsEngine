@@ -1,14 +1,23 @@
+/*
+ Copyright © 2015 Philip Gifford
+ SDAGE 1st year 2nd PPP Assignment 2015
+*/
 
 //first create the program
 //then attach the shaders to the correct shader e.g. frag and vert
 //then call link program and link the shaders
-
-
 #include "GLSLProgram.h"
 #include "Errors.h"
 
 #include <vector>
 #include <fstream>
+
+// ---------------------------------------------------------------------------------------
+/// @file GLSLProgram.cpp
+/// @brief Compiles, Links and implements shader information and retives uniform location
+// ---------------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------------------
 
 namespace Randini
 {

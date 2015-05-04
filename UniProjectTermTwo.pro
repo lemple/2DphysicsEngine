@@ -13,7 +13,10 @@ CONFIG   -= app_bundle
 
 TEMPLATE = app
 INCLUDEPATH += /usr/local/include \
-               /src/
+               src/ \
+               Include/ \
+               Include/BallGame \
+               Include/Randini
 
 QMAKE_CXXFLAGS += $$system(sdl2-config --cflags)
 QMAKE_CXXFLAGS += -std=c++0x
@@ -23,27 +26,26 @@ LIBS += $$system(sdl2-config --libs)
 LIBS += -lSDL2
 
 
-HEADERS += src/Randini/GLSLProgram.h \
-src/Randini/Camera2D.h \
-src/Randini/Errors.h \
-src/Randini/GLTexture.h \
-src/Randini/ImageLoader.h \
-src/Randini/InputControl.h \
-src/Randini/IOManager.h \
-src/Randini/picoPNG.h \
-src/Randini/Randini.h \
-src/Randini/ResourceManager.h \
-src/Randini/Sprite.h \
-src/Randini/SpriteLoader.h \
-src/Randini/TextureCache.h \
-src/Randini/Timer.h \
-src/Randini/Vertex.h \
-src/Randini/Window.h \
-src/Uni/Ball.h \
-src/Uni/BallControl.h \
-src/Uni/BallRenderer.h \
-src/Uni/BallGrid.h \
-src/Uni/MainGame.h
+HEADERS += Include/Randini/GLSLProgram.h \
+Include/Randini/Camera2D.h \
+Include/Randini/Errors.h \
+Include/Randini/GLTexture.h \
+Include/Randini/ImageLoader.h \
+Include/Randini/InputControl.h \
+Include/Randini/IOManager.h \
+Include/Randini/picoPNG.h \
+Include/Randini/Randini.h \
+Include/Randini/ResourceManager.h \
+Include/Randini/SpriteLoader.h \
+Include/Randini/TextureCache.h \
+Include/Randini/Timer.h \
+Include/Randini/Vertex.h \
+Include/Randini/Window.h \
+Include/BallGame/Ball.h \
+Include/BallGame/BallControl.h \
+Include/BallGame/BallRenderer.h \
+Include/BallGame/BallGrid.h \
+Include/BallGame/MainGame.h
 SOURCES += src/Uni/main.cpp \
 src/Uni/Ball.cpp \
 src/Uni/BallControl.cpp \
@@ -59,7 +61,6 @@ src/Randini/IOManager.cpp \
 src/Randini/picoPNG.cpp \
 src/Randini/Randini.cpp \
 src/Randini/ResourceManager.cpp \
-src/Randini/Sprite.cpp \
 src/Randini/SpriteLoader.cpp \
 src/Randini/TextureCache.cpp \
 src/Randini/Timer.cpp \
