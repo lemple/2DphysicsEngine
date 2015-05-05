@@ -55,16 +55,16 @@ namespace Randini
 		//first I set the window variable equal to SDL_CreateWindow. In the argument list we pass in the parameters from the create function
 		//The reason for this is so anyone adding a new game will be able to set new values for each argument giving them control
 		//In this case the arguments passed are the window name, the position of the screen for x and y, screenWidth, height and then any flags such as fullscreen etc
-		_sdlWindow = SDL_CreateWindow(windowName.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, flags);
+    m_sdlWindow = SDL_CreateWindow(windowName.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, flags);
 		//If the window does not return a pointer we call the fatal error class. This iverall helps with debugging!
-    if (_sdlWindow == NULL)
+    if (m_sdlWindow == NULL)
 		{
 			fatalError("SDL Window could not be created");
 		}
 		//gives the context to the window
 		//bounds the context to the window and links it with _window varible
 		//overall sets og the GL context and gives it to the window
-    SDL_GLContext glContext = SDL_GL_CreateContext(_sdlWindow);
+    SDL_GLContext glContext = SDL_GL_CreateContext(m_sdlWindow);
     if (glContext == NULL)
 		{
 			fatalError("SDL_GL_context could not be created");
@@ -106,7 +106,7 @@ namespace Randini
 	void Window::swapBuffers()
 	{
 		//swap the buffers of the window to prevent flickering
-		SDL_GL_SwapWindow(_sdlWindow);
+    SDL_GL_SwapWindow(m_sdlWindow);
 
 	}
 }

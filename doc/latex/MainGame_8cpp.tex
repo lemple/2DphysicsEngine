@@ -1,0 +1,53 @@
+\hypertarget{MainGame_8cpp}{
+\section{src/Uni/MainGame.cpp File Reference}
+\label{MainGame_8cpp}\index{src/Uni/MainGame.cpp@{src/Uni/MainGame.cpp}}
+}
+
+
+Calls certain files from game engine. Deals with user input and spawsn the balls.  
+{\ttfamily \#include \char`\"{}MainGame.h\char`\"{}}\par
+{\ttfamily \#include $<$Include/Randini/ResourceManager.h$>$}\par
+{\ttfamily \#include $<$Include/Randini/Randini.h$>$}\par
+{\ttfamily \#include $<$iostream$>$}\par
+{\ttfamily \#include $<$SDL2/SDL.h$>$}\par
+{\ttfamily \#include $<$random$>$}\par
+{\ttfamily \#include $<$ctime$>$}\par
+{\ttfamily \#include $<$algorithm$>$}\par
+{\ttfamily \#include $<$cmath$>$}\par
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structBallSpawnSystem}{BallSpawnSystem}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{MainGame_8cpp_a98d3858b7830ef9b4824ed29fb6d1b44}{
+const float {\bfseries DESIRED\_\-FPS} = 60.0f}
+\label{MainGame_8cpp_a98d3858b7830ef9b4824ed29fb6d1b44}
+
+\item 
+\hypertarget{MainGame_8cpp_ac1e55f9e6d829764167585f277501a11}{
+const int {\bfseries MAX\_\-PHYSICS\_\-STEPS} = 6}
+\label{MainGame_8cpp_ac1e55f9e6d829764167585f277501a11}
+
+\item 
+\hypertarget{MainGame_8cpp_a4fae8a15d2955e6f1bdc49cfc1a7bca6}{
+const float {\bfseries MS\_\-PER\_\-SECOND} = 1000}
+\label{MainGame_8cpp_a4fae8a15d2955e6f1bdc49cfc1a7bca6}
+
+\item 
+\hypertarget{MainGame_8cpp_a92bcb5f5daf263d84be103a1a810a576}{
+const float {\bfseries DESIRED\_\-FRAMETIME} = MS\_\-PER\_\-SECOND / DESIRED\_\-FPS}
+\label{MainGame_8cpp_a92bcb5f5daf263d84be103a1a810a576}
+
+\item 
+\hypertarget{MainGame_8cpp_a936ad517aa4a78453cc4988a5a55d935}{
+const float {\bfseries MAX\_\-DELTA\_\-TIME} = 1.0f}
+\label{MainGame_8cpp_a936ad517aa4a78453cc4988a5a55d935}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Calls certain files from game engine. Deals with user input and spawsn the balls. 

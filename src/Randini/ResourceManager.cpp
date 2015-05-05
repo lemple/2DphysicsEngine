@@ -16,11 +16,11 @@
 namespace Randini
 {
 
-	TextureCache ResourceManager::_textureCache;
+  TextureCache ResourceManager::m_textureCache;
 
 	//calls the texture chache 
 	GLTexture ResourceManager::getTexture(std::string texturePath)
 	{
-		return _textureCache.getTexture(texturePath);
+    return m_textureCache.getTexture(texturePath);
 	}
 }

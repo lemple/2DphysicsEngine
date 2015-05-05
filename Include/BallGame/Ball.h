@@ -43,24 +43,33 @@ struct Cell;
 //main purpose of the struct is to decouple different components such as rendering/controls etc
 struct Cell;
 
-//This struct simply contains all the data for the ball
-//Parameters: Radius of the ball, mass of the ball, position of the ball, velocity of the ball,
-//textureID of the ball to apply textures, color of the balls to alter the texture.
 
 struct Ball
 {
-  Ball(float radius, float mass, const glm::vec2& position, const glm::vec2& velocity, unsigned int textureId, const Randini::ColorRGBA8& color);
+  /**
+   * @brief Ball
+   * This struct simply contains all the data for the ball
+   *
+   * @param _radius Radius of the ball
+   * @param _mass Mass of the ball
+   * @param c_position position of the ball
+   * @param c_velocity Velocity of the ball
+   * @param _textureId TextureId of the ball
+   * @param c_color Color of the ball
+   */
+  Ball(float _radius, float _mass, const glm::vec2& c_position, const glm::vec2& c_velocity, unsigned int _textureId, const Randini::ColorRGBA8& c_color);
 
-  float radius;
-  float mass;
-  glm::vec2 position;
-  glm::vec2 velocity;
-  unsigned int textureId;
-  Randini::ColorRGBA8 color;
-  Cell* cellLeader;
+  float m_radius;
+  float m_mass;
+  glm::vec2 m_position;
+  glm::vec2 m_velocity;
+  unsigned int m_textureId;
+  Randini::ColorRGBA8 m_color;
+  Cell* m_cellLeader;
+
   //Here make the cell vector index which allows for me to keep track
   //of the cell through the vector
-  int cellVectorIndex;
+  int m_cellVectorIndex;
 
 };
 #endif

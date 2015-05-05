@@ -24,9 +24,9 @@ namespace Randini
 	//creates a string for the error to be stored in so when theres and error you can call the string 
 	//and input the current error
 	//tmp promopts the user to quit
-	void fatalError(std::string errorString)
+  void fatalError(std::string _errorString)
 	{
-		std::cout << errorString << std::endl;
+    std::cout << _errorString << std::endl;
 		std::cout << "Enter any key to quit...";
 		int tmp;
 		std::cin >> tmp;

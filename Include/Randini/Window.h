@@ -33,27 +33,46 @@ namespace Randini
 		Window();
 		~Window();
 
-		//create window function that overall generates the windwo
-		//define the handlews for the window in the parameters
-		//use std::string so we can set a windowName to .c_str which will allow us to set the name
-		//of the window in another project when linking the engine
-		//other varibles are set so that they can be changed when I start up a new project
+
+
+    /**
+     * @brief create
+     * create window function that overall generates the windwo
+     * define the handlews for the window in the parameters
+     * use std::string so we can set a windowName to .c_str which will allow us to set the name
+     * of the window in another project when linking the engine
+     * other varibles are set so that they can be changed when I start up a new project
+     *
+     * @param windowName
+     * @param screenWidth
+     * @param screenHeight
+     * @param currentFlags
+     * @return
+     */
 		int create(std::string windowName, int screenWidth, int screenHeight, unsigned int currentFlags);
 
 		//function to swap the buffers around each frame to prevetn flickering
+    /**
+     * @brief swapBuffers
+     */
 		void swapBuffers();
 
-		//get functions used to recieve input from the varibles _screenWidth and _screenHeight
-		//this includes the screen width and height 
-  int getScreenWidth() { return _screenWidth; }
-  int getScreenHeight() { return _screenHeight; }
+
+    /**
+   * @brief getScreenWidth
+   * get functions used to recieve input from the varibles m_screenWidth and m_screenHeight
+   * this includes the screen width and height
+   * @return the resolution of the screen
+   */
+  int getScreenWidth() { return m_screenWidth; }
+  int getScreenHeight() { return m_screenHeight; }
 	private:
 		//creates the SDL_windows for my game engine and allows me to set up the window that can be called in any other new project/solution
 		//This creates a private varible which holds the handles to determin the screen basic operations. 
 		//I used a pointer as thats what the SDL create window fucntion returns 
-    SDL_Window* _sdlWindow;
+    SDL_Window* m_sdlWindow;
 		//make 2 variables that contain the size of the screen width and height these will work as handles
-		int _screenWidth, _screenHeight;
+    int m_screenWidth, m_screenHeight;
 	};
 
 }

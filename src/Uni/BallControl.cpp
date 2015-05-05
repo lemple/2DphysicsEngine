@@ -13,7 +13,7 @@
 
 // ---------------------------------------------------------------------------------------
 
-void BallControl::update(std::vector <Ball>& balls, BallGrid* ballGrid, float deltaTime, int maxX, int maxY)
+void BallControl::update(std::vector <Ball>& _balls, BallGrid* _ballGrid, float _deltaTime, int _maxX, int _maxY)
 {
   const float FRICTION = 0.04f;
 
@@ -26,7 +26,7 @@ void BallControl::update(std::vector <Ball>& balls, BallGrid* ballGrid, float de
     //this means the velocity of the ball will equal to the distance between the throw
     //if the ball new position is small the velocity will be slow if its big the velocity will be large
     //CODE TAKEN FROM: http://answers.unity3d.com/questions/38429/how-can-i-calculate-velocity-without-using-rigidbo.html
-    balls[m_grabbedBall].velocity = balls[m_grabbedBall].position - m_prevPosition;
+    _balls[m_grabbedBall].m_velocity = _balls[m_grabbedBall].m_position - m_prevPosition;
 
   }
 
@@ -34,19 +34,19 @@ void BallControl::update(std::vector <Ball>& balls, BallGrid* ballGrid, float de
   glm::vec2 gravity = getGravityMovement();
 
 
-for (size_t i = 0; i < balls.size(); i++)
+for (size_t i = 0; i < _balls.size(); i++)
  {
    //sets a handle for better efficiently
-   Ball& ball = balls[i];
+   Ball& ball = _balls[i];
    //update the momentum and gravity of the ball if its not grabbed
    if ((int)i != m_grabbedBall)
    {
      //if ball is not grabbed set ball position + velocity
      //this allows for the ball to move across the screen
-     ball.position += ball.velocity * deltaTime;
+     ball.m_position += ball.m_velocity * _deltaTime;
 
-     //applies friction to the balls dependent on there mass
-     glm::vec2 movementVec = ball.velocity * ball.mass;
+     //applies friction to the balls dependent on there m_mass
+     glm::vec2 movementVec = ball.m_velocity * ball.m_mass;
 
      //if the movement vector does not equal 0 for both x and y
      //then apply friction to the balls
@@ -57,75 +57,75 @@ for (size_t i = 0; i < balls.size(); i++)
        {
          //Here I multiply the velocity by the value of the friction. Then multiply movement and return the 2 vectors with a length of one
          //Therefore the balls are in motion and apply the maths to add velocity dependent on the friction settings
-         //and finally set the velocity based on the mass by dividing.
-         ball.velocity -= deltaTime * FRICTION * glm::normalize(movementVec) / ball.mass;
+         //and finally set the velocity based on the m_mass by dividing.
+         ball.m_velocity -= _deltaTime * FRICTION * glm::normalize(movementVec) / ball.m_mass;
        }
        else
        {
          //set the movement to 0 as the balls have stopped moving
-         ball.velocity = glm::vec2(0.0f);
+         ball.m_velocity = glm::vec2(0.0f);
        }
      }
      //apply gravity to the balls
-     ball.velocity += gravity * deltaTime;
+     ball.m_velocity += gravity * _deltaTime;
    }
 
    //check wall collision
-   //here if the ball position is less then its radius
-   //I set the position to be equal to the balls radius
-   if (ball.position.x < ball.radius)
+   //here if the ball position is less then its m_radius
+   //I set the position to be equal to the balls m_radius
+   if (ball.m_position.x < ball.m_radius)
    {
-     ball.position.x = ball.radius;
-     if (ball.velocity.x < 0) ball.velocity.x *= -1;
+     ball.m_position.x = ball.m_radius;
+     if (ball.m_velocity.x < 0) ball.m_velocity.x *= -1;
    }
    //If the ball raidus is greater then the maxX it means there had been a collision
    //with the wall. This will then push the ball off the wall based on the balls velocity
-   else if (ball.position.x + ball.radius >= maxX)
+   else if (ball.m_position.x + ball.m_radius >= _maxX)
    {
      //detects when the ball edge has hit the wall and push it away
      //and if the ball is moving and hits the wall reduce its velocity
      //by a small amount
-     ball.position.x = maxX - ball.radius - 1;
-     if (ball.velocity.x > 0) ball.velocity.x *= -1;
+     ball.m_position.x = _maxX - ball.m_radius - 1;
+     if (ball.m_velocity.x > 0) ball.m_velocity.x *= -1;
    }
-   if (ball.position.y < ball.radius)
+   if (ball.m_position.y < ball.m_radius)
    {
-     ball.position.y = ball.radius;
-     if (ball.velocity.y < 0) ball.velocity.y *= -1;
+     ball.m_position.y = ball.m_radius;
+     if (ball.m_velocity.y < 0) ball.m_velocity.y *= -1;
    }
-   else if (ball.position.y + ball.radius >= maxY)
+   else if (ball.m_position.y + ball.m_radius >= _maxY)
    {
-     ball.position.y = maxY - ball.radius - 1;
-     if (ball.velocity.y > 0) ball.velocity.y *= -1;
+     ball.m_position.y = _maxY - ball.m_radius - 1;
+     if (ball.m_velocity.y > 0) ball.m_velocity.y *= -1;
    }
 
    //Checks to see if the ball position has changed:
    //store cell in a new cell and check it with the cells position
-   Cell* newCell = ballGrid->getCell(ball.position);
+   Cell* newCell = _ballGrid->getCell(ball.m_position);
 
    //Check to see if the new cell is not part of the leader/owner cell
    //However in order to perform this task I originally needed to loop through the whole
    //vector which could cause a worst case scenario on having to search through the whole vector.
    //To fix this I kept track of the cells location in the vector to look up the position immediately
    //by setting cell index equal to the balls position in the cell. (this scenario can be found in ball.h and ballGrid.cpp)
-   if (newCell != ball.cellLeader)
+   if (newCell != ball.m_cellLeader)
    {
      //If this is the case then the ball will be moved
      //Remove it from its cell
-     ballGrid->removeBall(&balls[i]);
+     _ballGrid->removeBall(&_balls[i]);
 
      //Handles moving the balls between all different cells
-     ballGrid->addBall(&balls[i], newCell);
+     _ballGrid->addBall(&_balls[i], newCell);
    }
  }
 
  //update all collisions
- updateCollision(ballGrid);
+ updateCollision(_ballGrid);
 
  if (m_grabbedBall != -1)
  {
-   balls[m_grabbedBall].velocity = balls[m_grabbedBall].position - m_prevPosition;
-   m_prevPosition = balls[m_grabbedBall].position;
+   _balls[m_grabbedBall].m_velocity = _balls[m_grabbedBall].m_position - m_prevPosition;
+   m_prevPosition = _balls[m_grabbedBall].m_position;
  }
 }
 
@@ -160,69 +160,69 @@ glm::vec2 BallControl::getGravityMovement()
 
 //deals with when the ball is grabbed
 //refer to ballControl.h for more info about parameters
-void BallControl::mouseDown(std::vector <Ball>& balls, float mouseX, float mouseY)
+void BallControl::mouseDown(std::vector <Ball>& _balls, float _mouseX, float _mouseY)
 {
  //If the ball is located in the same location of the mouse as its clicked then apply
  //grabbed ball values
- for (size_t i = 0; i < balls.size(); i++)
+ for (size_t i = 0; i < _balls.size(); i++)
  {
-   if (mouseBallChecker(balls[i], mouseX, mouseY))
+   if (mouseBallChecker(_balls[i], _mouseX, _mouseY))
    {
      m_grabbedBall = i;
-     m_cursorOffset = glm::vec2(mouseX, mouseY) - balls[i].position;
-     m_prevPosition = balls[i].position;
-     balls[i].velocity = glm::vec2(0.0f);
+     m_cursorOffset = glm::vec2(_mouseX, _mouseY) - _balls[i].m_position;
+     m_prevPosition = _balls[i].m_position;
+     _balls[i].m_velocity = glm::vec2(0.0f);
    }
  }
 
 }
 
 //refer to BallControl.h for more info on function
-void BallControl::mouseUp(std::vector <Ball>& balls)
+void BallControl::mouseUp(std::vector <Ball>& _balls)
 {
  //if the mouse is released
  if (m_grabbedBall != -1)
  {
    //apply the same maths as found above
  //CODE TAKEN FROM: http://answers.unity3d.com/questions/38429/how-can-i-calculate-velocity-without-using-rigidbo.html
-   balls[m_grabbedBall].velocity = balls[m_grabbedBall].position - m_prevPosition;
+   _balls[m_grabbedBall].m_velocity = _balls[m_grabbedBall].m_position - m_prevPosition;
  //set ball to released
    m_grabbedBall = -1;
  }
 }
 
 //refer to BallControl.h for more info on function
-void BallControl::mouseMotion(std::vector <Ball>& balls, float mouseX, float mouseY)
+void BallControl::mouseMotion(std::vector <Ball>& _balls, float _mouseX, float _mouseY)
 {
  //if ball is grabbed
  if (m_grabbedBall != -1)
  {
  //balls position will be relative to the position of the cursor - the offset for precise grabbing
-   balls[m_grabbedBall].position = glm::vec2(mouseX, mouseY) - m_cursorOffset;
+   _balls[m_grabbedBall].m_position = glm::vec2(_mouseX, _mouseY) - m_cursorOffset;
  }
 }
 
-bool BallControl::mouseBallChecker(Ball& b, float mouseX, float mouseY)
+bool BallControl::mouseBallChecker(Ball& b, float _mouseX, float _mouseY)
 {
- return (mouseX >= b.position.x - b.radius && mouseX < b.position.x + b.radius &&
-     mouseY >= b.position.y - b.radius && mouseY < b.position.y + b.radius);
+ return (_mouseX >= b.m_position.x - b.m_radius && _mouseX < b.m_position.x + b.m_radius &&
+     _mouseY >= b.m_position.y - b.m_radius && _mouseY < b.m_position.y + b.m_radius);
 }
 
 //Update the collision of the cells so use an L shape for best spatial partinong
-void BallControl::updateCollision(BallGrid* ballGrid)
+void BallControl::updateCollision(BallGrid* _ballGrid)
 {
  //iterate through all the grid spots
  //and finds out how many rows we have
- for (int i = 0; i < (int)ballGrid->m_cells.size(); i++)
+ for (int i = 0; i < (int)_ballGrid->m_cells.size(); i++)
  {
    //how far into a given row is the program
   //use modulo to gain the remainder
-   int x = i % ballGrid->m_numCellsX;
+   int x = i % _ballGrid->m_numCellsX;
    //how many rows do we have
-   int y = i / ballGrid->m_numCellsX;
+   int y = i / _ballGrid->m_numCellsX;
 
    //Store the handle to the grid to cell
-   Cell& cell = ballGrid->m_cells[i];
+   Cell& cell = _ballGrid->m_cells[i];
 
    //Need to check through collision with our ball and a vector of balls
    //loop through all balls in a cell
@@ -243,22 +243,22 @@ void BallControl::updateCollision(BallGrid* ballGrid)
      if (x > 0)
      {
        //check in left direction
-       collisionChecker(ball, ballGrid->getCell(x - 1, y)->balls, 0);
+       collisionChecker(ball, _ballGrid->getCell(x - 1, y)->balls, 0);
        if (y > 0)
        {
          //check in top left direction
-         collisionChecker(ball, ballGrid->getCell(x - 1, y - 1)->balls, 0);
+         collisionChecker(ball, _ballGrid->getCell(x - 1, y - 1)->balls, 0);
        }
-       if (y < ballGrid->m_numCellsY - 1)
+       if (y < _ballGrid->m_numCellsY - 1)
        {
          //check in bottom left direction
-         collisionChecker(ball, ballGrid->getCell(x - 1, y + 1)->balls, 0);
+         collisionChecker(ball, _ballGrid->getCell(x - 1, y + 1)->balls, 0);
        }
      }
      //check in up cell direction
      if (y > 0)
      {
-       collisionChecker(ball, ballGrid->getCell(x, y - 1)->balls, 0);
+       collisionChecker(ball, _ballGrid->getCell(x, y - 1)->balls, 0);
      }
    }
  }
@@ -285,33 +285,33 @@ void BallControl::collisionChecker(Ball* ball, std::vector<Ball*>& ballsToCheck,
 void BallControl::collisionChecker(Ball& b1, Ball& b2)
 {
  //Here I define the vecotr collision
- glm::vec2 distVec = b2.position - b1.position;
+ glm::vec2 distVec = b2.m_position - b1.m_position;
  glm::vec2 distDir = glm::normalize(distVec);
 
  //Here I intake the length of distVec to find out the distance
  float distance = glm::length(distVec);
- //The Radius equals both ball one and ball 2 radius combined
- float radius = b1.radius + b2.radius;
+ //The m_radius equals both ball one and ball 2 m_radius combined
+ float m_radius = b1.m_radius + b2.m_radius;
 
- float collisionDepth = radius - distance;
+ float collisionDepth = m_radius - distance;
 
  //if there was a collision the apply the maths
  if (collisionDepth > 0)
  {
    //Here I need to worry about the elastic collision between the two balls the velocity and the direction when they will
    //when they collide
-   b1.position -= distDir * collisionDepth * (b2.mass / b1.mass) * 0.5f;
-   b2.position += distDir * collisionDepth * (b1.mass / b2.mass) * 0.5f;
+   b1.m_position -= distDir * collisionDepth * (b2.m_mass / b1.m_mass) * 0.5f;
+   b2.m_position += distDir * collisionDepth * (b1.m_mass / b2.m_mass) * 0.5f;
 
 
-   float aci = glm::dot(b1.velocity, distDir);
-   float bci = glm::dot(b2.velocity, distDir);
+   float aci = glm::dot(b1.m_velocity, distDir);
+   float bci = glm::dot(b2.m_velocity, distDir);
 
-   float acf = (aci * (b1.mass - b2.mass) + 2 * b2.mass * bci) / (b1.mass + b2.mass);
-   float bcf = (bci * (b2.mass - b1.mass) + 2 * b1.mass * aci) / (b1.mass + b2.mass);
+   float acf = (aci * (b1.m_mass - b2.m_mass) + 2 * b2.m_mass * bci) / (b1.m_mass + b2.m_mass);
+   float bcf = (bci * (b2.m_mass - b1.m_mass) + 2 * b1.m_mass * aci) / (b1.m_mass + b2.m_mass);
 
-   b1.velocity += (acf - aci) * distDir;
-   b2.velocity += (bcf - bci) * distDir;
+   b1.m_velocity += (acf - aci) * distDir;
+   b2.m_velocity += (bcf - bci) * distDir;
  }
 }
 
@@ -341,44 +341,44 @@ glm::vec2 ColorTransferControl::getGravityMovement()
  return gravity;
 }
 
-void ColorTransferControl::mouseDown(std::vector <Ball>& balls, float mouseX, float mouseY)
+void ColorTransferControl::mouseDown(std::vector <Ball>& _balls, float _mouseX, float _mouseY)
 {
- for (size_t i = 0; i < balls.size(); i++)
+ for (size_t i = 0; i < _balls.size(); i++)
  {
-   if (mouseBallChecker(balls[i], mouseX, mouseY))
+   if (mouseBallChecker(_balls[i], _mouseX, _mouseY))
    {
      m_grabbedBall = i;
-     m_cursorOffset = glm::vec2(mouseX, mouseY) - balls[i].position;
-     m_prevPosition = balls[i].position;
-     balls[i].velocity = glm::vec2(0.0f);
+     m_cursorOffset = glm::vec2(_mouseX, _mouseY) - _balls[i].m_position;
+     m_prevPosition = _balls[i].m_position;
+     _balls[i].m_velocity = glm::vec2(0.0f);
    }
  }
 }
 
-void ColorTransferControl::mouseUp(std::vector <Ball>& balls)
+void ColorTransferControl::mouseUp(std::vector <Ball>& _balls)
 {
  if (m_grabbedBall != -1)
  {
-   balls[m_grabbedBall].velocity = balls[m_grabbedBall].position - m_prevPosition;
+   _balls[m_grabbedBall].m_velocity = _balls[m_grabbedBall].m_position - m_prevPosition;
    m_grabbedBall = -1;
  }
 }
 
-void ColorTransferControl::mouseMotion(std::vector <Ball>& balls, float mouseX, float mouseY)
+void ColorTransferControl::mouseMotion(std::vector <Ball>& _balls, float _mouseX, float _mouseY)
 {
  if (m_grabbedBall != -1)
  {
-   balls[m_grabbedBall].position = glm::vec2(mouseX, mouseY) - m_cursorOffset;
+   _balls[m_grabbedBall].m_position = glm::vec2(_mouseX, _mouseY) - m_cursorOffset;
  }
 }
 
-bool ColorTransferControl::mouseBallChecker(Ball& b, float mouseX, float mouseY)
+bool ColorTransferControl::mouseBallChecker(Ball& b, float _mouseX, float _mouseY)
 {
- return (mouseX >= b.position.x - b.radius && mouseX < b.position.x + b.radius &&
-   mouseY >= b.position.y - b.radius && mouseY < b.position.y + b.radius);
+ return (_mouseX >= b.m_position.x - b.m_radius && _mouseX < b.m_position.x + b.m_radius &&
+   _mouseY >= b.m_position.y - b.m_radius && _mouseY < b.m_position.y + b.m_radius);
 }
 
-void ColorTransferControl::update(std::vector <Ball>& balls, BallGrid* ballGrid, float deltaTime, int maxX, int maxY)
+void ColorTransferControl::update(std::vector <Ball>& _balls, BallGrid* _ballGrid, float _deltaTime, int _maxX, int _maxY)
 {
  const float FRICTION = 0.04f;
  //update balls that have been grabbed with new velocity
@@ -390,26 +390,26 @@ void ColorTransferControl::update(std::vector <Ball>& balls, BallGrid* ballGrid,
    //sets the throwing algorithm in place
    //this means the velocity of the ball will equal to the distance between the throw
    //if the ball new position is small the velocity will be slow if its big the velocity will be large
-   balls[m_grabbedBall].velocity = balls[m_grabbedBall].position - m_prevPosition;
+   _balls[m_grabbedBall].m_velocity = _balls[m_grabbedBall].m_position - m_prevPosition;
 
  }
 
  glm::vec2 gravity = getGravityMovement();
 
 
- for (size_t i = 0; i < balls.size(); i++)
+ for (size_t i = 0; i < _balls.size(); i++)
  {
    //sets a handle for better effecientcy
-   Ball& ball = balls[i];
+   Ball& ball = _balls[i];
    //update the momentum and gravity of the ball if its not grabbed
    if ((int)i != m_grabbedBall)
    {
      //if ball is not grabbes set ball position plus velocity to have the ball
      //move through screen
-     ball.position += ball.velocity * deltaTime;
+     ball.m_position += ball.m_velocity * _deltaTime;
 
-     //applies friction to the balls dependent on there mass
-     glm::vec2 movementVec = ball.velocity * ball.mass;
+     //applies friction to the balls dependent on there m_mass
+     glm::vec2 movementVec = ball.m_velocity * ball.m_mass;
 
      //if the momvent vecotr does not equal 0 for both x and y
      //then check the friction of the balls
@@ -417,68 +417,68 @@ void ColorTransferControl::update(std::vector <Ball>& balls, BallGrid* ballGrid,
      {
        if (FRICTION < glm::length(movementVec))
        {
-         ball.velocity -= deltaTime * FRICTION * glm::normalize(movementVec) / ball.mass;
+         ball.m_velocity -= _deltaTime * FRICTION * glm::normalize(movementVec) / ball.m_mass;
        }
        else
        {
-         ball.velocity = glm::vec2(0.0f);
+         ball.m_velocity = glm::vec2(0.0f);
        }
      }
      //apply gravity
-     ball.velocity += gravity * deltaTime;
+     ball.m_velocity += gravity * _deltaTime;
    }
 
    //check wall collision
-   if (ball.position.x < ball.radius)
+   if (ball.m_position.x < ball.m_radius)
    {
-     ball.position.x = ball.radius;
-     if (ball.velocity.x < 0) ball.velocity.x *= -1;
+     ball.m_position.x = ball.m_radius;
+     if (ball.m_velocity.x < 0) ball.m_velocity.x *= -1;
    }
-   else if (ball.position.x + ball.radius >= maxX)
+   else if (ball.m_position.x + ball.m_radius >= _maxX)
    {
-     ball.position.x = maxX - ball.radius - 1;
-     if (ball.velocity.x > 0) ball.velocity.x *= -1;
+     ball.m_position.x = _maxX - ball.m_radius - 1;
+     if (ball.m_velocity.x > 0) ball.m_velocity.x *= -1;
    }
-   if (ball.position.y < ball.radius)
+   if (ball.m_position.y < ball.m_radius)
    {
-     ball.position.y = ball.radius;
-     if (ball.velocity.y < 0) ball.velocity.y *= -1;
+     ball.m_position.y = ball.m_radius;
+     if (ball.m_velocity.y < 0) ball.m_velocity.y *= -1;
    }
-   else if (ball.position.y + ball.radius >= maxY)
+   else if (ball.m_position.y + ball.m_radius >= _maxY)
    {
-     ball.position.y = maxY - ball.radius - 1;
-     if (ball.velocity.y > 0) ball.velocity.y *= -1;
+     ball.m_position.y = _maxY - ball.m_radius - 1;
+     if (ball.m_velocity.y > 0) ball.m_velocity.y *= -1;
    }
 
-   Cell* newCell = ballGrid->getCell(ball.position);
-   if (newCell != ball.cellLeader)
+   Cell* newCell = _ballGrid->getCell(ball.m_position);
+   if (newCell != ball.m_cellLeader)
    {
      //need to shift the ball
-     ballGrid->removeBall(&balls[i]);
-     ballGrid->addBall(&balls[i], newCell);
+     _ballGrid->removeBall(&_balls[i]);
+     _ballGrid->addBall(&_balls[i], newCell);
    }
  }
 
  //update all collisions
- updateCollision(ballGrid);
+ updateCollision(_ballGrid);
 
  if (m_grabbedBall != -1)
  {
-   balls[m_grabbedBall].velocity = balls[m_grabbedBall].position - m_prevPosition;
-   m_prevPosition = balls[m_grabbedBall].position;
+   _balls[m_grabbedBall].m_velocity = _balls[m_grabbedBall].m_position - m_prevPosition;
+   m_prevPosition = _balls[m_grabbedBall].m_position;
  }
 }
 
-void ColorTransferControl::updateCollision(BallGrid* ballGrid)
+void ColorTransferControl::updateCollision(BallGrid* _ballGrid)
 {
- for (int i = 0; i < (int)ballGrid->m_cells.size(); i++)
+ for (int i = 0; i < (int)_ballGrid->m_cells.size(); i++)
  {
    //how for into a given row is the program
-   int x = i % ballGrid->m_numCellsX;
+   int x = i % _ballGrid->m_numCellsX;
    //how many rows do we have
-   int y = i / ballGrid->m_numCellsX;
+   int y = i / _ballGrid->m_numCellsX;
 
-   Cell& cell = ballGrid->m_cells[i];
+   Cell& cell = _ballGrid->m_cells[i];
 
    //loop throuhg all balls in a cell
    for (int j = 0; j < (int)cell.balls.size(); j++)
@@ -490,73 +490,73 @@ void ColorTransferControl::updateCollision(BallGrid* ballGrid)
      if (x > 0)
      {
        //left
-       collisionChecker(ball, ballGrid->getCell(x - 1, y)->balls, 0);
+       collisionChecker(ball, _ballGrid->getCell(x - 1, y)->balls, 0);
        if (y > 0)
        {
          //top left
-         collisionChecker(ball, ballGrid->getCell(x - 1, y - 1)->balls, 0);
+         collisionChecker(ball, _ballGrid->getCell(x - 1, y - 1)->balls, 0);
        }
-       if (y < ballGrid->m_numCellsY - 1)
+       if (y < _ballGrid->m_numCellsY - 1)
        {
          //bottom left
-         collisionChecker(ball, ballGrid->getCell(x - 1, y + 1)->balls, 0);
+         collisionChecker(ball, _ballGrid->getCell(x - 1, y + 1)->balls, 0);
        }
      }
      //up cell
      if (y > 0)
      {
-       collisionChecker(ball, ballGrid->getCell(x, y - 1)->balls, 0);
+       collisionChecker(ball, _ballGrid->getCell(x, y - 1)->balls, 0);
      }
    }
  }
 }
 
-void ColorTransferControl::collisionChecker(Ball* ball, std::vector<Ball*>& ballsToCheck, int startingIndex)
+void ColorTransferControl::collisionChecker(Ball* _ball, std::vector<Ball*>& ballsToCheck, int startingIndex)
 {
  for (int i = (int)startingIndex; i < (int)ballsToCheck.size(); i++)
  {
-   collisionChecker(*ball, *ballsToCheck[i]);
+   collisionChecker(*_ball, *ballsToCheck[i]);
  }
 }
 
 void ColorTransferControl::collisionChecker(Ball& b1, Ball& b2)
 {
- glm::vec2 distVec = b2.position - b1.position;
+ glm::vec2 distVec = b2.m_position - b1.m_position;
  glm::vec2 distDir = glm::normalize(distVec);
 
  float distance = glm::length(distVec);
- float radius = b1.radius + b2.radius;
+ float m_radius = b1.m_radius + b2.m_radius;
 
- float collisionDepth = radius - distance;
+ float collisionDepth = m_radius - distance;
 
  //check for collision
  if (collisionDepth > 0)
  {
-   b1.position -= distDir * collisionDepth * (b2.mass / b1.mass) * 0.5f;
-   b2.position += distDir * collisionDepth * (b1.mass / b2.mass) * 0.5f;
+   b1.m_position -= distDir * collisionDepth * (b2.m_mass / b1.m_mass) * 0.5f;
+   b2.m_position += distDir * collisionDepth * (b1.m_mass / b2.m_mass) * 0.5f;
 
 
 
    //calculate the deflection of the balls
-   float aci = glm::dot(b1.velocity, distDir);
-   float bci = glm::dot(b2.velocity, distDir);
+   float aci = glm::dot(b1.m_velocity, distDir);
+   float bci = glm::dot(b2.m_velocity, distDir);
 
-   float acf = (aci * (b1.mass - b2.mass) + 2 * b2.mass * bci) / (b1.mass + b2.mass);
-   float bcf = (bci * (b2.mass - b1.mass) + 2 * b1.mass * aci) / (b1.mass + b2.mass);
+   float acf = (aci * (b1.m_mass - b2.m_mass) + 2 * b2.m_mass * bci) / (b1.m_mass + b2.m_mass);
+   float bcf = (bci * (b2.m_mass - b1.m_mass) + 2 * b1.m_mass * aci) / (b1.m_mass + b2.m_mass);
 
-   b1.velocity += (acf - aci) * distDir;
-   b2.velocity += (bcf - bci) * distDir;
+   b1.m_velocity += (acf - aci) * distDir;
+   b2.m_velocity += (bcf - bci) * distDir;
 
 
    //Here is the transfer color code
    //gets the length of the velocity and if its greater then 0.5 allow the transfer to happen
-   if (glm::length(b1.velocity + b2.velocity) > 0.5f)
+   if (glm::length(b1.m_velocity + b2.m_velocity) > 0.5f)
    {
      //choose the faster ball if the length of the velocity for b1 is less then the
      //velocity of b2 then change the colours around
-     bool change = glm::length(b1.velocity) < glm::length(b2.velocity);
+     bool change = glm::length(b1.m_velocity) < glm::length(b2.m_velocity);
 
-     change ? b2.color = b1.color : b1.color = b2.color;
+     change ? b2.m_color = b1.m_color : b1.m_color = b2.m_color;
    }
  }
 }

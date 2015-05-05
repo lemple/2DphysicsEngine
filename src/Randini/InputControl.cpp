@@ -18,7 +18,7 @@
 //and stops them from feeling clunky
 namespace Randini
 {
-	InputControl::InputControl() : _mouseCoords(0.0f)
+  InputControl::InputControl() : m_mouseCoords(0.0f)
 	{
 	}
 
@@ -29,13 +29,13 @@ namespace Randini
 
 	void InputControl::update()
 	{
-		//  Loops through _keyMap using a for each loop and copy it over to _previousKeyMap
-//    for(auto& it : _keyMap)
-    for( KeyPair::const_iterator key = _keyMap.begin();
-         key != _keyMap.end();
+    //  Loops through m_keyMap using a for each loop and copy it over to m_previousKeyMap
+//    for(auto& it : m_keyMap)
+    for( KeyPair::const_iterator key = m_keyMap.begin();
+         key != m_keyMap.end();
          key++)
 		{
-      _previousKeyMap[(*key).first] = (*key).second;
+      m_previousKeyMap[(*key).first] = (*key).second;
 		}
 	}
 
@@ -44,13 +44,13 @@ namespace Randini
 		//treat key map like an array and set equal to true
 		//first checks to see if keyID is in the map if its not
 		//it will create it and set it to true
-		_keyMap[keyID] = true;
+    m_keyMap[keyID] = true;
 	}
 
 	void InputControl::releaseKey(unsigned int keyID)
 	{
 		//follow same scenario as presskey except set to false
-		_keyMap[keyID] = false;
+    m_keyMap[keyID] = false;
 	}
 
 	
@@ -58,8 +58,8 @@ namespace Randini
 	{
 		//Sets the mouseCoord equal to x and y to define the 
 		//x and y values
-		_mouseCoords.x = x;
-		_mouseCoords.y = y;
+    m_mouseCoords.x = x;
+    m_mouseCoords.y = y;
 
 	}
 
@@ -70,9 +70,9 @@ namespace Randini
 		//return false
 		//use auto for std::unordered_map<unsigned int, bool>
 		//look for keyID
-		auto it = _keyMap.find(keyID);
+    auto it = m_keyMap.find(keyID);
 		//checks to see if keyID is found
-		if (it != _keyMap.end())
+    if (it != m_keyMap.end())
 		{
 			return it->second;
 		}
@@ -95,8 +95,8 @@ namespace Randini
 	bool InputControl::wasKeyDown(unsigned int keyID)
 	{
 		
-		auto it = _previousKeyMap.find(keyID);
-		if (it != _previousKeyMap.end())
+    auto it = m_previousKeyMap.find(keyID);
+    if (it != m_previousKeyMap.end())
 		{
 			return it->second;
 		}

@@ -19,11 +19,17 @@
 //so therefore there is no need in making the class anything else.
 namespace Randini
 {
+
 	class ImageLoader
 	{
 	public:
-		//make a function that returns a GLTexture
-		//the only parameter the function needs is the file path name which uses a string
+    /**
+     * @brief loadPNG
+     * make a function that returns a GLTexture
+     * the only parameter the function needs is the file path name which uses a string
+     * @param filePath
+     * @return
+     */
 		static GLTexture loadPNG(std::string filePath);
 
 	};

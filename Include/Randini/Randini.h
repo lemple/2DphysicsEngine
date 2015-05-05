@@ -13,5 +13,10 @@
 
 namespace Randini
 {
+  /**
+   * @brief init]
+   * Inits everything and runs double buffering
+   * @return
+   */
 	extern int init();
 }

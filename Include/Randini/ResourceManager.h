@@ -21,12 +21,19 @@ namespace Randini
 	class ResourceManager
 	{
 	public:
-		//wrapper function
-		//follows the same priciples as the texture chace and calls it
+
+    /**
+     * @brief getTexture
+     * follows the same priciples as the texture chace and calls it
+     *
+     * @param texturePath
+     * @return
+     */
 		static GLTexture getTexture(std::string texturePath);
 
 	private:
-		static TextureCache _textureCache;
+
+    static TextureCache m_textureCache;
 	};
 
 }

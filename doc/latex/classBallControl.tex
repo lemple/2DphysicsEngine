@@ -1,0 +1,103 @@
+\hypertarget{classBallControl}{
+\section{BallControl Class Reference}
+\label{classBallControl}\index{BallControl@{BallControl}}
+}
+Inheritance diagram for BallControl::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{classBallControl}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classBallControl_af32a9b232b26af69231966ae3aab98d5}{update} (std::vector$<$ \hyperlink{structBall}{Ball} $>$ \&\_\-balls, \hyperlink{classBallGrid}{BallGrid} $\ast$\_\-ballGrid, float \_\-deltaTime, int \_\-maxX, int \_\-maxY)
+\item 
+\hypertarget{classBallControl_afa0b3f2735a09bd485ff70ce76ba0ec4}{
+void {\bfseries setGravityDirection} (GravityControl dir)}
+\label{classBallControl_afa0b3f2735a09bd485ff70ce76ba0ec4}
+
+\item 
+virtual bool \hyperlink{classBallControl_a4f811993f5e8988eb4f4ab3c03dadf52}{mouseBallChecker} (\hyperlink{structBall}{Ball} \&b, float mouseX, float mouseY)
+\item 
+\hypertarget{classBallControl_abec61f04e0f597dcda76ff75ba86e5b8}{
+virtual void {\bfseries mouseDown} (std::vector$<$ \hyperlink{structBall}{Ball} $>$ \&balls, float mouseX, float mouseY)}
+\label{classBallControl_abec61f04e0f597dcda76ff75ba86e5b8}
+
+\item 
+\hypertarget{classBallControl_a3e7166e0945803af4880498eba1f559e}{
+virtual void {\bfseries mouseUp} (std::vector$<$ \hyperlink{structBall}{Ball} $>$ \&balls)}
+\label{classBallControl_a3e7166e0945803af4880498eba1f559e}
+
+\item 
+\hypertarget{classBallControl_a316583a199b92d1f737910c08c550900}{
+virtual void {\bfseries mouseMotion} (std::vector$<$ \hyperlink{structBall}{Ball} $>$ \&balls, float mouseX, float mouseY)}
+\label{classBallControl_a316583a199b92d1f737910c08c550900}
+
+\item 
+\hypertarget{classBallControl_ab5cc0c3b41404bba171ef3f447043875}{
+virtual void {\bfseries updateCollision} (\hyperlink{classBallGrid}{BallGrid} $\ast$ballGrid)}
+\label{classBallControl_ab5cc0c3b41404bba171ef3f447043875}
+
+\item 
+\hypertarget{classBallControl_a33543f2a175094819e5a3d8631eb34af}{
+virtual void {\bfseries collisionChecker} (\hyperlink{structBall}{Ball} $\ast$ball, std::vector$<$ \hyperlink{structBall}{Ball} $\ast$ $>$ \&ballsToCheck, int startingIndex)}
+\label{classBallControl_a33543f2a175094819e5a3d8631eb34af}
+
+\item 
+\hypertarget{classBallControl_ad12ad637d1dc8239634397c445929698}{
+virtual void {\bfseries collisionChecker} (\hyperlink{structBall}{Ball} \&b1, \hyperlink{structBall}{Ball} \&b2)}
+\label{classBallControl_ad12ad637d1dc8239634397c445929698}
+
+\item 
+\hypertarget{classBallControl_a6eb0d955ccad645cd5d8865c3bd899a7}{
+glm::vec2 \hyperlink{classBallControl_a6eb0d955ccad645cd5d8865c3bd899a7}{getGravityMovement} ()}
+\label{classBallControl_a6eb0d955ccad645cd5d8865c3bd899a7}
+
+\begin{DoxyCompactList}\small\item\em vec 2 varible for direction of the gravity movement \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classBallControl_ac64a1d833bcd49fa9ab2ebcce3995be6}{
+int {\bfseries m\_\-grabbedBall}}
+\label{classBallControl_ac64a1d833bcd49fa9ab2ebcce3995be6}
+
+\item 
+\hypertarget{classBallControl_a49b276d3d47c744915e289985b54ae4e}{
+glm::vec2 {\bfseries m\_\-prevPosition}}
+\label{classBallControl_a49b276d3d47c744915e289985b54ae4e}
+
+\item 
+\hypertarget{classBallControl_abe4695134fe9cfabef70ed8620de37d2}{
+glm::vec2 {\bfseries m\_\-cursorOffset}}
+\label{classBallControl_abe4695134fe9cfabef70ed8620de37d2}
+
+\item 
+\hypertarget{classBallControl_a64337536a5959b08a7f0b5cb9af52691}{
+GravityControl {\bfseries m\_\-gravityControl}}
+\label{classBallControl_a64337536a5959b08a7f0b5cb9af52691}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classBallControl_a4f811993f5e8988eb4f4ab3c03dadf52}{
+\index{BallControl@{BallControl}!mouseBallChecker@{mouseBallChecker}}
+\index{mouseBallChecker@{mouseBallChecker}!BallControl@{BallControl}}
+\subsubsection[{mouseBallChecker}]{\setlength{\rightskip}{0pt plus 5cm}bool BallControl::mouseBallChecker ({\bf Ball} \& {\em b}, \/  float {\em mouseX}, \/  float {\em mouseY})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classBallControl_a4f811993f5e8988eb4f4ab3c03dadf52}
+MouseBallChecker: Takes X and Y location for the mouse so it can be located to the location of the ball /// MouseDown: Takes in the values of the balls so they can be altered depending if the ball is grabbed /// Also location of the mouse for when the mouse is clicked down /// MouseUP: Takes the values of the balls and apply's them new values when mouse is released /// MouseMotion: Takes the general location of the cursor and allows the ball to follow the mouse cursor /// UpdateCollision: Takes in the \hyperlink{classBallGrid}{BallGrid} class so the balls can be checked for collision with other balls on the grid /// CollisisonChecker: Detects the collision made between a ball and a vector of balls starting at a specific index /// 
+
+Reimplemented in \hyperlink{classColorTransferControl_a9bce863f9d08a2dd596a56a432861559}{ColorTransferControl}.\hypertarget{classBallControl_af32a9b232b26af69231966ae3aab98d5}{
+\index{BallControl@{BallControl}!update@{update}}
+\index{update@{update}!BallControl@{BallControl}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void BallControl::update (std::vector$<$ {\bf Ball} $>$ \& {\em \_\-balls}, \/  {\bf BallGrid} $\ast$ {\em \_\-ballGrid}, \/  float {\em \_\-deltaTime}, \/  int {\em \_\-maxX}, \/  int {\em \_\-maxY})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classBallControl_af32a9b232b26af69231966ae3aab98d5}
+Function intakes the vector of the balls which derives from \hyperlink{structBall}{Ball} class so therefore all values can be set. \hyperlink{classBallGrid}{BallGrid} to allow the input of the 2D grid to update each ball with spatial partitioning Delta time as all function need to be set to deltaTime, set mxX and maxY for wall collision detection. 
+
+Reimplemented in \hyperlink{classColorTransferControl_acbe9581f0be7624c9bc33d40e2ee1a6b}{ColorTransferControl}.
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Include/BallGame/\hyperlink{BallControl_8h}{BallControl.h}\item 
+src/Uni/\hyperlink{BallControl_8cpp}{BallControl.cpp}\end{DoxyCompactItemize}

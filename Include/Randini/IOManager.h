@@ -25,10 +25,17 @@ namespace Randini
 	class IOManager
 	{
 	public:
-		//reads a file into the buffer.
-		//parameters: define the varible that holds the file path thats being passed in
-		//using vecotor. pass in the buffer by reference. the way this works is the user will
-		//pass in there own empty vector and the function will fill the data with the data they need.
+
+    /**
+     * @brief readFileToBuffer
+     * reads a file into the buffer.
+     * parameters: define the varible that holds the file path thats being passed in
+     * using vecotor. pass in the buffer by reference. the way this works is the user will
+     * pass in there own empty vector and the function will fill the data with the data they need.
+     * @param filePath
+     * @param buffer
+     * @return
+     */
 		static bool readFileToBuffer(std::string filePath, std::vector<unsigned char>& buffer);
 	};
 

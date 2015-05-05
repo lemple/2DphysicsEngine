@@ -178,10 +178,10 @@ void MainGame::initControllers()
 struct BallSpawnSystem
 {
   BallSpawnSystem(const Randini::ColorRGBA8& color,
-  float radius, float mass, float minSpeed,
+  float m_radius, float mass, float minSpeed,
   float maxSpeed, float prob) :
   color(color),
-  radius(radius),
+  m_radius(m_radius),
   mass(mass),
   probability(prob),
   randSpeed(minSpeed, maxSpeed)
@@ -190,7 +190,7 @@ struct BallSpawnSystem
   }
   //calls color settings from Randini Engine
   Randini::ColorRGBA8 color;
-  float radius;
+  float m_radius;
   float mass;
   float probability;
   //adds random speed to the balls
@@ -236,12 +236,6 @@ void MainGame::initBalls()
   //This creates a pointer that that deltes itself when it gets overwritten
   m_ballGrid = std::unique_ptr<BallGrid>(new BallGrid(m_screenWidth, m_screenHeight, CELL_SIZE));
 
-  //use macro for spawning diffrent balls
-  //use ... to let the program know to import all paramters from prentheies
-#define ADD_BALL(p, ...) \
-  totalProbability += p; \
-  possibleBalls.emplace_back(__VA_ARGS__);
-
   //number of balls to spawn
   const int NUM_BALLS = 12000;
 
@@ -264,10 +258,11 @@ void MainGame::initBalls()
 
   //run creat ball while i < number of balls
 
-    //Paramters: Color/Size/Mass/Min Speed/Max Speed/probability
+  //Paramters: Color/Size/Mass/Min Speed/Max Speed/probability
   for (int i = 0; i < NUM_BALLS; i++)
   {
-    ADD_BALL(1.0f, Randini::ColorRGBA8(r2(randomEngine), r2(randomEngine), r2(randomEngine), 255),
+    totalProbability += 10;
+    possibleBalls.emplace_back(Randini::ColorRGBA8(r2(randomEngine), r2(randomEngine), r2(randomEngine), 255),
       r1(randomEngine), r1(randomEngine), 0.0f, 0.0f, totalProbability);
   }
   //random probability
@@ -316,7 +311,7 @@ void MainGame::initBalls()
     //add ball to the m_ball array with each attributes obtained from possibleBall
     //the attributes for possibleBall contains the data from the struct
     //finally obtain the texture to use for the balls from the texture file
-    _ball.emplace_back(spawningBall->radius, spawningBall->mass, pos,
+    _ball.emplace_back(spawningBall->m_radius, spawningBall->mass, pos,
       direction * spawningBall->randSpeed(randomEngine),
       Randini::ResourceManager::getTexture("Textures/zomble/circle.png").id,
       spawningBall->color);
@@ -331,12 +326,12 @@ void MainGame::initBalls()
   }
   }
 
-void MainGame::update(float deltaTime)
+void MainGame::update(float _deltaTime)
 {
   //calls the controller and set it to the current controller selcted by the user
   //point it to the update function within the BallControl class and pass in each value to the ball
   //This will allow it to update with the current settings based on the controller selected
-  m_ballControllers[m_currentController]->update(_ball, m_ballGrid.get(), deltaTime, m_screenWidth, m_screenHeight);
+  m_ballControllers[m_currentController]->update(_ball, m_ballGrid.get(), _deltaTime, m_screenWidth, m_screenHeight);
   }
 
   void MainGame::processInput()

@@ -1,0 +1,43 @@
+\hypertarget{classVelocityBallRendererX}{
+\section{VelocityBallRendererX Class Reference}
+\label{classVelocityBallRendererX}\index{VelocityBallRendererX@{VelocityBallRendererX}}
+}
+
+
+{\ttfamily \#include $<$BallRenderer.h$>$}Inheritance diagram for VelocityBallRendererX::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{classVelocityBallRendererX}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classVelocityBallRendererX_ad3ae42e2ab2efab70a9812267eb337a7}{
+{\bfseries VelocityBallRendererX} (int screenWidth, int screenHeight)}
+\label{classVelocityBallRendererX_ad3ae42e2ab2efab70a9812267eb337a7}
+
+\item 
+virtual void \hyperlink{classVelocityBallRendererX_ad0ef24ce7ba5116231f4a47aff280f12}{renderBalls} (\hyperlink{classRandini_1_1SpriteLoader}{Randini::SpriteLoader} \&spriteLoader, const std::vector$<$ \hyperlink{structBall}{Ball} $>$ \&balls, const glm::mat4 \&projectionMatrix)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Visualise the velocity of ball renderers when moving in the x direction as well as visualise the position with different colours 
+
+\subsection{Member Function Documentation}
+\hypertarget{classVelocityBallRendererX_ad0ef24ce7ba5116231f4a47aff280f12}{
+\index{VelocityBallRendererX@{VelocityBallRendererX}!renderBalls@{renderBalls}}
+\index{renderBalls@{renderBalls}!VelocityBallRendererX@{VelocityBallRendererX}}
+\subsubsection[{renderBalls}]{\setlength{\rightskip}{0pt plus 5cm}void VelocityBallRendererX::renderBalls ({\bf Randini::SpriteLoader} \& {\em spriteLoader}, \/  const std::vector$<$ {\bf Ball} $>$ \& {\em balls}, \/  const glm::mat4 \& {\em projectionMatrix})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classVelocityBallRendererX_ad0ef24ce7ba5116231f4a47aff280f12}
+Make this a virtual function as I want to derive form this Imports the sprites from the game engine renders a list of balls to render all the balls Instead of rendering a single ball loop through all the balls 
+
+FOLLOWS SAME BASIC PRINCIPLE FROM RENDERBALLS 
+
+Reimplemented from \hyperlink{classBallRenderer_a6169ba2a00e8d15fde87a3ee4552cf66}{BallRenderer}.
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Include/BallGame/\hyperlink{BallRenderer_8h}{BallRenderer.h}\item 
+src/Uni/\hyperlink{BallRenderer_8cpp}{BallRenderer.cpp}\end{DoxyCompactItemize}

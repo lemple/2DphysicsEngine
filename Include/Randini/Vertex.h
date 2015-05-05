@@ -61,6 +61,11 @@ namespace Randini
 		UV uv;
 
 		//makes settiung the position value for the vertices easier
+    /**
+     * @brief setPosition
+     * @param x
+     * @param y
+     */
 		void setPosition(float x, float y)
 		{
 			position.x = x;
@@ -68,6 +73,11 @@ namespace Randini
 		}
 
 		//makes settiung the uv value for the vertices easier
+    /**
+     * @brief setUV
+     * @param u
+     * @param v
+     */
 		void setUV(float u, float v)
 		{
 			uv.u = u;

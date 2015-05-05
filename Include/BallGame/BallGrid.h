@@ -37,28 +37,51 @@ class BallGrid
   //While still keeping them secure and keeps encapsulatio
   friend class BallControl;
 public:
-  BallGrid(int width, int height, int cellSize);
+  /**
+   * @brief BallGrid
+   * @param _width
+   * @param _height
+   * @param _cellSize
+   */
+  BallGrid(int _width, int _height, int _cellSize);
   ~BallGrid();
 
   ///Here I overload the getCell function as each one performs a similar job
 
-  //gets cell based on cell coordinates (ball)
-  Cell* getCell(int x, int y);
+  //)
+  /**
+   * @brief getCell gets cell based on cell coordinates (ball
+   * @param _x
+   * @param _y
+   * @return
+   */
+  Cell* getCell(int _x, int _y);
 
-  ///get cell based on position of the cell in the windowl
-  Cell* getCell(const glm::vec2& pos);
+  /**
+   * @brief get cell based on position of the cell in the window
+   * @param pos
+   * @return
+   */
+  Cell* getCell(const glm::vec2& _pos);
 
-  ///adds a ball and determines what cell it belongs to
-  void addBall(Ball* ball);
+  /**
+   * @brief adds a ball and determines what cell it belongs to
+   * @param ball
+   */
+  void addBall(Ball* _ball);
 
-  ///adds ball to specific cell
-  void addBall(Ball* ball, Cell* cell);
+  /**
+   * @brief adds ball to specific cell
+   * @param ball
+   * @param cell
+   */
+  void addBall(Ball* _ball, Cell* _cell);
 
-  ///Removes the ball from the grid
-  void removeBall(Ball* ball);
-
-
-
+  /**
+   * @brief removeBall allows the ability removes the ball from the grid
+   * @param _ball
+   */
+  void removeBall(Ball* _ball);
 
   std::vector<Cell> m_cells;
   int m_cellSize;

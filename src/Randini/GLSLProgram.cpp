@@ -22,7 +22,7 @@
 namespace Randini
 {
 	//set up initialization list. It is a better way to initialize variables, since it avoids an extra copy. 
-	GLSLProgram::GLSLProgram() : _numAttributes(0), _programID(0), _vertexShaderID(0), _fragmentShaderID(0)
+  GLSLProgram::GLSLProgram() : m_numAttributes(0), m_programID(0), m_vertexShaderID(0), m_fragmentShaderID(0)
 	{
 
 	}
@@ -38,15 +38,15 @@ namespace Randini
 	{
 		//vertex and fragment shaders are successfully compiled in the fucntion
 		//after this function its time to link the shaders together in the next function
-		_programID = glCreateProgram();
+    m_programID = glCreateProgram();
 
 
 		//the vertexshader is used to shader the vertx point of and object and overall 
 		//used to produce color to the objects
 		//creates the vertex shader object and store its ID in GL_VERTEXT_SHADER
-		_vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
+    m_vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
 		//if the shader returns 0 call error class
-		if (_vertexShaderID == 0)
+    if (m_vertexShaderID == 0)
 		{
 			fatalError("Vertex shader failed to be created!");
 		}
@@ -54,16 +54,16 @@ namespace Randini
 		//the fragment shader is used to shader the pixel point of and object and overall 
 		//used to produce a blend for the colors
 		//creates the fragment shader object and store its ID in GL_FRAGMENT_SHADER
-		_fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
-		if (_fragmentShaderID == 0) 
+    m_fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
+    if (m_fragmentShaderID == 0)
 		{
 			fatalError("Fragment shader failed to be created!");
 		}
 
 		//Calls each function and compiles each shader
 		//pass the varible for the file path and then the ID of the shader
-		compileShader(vertexShaderFilePath, _vertexShaderID);
-		compileShader(fragmentShaderFilepath, _fragmentShaderID);
+    compileShader(vertexShaderFilePath, m_vertexShaderID);
+    compileShader(fragmentShaderFilepath, m_fragmentShaderID);
 	}
 
 	void GLSLProgram::linkShader()
@@ -71,31 +71,31 @@ namespace Randini
 
 		//takes the shaders and attaches them to the program
 		//pass in the id of the program and the type of shader and attachs them
-		glAttachShader(_programID, _vertexShaderID);
-		glAttachShader(_programID, _fragmentShaderID);
+    glAttachShader(m_programID, m_vertexShaderID);
+    glAttachShader(m_programID, m_fragmentShaderID);
 
 		//Link our program
-		glLinkProgram(_programID);
+    glLinkProgram(m_programID);
 
 		//Note the different functions here: glGetProgram* instead of glGetShader*.
 		GLint isLinked = 0;
-		glGetProgramiv(_programID, GL_LINK_STATUS, (int *)&isLinked);
+    glGetProgramiv(m_programID, GL_LINK_STATUS, (int *)&isLinked);
 		if (isLinked == GL_FALSE)
 		{
 			GLint maxLength = 0;
-			glGetProgramiv(_programID, GL_INFO_LOG_LENGTH, &maxLength);
+      glGetProgramiv(m_programID, GL_INFO_LOG_LENGTH, &maxLength);
 
 			//The maxLength includes the NULL character
 			std::vector<char> errorLog(maxLength);
-			glGetProgramInfoLog(_programID, maxLength, &maxLength, &errorLog[0]);
+      glGetProgramInfoLog(m_programID, maxLength, &maxLength, &errorLog[0]);
 
 
 
 			//since we don't need the program anymore we can delte it
-			glDeleteProgram(_programID);
+      glDeleteProgram(m_programID);
 			//delete the shaders to prevent memory links
-			glDeleteShader(_vertexShaderID);
-			glDeleteShader(_fragmentShaderID);
+      glDeleteShader(m_vertexShaderID);
+      glDeleteShader(m_fragmentShaderID);
 
 			//print the error log and quit
 			std::printf("%s\n", &(errorLog[0]));
@@ -103,10 +103,10 @@ namespace Randini
 		}
 
 		//detach the shaders as well to prevent all chances of errors and memory leaks
-		glDetachShader(_programID, _vertexShaderID);
-		glDetachShader(_programID, _fragmentShaderID);
-		glDeleteShader(_vertexShaderID);
-		glDeleteShader(_fragmentShaderID);
+    glDetachShader(m_programID, m_vertexShaderID);
+    glDetachShader(m_programID, m_fragmentShaderID);
+    glDeleteShader(m_vertexShaderID);
+    glDeleteShader(m_fragmentShaderID);
 	}
 
 	//Adds an attribute to our shader
@@ -115,7 +115,7 @@ namespace Randini
 	void GLSLProgram::addAttribute(const std::string& attributeName)
 	{
 		//pass in the program id, then the since we have recived a attribute and increment it after it runs the function, the name will be attibuteName
-		glBindAttribLocation(_programID, _numAttributes++, attributeName.c_str());
+    glBindAttribLocation(m_programID, m_numAttributes++, attributeName.c_str());
 	}
 
 	GLint GLSLProgram::getUniformLocation(const std::string& uniformName)
@@ -125,7 +125,7 @@ namespace Randini
 		//then the name and use a c_str
 		//use GLint location so the program can use it for error checking if the uniform can't be found
 		//overall helps with debugging
-		GLint location = glGetUniformLocation(_programID, uniformName.c_str());
+    GLint location = glGetUniformLocation(m_programID, uniformName.c_str());
 		//returns error if uniform can't be found
 		if (location == GL_INVALID_INDEX)
 		{
@@ -140,10 +140,10 @@ namespace Randini
 	{
 		//whenever we use the shader the compiler calls glUseProgram
 		//pass in the programID as its the ID that the progrma is using
-		glUseProgram(_programID);
+    glUseProgram(m_programID);
 		//enable all the attributes we added with addAttribute
 		//if we don't enable the attributes then the shader will be unable to use it
-		for (int i = 0; i < _numAttributes; i++)
+    for (int i = 0; i < m_numAttributes; i++)
 		{
 			glEnableVertexAttribArray(i);
 		}
@@ -154,7 +154,7 @@ namespace Randini
 	{
 		//since the shader has been used the program now needs to unuse the shader and delte the attributes
 		glUseProgram(0);
-		for (int i = 0; i < _numAttributes; i++)
+    for (int i = 0; i < m_numAttributes; i++)
 		{
 			glDisableVertexAttribArray(i);
 		}

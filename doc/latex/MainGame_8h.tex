@@ -1,0 +1,76 @@
+\hypertarget{MainGame_8h}{
+\section{Include/BallGame/MainGame.h File Reference}
+\label{MainGame_8h}\index{Include/BallGame/MainGame.h@{Include/BallGame/MainGame.h}}
+}
+
+
+Calls functions from Randini Engine \& deals with key input, drawing, deltatime.  
+{\ttfamily \#include $<$Include/Randini/Camera2D.h$>$}\par
+{\ttfamily \#include $<$Include/Randini/SpriteLoader.h$>$}\par
+{\ttfamily \#include $<$Include/Randini/InputControl.h$>$}\par
+{\ttfamily \#include $<$Include/Randini/Window.h$>$}\par
+{\ttfamily \#include $<$Include/Randini/GLSLProgram.h$>$}\par
+{\ttfamily \#include $<$Include/Randini/Timer.h$>$}\par
+{\ttfamily \#include $<$memory$>$}\par
+{\ttfamily \#include $<$utility$>$}\par
+{\ttfamily \#include \char`\"{}BallControl.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}BallRenderer.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}BallGrid.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}boost/random.hpp\char`\"{}}\par
+{\ttfamily \#include \char`\"{}boost/generator\_\-iterator.hpp\char`\"{}}\par
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classMainGame}{MainGame}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef boost::uniform\_\-real$<$ float $>$ \hyperlink{MainGame_8h_a3bbd6868c609bd755d6336c79fad44aa}{RandomDistribution}
+\item 
+\hypertarget{MainGame_8h_a643e304c4c67358cc9dc9414165dea85}{
+typedef boost::uniform\_\-int$<$ int $>$ {\bfseries RandomDistributionInt}}
+\label{MainGame_8h_a643e304c4c67358cc9dc9414165dea85}
+
+\item 
+\hypertarget{MainGame_8h_a0f7898448a7748cac3877d1f5c445dac}{
+typedef boost::mt19937 {\bfseries RNGType}}
+\label{MainGame_8h_a0f7898448a7748cac3877d1f5c445dac}
+
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{MainGame_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{GameState} \{ {\bfseries PLAY}, 
+{\bfseries EXIT}
+ \}
+\begin{DoxyCompactList}\small\item\em basic enum for gamestate \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{MainGame_8h_a3d75a3045c57e393b76a1760deb2533c}{
+const int {\bfseries CELL\_\-SIZE} = 12}
+\label{MainGame_8h_a3d75a3045c57e393b76a1760deb2533c}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Calls functions from Randini Engine \& deals with key input, drawing, deltatime. \begin{DoxyVersion}{Version}
+1.0 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Philip Gifford 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+02/05/15 
+\end{DoxyDate}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{MainGame_8h_a3bbd6868c609bd755d6336c79fad44aa}{
+\index{MainGame.h@{MainGame.h}!RandomDistribution@{RandomDistribution}}
+\index{RandomDistribution@{RandomDistribution}!MainGame.h@{MainGame.h}}
+\subsubsection[{RandomDistribution}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost::uniform\_\-real$<$float$>$ {\bf RandomDistribution}}}
+\label{MainGame_8h_a3bbd6868c609bd755d6336c79fad44aa}
+add boost to add imporved random libary. set each different call to certain name 

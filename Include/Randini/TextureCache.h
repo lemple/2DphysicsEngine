@@ -24,14 +24,21 @@ namespace Randini
 		TextureCache();
 		~TextureCache();
 
-    //returns GLTexture. Look up in the map and see if the texture is there
-		//if it is then it will just return the existing texture 
-		//the texture internally stores the GLuint ID which is a pointer to the actual texture
-		//if it dosent create a new which will push it back onto the texture map.
+
+
+    /**
+     * @brief getTexture
+     * returns GLTexture. Look up in the map and see if the texture is there
+     * if it is then it will just return the existing texture
+     * the texture internally stores the GLuint ID which is a pointer to the actual texture
+     * if it dosent create a new which will push it back onto the texture map.
+     *
+     * @param texturePath
+     * @return
+     */
 		GLTexture getTexture(std::string texturePath);
 
 	private:
 		//takes two elements. first element is the filepath and the name
-		std::map<std::string, GLTexture> _textureMap;
-	};
-}
+    std::map<std::string, GLTexture> m_textureMap;
+	};}

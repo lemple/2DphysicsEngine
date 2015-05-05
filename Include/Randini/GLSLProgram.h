@@ -29,41 +29,72 @@ namespace Randini
 		GLSLProgram();
 		~GLSLProgram();
 
-		//function compiles the shaders
-		//Makes a string varible so the path name of the file can be found and can extract information from the txt document
-		//overall reads the file and compiles them to a format that openGL can use
-		//make string const as they are never going to change and ti prevents possible bugs
+    /**
+     * @brief compileShaders
+     * function compiles the shaders
+     * Makes a string varible so the path name of the file can be found and can extract information from the txt document
+     * overall reads the file and compiles them to a format that openGL can use
+     * make string const as they are never going to change and ti prevents possible bugs
+     * @param vertexShaderFilePath
+     * @param fragmentShaderFilePath
+     */
 		void compileShaders(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath);
 
-		//link shader togehter into the final program
+    /**
+     * @brief linkShader
+     * link shader togehter into the final program
+     */
 		void linkShader();
 
-		
+    /**
+     * @brief addAttribute
+     * Retrives the shader attributes from the shader file
+     * @param attributeName
+     */
 		void addAttribute(const std::string& attributeName);
 
-		//need to ask openGL the location of the of the uniform
-		//make a string to askj the name of the uniform
+    /**
+     * @brief getUniformLocation
+     * need to ask openGL the location of the of the uniform
+     * make a string to askj the name of the uniform
+     * @param uniformName
+     * @return
+     */
 		GLint getUniformLocation(const std::string& uniformName);
 
+    /**
+     * @brief use
+     * Activates the shader and all its attributes
+     */
 		void use();
+
+    /**
+     * @brief unuse
+     * Disables the shader and all its attributes
+     */
 		void unuse();
 
 	private:
 		//counts the number of attributes that the shader has
-		int _numAttributes;
+    int m_numAttributes;
 
-		//makes it so it compiles both shaders rather then having 2 huge blocks of code 
-		//restricted to vertex anf frag
+    /**
+     * @brief compileShader
+     * @param filePath
+     * makes it so it compiles both shaders rather then having 2 huge blocks of code
+     * restricted to vertex anf frag
+     * @param id
+     */
 		void compileShader(const std::string& filePath, GLuint id);
 
 		//need id to hold onto the shader program 
 		//overall the id for the final program
-		GLuint _programID;
+    GLuint m_programID;
 
 		//I also need id's for my individual shader programs
 		//Overall this deal with the handles for the shader program
-		GLuint _vertexShaderID;
-		GLuint _fragmentShaderID;
+    GLuint m_vertexShaderID;
+    GLuint m_fragmentShaderID;
 	};
 }
 

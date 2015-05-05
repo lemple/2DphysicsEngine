@@ -38,63 +38,146 @@ public:
     : m_grabbedBall(-1), m_prevPosition(glm::vec2(0.0f)), m_cursorOffset(glm::vec2(0.0f)), m_gravityControl(GravityControl::NONE)
   {;}
 
-  //////////////////////////////UPDATE BALLS////////////////////////////////////////////////
 
-  ///Function intakes the vector of the balls which derives from Ball class so therefore
-  ///all values can be set.
-  ///BallGrid to allow the input of the 2D grid to update each ball with spatial partitioning
-  ///Delta time as all function need to be set to deltaTime, set mxX and maxY for wall collision detection.
-  virtual void update(std::vector <Ball>& balls, BallGrid* ballGrid, float deltaTime, int maxX, int maxY);
+  /**
+   * @brief update
+   * Function intakes the vector of the balls which derives from Ball class so therefore
+   * all values can be set.
+   * set mxX and maxY for wall collision detection.
+   *
+   * @param _balls
+   * @param _ballGrid
+   *              BallGrid to allow the input of the 2D grid to update
+   *              each ball with spatial partitioning
+   * @param _deltaTime
+   *              DeltaTime is set to keep motion at a fix rate
+   * @param _maxX
+   *              Set for wall collision in X direction
+   * @param _maxY
+   *              Set for wall collision in Y direction
+   */
+  virtual void update(std::vector <Ball>& _balls, BallGrid* _ballGrid, float _deltaTime, int _maxX, int _maxY);
 
+
+  /**
+   * @brief setGravityDirection
+   * Sets gravity direction control and allows the user
+   * to manipulate the direction of the balls
+   * @param
+   *      dir sets direction of the ball
+   */
   void setGravityDirection(GravityControl dir) { m_gravityControl = dir; }
 
-  ///  MouseBallChecker: Takes X and Y location for the mouse so it can be located to the location of the ball			         ///
-  ///  MouseDown: Takes in the values of the balls so they can be altered depending if the ball is grabbed                   ///
-  ///  Also location of the mouse for when the mouse is clicked down 										                                     ///
-  ///  MouseUP: Takes the values of the balls and apply's them new values when mouse is released               	             ///
-  ///  MouseMotion: Takes the general location of the cursor and allows the ball to follow the mouse cursor                  ///
-  ///  UpdateCollision: Takes in the BallGrid class so the balls can be checked for collision with other balls on the grid   ///
-  ///  CollisisonChecker: Detects the collision made between a ball and a vector of balls starting at a specific index       ///
-  virtual bool mouseBallChecker(Ball& b, float mouseX, float mouseY);
-  virtual void mouseDown(std::vector <Ball>& balls, float mouseX, float mouseY);
-  virtual void mouseUp(std::vector <Ball>& balls);
-  virtual void mouseMotion(std::vector <Ball>& balls, float mouseX, float mouseY);
-  virtual void updateCollision(BallGrid* ballGrid);
-  virtual void collisionChecker(Ball* ball, std::vector<Ball*>& ballsToCheck, int startingIndex);
+
+
+  /**
+   * @brief mouseDown Takes in the values of the balls so they can be
+   * altered depending if the ball is grabbed
+   * @param _balls
+   * @param _mouseX
+   * @param _mouseY
+   */
+  virtual void mouseDown(std::vector <Ball>& _balls, float _mouseX, float _mouseY);
+
+  /**
+   * @brief mouseUp takes the values of the balls and apply's them new values when mouse is released
+   *
+   * @param _balls
+   */
+  virtual void mouseUp(std::vector <Ball>& _balls);
+
+  /**
+   * @brief
+   * mouseMotion takes the general location of the cursor
+   * and allows the ball to follow the mouse cursor
+   * @param _balls
+   *              Sets the ball and allows it to be affected by the mosue
+   * @param _mouseX
+   *              Gets the coordinates of the mouse in x axis
+   * @param _mouseY
+   *              Gets the coordinates of the mouse in y axis
+   */
+  virtual void mouseMotion(std::vector <Ball>& _balls, float _mouseX, float _mouseY);
+
+  /**
+   * @brief mouseBallChecker
+   * Takes X and Y location for the
+   * mouse so it can be located to the location of the ball
+   * Also location of the mouse for when the mouse is clicked down
+   *
+   * @param _b
+   *          Set for returning the ball values
+   * @param _mouseX
+   *          Set gets the coordinates of the mouse in X axis
+   * @param _mouseY
+   *          Set gets the coordinates of the mouse in X axis
+   * @return
+   *          The coordinates of the mous linked to ball position
+   */
+  virtual bool mouseBallChecker(Ball& _b, float _mouseX, float _mouseY);
+
+  /**
+   * @brief updateCollision
+   * Takes in the BallGrid class so the balls can be
+   * checked for collision with other balls on the grid
+   * @param _ballGrid
+   *                Checks the ballGrid
+   */
+  virtual void updateCollision(BallGrid* _ballGrid);
+
+  /**
+   * @brief collisionChecker Detects the collision made between a ball
+   * and a vector of balls starting at a specific index
+   * @param _ball
+   * @param _ballsToCheck
+   * @param _startingIndex
+   */
+  virtual void collisionChecker(Ball* _ball, std::vector<Ball*>& _ballsToCheck, int _startingIndex);
 
   //checks collision between two balls
-  virtual void collisionChecker(Ball& b1, Ball& b2);
+  /**
+   * @brief collisionChecker Detects the collision between two balls in same cell
+   * @param _b1
+   * @param _b2
+   */
+  virtual void collisionChecker(Ball& _b1, Ball& _b2);
 
   ///vec 2 varible for direction of the gravity movement
   glm::vec2 getGravityMovement();
 
   //give the grabbed ball an index of -1 to be registerd in the vector of balls
-  int m_grabbedBall/* = -1*/;
+  int m_grabbedBall;
 
   //glm to deal with mathematics of collision
   //prevPosition is to work out the speed of the ball based on its previous position
-  glm::vec2 m_prevPosition/* = glm::vec2(0.0f)*/;
-  glm::vec2 m_cursorOffset/* = glm::vec2(0.0f)*/;
+  glm::vec2 m_prevPosition;
+  glm::vec2 m_cursorOffset;
 
-  GravityControl m_gravityControl/* = GravityControl::NONE*/;
+  GravityControl m_gravityControl;
 
 };
 
-
+///////All code the same compared to BallControl class aside from being able to transfer colour!///////
 class ColorTransferControl : public BallControl
 {
 public:
   glm::vec2 getGravityMovement();
 
-  virtual bool mouseBallChecker(Ball& b, float mouseX, float mouseY);
-  virtual void mouseDown(std::vector <Ball>& balls, float mouseX, float mouseY);
-  virtual void mouseUp(std::vector <Ball>& balls);
-  virtual void mouseMotion(std::vector <Ball>& balls, float mouseX, float mouseY);
+  virtual bool mouseBallChecker(Ball& _b, float _mouseX, float _mouseY);
 
-  virtual void update(std::vector <Ball>& balls, BallGrid* ballGrid, float deltaTime, int maxX, int maxY);
-  virtual void updateCollision(BallGrid* ballGrid) /*override*/;
-  virtual void collisionChecker(Ball* ball, std::vector<Ball*>& ballsToCheck, int startingIndex) /*override*/;
-  virtual void collisionChecker(Ball& b1, Ball& b2) /*override*/;
+  virtual void mouseDown(std::vector <Ball>& _balls, float _mouseX, float _mouseY);
+
+  virtual void mouseUp(std::vector <Ball>& _balls);
+
+  virtual void mouseMotion(std::vector <Ball>& _balls, float _mouseX, float _mouseY);
+
+  virtual void update(std::vector <Ball>& _balls, BallGrid* _ballGrid, float _deltaTime, int _maxX, int _maxY);
+
+  virtual void updateCollision(BallGrid* _ballGrid);
+
+  virtual void collisionChecker(Ball* _ball, std::vector<Ball*>& _ballsToCheck, int _startingIndex);
+
+  virtual void collisionChecker(Ball& _b1, Ball& _b2);
 
 
 };

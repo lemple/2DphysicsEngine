@@ -13,10 +13,10 @@
 // ---------------------------------------------------------------------------------------
 
 
-BallGrid::BallGrid(int width, int height, int cellSize) :
-m_width(width),
-m_height(height),
-m_cellSize(cellSize)
+BallGrid::BallGrid(int _width, int _height, int _cellSize) :
+m_width(_width),
+m_height(_height),
+m_cellSize(_cellSize)
 {
   //Divides width by cell size and chops off the end of a cell if the ball is
   //located near the side of the wall
@@ -30,13 +30,13 @@ m_cellSize(cellSize)
   //overall improve performance by a bit
 
   //allocate all the cells
-  const int BALLS_TO_RESERVE = 20;
+  const int m_radius = 20;
 
   //Use the formula for the area of a rectangle to create the grid to check collision
   m_cells.resize(m_numCellsY * m_numCellsX);
   for (int i = 0; i < m_cells.size(); i++)
   {
-    m_cells[i].balls.reserve(BALLS_TO_RESERVE);
+    m_cells[i].balls.reserve(m_radius);
   }
 }
 
@@ -44,20 +44,20 @@ BallGrid::~BallGrid()
 {
 }
 
-Cell* BallGrid::getCell(int x, int y)
+Cell* BallGrid::getCell(int _x, int _y)
 {
   //simple error checking  to bound the cells
   //if they don't match the correct values
-  if (x < 0) x = 0;
-  if (x >= m_numCellsX) x = m_numCellsX - 1;
+  if (_x < 0) _x = 0;
+  if (_x >= m_numCellsX) _x = m_numCellsX - 1;
 
-  if (y < 0) y = 0;
-  if (y >= m_numCellsY) y = m_numCellsY - 1;
+  if (_y < 0) _y = 0;
+  if (_y >= m_numCellsY) _y = m_numCellsY - 1;
 
   /////http://programmers.stackexchange.com/questions/212808/treating-a-1d-data-structure-as-2d-grid////
   //treats the 1D array as a 2D array
   //gets the area of the rectangle and finally add numCellX
-  return &m_cells[y * m_numCellsX + x];
+  return &m_cells[_y * m_numCellsX + _x];
 }
 
 Cell* BallGrid::getCell(const glm::vec2& pos)
@@ -70,53 +70,53 @@ Cell* BallGrid::getCell(const glm::vec2& pos)
   return getCell(cellX, cellY);
 }
 
-void BallGrid::addBall(Ball* ball)
+void BallGrid::addBall(Ball* _ball)
 {
   //Determine what cell the ball exist in
   //Here I get the cell the position belongs to
-  Cell* cell = getCell(ball->position);
+  Cell* cell = getCell(_ball->m_position);
 
   //adds the ball to that cell and pushes it back onto the stack
-  cell->balls.push_back(ball);
+  cell->balls.push_back(_ball);
 
   //Set ball owners cell equal to the current cell
   //this way each cell will know which one it belongs in
-  ball->cellLeader = cell;
+  _ball->m_cellLeader = cell;
 
   //Allows for the ball to be track through the cell index and allows for the
   //program to find position of the ball
-  ball->cellVectorIndex = cell->balls.size() - 1;
+  _ball->m_cellVectorIndex = cell->balls.size() - 1;
 
 }
 
-void BallGrid::addBall(Ball* ball, Cell* cell)
+void BallGrid::addBall(Ball* _ball, Cell* _cell)
 {
   //Follows same steps as addBall except removes first line
-  cell->balls.push_back(ball);
-  ball->cellLeader = cell;
-  ball->cellVectorIndex = cell->balls.size() - 1;
+  _cell->balls.push_back(_ball);
+  _ball->m_cellLeader = _cell;
+  _ball->m_cellVectorIndex = _cell->balls.size() - 1;
 }
 
 ///remove the ball from the cell
-void BallGrid::removeBall(Ball* ball)
+void BallGrid::removeBall(Ball* _ball)
 {
-  //replace ball->cellLeader->balls with balls
-  std::vector<Ball*>& balls = ball->cellLeader->balls;
+  //replace ball->m_cellLeader->balls with balls
+  std::vector<Ball*>& balls = _ball->m_cellLeader->balls;
 
   // Normal vector swap
-  balls[ball->cellVectorIndex] = balls.back();
+  balls[_ball->m_cellVectorIndex] = balls.back();
   balls.pop_back();
 
   //since moved the ball to new position need to update the balls new position
   //update vector index
   //If ball.size is 0 then this will always be false
-  if (ball->cellVectorIndex < balls.size())
+  if (_ball->m_cellVectorIndex < balls.size())
   {
    //update vector index
-   balls[ball->cellVectorIndex]->cellVectorIndex = ball->cellVectorIndex;
+   balls[_ball->m_cellVectorIndex]->m_cellVectorIndex = _ball->m_cellVectorIndex;
   }
   //set the index of the ball to -1 this specify no longer in a vector
-  ball->cellVectorIndex = -1;
-  ball->cellLeader = NULL;
+  _ball->m_cellVectorIndex = -1;
+  _ball->m_cellLeader = NULL;
 }
 

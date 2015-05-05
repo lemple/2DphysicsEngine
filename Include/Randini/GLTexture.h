@@ -19,11 +19,15 @@
 //openGL texture
 namespace Randini
 {
+  /**
+   * @brief The GLTexture struct
+   * make is for the id of the texture
+   * as well as width and height to know the properties of the texture
+   */
 	struct GLTexture
 	{
-		//make is for the id of the texture
-    //as well as width and height to know the properties of the textures
-		GLuint id;
+
+    GLuint id;
 		int width;
 		int height;
   };

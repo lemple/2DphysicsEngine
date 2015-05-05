@@ -1,0 +1,75 @@
+\hypertarget{classColorTransferControl}{
+\section{ColorTransferControl Class Reference}
+\label{classColorTransferControl}\index{ColorTransferControl@{ColorTransferControl}}
+}
+Inheritance diagram for ColorTransferControl::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{classColorTransferControl}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classColorTransferControl_a446d087e090cb13cefdffb89e8c409e3}{
+glm::vec2 \hyperlink{classColorTransferControl_a446d087e090cb13cefdffb89e8c409e3}{getGravityMovement} ()}
+\label{classColorTransferControl_a446d087e090cb13cefdffb89e8c409e3}
+
+\begin{DoxyCompactList}\small\item\em vec 2 varible for direction of the gravity movement \item\end{DoxyCompactList}\item 
+virtual bool \hyperlink{classColorTransferControl_a9bce863f9d08a2dd596a56a432861559}{mouseBallChecker} (\hyperlink{structBall}{Ball} \&b, float mouseX, float mouseY)
+\item 
+\hypertarget{classColorTransferControl_abac3a089bfe8d05916392cd7dd6807e3}{
+virtual void {\bfseries mouseDown} (std::vector$<$ \hyperlink{structBall}{Ball} $>$ \&balls, float mouseX, float mouseY)}
+\label{classColorTransferControl_abac3a089bfe8d05916392cd7dd6807e3}
+
+\item 
+\hypertarget{classColorTransferControl_a84e96588725965ae2e92b35c22f4a629}{
+virtual void {\bfseries mouseUp} (std::vector$<$ \hyperlink{structBall}{Ball} $>$ \&balls)}
+\label{classColorTransferControl_a84e96588725965ae2e92b35c22f4a629}
+
+\item 
+\hypertarget{classColorTransferControl_a77c38be1e1f33b81f1c4a3f82d671623}{
+virtual void {\bfseries mouseMotion} (std::vector$<$ \hyperlink{structBall}{Ball} $>$ \&balls, float mouseX, float mouseY)}
+\label{classColorTransferControl_a77c38be1e1f33b81f1c4a3f82d671623}
+
+\item 
+virtual void \hyperlink{classColorTransferControl_acbe9581f0be7624c9bc33d40e2ee1a6b}{update} (std::vector$<$ \hyperlink{structBall}{Ball} $>$ \&balls, \hyperlink{classBallGrid}{BallGrid} $\ast$ballGrid, float deltaTime, int maxX, int maxY)
+\item 
+\hypertarget{classColorTransferControl_aa8608d2417309f4d3a09e1b613060249}{
+virtual void {\bfseries updateCollision} (\hyperlink{classBallGrid}{BallGrid} $\ast$ballGrid)}
+\label{classColorTransferControl_aa8608d2417309f4d3a09e1b613060249}
+
+\item 
+\hypertarget{classColorTransferControl_a2a5fae5e92692b533d92ddf112661a17}{
+virtual void {\bfseries collisionChecker} (\hyperlink{structBall}{Ball} $\ast$ball, std::vector$<$ \hyperlink{structBall}{Ball} $\ast$ $>$ \&ballsToCheck, int startingIndex)}
+\label{classColorTransferControl_a2a5fae5e92692b533d92ddf112661a17}
+
+\item 
+\hypertarget{classColorTransferControl_a3071e883130aabc2b0642a75bf9225dc}{
+virtual void {\bfseries collisionChecker} (\hyperlink{structBall}{Ball} \&b1, \hyperlink{structBall}{Ball} \&b2)}
+\label{classColorTransferControl_a3071e883130aabc2b0642a75bf9225dc}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classColorTransferControl_a9bce863f9d08a2dd596a56a432861559}{
+\index{ColorTransferControl@{ColorTransferControl}!mouseBallChecker@{mouseBallChecker}}
+\index{mouseBallChecker@{mouseBallChecker}!ColorTransferControl@{ColorTransferControl}}
+\subsubsection[{mouseBallChecker}]{\setlength{\rightskip}{0pt plus 5cm}bool ColorTransferControl::mouseBallChecker ({\bf Ball} \& {\em b}, \/  float {\em mouseX}, \/  float {\em mouseY})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classColorTransferControl_a9bce863f9d08a2dd596a56a432861559}
+MouseBallChecker: Takes X and Y location for the mouse so it can be located to the location of the ball /// MouseDown: Takes in the values of the balls so they can be altered depending if the ball is grabbed /// Also location of the mouse for when the mouse is clicked down /// MouseUP: Takes the values of the balls and apply's them new values when mouse is released /// MouseMotion: Takes the general location of the cursor and allows the ball to follow the mouse cursor /// UpdateCollision: Takes in the \hyperlink{classBallGrid}{BallGrid} class so the balls can be checked for collision with other balls on the grid /// CollisisonChecker: Detects the collision made between a ball and a vector of balls starting at a specific index /// 
+
+Reimplemented from \hyperlink{classBallControl_a4f811993f5e8988eb4f4ab3c03dadf52}{BallControl}.\hypertarget{classColorTransferControl_acbe9581f0be7624c9bc33d40e2ee1a6b}{
+\index{ColorTransferControl@{ColorTransferControl}!update@{update}}
+\index{update@{update}!ColorTransferControl@{ColorTransferControl}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void ColorTransferControl::update (std::vector$<$ {\bf Ball} $>$ \& {\em \_\-balls}, \/  {\bf BallGrid} $\ast$ {\em \_\-ballGrid}, \/  float {\em \_\-deltaTime}, \/  int {\em \_\-maxX}, \/  int {\em \_\-maxY})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classColorTransferControl_acbe9581f0be7624c9bc33d40e2ee1a6b}
+Function intakes the vector of the balls which derives from \hyperlink{structBall}{Ball} class so therefore all values can be set. \hyperlink{classBallGrid}{BallGrid} to allow the input of the 2D grid to update each ball with spatial partitioning Delta time as all function need to be set to deltaTime, set mxX and maxY for wall collision detection. 
+
+Reimplemented from \hyperlink{classBallControl_af32a9b232b26af69231966ae3aab98d5}{BallControl}.
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Include/BallGame/\hyperlink{BallControl_8h}{BallControl.h}\item 
+src/Uni/\hyperlink{BallControl_8cpp}{BallControl.cpp}\end{DoxyCompactItemize}

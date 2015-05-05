@@ -22,7 +22,6 @@ namespace Randini
 
 	}
 
-	//calls fps lmiter so it can be called for other games
 	void FPSLimiter::init(float maxFPS)
 	{
 		setMaxFPS(maxFPS);
@@ -30,7 +29,7 @@ namespace Randini
 
 	void FPSLimiter::begin()
 	{
-		_startTicks = SDL_GetTicks();
+    m_startTicks = SDL_GetTicks();
 	}
 
 	
@@ -38,22 +37,21 @@ namespace Randini
 	{
 		calculateFPS();
 
-		float frameTicks = SDL_GetTicks() - _startTicks;
+    float frameTicks = SDL_GetTicks() - m_startTicks;
 
 		//limit fps to max fps by dividing 1000m/s by maxFPS and producing m/f
-		if (1000.0f / _maxFPS > frameTicks)
+    if (1000.0f / m_maxFPS > frameTicks)
 		{
 			//force the frame to delay by diffrence between desired frametime minus the actual frametime
-			SDL_Delay(1000.0f / _maxFPS - frameTicks);
+      SDL_Delay(1000.0f / m_maxFPS - frameTicks);
 		}
 		//return FPS
-		return _fps;
+    return m_fps;
 	}
 
-	//sets maxFPS for framerate
 	void FPSLimiter::setMaxFPS(float maxFPS)
 	{
-		_maxFPS = maxFPS;
+    m_maxFPS = maxFPS;
 	}
 
 	void FPSLimiter::calculateFPS()
@@ -72,10 +70,10 @@ namespace Randini
 		currentTicks = SDL_GetTicks();
 
 		//work out the frametime by minusing the currenticks from the previoous ticks
-		_frameTime = currentTicks - prevTicks;
+    m_frameTime = currentTicks - prevTicks;
 		//way to make sure the frameTiume is going through a circle of currentFrame is by
 		//using modulo and gives the remainder which will equal to frametime and will keep through a circle
-		frameTimes[currentFrame % NUM_SAMPLES] = _frameTime;
+    frameTimes[currentFrame % NUM_SAMPLES] = m_frameTime;
 
 		prevTicks = currentTicks;
 
@@ -108,11 +106,11 @@ namespace Randini
 		if (frameTimeAverage > 0)
 		{
 			//1000 m/s divided by the frameTimeaverage  
-			_fps = 1000.0f / frameTimeAverage;
+      m_fps = 1000.0f / frameTimeAverage;
 		}
 		else
 		{
-			_fps = 60.0f;
+      m_fps = 60.0f;
 		}
 	}
 

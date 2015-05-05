@@ -29,10 +29,10 @@ namespace Randini
 	{
 		//looks up the texture and sees if its in the map
 		//auto set for std::map<std::string, GLTexture>::iterator
-		auto mit = _textureMap.find(texturePath);
+    auto mit = m_textureMap.find(texturePath);
 
 		//check if the texture is not in the map
-		if (mit == _textureMap.end())
+    if (mit == m_textureMap.end())
 		{
 			//load a png file for the texture and return a texture
 			GLTexture newTexture = ImageLoader::loadPNG(texturePath);
@@ -40,7 +40,7 @@ namespace Randini
 			//insert it into the map
       //inserts a new pair and use make_pair which creates a new path
 			//paramters: current texture path and the new addedtexture to the program 
-      _textureMap.insert(make_pair(texturePath, newTexture));
+      m_textureMap.insert(make_pair(texturePath, newTexture));
 
 			//return the newTexture thats been created
 			return newTexture;

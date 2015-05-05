@@ -22,25 +22,53 @@ namespace Randini
 	public:
 		FPSLimiter();
 
+    /**
+     * @brief init
+     * calls fps lmiter so it can be called for other games
+     *
+     * @param maxFPS
+     */
 		void init(float maxFPS);
 
+    /**
+     * @brief setMaxFPS
+     * sets maxFPS for framerate to 60FPS
+     * @param maxFPS
+     */
 		void setMaxFPS(float maxFPS);
 
+    /**
+     * @brief begin
+     * Begins the ticks
+     */
 		void begin();
 
-		//limits the FPS to 60
-		//and returns the FPS
-		float end();
+    /**
+     * @brief end
+     * Limits the fps and forces a slight delay for the fps
+     * (Seeing the delay only applys if you print FPS to consol)
+     * And end the ticking
+     * @return The FPS
+     */
+    float end();
+
 	private:
+
+    /**
+     * @brief calculateFPS
+     * Calculates the FPS compared to the running time of the program
+     * This will output hig fs due to the small nature of the program
+     * However can set an average and overall recienve a lower framerate
+     */
 		void calculateFPS();
 
 		//general varibles for FPS functions
-		float _fps;
-		float _frameTime;
-		float _maxFPS;
+    float m_fps;
+    float m_frameTime;
+    float m_maxFPS;
 
 		//sets the start of the FPS whenever begin is called
-		unsigned int _startTicks;
+    unsigned int m_startTicks;
 	};
 }
 #endif
