@@ -122,21 +122,22 @@ namespace Randini
     //-------------------------------------------------------------------------------------------------
 
 	private:
-		//used to get the viewport dimensnions and tell them to the init screen function
-    int m_screenWidth, m_screenHeight;
 
-		//need to make a bool function in case the user wishes to change the camer matrix
-		//the varibles only need to change if the math changes
-    bool m_matrixChange;
-    float m_scale;
-		//sets the private position varible. 
-		//makes two floates with the glm libary 
+    //sets the private position varible.
+    //makes two floates with the glm libary
     glm::vec2 m_position;
-		//used to set the structure of the matrix
-		//mat 4 contructs a 4x4 matrix
+    //used to set the structure of the matrix
+    //mat 4 contructs a 4x4 matrix
     glm::mat4 m_cameraMatrix;
-		//stores the orthoprojection matriix
+    //stores the orthoprojection matriix
     glm::mat4 m_orthoMatrix;
+    float m_scale;
+    //need to make a bool function in case the user wishes to change the camer matrix
+    //the varibles only need to change if the math changes
+    bool m_matrixChange;
+		//used to get the viewport dimensnions and tell them to the init screen function
+    int m_screenHeight;
+    int m_screenWidth;
 	};
 
 }

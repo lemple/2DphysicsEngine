@@ -14,7 +14,7 @@
 
 
 Ball::Ball(float _radius, float _mass, const glm::vec2& c_position, const glm::vec2& c_velocity, unsigned int _textureId, const Randini::ColorRGBA8& c_color)
-  : m_textureId(0), m_cellVectorIndex(-1), m_cellLeader(NULL)
+  : m_textureId(0), m_cellVectorIndex(-1), m_cellLeader(0)
 {
   this-> m_radius = _radius;
   this-> m_mass = _mass;

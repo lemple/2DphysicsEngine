@@ -24,7 +24,7 @@ namespace Randini
 		//since the texture its returning is only 12bytes+ its ok to make a copy of it
 		//and overall won't effect the performance
 		// = {} will init everything to 0
-		GLTexture texture = {};
+    GLTexture texture = {0,0,0};
 
     //-------------------------------------------------------------------------------------------------
 
@@ -34,7 +34,7 @@ namespace Randini
 		std::vector<unsigned char> out;
 
 		//make long int as we need 8bytes instead of 4 
-		unsigned long width, height;
+    unsigned long width, height;
 
     //-------------------------------------------------------------------------------------------------
 
@@ -48,12 +48,11 @@ namespace Randini
 
     //-------------------------------------------------------------------------------------------------
 
-		//deocdePNG fucntion returns an int error 
-		//provides with error checking as well
+    //deocdePNG fucntion
 		//paramters: pass out in son that gets filled, mass in the width and height of the sprite  
 		//need to give pointer to the first element so you adress of in[0], 
 		//finally size of in and the number of bytes
-		int errorCode = decodePNG(out, width, height, &(in[0]), in.size());
+    decodePNG(out, width, height, &(in[0]), in.size());
 
     //-------------------------------------------------------------------------------------------------
 

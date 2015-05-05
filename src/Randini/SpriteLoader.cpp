@@ -199,12 +199,12 @@ namespace Randini
 
 		// Orphan the buffer since the program is using the same vertex of buffers
 		//Orphaning reallocates the buffer object before it beings modifying
-		//allocating its fatser then synchronization. and since nullptr is passed theres no need to sync
+    //allocating its fatser then synchronization. and since 0 is passed theres no need to sync
 		//this means the old buffer will be thrown away and a new one will be given overall increasing speed
 		//this makes oprhaning much more efficent.
 		//uploads the vertex buffer data
 		//use dynamic draw as the data store contents will be modified repeatedly and used many times.
-    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), NULL, GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), 0, GL_DYNAMIC_DRAW);
 		// Upload a range of data 
 		//paramters: where the uplaod will be, the size, and finaslly the data
 		glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.size() * sizeof(Vertex), vertices.data());
@@ -248,9 +248,9 @@ namespace Randini
 		//this is the postion attrubte pointer
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position));
 		//color attribute pointor
-		glVertexAttribPointer(1, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(Vertex), (void*)offsetof(Vertex, color));
+    glVertexAttribPointer(1, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(Vertex), (void*)offsetof(Vertex, color));
 		//uv attrib pointer
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, uv));
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, uv));
 
 		//unbind vertex attribute array
 		glBindVertexArray(0);

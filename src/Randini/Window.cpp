@@ -58,13 +58,13 @@ namespace Randini
 		//opens up SDL window for the gameEngine.
 		//this deals with all the operating systems and allows the program to run on Windows Mac etc
 		//The main job of this is to return a pointer to a window. If I succesfulkly create a window then the pointer will be valid
-		//If it fails it will return a nullptr
+    //If it fails it will return a 0
 		//first I set the window variable equal to SDL_CreateWindow. In the argument list we pass in the parameters from the create function
 		//The reason for this is so anyone adding a new game will be able to set new values for each argument giving them control
 		//In this case the arguments passed are the window name, the position of the screen for x and y, screenWidth, height and then any flags such as fullscreen etc
     m_sdlWindow = SDL_CreateWindow(windowName.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, flags);
 		//If the window does not return a pointer we call the fatal error class. This iverall helps with debugging!
-    if (m_sdlWindow == NULL)
+    if (m_sdlWindow == 0)
 		{
 			fatalError("SDL Window could not be created");
 		}

@@ -45,6 +45,9 @@ struct Cell;
 
 struct Ball
 {
+
+
+
   /**
    * @brief Ball
    * This struct simply contains all the data for the ball
@@ -60,17 +63,17 @@ struct Ball
        unsigned int _textureId, const Randini::ColorRGBA8& c_color);
 
   //-------------------------------------------------------------------------------------------------
+
+  //Here make the cell vector index which allows for me to keep track
+  //of the cell through the vector
+  unsigned int m_textureId;
+  int m_cellVectorIndex;
   float m_radius;
   float m_mass;
   glm::vec2 m_position;
   glm::vec2 m_velocity;
-  unsigned int m_textureId;
   Randini::ColorRGBA8 m_color;
   Cell* m_cellLeader;
-
-  //Here make the cell vector index which allows for me to keep track
-  //of the cell through the vector
-  int m_cellVectorIndex;
 
 };
 #endif

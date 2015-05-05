@@ -15,7 +15,7 @@
 void BallRenderer::initShaders()
 {
   //only inits the program if its needed
-  if (m_program == NULL)
+  if (m_program == 0)
   {
     m_program = std::unique_ptr<Randini::GLSLProgram>(new Randini::GLSLProgram());
     m_program->compileShaders("Shaders/textureShading.vert", "Shaders/textureShading.frag");

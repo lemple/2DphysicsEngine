@@ -13,7 +13,7 @@
 #include <SDL2/SDL.h>
 #include "MainGame.h"
 
-int main(int argc, char** argv)
+int main()
 {
   MainGame mainGame;
   mainGame.run();

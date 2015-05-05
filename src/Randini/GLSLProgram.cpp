@@ -136,7 +136,7 @@ namespace Randini
 		//overall helps with debugging
     GLint location = glGetUniformLocation(m_programID, uniformName.c_str());
 		//returns error if uniform can't be found
-		if (location == GL_INVALID_INDEX)
+    if (location == (int)GL_INVALID_INDEX)
 		{
 			fatalError("Uniform " + uniformName + " Not found in shader!!");
 		}
@@ -207,7 +207,7 @@ namespace Randini
 		const char* contentsPtr = fileContents.c_str();
 		//tell opengl that I want to use fileContents as the contents of the shader file
 		//grabs the ID of the shaders, number of strings which is 1, since I have one string just pass as nullptr
-    glShaderSource(id, 1, &contentsPtr, NULL);
+    glShaderSource(id, 1, &contentsPtr, 0);
 
 		//compile the shader and pass the id
 		glCompileShader(id);

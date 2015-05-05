@@ -260,7 +260,7 @@ void MainGame::initBalls()
   const int NUM_BALLS = 12000;
 
   //set random engine for each ball spawned allowing for them to appear in different locaiton east time
-  RNGType randomEngine((unsigned int)time(NULL));
+  RNGType randomEngine((unsigned int)time(0));
   RandomDistribution randX(0.0f, (float)m_screenWidth);
   RandomDistribution randY(0.0f, (float)m_screenHeight);
   RandomDistribution randDir(-1.0f, 1.0f);

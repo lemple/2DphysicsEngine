@@ -115,9 +115,9 @@ public:
   //-------------------------------------------------------------------------------------------------
 
   std::vector<Cell> m_cells;
-  int m_cellSize;
   int m_width;
   int m_height;
+  int m_cellSize;
   int m_numCellsX;
   int m_numCellsY;
 

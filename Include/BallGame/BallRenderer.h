@@ -31,7 +31,7 @@
 class BallRenderer
 {
 public:
-  BallRenderer() : m_program(NULL)
+  BallRenderer() : m_program(0)
   {
     ;
   }

@@ -35,7 +35,7 @@ m_cellSize(_cellSize)
 
   //Use the formula for the area of a rectangle to create the grid to check collision
   m_cells.resize(m_numCellsY * m_numCellsX);
-  for (int i = 0; i < m_cells.size(); i++)
+  for (int i = 0; i < (int)m_cells.size(); i++)
   {
     m_cells[i].balls.reserve(m_radius);
   }
@@ -122,14 +122,14 @@ void BallGrid::removeBall(Ball* _ball)
   //since moved the ball to new position need to update the balls new position
   //update vector index
   //If ball.size is 0 then this will always be false
-  if (_ball->m_cellVectorIndex < balls.size())
+  if (_ball-> m_cellVectorIndex < (int)balls.size())
   {
    //update vector index
    balls[_ball->m_cellVectorIndex]->m_cellVectorIndex = _ball->m_cellVectorIndex;
   }
   //set the index of the ball to -1 this specify no longer in a vector
   _ball->m_cellVectorIndex = -1;
-  _ball->m_cellLeader = NULL;
+  _ball->m_cellLeader = 0;
 }
 
 
