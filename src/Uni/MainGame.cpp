@@ -143,7 +143,8 @@ void MainGame::gameLoop()
     int i = 0;
 
     // Loop while the program still have steps to process.
-    while (totalDeltaTime > 0.0f && i < MAX_PHYSICS_STEPS) {
+    while (totalDeltaTime > 0.0f && i < MAX_PHYSICS_STEPS)
+    {
       // The deltaTime should be the the smaller of the totalDeltaTime and MAX_DELTA_TIME
       float deltaTime = std::min(totalDeltaTime, MAX_DELTA_TIME);
       // Update all physics here and pass in deltaTime
@@ -154,7 +155,7 @@ void MainGame::gameLoop()
       totalDeltaTime -= deltaTime;
       // Increment our frame counter so we can limit steps to MAX_PHYSICS_STEPS
       i++;
-    }
+     }
 
     //-------------------------------------------------------------------------------------------------
 
