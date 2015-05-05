@@ -15,20 +15,23 @@
 #ifndef __BALLCONTROL_H_
 #define __BALLCONTROL_H_
 
+//-------------------------------------------------------------------------------------------------
 #include <vector>
 
 //By storing all the ball components into Ball.h it has to be called
 //In each section so I can take the components and use them.fb
 #include "Ball.h"
 
-enum class GravityControl { NONE, LEFT, UP, RIGHT, DOWN };
+//-------------------------------------------------------------------------------------------------
 
+enum class GravityControl { NONE, LEFT, UP, RIGHT, DOWN };
 
 ///I found that any method to improve compile time would be beneficial and therefore
 ///used a forward deceleration to allow my program to compile faster.
 ///Forward deceleration for the ballGrid
 class BallGrid;
 
+//-------------------------------------------------------------------------------------------------
 
 //implements the logic for the balls and allows them to be controlled
 class BallControl
@@ -56,8 +59,10 @@ public:
    * @param _maxY
    *              Set for wall collision in Y direction
    */
-  virtual void update(std::vector <Ball>& _balls, BallGrid* _ballGrid, float _deltaTime, int _maxX, int _maxY);
+  virtual void update(std::vector <Ball>& _balls, BallGrid* _ballGrid,
+                               float _deltaTime, int _maxX, int _maxY);
 
+  //-------------------------------------------------------------------------------------------------
 
   /**
    * @brief setGravityDirection
@@ -68,23 +73,32 @@ public:
    */
   void setGravityDirection(GravityControl dir) { m_gravityControl = dir; }
 
-
+  //-------------------------------------------------------------------------------------------------
 
   /**
-   * @brief mouseDown Takes in the values of the balls so they can be
+   * @brief mouseDown
+   * Takes in the values of the balls so they can be
    * altered depending if the ball is grabbed
    * @param _balls
+   *              Applys the data of balls for when the mouse is down
    * @param _mouseX
+   *              Takes coordinates of the mouse in x axis
    * @param _mouseY
+   *              Takes coordinates of the mouse in Y axis
    */
   virtual void mouseDown(std::vector <Ball>& _balls, float _mouseX, float _mouseY);
+
+  //-------------------------------------------------------------------------------------------------
 
   /**
    * @brief mouseUp takes the values of the balls and apply's them new values when mouse is released
    *
    * @param _balls
+   *              Takes the data of balls and applys it to mouse up
    */
   virtual void mouseUp(std::vector <Ball>& _balls);
+
+  //-------------------------------------------------------------------------------------------------
 
   /**
    * @brief
@@ -98,6 +112,8 @@ public:
    *              Gets the coordinates of the mouse in y axis
    */
   virtual void mouseMotion(std::vector <Ball>& _balls, float _mouseX, float _mouseY);
+
+  //-------------------------------------------------------------------------------------------------
 
   /**
    * @brief mouseBallChecker
@@ -116,37 +132,55 @@ public:
    */
   virtual bool mouseBallChecker(Ball& _b, float _mouseX, float _mouseY);
 
+  //-------------------------------------------------------------------------------------------------
+
   /**
    * @brief updateCollision
    * Takes in the BallGrid class so the balls can be
    * checked for collision with other balls on the grid
    * @param _ballGrid
-   *                Checks the ballGrid
+   *                Checks the ballGrid to update collision
    */
   virtual void updateCollision(BallGrid* _ballGrid);
 
+  //-------------------------------------------------------------------------------------------------
+
   /**
-   * @brief collisionChecker Detects the collision made between a ball
+   * @brief collisionChecker
+   * Detects the collision made between a ball
    * and a vector of balls starting at a specific index
    * @param _ball
+   *              Takes the data of balls and check collision in same index
    * @param _ballsToCheck
+   *                    Registers which ball to check in certain cell
    * @param _startingIndex
+   *                    Sets index so ball will check with own cell without duplicating code
    */
   virtual void collisionChecker(Ball* _ball, std::vector<Ball*>& _ballsToCheck, int _startingIndex);
+
+  //-------------------------------------------------------------------------------------------------
 
   //checks collision between two balls
   /**
    * @brief collisionChecker Detects the collision between two balls in same cell
    * @param _b1
+   *          Sets ball one for elastic collision detection
    * @param _b2
+   *          Sets ball two for elastic collision detection
    */
   virtual void collisionChecker(Ball& _b1, Ball& _b2);
+
+  //-------------------------------------------------------------------------------------------------
 
   ///vec 2 varible for direction of the gravity movement
   glm::vec2 getGravityMovement();
 
+  //-------------------------------------------------------------------------------------------------
+
   //give the grabbed ball an index of -1 to be registerd in the vector of balls
   int m_grabbedBall;
+
+  //-------------------------------------------------------------------------------------------------
 
   //glm to deal with mathematics of collision
   //prevPosition is to work out the speed of the ball based on its previous position
@@ -155,7 +189,11 @@ public:
 
   GravityControl m_gravityControl;
 
+  //-------------------------------------------------------------------------------------------------
+
 };
+
+//-------------------------------------------------------------------------------------------------
 
 ///////All code the same compared to BallControl class aside from being able to transfer colour!///////
 class ColorTransferControl : public BallControl

@@ -21,12 +21,8 @@
 #include <glm/glm.hpp>
 #include <Include/Randini/Vertex.h>
 
+//-------------------------------------------------------------------------------------------------
 struct Cell;
-
-
-//single responsibilty principle
-//data for the ball
-
 
 ////////////////////////////////////////////////////
 //                                                //
@@ -40,9 +36,12 @@ struct Cell;
 //As well as that a lot of the variables used are access and used outside of class and therefore
 //having setters and getter in this header would be arbitrary
 
+//-------------------------------------------------------------------------------------------------
+
 //main purpose of the struct is to decouple different components such as rendering/controls etc
 struct Cell;
 
+//-------------------------------------------------------------------------------------------------
 
 struct Ball
 {
@@ -57,8 +56,10 @@ struct Ball
    * @param _textureId TextureId of the ball
    * @param c_color Color of the ball
    */
-  Ball(float _radius, float _mass, const glm::vec2& c_position, const glm::vec2& c_velocity, unsigned int _textureId, const Randini::ColorRGBA8& c_color);
+  Ball(float _radius, float _mass, const glm::vec2& c_position, const glm::vec2& c_velocity,
+       unsigned int _textureId, const Randini::ColorRGBA8& c_color);
 
+  //-------------------------------------------------------------------------------------------------
   float m_radius;
   float m_mass;
   glm::vec2 m_position;

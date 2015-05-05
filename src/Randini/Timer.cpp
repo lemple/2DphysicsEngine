@@ -22,16 +22,28 @@ namespace Randini
 
 	}
 
+  //-------------------------------------------------------------------------------------------------
+
 	void FPSLimiter::init(float maxFPS)
 	{
 		setMaxFPS(maxFPS);
 	}
+
+  //-------------------------------------------------------------------------------------------------
+
+  void FPSLimiter::setMaxFPS(float maxFPS)
+  {
+    m_maxFPS = maxFPS;
+  }
+
+  //-------------------------------------------------------------------------------------------------
 
 	void FPSLimiter::begin()
 	{
     m_startTicks = SDL_GetTicks();
 	}
 
+  //-------------------------------------------------------------------------------------------------
 	
 	float FPSLimiter::end()
 	{
@@ -49,12 +61,9 @@ namespace Randini
     return m_fps;
 	}
 
-	void FPSLimiter::setMaxFPS(float maxFPS)
-	{
-    m_maxFPS = maxFPS;
-	}
+  //-------------------------------------------------------------------------------------------------
 
-	void FPSLimiter::calculateFPS()
+  void FPSLimiter::calculateFPS()
 	{
 		//making them static as I want them to retain there state until they are called again
 		//number of frames the progrma will average
@@ -62,12 +71,16 @@ namespace Randini
 		static float frameTimes[NUM_SAMPLES];
 		static int currentFrame = 0;
 
+    //-------------------------------------------------------------------------------------------------
+
 		//used to retain the previous ticks and uses geticks which retrives the data of ticks 
 		//need previous ticks in order to calculate the frame time
 		static float prevTicks = SDL_GetTicks();
 		//monitors the current frameticks
 		float currentTicks;
 		currentTicks = SDL_GetTicks();
+
+    //-------------------------------------------------------------------------------------------------
 
 		//work out the frametime by minusing the currenticks from the previoous ticks
     m_frameTime = currentTicks - prevTicks;
@@ -79,8 +92,9 @@ namespace Randini
 
 		//number the progrma will average of FPS
 		int count;
-
 		currentFrame++;
+
+    //-------------------------------------------------------------------------------------------------
 
 		//if currentFrame is less then num_samples then only do currentFrame average
 		if (currentFrame < NUM_SAMPLES)
@@ -93,12 +107,17 @@ namespace Randini
 			count = NUM_SAMPLES;
 		}
 
+    //-------------------------------------------------------------------------------------------------
+
 		//gets running average of number of frames
 		float frameTimeAverage = 0;
 		for (int i = 0; i < count; i++)
 		{
 			frameTimeAverage += frameTimes[i];
 		}
+
+    //-------------------------------------------------------------------------------------------------
+
 		//actually average the frameTime
 		frameTimeAverage /= count;
 

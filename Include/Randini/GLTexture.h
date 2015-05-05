@@ -14,6 +14,8 @@
 #ifndef __GLTEXTURE_H_
 #define __GLTEXTURE_H_
 
+//-------------------------------------------------------------------------------------------------
+
 #include <GL/glew.h>
 
 //openGL texture

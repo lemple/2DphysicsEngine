@@ -15,10 +15,14 @@
 #ifndef __BALLGRID_H_
 #define __BALLGRID_H_
 
+//-------------------------------------------------------------------------------------------------
+
 #include "Ball.h"
 
 ///Inlcude vector as using vector for the list
 #include <vector>
+
+//-------------------------------------------------------------------------------------------------
 
 
 ///This struct contains a list of balls
@@ -29,8 +33,8 @@ struct Cell
   std::vector<Ball*> balls;
 };
 
-///Has a number of balls which will be stored in cells
-///To accomplish this I used a 2D grid of cells
+//-------------------------------------------------------------------------------------------------
+
 class BallGrid
 {
   //This allows ball controller to be able to access the private variables stored in Grid.h
@@ -39,49 +43,76 @@ class BallGrid
 public:
   /**
    * @brief BallGrid
+   * Has a number of balls which will be stored in cells
+   * To accomplish this I used a 2D grid of cells
    * @param _width
+   *              Sets width of cell in order to cut at the end
    * @param _height
+   *              Sets height of cell in order to cut at the end
    * @param _cellSize
+   *              Determins the size of the cell to sotre the ball in
    */
   BallGrid(int _width, int _height, int _cellSize);
   ~BallGrid();
 
-  ///Here I overload the getCell function as each one performs a similar job
+  //-------------------------------------------------------------------------------------------------
 
-  //)
+  ///Here I overload the getCell function as each one performs a similar job
   /**
-   * @brief getCell gets cell based on cell coordinates (ball
+   * @brief getCell
+   * Gets cell based on cell coordinates (ball
    * @param _x
+   *          Bounds the cells together
    * @param _y
-   * @return
+   *          Bounds the cells together
+   * @return Returns the area of the cell
    */
   Cell* getCell(int _x, int _y);
 
+  //-------------------------------------------------------------------------------------------------
+
   /**
-   * @brief get cell based on position of the cell in the window
+   * @brief getCell
+   * Get cell based on position of the cell in the window
    * @param pos
-   * @return
+   *          Gets the position of the cell depending on window size
+   *
+   * @return the position of the cell
    */
   Cell* getCell(const glm::vec2& _pos);
+
+  //-------------------------------------------------------------------------------------------------
 
   /**
    * @brief adds a ball and determines what cell it belongs to
    * @param ball
+   *            Adds ball data to see if it matches the position of the cell
    */
   void addBall(Ball* _ball);
 
+  //-------------------------------------------------------------------------------------------------
+
   /**
-   * @brief adds ball to specific cell
+   * @brief AddBall
+   * adds ball to specific cell
    * @param ball
+   *            Takes the data of the ball and adds the ball to the specific cell
    * @param cell
+   *            Takes the cell info in order to include the ball
    */
   void addBall(Ball* _ball, Cell* _cell);
 
+  //-------------------------------------------------------------------------------------------------
+
   /**
-   * @brief removeBall allows the ability removes the ball from the grid
+   * @brief removeBall
+   * allows the ability removes the ball from the grid
    * @param _ball
+   *            Gets the data of the ball to remove the ball from the grid
    */
   void removeBall(Ball* _ball);
+
+  //-------------------------------------------------------------------------------------------------
 
   std::vector<Cell> m_cells;
   int m_cellSize;
@@ -89,6 +120,8 @@ public:
   int m_height;
   int m_numCellsX;
   int m_numCellsY;
+
+  //-------------------------------------------------------------------------------------------------
 };
 #endif
 

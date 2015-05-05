@@ -20,16 +20,22 @@ namespace Randini
 	{
 	}
 
+  //-------------------------------------------------------------------------------------------------
+
 
 	TextureCache::~TextureCache()
 	{
 	}
+
+  //-------------------------------------------------------------------------------------------------
 
 	GLTexture TextureCache::getTexture(std::string texturePath)
 	{
 		//looks up the texture and sees if its in the map
 		//auto set for std::map<std::string, GLTexture>::iterator
     auto mit = m_textureMap.find(texturePath);
+
+    //-------------------------------------------------------------------------------------------------
 
 		//check if the texture is not in the map
     if (mit == m_textureMap.end())
@@ -45,6 +51,9 @@ namespace Randini
 			//return the newTexture thats been created
 			return newTexture;
 		}
+
+    //-------------------------------------------------------------------------------------------------
+
     //since mit is not pointing to texturemap.end it is pointing to the texture
     //Therefore return mit to the second pair which will return the texture
 		return mit->second;

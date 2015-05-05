@@ -34,9 +34,16 @@ namespace Randini
      * if it dosent create a new which will push it back onto the texture map.
      *
      * @param texturePath
+     *          Gets the texturepath from the texturemap and adds it if its not there
+     *
+     *
      * @return
+     *        //since mit is not pointing to texturemap.end it is pointing to the texture
+     *         //Therefore return mit to the second pair which will return the texture
      */
 		GLTexture getTexture(std::string texturePath);
+
+    //-------------------------------------------------------------------------------------------------
 
 	private:
 		//takes two elements. first element is the filepath and the name

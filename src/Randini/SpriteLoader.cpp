@@ -22,10 +22,14 @@ namespace Randini
 
 	}
 
+  //-------------------------------------------------------------------------------------------------
+
 
 	SpriteLoader::~SpriteLoader()
 	{
 	}
+
+  //-------------------------------------------------------------------------------------------------
 
 	
 	void SpriteLoader::init()
@@ -33,6 +37,8 @@ namespace Randini
 		//calls create vertex array whenever init is called
 		createVertexArray();
 	}
+
+  //-------------------------------------------------------------------------------------------------
 
 	//sets the sortype value to texture as default 
 	void SpriteLoader::begin(GlyphSortType sortType /* GlyphSortType::TEXTURE */)
@@ -46,9 +52,11 @@ namespace Randini
     m_glyphs.clear();
 	}
 
+  //-------------------------------------------------------------------------------------------------
+
 	void SpriteLoader::end()
 	{
-		//used to sort the glyyphs and genrate batched for the glyphs 
+
 
 		//set up all pointers for faster sorting
     m_glyphPointers.resize(m_glyphs.size());
@@ -61,12 +69,15 @@ namespace Randini
 		createRenderLoader();
 	}
 
+  //-------------------------------------------------------------------------------------------------
+
 	void SpriteLoader::draw(const glm::vec4& destinationRect, glm::vec4& uvRect, GLuint texture, float depth, const ColorRGBA8& color)
 	{
     m_glyphs.emplace_back(destinationRect, uvRect, texture, depth, color);
 	}
 
-	
+  //-------------------------------------------------------------------------------------------------
+
 	void SpriteLoader::renderLoader()
 	{
 		
@@ -89,6 +100,8 @@ namespace Randini
 		glBindVertexArray(0);
 	}
 
+  //-------------------------------------------------------------------------------------------------
+
 	//loops through the array of glyphs and each glyph needs to be added to the loader
 	//and if the program gets a glyph with a new texture then the program will make a new loader
 	void SpriteLoader::createRenderLoader()
@@ -96,7 +109,9 @@ namespace Randini
 		// Stores all vertices that are needed to upload
     // any time a new glyph is added going to pushback the vertices into the vertices
 		std::vector <Vertex> vertices;
-		
+
+    //-------------------------------------------------------------------------------------------------
+
     // sets the size of vertices to glyph.size * 6 and allocated all
     // the memory for the vertices needed from glyphs
 		// Resize the buffer to the exact size we need so the program will treat
@@ -104,24 +119,32 @@ namespace Randini
     // treating it like and array means the program can simply step though the array rather then calling push.back repeatedly
     vertices.resize(m_glyphPointers.size() * 6);
 
+    //-------------------------------------------------------------------------------------------------
+
 		//checks if there are any glyphs avalible
 		//empty also means 0
     if (m_glyphPointers.empty()) {
 			return;
 		}
 
+    //-------------------------------------------------------------------------------------------------
+
 		//need to store the opffset since it should only be 0 at the start
 		int offset = 0; // current offset
 		int cv = 0; // current vertex
+
+    //-------------------------------------------------------------------------------------------------
 
 		//Add the first batch
 		//wants to pass in a render loader object
 		//use emplace back so instead of passing renderLoader and making a copy
 		//The program simply just passes in the values
 		//this means emplace back will create a new object in renderLoader and inits it
-		
 		//without having to make a copy (overall saving one line of code and increasing functionality)
     m_renderLoader.emplace_back(offset, 6, m_glyphPointers[0]->texture);
+
+    //-------------------------------------------------------------------------------------------------
+
 		//defines the 6 vertices and increments each one so it can move onto the next vertice
 		//using th array glyphPointers 
     vertices[cv++] = m_glyphPointers[0]->topLeft;
@@ -130,9 +153,12 @@ namespace Randini
     vertices[cv++] = m_glyphPointers[0]->bottomRight;
     vertices[cv++] = m_glyphPointers[0]->topRight;
     vertices[cv++] = m_glyphPointers[0]->topLeft;
+
 		//each time a new vertices is made add 6 too offset
 		offset += 6;
 		
+    //-------------------------------------------------------------------------------------------------
+
 		//need to loop through the rest of the glyphs
 		//cg = currentGlyph
 		//Add all the rest of the glyphs
@@ -146,11 +172,14 @@ namespace Randini
         m_renderLoader.emplace_back(offset, 6, m_glyphPointers[cg]->texture);
 			}
 			//else increase the size of the current render loader 
-			else {
+      else
+      {
 				//use back to send it to the last vertices in the array
 				// If its part of the current loader increase numVertices by 6
         m_renderLoader.back().numVertices += 6;
 			}
+
+      //-------------------------------------------------------------------------------------------------
 			//follow same routine from before
 			//however instead of glyphsPointers to 0 set to currentGlyph
       vertices[cv++] = m_glyphPointers[cg]->topLeft;
@@ -162,6 +191,8 @@ namespace Randini
 			//incrementing offset by 6
 			offset += 6;
 		}
+
+    //-------------------------------------------------------------------------------------------------
 
 		// Bind the VBO
     glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
@@ -181,6 +212,8 @@ namespace Randini
 		// Unbind the VBO
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
+
+  //-------------------------------------------------------------------------------------------------
 
 	//type of object that encapuslates all of the state that we need to do to render openGL
 	void SpriteLoader::createVertexArray()
@@ -223,6 +256,8 @@ namespace Randini
 		glBindVertexArray(0);
 	}
 
+  //-------------------------------------------------------------------------------------------------
+
 	//need to sort based on what typoe of sorty type it is
 	void SpriteLoader::sortGlyphs()
 	{
@@ -231,8 +266,9 @@ namespace Randini
 		{
 		case GlyphSortType::BACK_TO_FRONT:
 			//stable sort for back to front
-			//praameters: takes in the interator to the begning of the container, the end of the container,
-			//predicate in which passes the function to stable sort which uses the function to sort
+      //praameters: takes in the interator to the beggining of the container,
+      //the end of the container,
+      //predict in which passes the function to stable sort which uses the function to sort
 			//overall determines what element is greater then or less then the other.
 			//this deals with depth value more
       std::stable_sort(m_glyphPointers.begin(), m_glyphPointers.end(), compareBackToFront);
@@ -249,10 +285,8 @@ namespace Randini
 		}
 	}
 
-	//want to return true if the value of a's dpeth is less then the value of b's depth
-	//this means the sorting algorithm is going to move th glyphs around in the vector
-	//this means for the other fucntions I can use this method to determine what goes where
-	//dending on its position in the vertex
+  //-------------------------------------------------------------------------------------------------
+
 	bool SpriteLoader::compareFrontToBack(Glyph* a, Glyph* b)
 	{
 		

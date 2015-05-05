@@ -15,6 +15,8 @@
 #include "TextureCache.h"
 #include <string>
 
+//-------------------------------------------------------------------------------------------------
+
 //make a static class as it only needs to   as it only needs to work with one instance of the texture chache
 namespace Randini
 {
@@ -27,9 +29,13 @@ namespace Randini
      * follows the same priciples as the texture chace and calls it
      *
      * @param texturePath
+     *            Gets the texture path from the texturecache
      * @return
+     *            Texturepath of the texture from the texturecache
      */
 		static GLTexture getTexture(std::string texturePath);
+
+    //-------------------------------------------------------------------------------------------------
 
 	private:
 

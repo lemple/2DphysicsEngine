@@ -24,6 +24,7 @@ m_cellSize(_cellSize)
   m_numCellsX = ceil((float)m_width / m_cellSize);
   m_numCellsY = ceil((float)m_height / m_cellSize);
 
+//-------------------------------------------------------------------------------------------------
 
   //Whenever init the grid loop through and reserve internal vectors
   //Otherwise keep having to resize internal memory for each different cell and
@@ -40,9 +41,13 @@ m_cellSize(_cellSize)
   }
 }
 
+//-------------------------------------------------------------------------------------------------
+
 BallGrid::~BallGrid()
 {
 }
+
+//-------------------------------------------------------------------------------------------------
 
 Cell* BallGrid::getCell(int _x, int _y)
 {
@@ -60,6 +65,8 @@ Cell* BallGrid::getCell(int _x, int _y)
   return &m_cells[_y * m_numCellsX + _x];
 }
 
+//-------------------------------------------------------------------------------------------------
+
 Cell* BallGrid::getCell(const glm::vec2& pos)
 {
   //Determine what cell the ball is in
@@ -69,6 +76,8 @@ Cell* BallGrid::getCell(const glm::vec2& pos)
   //call getCell against to error check for previous function
   return getCell(cellX, cellY);
 }
+
+//-------------------------------------------------------------------------------------------------
 
 void BallGrid::addBall(Ball* _ball)
 {
@@ -86,8 +95,9 @@ void BallGrid::addBall(Ball* _ball)
   //Allows for the ball to be track through the cell index and allows for the
   //program to find position of the ball
   _ball->m_cellVectorIndex = cell->balls.size() - 1;
-
 }
+
+//-------------------------------------------------------------------------------------------------
 
 void BallGrid::addBall(Ball* _ball, Cell* _cell)
 {
@@ -96,6 +106,8 @@ void BallGrid::addBall(Ball* _ball, Cell* _cell)
   _ball->m_cellLeader = _cell;
   _ball->m_cellVectorIndex = _cell->balls.size() - 1;
 }
+
+//-------------------------------------------------------------------------------------------------
 
 ///remove the ball from the cell
 void BallGrid::removeBall(Ball* _ball)
@@ -119,4 +131,5 @@ void BallGrid::removeBall(Ball* _ball)
   _ball->m_cellVectorIndex = -1;
   _ball->m_cellLeader = NULL;
 }
+
 

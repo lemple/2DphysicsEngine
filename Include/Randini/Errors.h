@@ -14,6 +14,8 @@
 
 #include <string>
 
+//-------------------------------------------------------------------------------------------------
+
 namespace Randini
 {
   /**
@@ -22,6 +24,7 @@ namespace Randini
    * use extern to tell the compiler that the
    * for decleration is coming from a diffrent location
    * @param _errorString
+   *              Prints out and error to the consol
    */
   extern void fatalError(std::string _errorString);
 }

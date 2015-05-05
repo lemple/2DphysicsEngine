@@ -15,6 +15,8 @@
 #ifndef __MAINGAME_H_
 #define __MAINGAME_H_
 
+//-------------------------------------------------------------------------------------------------
+
 #include <Include/Randini/Camera2D.h>
 #include <Include/Randini/SpriteLoader.h>
 #include <Include/Randini/InputControl.h>
@@ -30,11 +32,15 @@
 #include "boost/random.hpp"
 #include "boost/generator_iterator.hpp"
 
+//-------------------------------------------------------------------------------------------------
+
 ///add boost to add imporved random libary.
 ///set each different call to certain name
 typedef boost::uniform_real<float> RandomDistribution;
 typedef boost::uniform_int<int> RandomDistributionInt;
 typedef boost::mt19937 RNGType;
+
+//-------------------------------------------------------------------------------------------------
 
 ///basic enum for gamestate
 enum class GameState
@@ -42,6 +48,8 @@ enum class GameState
   PLAY,
   EXIT
 };
+
+//-------------------------------------------------------------------------------------------------
 
 //Size of the cells
 const int CELL_SIZE = 12;
@@ -64,6 +72,8 @@ public:
    */
   void run();
 
+  //-------------------------------------------------------------------------------------------------
+
 private:
 
   /**
@@ -80,6 +90,8 @@ private:
    */
   void initSystems();
 
+  //-------------------------------------------------------------------------------------------------
+
   /**
    * @brief gameLoop
    *calls the loop so certain functions and commands will continue to be processed until the game is quit
@@ -91,6 +103,8 @@ private:
    */
   void gameLoop();
 
+  //-------------------------------------------------------------------------------------------------
+
   /**
    * @brief initRenderers
    *inits all the different renderers and pushes each one to the stack if they are called
@@ -98,10 +112,14 @@ private:
    */
   void initRenderers();
 
+  //-------------------------------------------------------------------------------------------------
+
   /**
    * @brief initControllers inits all controllers and pushes each one to the stack if they are called
    */
   void initControllers();
+
+  //-------------------------------------------------------------------------------------------------
 
   /**
    * @brief drawGame
@@ -113,6 +131,8 @@ private:
    */
   void drawGame();
 
+  //-------------------------------------------------------------------------------------------------
+
   /**
    * @brief initBalls
    *Inits the 2D grid for spatial partioning
@@ -122,6 +142,8 @@ private:
    *Add the ball to the 2D grid
    */
   void initBalls();
+
+  //-------------------------------------------------------------------------------------------------
 
   /**
    * @brief update
@@ -133,6 +155,8 @@ private:
    */
   void update(float _deltaTime);
 
+  //-------------------------------------------------------------------------------------------------
+
   /**
    * @brief processInput
    * Deals with general user input
@@ -142,17 +166,24 @@ private:
    */
   void processInput();
 
+  //-------------------------------------------------------------------------------------------------
+
   int m_screenWidth, m_screenHeight;
   int m_currentRenderer;
   int m_currentController;
   std::vector<Ball> _ball;
 
+  //-------------------------------------------------------------------------------------------------
+
   std::vector<BallRenderer*> m_ballRenderers;
   std::vector<BallControl*> m_ballControllers;
+
+  //-------------------------------------------------------------------------------------------------
 
   //grid of spatial partioning
   std::unique_ptr<BallGrid> m_ballGrid;
 
+  //-------------------------------------------------------------------------------------------------
 
   Randini::Window m_window;
   Randini::SpriteLoader m_spriteLoader;
@@ -160,6 +191,8 @@ private:
   Randini::InputControl m_inputControl;
   Randini::GLSLProgram m_textureProgram;
   Randini::FPSLimiter m_fpsLimiter;
+
+  //-------------------------------------------------------------------------------------------------
 	
   float m_fps;
 

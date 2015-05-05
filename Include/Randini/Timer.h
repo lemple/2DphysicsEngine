@@ -15,6 +15,8 @@
 #ifndef __TIMER_H_
 #define __TIMER_H_
 
+//-------------------------------------------------------------------------------------------------
+
 namespace Randini
 {
 	class FPSLimiter
@@ -27,21 +29,29 @@ namespace Randini
      * calls fps lmiter so it can be called for other games
      *
      * @param maxFPS
+     *        Inits the maxFPS to the maxFPS
      */
 		void init(float maxFPS);
+
+    //-------------------------------------------------------------------------------------------------
 
     /**
      * @brief setMaxFPS
      * sets maxFPS for framerate to 60FPS
      * @param maxFPS
+     *          Calculates and sets the maxFPS to 60
      */
 		void setMaxFPS(float maxFPS);
+
+    //-------------------------------------------------------------------------------------------------
 
     /**
      * @brief begin
      * Begins the ticks
      */
 		void begin();
+
+    //-------------------------------------------------------------------------------------------------
 
     /**
      * @brief end
@@ -51,6 +61,8 @@ namespace Randini
      * @return The FPS
      */
     float end();
+
+    //-------------------------------------------------------------------------------------------------
 
 	private:
 
@@ -62,10 +74,14 @@ namespace Randini
      */
 		void calculateFPS();
 
+    //-------------------------------------------------------------------------------------------------
+
 		//general varibles for FPS functions
     float m_fps;
     float m_frameTime;
     float m_maxFPS;
+
+    //-------------------------------------------------------------------------------------------------
 
 		//sets the start of the FPS whenever begin is called
     unsigned int m_startTicks;

@@ -33,9 +33,10 @@ void BallControl::update(std::vector <Ball>& _balls, BallGrid* _ballGrid, float 
   //assign vec2 to the getter for gravity movement
   glm::vec2 gravity = getGravityMovement();
 
+  //-------------------------------------------------------------------------------------------------
 
-for (size_t i = 0; i < _balls.size(); i++)
- {
+  for (size_t i = 0; i < _balls.size(); i++)
+  {
    //sets a handle for better efficiently
    Ball& ball = _balls[i];
    //update the momentum and gravity of the ball if its not grabbed
@@ -70,6 +71,8 @@ for (size_t i = 0; i < _balls.size(); i++)
      ball.m_velocity += gravity * _deltaTime;
    }
 
+   //-------------------------------------------------------------------------------------------------
+
    //check wall collision
    //here if the ball position is less then its m_radius
    //I set the position to be equal to the balls m_radius
@@ -99,6 +102,8 @@ for (size_t i = 0; i < _balls.size(); i++)
      if (ball.m_velocity.y > 0) ball.m_velocity.y *= -1;
    }
 
+   //-------------------------------------------------------------------------------------------------
+
    //Checks to see if the ball position has changed:
    //store cell in a new cell and check it with the cells position
    Cell* newCell = _ballGrid->getCell(ball.m_position);
@@ -119,6 +124,8 @@ for (size_t i = 0; i < _balls.size(); i++)
    }
  }
 
+  //-------------------------------------------------------------------------------------------------
+
  //update all collisions
  updateCollision(_ballGrid);
 
@@ -128,6 +135,8 @@ for (size_t i = 0; i < _balls.size(); i++)
    m_prevPosition = _balls[m_grabbedBall].m_position;
  }
 }
+
+//-------------------------------------------------------------------------------------------------
 
 //sets the gravity controls for 4 directions
 glm::vec2 BallControl::getGravityMovement()
@@ -158,6 +167,8 @@ glm::vec2 BallControl::getGravityMovement()
  return gravity;
 }
 
+//-------------------------------------------------------------------------------------------------
+
 //deals with when the ball is grabbed
 //refer to ballControl.h for more info about parameters
 void BallControl::mouseDown(std::vector <Ball>& _balls, float _mouseX, float _mouseY)
@@ -174,8 +185,9 @@ void BallControl::mouseDown(std::vector <Ball>& _balls, float _mouseX, float _mo
      _balls[i].m_velocity = glm::vec2(0.0f);
    }
  }
-
 }
+
+//-------------------------------------------------------------------------------------------------
 
 //refer to BallControl.h for more info on function
 void BallControl::mouseUp(std::vector <Ball>& _balls)
@@ -191,6 +203,8 @@ void BallControl::mouseUp(std::vector <Ball>& _balls)
  }
 }
 
+//-------------------------------------------------------------------------------------------------
+
 //refer to BallControl.h for more info on function
 void BallControl::mouseMotion(std::vector <Ball>& _balls, float _mouseX, float _mouseY)
 {
@@ -202,11 +216,15 @@ void BallControl::mouseMotion(std::vector <Ball>& _balls, float _mouseX, float _
  }
 }
 
+//-------------------------------------------------------------------------------------------------
+
 bool BallControl::mouseBallChecker(Ball& b, float _mouseX, float _mouseY)
 {
  return (_mouseX >= b.m_position.x - b.m_radius && _mouseX < b.m_position.x + b.m_radius &&
      _mouseY >= b.m_position.y - b.m_radius && _mouseY < b.m_position.y + b.m_radius);
 }
+
+//-------------------------------------------------------------------------------------------------
 
 //Update the collision of the cells so use an L shape for best spatial partinong
 void BallControl::updateCollision(BallGrid* _ballGrid)
@@ -224,6 +242,8 @@ void BallControl::updateCollision(BallGrid* _ballGrid)
    //Store the handle to the grid to cell
    Cell& cell = _ballGrid->m_cells[i];
 
+   //-------------------------------------------------------------------------------------------------
+
    //Need to check through collision with our ball and a vector of balls
    //loop through all balls in a cell
    for (int j = 0; j < (int)cell.balls.size(); j++)
@@ -235,6 +255,8 @@ void BallControl::updateCollision(BallGrid* _ballGrid)
      //use cell.balls for the vector of balls to check and for starting index put j + 1
      //So program updates after itself
      collisionChecker(ball, cell.balls, j + 1);
+
+     //-------------------------------------------------------------------------------------------------
 
      //update collision with neighbour cells
      //Uses the L format http://gameprogrammingpatterns.com/spatial-partition.html
@@ -255,14 +277,18 @@ void BallControl::updateCollision(BallGrid* _ballGrid)
          collisionChecker(ball, _ballGrid->getCell(x - 1, y + 1)->balls, 0);
        }
      }
+
+     //-------------------------------------------------------------------------------------------------
      //check in up cell direction
      if (y > 0)
      {
        collisionChecker(ball, _ballGrid->getCell(x, y - 1)->balls, 0);
      }
    }
- }
+  }
 }
+
+//-------------------------------------------------------------------------------------------------
 
 //The reason for this function is to check collision easily and check collision with our own cell without
 //duplicating any code
@@ -277,6 +303,8 @@ void BallControl::collisionChecker(Ball* ball, std::vector<Ball*>& ballsToCheck,
    collisionChecker(*ball, *ballsToCheck[i]);
  }
 }
+
+//-------------------------------------------------------------------------------------------------
 
 
 //check for collision
@@ -315,6 +343,8 @@ void BallControl::collisionChecker(Ball& b1, Ball& b2)
  }
 }
 
+//-------------------------------------------------------------------------------------------------
+
 
 glm::vec2 ColorTransferControl::getGravityMovement()
 {
@@ -341,6 +371,8 @@ glm::vec2 ColorTransferControl::getGravityMovement()
  return gravity;
 }
 
+//-------------------------------------------------------------------------------------------------
+
 void ColorTransferControl::mouseDown(std::vector <Ball>& _balls, float _mouseX, float _mouseY)
 {
  for (size_t i = 0; i < _balls.size(); i++)
@@ -355,6 +387,8 @@ void ColorTransferControl::mouseDown(std::vector <Ball>& _balls, float _mouseX, 
  }
 }
 
+//-------------------------------------------------------------------------------------------------
+
 void ColorTransferControl::mouseUp(std::vector <Ball>& _balls)
 {
  if (m_grabbedBall != -1)
@@ -364,6 +398,8 @@ void ColorTransferControl::mouseUp(std::vector <Ball>& _balls)
  }
 }
 
+//-------------------------------------------------------------------------------------------------
+
 void ColorTransferControl::mouseMotion(std::vector <Ball>& _balls, float _mouseX, float _mouseY)
 {
  if (m_grabbedBall != -1)
@@ -372,11 +408,15 @@ void ColorTransferControl::mouseMotion(std::vector <Ball>& _balls, float _mouseX
  }
 }
 
+//-------------------------------------------------------------------------------------------------
+
 bool ColorTransferControl::mouseBallChecker(Ball& b, float _mouseX, float _mouseY)
 {
  return (_mouseX >= b.m_position.x - b.m_radius && _mouseX < b.m_position.x + b.m_radius &&
    _mouseY >= b.m_position.y - b.m_radius && _mouseY < b.m_position.y + b.m_radius);
 }
+
+//-------------------------------------------------------------------------------------------------
 
 void ColorTransferControl::update(std::vector <Ball>& _balls, BallGrid* _ballGrid, float _deltaTime, int _maxX, int _maxY)
 {
@@ -394,8 +434,9 @@ void ColorTransferControl::update(std::vector <Ball>& _balls, BallGrid* _ballGri
 
  }
 
- glm::vec2 gravity = getGravityMovement();
+ //-------------------------------------------------------------------------------------------------
 
+ glm::vec2 gravity = getGravityMovement();
 
  for (size_t i = 0; i < _balls.size(); i++)
  {
@@ -428,6 +469,8 @@ void ColorTransferControl::update(std::vector <Ball>& _balls, BallGrid* _ballGri
      ball.m_velocity += gravity * _deltaTime;
    }
 
+   //-------------------------------------------------------------------------------------------------
+
    //check wall collision
    if (ball.m_position.x < ball.m_radius)
    {
@@ -450,6 +493,8 @@ void ColorTransferControl::update(std::vector <Ball>& _balls, BallGrid* _ballGri
      if (ball.m_velocity.y > 0) ball.m_velocity.y *= -1;
    }
 
+   //-------------------------------------------------------------------------------------------------
+
    Cell* newCell = _ballGrid->getCell(ball.m_position);
    if (newCell != ball.m_cellLeader)
    {
@@ -458,6 +503,8 @@ void ColorTransferControl::update(std::vector <Ball>& _balls, BallGrid* _ballGri
      _ballGrid->addBall(&_balls[i], newCell);
    }
  }
+
+ //-------------------------------------------------------------------------------------------------
 
  //update all collisions
  updateCollision(_ballGrid);
@@ -469,6 +516,8 @@ void ColorTransferControl::update(std::vector <Ball>& _balls, BallGrid* _ballGri
  }
 }
 
+//-------------------------------------------------------------------------------------------------
+
 void ColorTransferControl::updateCollision(BallGrid* _ballGrid)
 {
  for (int i = 0; i < (int)_ballGrid->m_cells.size(); i++)
@@ -479,6 +528,8 @@ void ColorTransferControl::updateCollision(BallGrid* _ballGrid)
    int y = i / _ballGrid->m_numCellsX;
 
    Cell& cell = _ballGrid->m_cells[i];
+
+   //-------------------------------------------------------------------------------------------------
 
    //loop throuhg all balls in a cell
    for (int j = 0; j < (int)cell.balls.size(); j++)
@@ -511,6 +562,8 @@ void ColorTransferControl::updateCollision(BallGrid* _ballGrid)
  }
 }
 
+//-------------------------------------------------------------------------------------------------
+
 void ColorTransferControl::collisionChecker(Ball* _ball, std::vector<Ball*>& ballsToCheck, int startingIndex)
 {
  for (int i = (int)startingIndex; i < (int)ballsToCheck.size(); i++)
@@ -518,6 +571,8 @@ void ColorTransferControl::collisionChecker(Ball* _ball, std::vector<Ball*>& bal
    collisionChecker(*_ball, *ballsToCheck[i]);
  }
 }
+
+//-------------------------------------------------------------------------------------------------
 
 void ColorTransferControl::collisionChecker(Ball& b1, Ball& b2)
 {
@@ -560,6 +615,8 @@ void ColorTransferControl::collisionChecker(Ball& b1, Ball& b2)
    }
  }
 }
+
+
 
 
 

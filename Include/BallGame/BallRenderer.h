@@ -15,12 +15,16 @@
 #ifndef __BALLRENDERER_H_
 #define __BALLRENDERER_H_
 
+//-------------------------------------------------------------------------------------------------
+
 #include <Include/Randini/SpriteLoader.h>
 #include <Include/Randini/GLSLProgram.h>
 
 #include <memory>
 #include <vector>
 #include "Ball.h"
+
+//-------------------------------------------------------------------------------------------------
 
 
 //renders the balls
@@ -39,23 +43,36 @@ public:
    */
   void initShaders();
 
+  //-------------------------------------------------------------------------------------------------
+
   /**
-   * @brief renderBalls Make this a virtual function as I want to derive form this
+   * @brief renderBalls
+   * Make this a virtual function as I want to derive form this
    * Imports the sprites from the game engine
    * renders a list of balls to render all the balls
    * Instead of rendering a single ball loop through all the balls
    * @param _spriteLoader
+   *                Imports the spriteLoader from Randini enabling the sprties to be loaded
    * @param _balls
+   *                Takes the data of balls to allow them to be rendered
    * @param _projectionMatrix
+   *                Grabs camera matrix as its needed for the uniform sampler
+   *
    */
-  virtual void renderBalls(Randini::SpriteLoader& _spriteLoader, const std::vector <Ball>& _balls, const glm::mat4& _projectionMatrix);
+  virtual void renderBalls(Randini::SpriteLoader& _spriteLoader, const std::vector <Ball>& _balls,
+                                                              const glm::mat4& _projectionMatrix);
+
+  //-------------------------------------------------------------------------------------------------
 
 protected:
   std::unique_ptr<Randini::GLSLProgram> m_program;
 };
 
+//-------------------------------------------------------------------------------------------------
+
 /**
- * @brief The PropulsionBallRenderer class
+ * @brief PropulsionBallRenderer
+ * The PropulsionBallRenderer class
  * When balls increase in velocity they become brighter
  * Set new renderer using same elements from renderBalls but altered
  * inherits the virtual function
@@ -66,13 +83,20 @@ public:
   ///
 
   /**
-   * @brief renderBalls Since it inherits from renderballs add it to public.
-   *  Unfortunately override was a c++11 so there's no way to ensure of this
+   * @brief renderBalls
+   * Since it inherits from renderballs add it to public.
+   * Unfortunately override was a c++11 so there's no way to ensure of this
    * @param _spriteLoader
+   *                Imports the spriteLoader so it canrender balls with new renderer
    * @param _balls
+   *                Takes the data of balls to allow them to be rendered
    * @param _projectionMatrix
+   *                Grabs camera matrix as its needed for the uniform sampler
    */
-  virtual void renderBalls(Randini::SpriteLoader& _spriteLoader, const std::vector <Ball>& _balls, const glm::mat4& _projectionMatrix);
+  virtual void renderBalls(Randini::SpriteLoader& _spriteLoader, const std::vector <Ball>& _balls,
+                                                              const glm::mat4& _projectionMatrix);
+
+  //-------------------------------------------------------------------------------------------------
 
 };
 
@@ -90,9 +114,13 @@ public:
    * Visualise the velocity of ball renderers when moving in the x direction
    *
    * @param screenWidth
+   *                Takes the screenWidth of the window
    * @param screenHeight
+   *                Takes the screenHeight of the window
    */
   VelocityBallRendererX(int screenWidth, int screenHeight);
+
+  //-------------------------------------------------------------------------------------------------
 
   /**
    * @brief renderBalls
@@ -100,10 +128,16 @@ public:
    *  Unfortunately override was a c++11 so there's no way to ensure of this
    *
    * @param _spriteLoader
+   *              Imports the spriteLoader so it canrender balls with new renderer
    * @param _balls
+   *              Takes the data of balls to allow them to be rendered
    * @param _projectionMatrix
+   *              Grabs camera matrix as its needed for the uniform sampler
    */
-  virtual void renderBalls(Randini::SpriteLoader& _spriteLoader, const std::vector <Ball>& _balls, const glm::mat4& _projectionMatrix);
+  virtual void renderBalls(Randini::SpriteLoader& _spriteLoader, const std::vector <Ball>& _balls,
+                                                              const glm::mat4& _projectionMatrix);
+
+  //-------------------------------------------------------------------------------------------------
 
 private:
   //Get the location of the screen
@@ -124,17 +158,30 @@ public:
    * Visualise the velocity of ball renderers when moving in the y direction
    *
    * @param _screenWidth
+   *                    Takes the screenWidth of the window
    * @param _screenHeight
+   *                    Takes the screenHeight of the window
    */
   VelocityBallRendererY(int _screenWidth, int _screenHeight);
 
+  //-------------------------------------------------------------------------------------------------
+
   /**
    * @brief renderBalls
+   * Since it inherits from renderballs add it to public.
+   *  Unfortunately override was a c++11 so there's no way to ensure of this
+   *
    * @param _spriteLoader
+   *              Imports the spriteLoader so it canrender balls with new renderer
    * @param _balls
+   *              Takes the data of balls to allow them to be rendered
    * @param _projectionMatrix
+   *              Grabs camera matrix as its needed for the uniform sampler
    */
-  virtual void renderBalls(Randini::SpriteLoader& _spriteLoader, const std::vector <Ball>& _balls, const glm::mat4& _projectionMatrix);
+  virtual void renderBalls(Randini::SpriteLoader& _spriteLoader, const std::vector <Ball>& _balls,
+                                                              const glm::mat4& _projectionMatrix);
+
+  //-------------------------------------------------------------------------------------------------
 
 private:
   int m_screenWidth;

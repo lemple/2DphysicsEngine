@@ -22,15 +22,18 @@ namespace Randini
 	{
 	}
 
+  //-------------------------------------------------------------------------------------------------
 
 	InputControl::~InputControl()
 	{
 	}
 
+  //-------------------------------------------------------------------------------------------------
+
 	void InputControl::update()
 	{
-    //  Loops through m_keyMap using a for each loop and copy it over to m_previousKeyMap
-//    for(auto& it : m_keyMap)
+    //Loops through m_keyMap using a for each loop and copy it over to m_previousKeyMap
+    //for(auto& it : m_keyMap)
     for( KeyPair::const_iterator key = m_keyMap.begin();
          key != m_keyMap.end();
          key++)
@@ -38,6 +41,8 @@ namespace Randini
       m_previousKeyMap[(*key).first] = (*key).second;
 		}
 	}
+
+  //-------------------------------------------------------------------------------------------------
 
 	void InputControl::pressKey(unsigned int keyID)
 	{
@@ -47,12 +52,15 @@ namespace Randini
     m_keyMap[keyID] = true;
 	}
 
+  //-------------------------------------------------------------------------------------------------
+
 	void InputControl::releaseKey(unsigned int keyID)
 	{
 		//follow same scenario as presskey except set to false
     m_keyMap[keyID] = false;
 	}
 
+  //-------------------------------------------------------------------------------------------------
 	
 	void InputControl::setMouseCoords(float x, float y)
 	{
@@ -62,6 +70,8 @@ namespace Randini
     m_mouseCoords.y = y;
 
 	}
+
+  //-------------------------------------------------------------------------------------------------
 
 	bool InputControl::isKeyDown(unsigned int keyID)
 	{
@@ -82,6 +92,8 @@ namespace Randini
 		}
 	}
 
+  //-------------------------------------------------------------------------------------------------
+
 	bool InputControl::isKeyPressed(unsigned int keyID)
 	{
 		//check if it is pressed this frame and wasent pressed last frame
@@ -91,6 +103,8 @@ namespace Randini
 		}
 		return false;
 	}
+
+  //-------------------------------------------------------------------------------------------------
 
 	bool InputControl::wasKeyDown(unsigned int keyID)
 	{

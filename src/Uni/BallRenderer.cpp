@@ -26,6 +26,8 @@ void BallRenderer::initShaders()
   }
 }
 
+//-------------------------------------------------------------------------------------------------
+
 void BallRenderer::renderBalls(Randini::SpriteLoader& _spriteLoader, const std::vector<Ball>& _balls, const glm::mat4& _projectionMatrix)
 {
   glClearColor(0.16f, 0.14f, 0.14f, 1.0f);
@@ -69,6 +71,7 @@ void BallRenderer::renderBalls(Randini::SpriteLoader& _spriteLoader, const std::
   m_program->unuse();
 }
 
+//-------------------------------------------------------------------------------------------------
 
 void PropulsionBallRenderer::renderBalls(Randini::SpriteLoader& _spriteLoader, const std::vector <Ball>& _balls, const glm::mat4& _projectionMatrix)
 {
@@ -87,6 +90,8 @@ void PropulsionBallRenderer::renderBalls(Randini::SpriteLoader& _spriteLoader, c
   //grab the camera matrix
   GLint pUniform = m_program->getUniformLocation("P");
   glUniformMatrix4fv(pUniform, 1, GL_FALSE, &_projectionMatrix[0][0]);
+
+  //-------------------------------------------------------------------------------------------------
 
   //render all the balls
   for(std::vector<Ball>::const_iterator ball = _balls.begin();
@@ -112,12 +117,16 @@ void PropulsionBallRenderer::renderBalls(Randini::SpriteLoader& _spriteLoader, c
     _spriteLoader.draw(destRect, uvRect, ball->m_textureId, 0.0f, color);
   }
 
+  //-------------------------------------------------------------------------------------------------
+
   _spriteLoader.end();
   _spriteLoader.renderLoader();
 
   m_program->unuse();
 }
 
+
+//-------------------------------------------------------------------------------------------------
 
 VelocityBallRendererX::VelocityBallRendererX(int _screenWidth, int _screenHeight) :
 m_screenWidth(_screenWidth),
@@ -126,6 +135,7 @@ m_screenHeight(_screenHeight)
 
 }
 
+//-------------------------------------------------------------------------------------------------
 
 void VelocityBallRendererX::renderBalls(Randini::SpriteLoader& _spriteLoader, const std::vector <Ball>& _balls, const glm::mat4& _projectionMatrix)
 {
@@ -145,16 +155,23 @@ void VelocityBallRendererX::renderBalls(Randini::SpriteLoader& _spriteLoader, co
   GLint pUniform = m_program->getUniformLocation("P");
   glUniformMatrix4fv(pUniform, 1, GL_FALSE, &_projectionMatrix[0][0]);
 
+  //-------------------------------------------------------------------------------------------------
+
   //render all the balls
   //  for (auto& ball : balls)
   for(std::vector<Ball>::const_iterator ball = _balls.begin();
       ball != _balls.end();
       ball++)
   {
+
+    //-------------------------------------------------------------------------------------------------
+
     glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
     const glm::vec4 destRect(ball->m_position.x - ball->m_radius, ball->m_position.y - ball->m_radius, ball->m_radius * 2.0f, ball->m_radius * 2.0f);
 
     Randini::ColorRGBA8 color;
+
+    //-------------------------------------------------------------------------------------------------
 
   //make float multiplier to multiply easier
   //Multiplyu it by the velocity and clamp again
@@ -172,12 +189,15 @@ void VelocityBallRendererX::renderBalls(Randini::SpriteLoader& _spriteLoader, co
     _spriteLoader.draw(destRect, uvRect, ball->m_textureId, 0.0f, color);
   }
 
+  //-------------------------------------------------------------------------------------------------
+
   _spriteLoader.end();
   _spriteLoader.renderLoader();
 
   m_program->unuse();
 }
 
+//-------------------------------------------------------------------------------------------------
 
 VelocityBallRendererY::VelocityBallRendererY(int _screenWidth, int _screenHeight) :
 m_screenWidth(_screenWidth),
@@ -185,6 +205,8 @@ m_screenHeight(_screenHeight)
 {
 
 }
+
+//-------------------------------------------------------------------------------------------------
 
 //Same scenario as VelocityBallRendererX but change values to Y direction
 void VelocityBallRendererY::renderBalls(Randini::SpriteLoader& _spriteLoader, const std::vector <Ball>& _balls, const glm::mat4& _projectionMatrix)
@@ -204,11 +226,16 @@ void VelocityBallRendererY::renderBalls(Randini::SpriteLoader& _spriteLoader, co
   GLint pUniform = m_program->getUniformLocation("P");
   glUniformMatrix4fv(pUniform, 1, GL_FALSE, &_projectionMatrix[0][0]);
 
+  //-------------------------------------------------------------------------------------------------
+
   //render all the balls
   for(std::vector<Ball>::const_iterator ball = _balls.begin();
       ball != _balls.end();
       ball++)
   {
+
+    //-------------------------------------------------------------------------------------------------
+
     glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
     const glm::vec4 destRect(ball->m_position.x - ball->m_radius, ball->m_position.y - ball->m_radius, ball->m_radius * 2.0f, ball->m_radius * 2.0f);
 
@@ -223,6 +250,8 @@ void VelocityBallRendererY::renderBalls(Randini::SpriteLoader& _spriteLoader, co
 
     _spriteLoader.draw(destRect, uvRect, ball->m_textureId, 0.0f, color);
   }
+
+  //-------------------------------------------------------------------------------------------------
 
   _spriteLoader.end();
   _spriteLoader.renderLoader();

@@ -15,9 +15,13 @@
 #ifndef __WINDOW_H_
 #define __WINDOW_H_
 
+//-------------------------------------------------------------------------------------------------
+
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
 #include <string>
+
+//-------------------------------------------------------------------------------------------------
 
 namespace Randini
 {
@@ -27,13 +31,15 @@ namespace Randini
 	//need each one to represent a certain bit
 	enum WindowFlags { HIDDEN = 0x1, FULLSCREEN = 0x2, BORDERLESS = 0x4 };
 
+  //-------------------------------------------------------------------------------------------------
+
 	class Window
 	{
 	public:
 		Window();
 		~Window();
 
-
+    //-------------------------------------------------------------------------------------------------
 
     /**
      * @brief create
@@ -44,19 +50,29 @@ namespace Randini
      * other varibles are set so that they can be changed when I start up a new project
      *
      * @param windowName
+     *                Set the name of the window using a string
      * @param screenWidth
+     *                Set the Width of the screen to be alterd
      * @param screenHeight
+     *                Allow the ability to set the height of the screen
      * @param currentFlags
+     *                Allow for certain flags to be set e.g BORDERLESS
      * @return
+     *        returns 0
+     *
      */
 		int create(std::string windowName, int screenWidth, int screenHeight, unsigned int currentFlags);
 
-		//function to swap the buffers around each frame to prevetn flickering
+    //-------------------------------------------------------------------------------------------------
+
+    //
     /**
      * @brief swapBuffers
+     * Function to swap the buffers around each frame to prevetn flickering
      */
 		void swapBuffers();
 
+    //-------------------------------------------------------------------------------------------------
 
     /**
    * @brief getScreenWidth
@@ -66,6 +82,9 @@ namespace Randini
    */
   int getScreenWidth() { return m_screenWidth; }
   int getScreenHeight() { return m_screenHeight; }
+
+  //-------------------------------------------------------------------------------------------------
+
 	private:
 		//creates the SDL_windows for my game engine and allows me to set up the window that can be called in any other new project/solution
 		//This creates a private varible which holds the handles to determin the screen basic operations. 

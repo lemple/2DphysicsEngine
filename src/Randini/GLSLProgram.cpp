@@ -27,10 +27,13 @@ namespace Randini
 
 	}
 
+  //-------------------------------------------------------------------------------------------------
 
 	GLSLProgram::~GLSLProgram()
 	{
 	}
+
+  //-------------------------------------------------------------------------------------------------
 
 	//Compiles the shaders into a form that your GPU can understand
 	//this function overall opens the file shader. reads the file shader and then finally compile the shaders
@@ -65,6 +68,8 @@ namespace Randini
     compileShader(vertexShaderFilePath, m_vertexShaderID);
     compileShader(fragmentShaderFilepath, m_fragmentShaderID);
 	}
+
+  //-------------------------------------------------------------------------------------------------
 
 	void GLSLProgram::linkShader()
 	{
@@ -109,6 +114,8 @@ namespace Randini
     glDeleteShader(m_fragmentShaderID);
 	}
 
+  //-------------------------------------------------------------------------------------------------
+
 	//Adds an attribute to our shader
 	//it should always be called inbetween compiling and linking 
 	////binds out attributes and to tell vertex string is the first attribute
@@ -117,6 +124,8 @@ namespace Randini
 		//pass in the program id, then the since we have recived a attribute and increment it after it runs the function, the name will be attibuteName
     glBindAttribLocation(m_programID, m_numAttributes++, attributeName.c_str());
 	}
+
+  //-------------------------------------------------------------------------------------------------
 
 	GLint GLSLProgram::getUniformLocation(const std::string& uniformName)
 	{
@@ -148,6 +157,8 @@ namespace Randini
 			glEnableVertexAttribArray(i);
 		}
 	}
+
+  //-------------------------------------------------------------------------------------------------
 
 	//disable the shader
 	void GLSLProgram::unuse()

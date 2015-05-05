@@ -28,11 +28,12 @@ namespace Randini
 
 	}
 
-
 	Camera2D::~Camera2D()
 	{
 
 	}
+
+  //-------------------------------------------------------------------------------------------------
 
   void Camera2D::init(int _screenWidth, int _screenHeight)
   {
@@ -44,6 +45,8 @@ namespace Randini
     //parameters will be: left side of the window, screenWidth and since it has to be a flaot declare it
     m_orthoMatrix = glm::ortho(0.0f, (float)m_screenWidth, 0.0f, (float)m_screenHeight);
   }
+
+  //-------------------------------------------------------------------------------------------------
 
 	//only needs to update camera if it needs to 
 	void Camera2D::updateCamera()
@@ -67,6 +70,8 @@ namespace Randini
 		}
 
 	}
+
+  //-------------------------------------------------------------------------------------------------
 
 	glm::vec2 Camera2D::getWorldScreenCoords(glm::vec2 screenCoords)
 	{

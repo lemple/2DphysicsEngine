@@ -14,6 +14,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+//-------------------------------------------------------------------------------------------------
+
 namespace Randini
 {
 	//makes the camera
@@ -28,24 +30,43 @@ namespace Randini
     /**
      * @brief init
      * @param _screenWidth
+     *              Takes the screenWidth of the window and links to camera
      * @param _screenHeight
+     *              Takes the screenHeight of the window and links to camera
      */
     void init(int _screenWidth, int _screenHeight);
 
+    //-------------------------------------------------------------------------------------------------
+
     /**
      * @brief updateCamera
+     *           Updates the camera incase the camera needs to be changed or moved
      */
 		void updateCamera();
 
+    //-------------------------------------------------------------------------------------------------
+
 		//this takes the screen coordinates convert to the world cooridnates and returns the value
+    /**
+     * @brief getWorldScreenCoords
+     * This takes the screen coordinates convert to the world cooridnates and returns the value
+     * @param screenCoords
+     *          Takes the screencoordinates in x and y directions
+     * @return The screen coordinates
+     */
 		glm::vec2 getWorldScreenCoords(glm::vec2 screenCoords);
+
+    //-------------------------------------------------------------------------------------------------
 
 		//setter function to set the position of the camera to the new position
 		//pass it in by reference so I don't have to copy two floats
 
     /**
      * @brief setPosition
+     *              Set of the camera and sotres it in a matrix
      * @param newPosition
+     *              Sets the new position of the camera in case there is movement
+     *
      */
 		void setPosition(const glm::vec2& newPosition)
 		{
@@ -53,12 +74,20 @@ namespace Randini
       m_matrixChange = true;
 		}
 
-		//a get function to retrive the location of the scale	
+    //-------------------------------------------------------------------------------------------------
+
+    /**
+     * @brief getPosition
+     * a get function to retrive the location of the camera
+     * @return
+     *  location of the camera
+     */
 		glm::vec2 getPosition()
 		{
       return m_position;
 		}
 
+    //-------------------------------------------------------------------------------------------------
 
     /**
      * @brief setScale
@@ -72,17 +101,25 @@ namespace Randini
       m_matrixChange = true;
 		}
 
+    //-------------------------------------------------------------------------------------------------
+
 		//a get function to retrive the location of the scale	
 		float getScale()
 		{
       return m_scale;
 		}
+
+    //-------------------------------------------------------------------------------------------------
+
+
 		//every time we update we change the current camera matrix if the user commands it
 		//onlyu need to alter this if the scale or position changes
 		glm::mat4 getCameraMatrix()
 		{
       return m_cameraMatrix;
 		}
+
+    //-------------------------------------------------------------------------------------------------
 
 	private:
 		//used to get the viewport dimensnions and tell them to the init screen function

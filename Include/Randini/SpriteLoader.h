@@ -15,11 +15,15 @@
 #ifndef __SPRITELOADER_H_
 #define __SPRITELOADER_H_
 
+//-------------------------------------------------------------------------------------------------
+
 #include <GL/glew.h>
 #include "Vertex.h"
 #include <glm/glm.hpp>
 #include <vector>
 #include <utility>
+
+//-------------------------------------------------------------------------------------------------
 
 //allows to bunch of different sprites together in a draw call
 
@@ -38,9 +42,9 @@ namespace Randini
 		FRONT_TO_BACK,
 		BACK_TO_FRONT,
 		TEXTURE
-
 	};
 
+  //-------------------------------------------------------------------------------------------------
 
 	class Glyph
 	{
@@ -84,10 +88,13 @@ namespace Randini
 				bottomRight.setUV(uvRect.x + uvRect.z, uvRect.y);
 			}
 
+      //-------------------------------------------------------------------------------------------------
+
     //stores the textures in a GLuint
 		GLuint texture;
 		//storing the float
 		float depth;
+    //-------------------------------------------------------------------------------------------------
 
 		Vertex topLeft;
 		Vertex bottomLeft;
@@ -95,6 +102,8 @@ namespace Randini
 		Vertex bottomRight;
 
 	};
+
+  //-------------------------------------------------------------------------------------------------
 
   //stores all the information it needs to render
 	class RenderLoader
@@ -124,6 +133,8 @@ namespace Randini
 
 	};
 
+  //-------------------------------------------------------------------------------------------------
+
 	class SpriteLoader
 	{
 	public:
@@ -132,49 +143,60 @@ namespace Randini
 
     /**
      * @brief init
-     * Inits the sprite loader
+     * Inits the sprite loader and creats vertex array
      */
 		void init();
+
+    //-------------------------------------------------------------------------------------------------
 
     /**
      * @brief
      * calls for whenever we are ready to call
      * sets up everything for drawing
      * @param sortType
+     *          Sets up sorting process for whenever begin is called to begin rendering
      */
     void begin(GlyphSortType sortType = GlyphSortType::TEXTURE);
 
-    //
+    //-------------------------------------------------------------------------------------------------
 
     /**
      * @brief end
-     * sorts the images out
+     *          used to sort the glyyphs and genrate batched for the glyphs
      */
 		void end();
+
+    //-------------------------------------------------------------------------------------------------
 
     /**
      * @brief draw
      * calls void draw through void begin and adds the sprites to the batch and gets them ready to load
      * use glm over SDL Rect so I can import the math easier
-     * makes them a const so the reference does not change
-     * parametes: position stored as, uv coordinates with bottom left hand cornor and dimensions,
-     * texture sotrage, depth, finally the colour struct
-     * all gonna passed by values. make it by reference to
+     * makes them a const so the reference does not change.
      * prevent copys and increase speed. Make them destination const to prevent values changing
      *
      * @param destinationRect
+     *            position stored at of the sprite
      * @param uvRect
+     *            uv coordinates with bottom left hand cornor and dimensions
      * @param texture
+     *            texture storage
      * @param depth
+     *            depth of the texture
      * @param color
+     *            Color of the sprite
      */
 		void draw(const glm::vec4& destinationRect, glm::vec4& uvRect, GLuint texture, float depth, const ColorRGBA8& color);
 
+    //-------------------------------------------------------------------------------------------------
+
     /**
      * @brief renderLoader
-     * renders the sprites to the screen
+     * renders the sprites to the screen and binds them together for rendering
      */
 		void renderLoader();
+
+    //-------------------------------------------------------------------------------------------------
 
 	private:
 
@@ -183,6 +205,8 @@ namespace Randini
      * Creates all the needed RenderLoaders
      */
 		void createRenderLoader();
+
+    //-------------------------------------------------------------------------------------------------
 
     /**
      * @brief createVertexArray
@@ -193,17 +217,32 @@ namespace Randini
      */
 		void createVertexArray();
 
+    //-------------------------------------------------------------------------------------------------
+
     /**
      * @brief sortGlyphs
-     * used for sorting all the glyphs
+     * used for sorting all the glyphs and creates functions
+     * Takes the glyph fomr start of the container to the end of the container
      */
 		void sortGlyphs();
 
+    //-------------------------------------------------------------------------------------------------
+
 		//creates functions that deals with sorting of front to back
 		//takes pointers as the program is dealing with pointers from Glyph pointer
+
+    /**
+     * @brief compareFrontToBack
+     * Here I want to return true if the value of a's depth is less then the value of b's depth
+     * this means the sorting algorithm is going to move th glyphs around in the vector
+     * this means for the other fucntions I can use this method to determine what goes where
+     * dending on its position in the vertex
+     */
 		static bool compareFrontToBack(Glyph* a, Glyph* b);
 		static bool compareBackToFront(Glyph* a, Glyph* b);
 		static bool compareTexture(Glyph* a, Glyph* b);
+
+    //-------------------------------------------------------------------------------------------------
 
 		//make a GLuint for the vertex buffer ID
 		//tells openLG which vertex buffer I want to draw and it takes the pointer
@@ -211,8 +250,12 @@ namespace Randini
     GLuint m_vbo;
     GLuint m_vao;
 
+    //-------------------------------------------------------------------------------------------------
+
 		//makes a sort type varible 
     GlyphSortType m_sortType;
+
+    //-------------------------------------------------------------------------------------------------
 
 		//better to make a glyph pointer as the glyph struc has a lot of data inside
 		//making a glyph pointer since a pointer is only 8 bytes in quantity

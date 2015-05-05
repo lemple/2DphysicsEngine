@@ -14,6 +14,9 @@
 #include <GL/glew.h>
 
 #include "Randini.h"
+
+//-------------------------------------------------------------------------------------------------
+
 //set namespace for Randini game engine
 //encapuslates all the funtions and varibles ina  anmescope to prevent overlap
 namespace Randini

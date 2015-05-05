@@ -15,6 +15,8 @@
 #ifndef __VERTEX_H_
 #define __VERTEX_H_
 
+//-------------------------------------------------------------------------------------------------
+
 #include <GL/glew.h>
 //this header interleaves the vertex data 
 //makes each vertex which hold colour, posisition, and shape etc
@@ -29,6 +31,8 @@ namespace Randini
 		float y;
 	};
 
+  //-------------------------------------------------------------------------------------------------
+
 	struct ColorRGBA8
 	{
 		ColorRGBA8() : r(0), g(0), b(0), a(0) { }
@@ -41,11 +45,15 @@ namespace Randini
 		GLubyte a;
 	};
 
+  //-------------------------------------------------------------------------------------------------
+
 	struct UV
 	{
 		float u;
 		float v;
 	};
+
+  //-------------------------------------------------------------------------------------------------
 
 	//make small as it will cause the tranfer to the gpu quicker
 	struct Vertex
@@ -60,11 +68,15 @@ namespace Randini
 		//set varible for texture mapping
 		UV uv;
 
+    //-------------------------------------------------------------------------------------------------
+
 		//makes settiung the position value for the vertices easier
     /**
      * @brief setPosition
      * @param x
+     *        Sets the positions for vertices in x axis and assignes them to x
      * @param y
+     *        Sets the positions for vertices in y axis and assignes them to y
      */
 		void setPosition(float x, float y)
 		{
@@ -72,11 +84,16 @@ namespace Randini
 			position.y = y;
 		}
 
+    //-------------------------------------------------------------------------------------------------
+
 		//makes settiung the uv value for the vertices easier
     /**
      * @brief setUV
+     * Set uv's for vertices
      * @param u
+     *          Assigns uv.u to u to make it easier to read
      * @param v
+     *           Assigns uv.v to v to make it easier to read
      */
 		void setUV(float u, float v)
 		{

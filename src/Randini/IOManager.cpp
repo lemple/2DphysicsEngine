@@ -27,6 +27,8 @@ namespace Randini
 			return false;
 		}
 
+    //-------------------------------------------------------------------------------------------------
+
     //now the program reads the entire contents of the file into the buffer
 		//Assume the buffer has a size of 0
     //use seek to find out the actual size of the buffer
@@ -34,10 +36,14 @@ namespace Randini
 		//take the file pointer and puts it right at the end
 		file.seekg(0, std::ios::end);
 
+    //-------------------------------------------------------------------------------------------------
+
 		//get the file size and returns an int of how many bytes have passed
 		int fileSize = file.tellg();
 		//back at the begining of the file
 		file.seekg(0, std::ios::beg);
+
+    //-------------------------------------------------------------------------------------------------
 
 		//tell the program how many bytes the file is
 		//reduce the file size by any header bytes that might be present
@@ -45,6 +51,8 @@ namespace Randini
 
 		//resize the buffer to the filesize
 		buffer.resize(fileSize);
+
+    //-------------------------------------------------------------------------------------------------
 
 		//reads a number of bytes into a buffer
     //pramters: takes an array of chars. Have to make it a char * as its just a pointer pointing to memeory.

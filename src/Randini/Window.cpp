@@ -37,16 +37,23 @@ namespace Randini
 			flags |= SDL_WINDOW_HIDDEN;
 		}
 
+    //-------------------------------------------------------------------------------------------------
+
 		//check to see if flag is set to FULLSCREEN
 		if (currentFlags & FULLSCREEN)
 		{
 			flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
 		}
+
+    //-------------------------------------------------------------------------------------------------
+
 		//check to see if flag is set to BORDERLESS
 		if (currentFlags & BORDERLESS)
 		{
 			flags |= SDL_WINDOW_BORDERLESS;
 		}
+
+    //-------------------------------------------------------------------------------------------------
 
 		//opens up SDL window for the gameEngine.
 		//this deals with all the operating systems and allows the program to run on Windows Mac etc
@@ -61,6 +68,9 @@ namespace Randini
 		{
 			fatalError("SDL Window could not be created");
 		}
+
+    //-------------------------------------------------------------------------------------------------
+
 		//gives the context to the window
 		//bounds the context to the window and links it with _window varible
 		//overall sets og the GL context and gives it to the window
@@ -69,6 +79,10 @@ namespace Randini
 		{
 			fatalError("SDL_GL_context could not be created");
 		}
+
+    //-------------------------------------------------------------------------------------------------
+
+
 		//inits GLEW libary returns and fatal error if it can't find the libarys
 		//overall gets the extensions for the programs
 		//in the error we call a #define that is in the glew libary
@@ -78,15 +92,16 @@ namespace Randini
 			fatalError("Could not initialize GLEW");
 		}
 
+    //-------------------------------------------------------------------------------------------------
+
 		//checks opengl version and prints it out to consol
 		std::printf("***opengl version: %s ***", glGetString(GL_VERSION));
-
-		
-		//glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
 
 		//this function swaps the interval of the current openGL context and overall
 		//sets Vsync
 		SDL_GL_SetSwapInterval(0);
+
+    //-------------------------------------------------------------------------------------------------
 
 		//enable alpha blending to prevent the black backgorund from the PNG's
 		glEnable(GL_BLEND);
@@ -102,6 +117,7 @@ namespace Randini
 		return 0;
 	}
 
+  //-------------------------------------------------------------------------------------------------
 
 	void Window::swapBuffers()
 	{

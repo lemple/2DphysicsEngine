@@ -26,7 +26,7 @@
 #include <algorithm>
 #include <cmath>
 
-
+//-------------------------------------------------------------------------------------------------
 
 const float DESIRED_FPS = 60.0f;
 const int MAX_PHYSICS_STEPS = 6;
@@ -38,6 +38,8 @@ MainGame::MainGame()  :
   m_screenWidth(0), m_screenHeight(0), m_currentRenderer(0), m_currentController(0), m_fps(0.0f), _gameState(GameState::PLAY)
 {
 }
+
+//-------------------------------------------------------------------------------------------------
 
 MainGame::~MainGame()
 {
@@ -54,7 +56,7 @@ MainGame::~MainGame()
   }
 }
 
-
+//-------------------------------------------------------------------------------------------------
 
 void MainGame::run()
 {
@@ -70,6 +72,8 @@ void MainGame::run()
 
 }
 
+//-------------------------------------------------------------------------------------------------
+
 void MainGame::initSystems()
 {
   Randini::init();
@@ -80,6 +84,8 @@ void MainGame::initSystems()
   //creates the window by calling m_window from Randini File
   m_window.create("Powered by Randini: Collision", m_screenWidth, m_screenHeight, 0);
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+  //-------------------------------------------------------------------------------------------------
 
   m_camera.init(m_screenWidth, m_screenHeight);
   //point camera to center of the screen
@@ -96,6 +102,8 @@ void MainGame::initSystems()
   m_textureProgram.addAttribute("vertexUV");
   m_textureProgram.linkShader();
 
+  //-------------------------------------------------------------------------------------------------
+
   //sets MAXFPS from the fps file from Randini Engine
   m_fpsLimiter.setMaxFPS(60.0f);
 
@@ -106,6 +114,7 @@ void MainGame::initSystems()
   initControllers();
 }
 
+//-------------------------------------------------------------------------------------------------
 
 void MainGame::gameLoop()
 {
@@ -147,6 +156,8 @@ void MainGame::gameLoop()
       i++;
     }
 
+    //-------------------------------------------------------------------------------------------------
+
     //call camera update from Randini game engine and call function updateCamera
     //continue to draw the game while loops is running
     //calls fps end function which will return the FPS
@@ -156,6 +167,7 @@ void MainGame::gameLoop()
   }
 }
 
+//-------------------------------------------------------------------------------------------------
 
 void MainGame::initRenderers()
 {
@@ -165,12 +177,15 @@ void MainGame::initRenderers()
   m_ballRenderers.push_back(new VelocityBallRendererY(m_screenWidth, m_screenHeight));
 }
 
+//-------------------------------------------------------------------------------------------------
+
 void MainGame::initControllers()
 {
   m_ballControllers.push_back(new BallControl);
   m_ballControllers.push_back(new ColorTransferControl);
 }
 
+//-------------------------------------------------------------------------------------------------
 
 //struct to provide attributes for the balls
 //and pass in the values from Ball.h
@@ -196,6 +211,8 @@ struct BallSpawnSystem
   //adds random speed to the balls
   RandomDistribution randSpeed;
 };
+
+//-------------------------------------------------------------------------------------------------
 
 void MainGame::drawGame()
 {
@@ -230,6 +247,8 @@ void MainGame::drawGame()
   m_window.swapBuffers();
 }
 
+//-------------------------------------------------------------------------------------------------
+
 void MainGame::initBalls()
 {
   //Init grid for spatial partioning
@@ -256,8 +275,9 @@ void MainGame::initBalls()
   RandomDistribution r1(2.0f, 6.0f);
   RandomDistributionInt r2(0, 255);
 
-  //run creat ball while i < number of balls
+  //-------------------------------------------------------------------------------------------------
 
+  //run creat ball while i < number of ball
   //Paramters: Color/Size/Mass/Min Speed/Max Speed/probability
   for (int i = 0; i < NUM_BALLS; i++)
   {
@@ -265,6 +285,9 @@ void MainGame::initBalls()
     possibleBalls.emplace_back(Randini::ColorRGBA8(r2(randomEngine), r2(randomEngine), r2(randomEngine), 255),
       r1(randomEngine), r1(randomEngine), 0.0f, 0.0f, totalProbability);
   }
+
+  //-------------------------------------------------------------------------------------------------
+
   //random probability
   RandomDistribution spawn(0.0f, totalProbability);
 
@@ -276,6 +299,8 @@ void MainGame::initBalls()
   //call struct and point it to spawning ball this allows for the spawned ball
   //to hold all the attributes. make reference to prevent copying
   BallSpawnSystem* spawningBall = &possibleBalls[0];
+
+  //-------------------------------------------------------------------------------------------------
 
   for (int i = 0; i < NUM_BALLS; i++)
   {
@@ -290,6 +315,8 @@ void MainGame::initBalls()
         break;
       }
     }
+
+    //-------------------------------------------------------------------------------------------------
 
     //get random starting position for balls
     glm::vec2 pos(randX(randomEngine), randY(randomEngine));
@@ -308,6 +335,8 @@ void MainGame::initBalls()
       direction = glm::vec2(1.0f, 0.0f);
     }
 
+    //-------------------------------------------------------------------------------------------------
+
     //add ball to the m_ball array with each attributes obtained from possibleBall
     //the attributes for possibleBall contains the data from the struct
     //finally obtain the texture to use for the balls from the texture file
@@ -324,7 +353,9 @@ void MainGame::initBalls()
 
 
   }
-  }
+}
+
+//-------------------------------------------------------------------------------------------------
 
 void MainGame::update(float _deltaTime)
 {
@@ -332,20 +363,20 @@ void MainGame::update(float _deltaTime)
   //point it to the update function within the BallControl class and pass in each value to the ball
   //This will allow it to update with the current settings based on the controller selected
   m_ballControllers[m_currentController]->update(_ball, m_ballGrid.get(), _deltaTime, m_screenWidth, m_screenHeight);
-  }
+}
 
-  void MainGame::processInput()
-  {
+//-------------------------------------------------------------------------------------------------
+
+void MainGame::processInput()
+{
+
+  //       MOUSE AND KEYBOARD INPUT PROCESS         //
+
   //update iunput manager
   m_inputControl.update();
 
-
   SDL_Event evnt;
-  ////////////////////////////////////////////////////
-  //                                                //
-  //       MOUSE AND KEYBOARD INPUT PROCESS         //
-  //                                                //
-  ////////////////////////////////////////////////////
+
   //Here the program keeps looping until there are no more events to process
   //asks the operating system whats events does it need to process
   //and generally what the user is clicking
@@ -381,9 +412,10 @@ void MainGame::update(float _deltaTime)
       m_ballControllers[m_currentController]->mouseUp(_ball);
       m_inputControl.releaseKey(evnt.button.button);
       break;
-    }
-  }
+   }
+ }
 
+//-------------------------------------------------------------------------------------------------
   //Set up gravity controls based on the current controller set.
   //Example: If the user inputs the left key the enum value will cycle through to LEFT
   //This will push all the balls in the setr direction
@@ -403,6 +435,8 @@ void MainGame::update(float _deltaTime)
     m_ballControllers[m_currentController]->setGravityDirection(GravityControl::NONE);
   }
 
+  //-------------------------------------------------------------------------------------------------
+
   //Swap between render control when the user presses 1
   //When 1 is pressed increment the current render.
   //If the current renderer goes over the amount of renderers available resets back to 0
@@ -414,6 +448,8 @@ void MainGame::update(float _deltaTime)
       m_currentRenderer = 0;
     }
   }
+
+  //-------------------------------------------------------------------------------------------------
 
   //Swap between ball controllers when the user presses 1
   //When 1 is pressed increment the current controller.
