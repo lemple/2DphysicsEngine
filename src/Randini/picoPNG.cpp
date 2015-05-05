@@ -27,6 +27,10 @@ namespace Randini
 	works for trusted PNG files. Use LodePNG instead of picoPNG if you need this information.
 	return: 0 if success, not 0 if some error occured.
 	*/
+  ///@brief PNGLoader
+  ///Modified from :- bool convert_to_rgba32 = true
+  ///Lode Vandevenne 2005-2010
+  ///Avalible from: https://raw.githubusercontent.com/lvandeve/lodepng/master/lodepng.cpp
 	int decodePNG(std::vector<unsigned char>& out_image, unsigned long& image_width, unsigned long& image_height, const unsigned char* in_png, size_t in_size, bool convert_to_rgba32)
 	{
 		// picoPNG version 20101224
@@ -538,3 +542,4 @@ namespace Randini
 		return decoder.error;
 	}
 }
+/// End of Citation

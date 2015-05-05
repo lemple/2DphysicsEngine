@@ -60,9 +60,13 @@ Cell* BallGrid::getCell(int _x, int _y)
   if (_y >= m_numCellsY) _y = m_numCellsY - 1;
 
   /////http://programmers.stackexchange.com/questions/212808/treating-a-1d-data-structure-as-2d-grid////
+  ///@brief 1D array
+  ///Doc Brown 2013
+  ///Avalible from: http://programmers.stackexchange.com/questions/212808/treating-a-1d-data-structure-as-2d-grid
   //treats the 1D array as a 2D array
   //gets the area of the rectangle and finally add numCellX
   return &m_cells[_y * m_numCellsX + _x];
+  /// End of citation
 }
 
 //-------------------------------------------------------------------------------------------------

@@ -310,6 +310,11 @@ void BallControl::collisionChecker(Ball* ball, std::vector<Ball*>& ballsToCheck,
 //check for collision
 //CODE RECIVED FOMR HERE http://stackoverflow.com/posts/345863/edit
 //Here I used an elastic collision between balls
+
+///@brief Elastic collision
+///Modified from :- if collision depth
+///Jay Conrad 2008
+///Avalible from: http://stackoverflow.com/posts/345863/edit
 void BallControl::collisionChecker(Ball& b1, Ball& b2)
 {
  //Here I define the vecotr collision
@@ -342,6 +347,7 @@ void BallControl::collisionChecker(Ball& b1, Ball& b2)
    b2.m_velocity += (bcf - bci) * distDir;
  }
 }
+/// End of citation
 
 //-------------------------------------------------------------------------------------------------
 

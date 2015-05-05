@@ -2,6 +2,8 @@
 // Copyright (c) 2005-2010 Lode Vandevenne
 //
 
+
+
 #include <vector>
 
 namespace Randini
@@ -25,5 +27,10 @@ namespace Randini
    * @param convert_to_rgba32
    * @return
    */
+  ///@brief PNGLoader
+  ///Modified from :- bool convert_to_rgba32 = true
+  ///Lode Vandevenne 2005-2010
+  ///Avalible from: https://raw.githubusercontent.com/lvandeve/lodepng/master/lodepng.cpp
 	extern int decodePNG(std::vector<unsigned char>& out_image, unsigned long& image_width, unsigned long& image_height, const unsigned char* in_png, size_t in_size, bool convert_to_rgba32 = true);
+  /// end of Citatation
 }
