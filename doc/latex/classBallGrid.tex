@@ -2,29 +2,21 @@
 \section{BallGrid Class Reference}
 \label{classBallGrid}\index{BallGrid@{BallGrid}}
 }
-
-
-{\ttfamily \#include $<$BallGrid.h$>$}\subsection*{Public Member Functions}
+\subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classBallGrid_acdcc4d6951173ed948f47f0dcb929ff9}{
-{\bfseries BallGrid} (int width, int height, int cellSize)}
-\label{classBallGrid_acdcc4d6951173ed948f47f0dcb929ff9}
-
-\item 
-\hypertarget{classBallGrid_a4fc613f1cf978f3e67c4a8bbf4d6f9a8}{
-\hyperlink{structCell}{Cell} $\ast$ \hyperlink{classBallGrid_a4fc613f1cf978f3e67c4a8bbf4d6f9a8}{getCell} (int x, int y)}
-\label{classBallGrid_a4fc613f1cf978f3e67c4a8bbf4d6f9a8}
-
+\hyperlink{classBallGrid_a7bb8b193b697a26feb24ace417e34f2a}{BallGrid} (int \_\-width, int \_\-height, int \_\-cellSize)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classBallGrid}{BallGrid} Has a number of balls which will be stored in cells To accomplish this I used a 2D grid of cells. \item\end{DoxyCompactList}\item 
+\hyperlink{structCell}{Cell} $\ast$ \hyperlink{classBallGrid_aa75a6ba9c08cc592917bc4c82ddecab9}{getCell} (int \_\-x, int \_\-y)
 \begin{DoxyCompactList}\small\item\em Here I overload the getCell function as each one performs a similar job. \item\end{DoxyCompactList}\item 
-\hyperlink{structCell}{Cell} $\ast$ \hyperlink{classBallGrid_a1c1b46810cee5738bc9cdcc98132f37e}{getCell} (const glm::vec2 \&pos)
-\begin{DoxyCompactList}\small\item\em get cell based on position of the cell in the window \item\end{DoxyCompactList}\item 
-void \hyperlink{classBallGrid_ad3a834b61100b1ca532c47c8b3b68062}{addBall} (\hyperlink{structBall}{Ball} $\ast$ball)
+\hyperlink{structCell}{Cell} $\ast$ \hyperlink{classBallGrid_a33f4cad0c6381769f2f49996c8bf7512}{getCell} (const glm::vec2 \&\_\-pos)
+\begin{DoxyCompactList}\small\item\em getCell Get cell based on position of the cell in the window \item\end{DoxyCompactList}\item 
+void \hyperlink{classBallGrid_ab8cc5670a406da6b7bbafdc04b1235b7}{addBall} (\hyperlink{structBall}{Ball} $\ast$\_\-ball)
 \begin{DoxyCompactList}\small\item\em adds a ball and determines what cell it belongs to \item\end{DoxyCompactList}\item 
-void \hyperlink{classBallGrid_a1ee46472584ce1515e22d3a8b5c4f531}{addBall} (\hyperlink{structBall}{Ball} $\ast$ball, \hyperlink{structCell}{Cell} $\ast$cell)
-\begin{DoxyCompactList}\small\item\em adds ball to specific cell \item\end{DoxyCompactList}\item 
-void \hyperlink{classBallGrid_a468ea1f13fb2e2860e2d393a199a6116}{removeBall} (\hyperlink{structBall}{Ball} $\ast$ball)
-\begin{DoxyCompactList}\small\item\em Removes the ball from the grid. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+void \hyperlink{classBallGrid_a82fd95975c46e31f204dbf17d858e81c}{addBall} (\hyperlink{structBall}{Ball} $\ast$\_\-ball, \hyperlink{structCell}{Cell} $\ast$\_\-cell)
+\begin{DoxyCompactList}\small\item\em AddBall adds ball to specific cell. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBallGrid_a1a1787d7850c2639e92492f8301e14fb}{removeBall} (\hyperlink{structBall}{Ball} $\ast$\_\-ball)
+\begin{DoxyCompactList}\small\item\em removeBall allows the ability removes the ball from the grid \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -68,51 +60,79 @@ class \hyperlink{classBallGrid_a96c3892ebe4274ff47fade92c0bf313f}{BallControl}}
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-Has a number of balls which will be stored in cells To accomplish this I used a 2D grid of cells 
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBallGrid_a7bb8b193b697a26feb24ace417e34f2a}{
+\index{BallGrid@{BallGrid}!BallGrid@{BallGrid}}
+\index{BallGrid@{BallGrid}!BallGrid@{BallGrid}}
+\subsubsection[{BallGrid}]{\setlength{\rightskip}{0pt plus 5cm}BallGrid::BallGrid (int {\em \_\-width}, \/  int {\em \_\-height}, \/  int {\em \_\-cellSize})}}
+\label{classBallGrid_a7bb8b193b697a26feb24ace417e34f2a}
+
+
+\hyperlink{classBallGrid}{BallGrid} Has a number of balls which will be stored in cells To accomplish this I used a 2D grid of cells. 
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-width}]Sets width of cell in order to cut at the end \item[{\em \_\-height}]Sets height of cell in order to cut at the end \item[{\em \_\-cellSize}]Determins the size of the cell to sotre the ball in \end{DoxyParams}
+
 
 \subsection{Member Function Documentation}
-\hypertarget{classBallGrid_a1ee46472584ce1515e22d3a8b5c4f531}{
+\hypertarget{classBallGrid_a82fd95975c46e31f204dbf17d858e81c}{
 \index{BallGrid@{BallGrid}!addBall@{addBall}}
 \index{addBall@{addBall}!BallGrid@{BallGrid}}
-\subsubsection[{addBall}]{\setlength{\rightskip}{0pt plus 5cm}void BallGrid::addBall ({\bf Ball} $\ast$ {\em ball}, \/  {\bf Cell} $\ast$ {\em cell})}}
-\label{classBallGrid_a1ee46472584ce1515e22d3a8b5c4f531}
+\subsubsection[{addBall}]{\setlength{\rightskip}{0pt plus 5cm}void BallGrid::addBall ({\bf Ball} $\ast$ {\em \_\-ball}, \/  {\bf Cell} $\ast$ {\em \_\-cell})}}
+\label{classBallGrid_a82fd95975c46e31f204dbf17d858e81c}
 
 
-adds ball to specific cell 
+AddBall adds ball to specific cell. 
 \begin{DoxyParams}{Parameters}
-\item[{\em ball}]\item[{\em cell}]\end{DoxyParams}
-\hypertarget{classBallGrid_ad3a834b61100b1ca532c47c8b3b68062}{
+\item[{\em ball}]Takes the data of the ball and adds the ball to the specific cell \item[{\em cell}]Takes the cell info in order to include the ball \end{DoxyParams}
+\hypertarget{classBallGrid_ab8cc5670a406da6b7bbafdc04b1235b7}{
 \index{BallGrid@{BallGrid}!addBall@{addBall}}
 \index{addBall@{addBall}!BallGrid@{BallGrid}}
-\subsubsection[{addBall}]{\setlength{\rightskip}{0pt plus 5cm}void BallGrid::addBall ({\bf Ball} $\ast$ {\em ball})}}
-\label{classBallGrid_ad3a834b61100b1ca532c47c8b3b68062}
+\subsubsection[{addBall}]{\setlength{\rightskip}{0pt plus 5cm}void BallGrid::addBall ({\bf Ball} $\ast$ {\em \_\-ball})}}
+\label{classBallGrid_ab8cc5670a406da6b7bbafdc04b1235b7}
 
 
 adds a ball and determines what cell it belongs to 
 \begin{DoxyParams}{Parameters}
-\item[{\em ball}]\end{DoxyParams}
-\hypertarget{classBallGrid_a1c1b46810cee5738bc9cdcc98132f37e}{
+\item[{\em ball}]Adds ball data to see if it matches the position of the cell \end{DoxyParams}
+\hypertarget{classBallGrid_a33f4cad0c6381769f2f49996c8bf7512}{
 \index{BallGrid@{BallGrid}!getCell@{getCell}}
 \index{getCell@{getCell}!BallGrid@{BallGrid}}
-\subsubsection[{getCell}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Cell} $\ast$ BallGrid::getCell (const glm::vec2 \& {\em pos})}}
-\label{classBallGrid_a1c1b46810cee5738bc9cdcc98132f37e}
+\subsubsection[{getCell}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Cell} $\ast$ BallGrid::getCell (const glm::vec2 \& {\em \_\-pos})}}
+\label{classBallGrid_a33f4cad0c6381769f2f49996c8bf7512}
 
 
-get cell based on position of the cell in the window 
+getCell Get cell based on position of the cell in the window 
 \begin{DoxyParams}{Parameters}
-\item[{\em pos}]\end{DoxyParams}
+\item[{\em pos}]Gets the position of the cell depending on window size\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+the position of the cell 
 \end{DoxyReturn}
-\hypertarget{classBallGrid_a468ea1f13fb2e2860e2d393a199a6116}{
+\hypertarget{classBallGrid_aa75a6ba9c08cc592917bc4c82ddecab9}{
+\index{BallGrid@{BallGrid}!getCell@{getCell}}
+\index{getCell@{getCell}!BallGrid@{BallGrid}}
+\subsubsection[{getCell}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Cell} $\ast$ BallGrid::getCell (int {\em \_\-x}, \/  int {\em \_\-y})}}
+\label{classBallGrid_aa75a6ba9c08cc592917bc4c82ddecab9}
+
+
+Here I overload the getCell function as each one performs a similar job. getCell Gets cell based on cell coordinates (ball 
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-x}]Bounds the cells together \item[{\em \_\-y}]Bounds the cells together \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the area of the cell 
+\end{DoxyReturn}
+\hypertarget{classBallGrid_a1a1787d7850c2639e92492f8301e14fb}{
 \index{BallGrid@{BallGrid}!removeBall@{removeBall}}
 \index{removeBall@{removeBall}!BallGrid@{BallGrid}}
-\subsubsection[{removeBall}]{\setlength{\rightskip}{0pt plus 5cm}void BallGrid::removeBall ({\bf Ball} $\ast$ {\em ball})}}
-\label{classBallGrid_a468ea1f13fb2e2860e2d393a199a6116}
+\subsubsection[{removeBall}]{\setlength{\rightskip}{0pt plus 5cm}void BallGrid::removeBall ({\bf Ball} $\ast$ {\em \_\-ball})}}
+\label{classBallGrid_a1a1787d7850c2639e92492f8301e14fb}
 
 
-Removes the ball from the grid. remove the ball from the cell 
+removeBall allows the ability removes the ball from the grid remove the ball from the cell
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-ball}]Gets the data of the ball to remove the ball from the grid \end{DoxyParams}
+
 
 The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
 \item 

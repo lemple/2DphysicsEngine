@@ -5,26 +5,46 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classRandini_1_1Window_a74f33cf737af665902138f80cc779cb5}{
-int {\bfseries create} (std::string windowName, int screenWidth, int screenHeight, unsigned int currentFlags)}
-\label{classRandini_1_1Window_a74f33cf737af665902138f80cc779cb5}
-
-\item 
+int \hyperlink{classRandini_1_1Window_a74f33cf737af665902138f80cc779cb5}{create} (std::string windowName, int screenWidth, int screenHeight, unsigned int currentFlags)
+\begin{DoxyCompactList}\small\item\em create create window function that overall generates the windwo define the handlews for the window in the parameters use std::string so we can set a windowName to .c\_\-str which will allow us to set the name of the window in another project when linking the engine other varibles are set so that they can be changed when I start up a new project \item\end{DoxyCompactList}\item 
 \hypertarget{classRandini_1_1Window_af0fe0a4f666f5c946bb8df997977e40e}{
-void {\bfseries swapBuffers} ()}
+void \hyperlink{classRandini_1_1Window_af0fe0a4f666f5c946bb8df997977e40e}{swapBuffers} ()}
 \label{classRandini_1_1Window_af0fe0a4f666f5c946bb8df997977e40e}
 
-\item 
-\hypertarget{classRandini_1_1Window_a7b4ddf85609bbe27f2800ff05a0130dc}{
-int {\bfseries getScreenWidth} ()}
-\label{classRandini_1_1Window_a7b4ddf85609bbe27f2800ff05a0130dc}
-
-\item 
+\begin{DoxyCompactList}\small\item\em swapBuffers Function to swap the buffers around each frame to prevetn flickering \item\end{DoxyCompactList}\item 
+int \hyperlink{classRandini_1_1Window_a7b4ddf85609bbe27f2800ff05a0130dc}{getScreenWidth} ()
+\begin{DoxyCompactList}\small\item\em getScreenWidth get functions used to recieve input from the varibles m\_\-screenWidth and m\_\-screenHeight this includes the screen width and height \item\end{DoxyCompactList}\item 
 \hypertarget{classRandini_1_1Window_aedbf196a50a63cf91c8eedcc5d80e204}{
 int {\bfseries getScreenHeight} ()}
 \label{classRandini_1_1Window_aedbf196a50a63cf91c8eedcc5d80e204}
 
 \end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classRandini_1_1Window_a74f33cf737af665902138f80cc779cb5}{
+\index{Randini::Window@{Randini::Window}!create@{create}}
+\index{create@{create}!Randini::Window@{Randini::Window}}
+\subsubsection[{create}]{\setlength{\rightskip}{0pt plus 5cm}int Randini::Window::create (std::string {\em windowName}, \/  int {\em screenWidth}, \/  int {\em screenHeight}, \/  unsigned int {\em currentFlags})}}
+\label{classRandini_1_1Window_a74f33cf737af665902138f80cc779cb5}
+
+
+create create window function that overall generates the windwo define the handlews for the window in the parameters use std::string so we can set a windowName to .c\_\-str which will allow us to set the name of the window in another project when linking the engine other varibles are set so that they can be changed when I start up a new project 
+\begin{DoxyParams}{Parameters}
+\item[{\em windowName}]Set the name of the window using a string \item[{\em screenWidth}]Set the Width of the screen to be alterd \item[{\em screenHeight}]Allow the ability to set the height of the screen \item[{\em currentFlags}]Allow for certain flags to be set e.g BORDERLESS \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns 0 
+\end{DoxyReturn}
+\hypertarget{classRandini_1_1Window_a7b4ddf85609bbe27f2800ff05a0130dc}{
+\index{Randini::Window@{Randini::Window}!getScreenWidth@{getScreenWidth}}
+\index{getScreenWidth@{getScreenWidth}!Randini::Window@{Randini::Window}}
+\subsubsection[{getScreenWidth}]{\setlength{\rightskip}{0pt plus 5cm}int Randini::Window::getScreenWidth ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classRandini_1_1Window_a7b4ddf85609bbe27f2800ff05a0130dc}
+
+
+getScreenWidth get functions used to recieve input from the varibles m\_\-screenWidth and m\_\-screenHeight this includes the screen width and height \begin{DoxyReturn}{Returns}
+the resolution of the screen 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}

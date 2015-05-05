@@ -5,11 +5,24 @@
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+static bool \hyperlink{classRandini_1_1IOManager_a2fee0167fb6b1731495af896f6441e3e}{readFileToBuffer} (std::string filePath, std::vector$<$ unsigned char $>$ \&buffer)
+\begin{DoxyCompactList}\small\item\em readFileToBuffer reads a file into the buffer. parameters: pass in the buffer by reference. the way this works is the user will pass in there own empty vector and the function will fill the data with the data they need. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
 \hypertarget{classRandini_1_1IOManager_a2fee0167fb6b1731495af896f6441e3e}{
-static bool {\bfseries readFileToBuffer} (std::string filePath, std::vector$<$ unsigned char $>$ \&buffer)}
+\index{Randini::IOManager@{Randini::IOManager}!readFileToBuffer@{readFileToBuffer}}
+\index{readFileToBuffer@{readFileToBuffer}!Randini::IOManager@{Randini::IOManager}}
+\subsubsection[{readFileToBuffer}]{\setlength{\rightskip}{0pt plus 5cm}bool Randini::IOManager::readFileToBuffer (std::string {\em filePath}, \/  std::vector$<$ unsigned char $>$ \& {\em buffer})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
 \label{classRandini_1_1IOManager_a2fee0167fb6b1731495af896f6441e3e}
 
-\end{DoxyCompactItemize}
+
+readFileToBuffer reads a file into the buffer. parameters: pass in the buffer by reference. the way this works is the user will pass in there own empty vector and the function will fill the data with the data they need. 
+\begin{DoxyParams}{Parameters}
+\item[{\em filePath}]Define the file path thats being passed in using vecotor. \item[{\em buffer}]Passes in the buffer from the user so it will only fill the data it needs\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the program opens the file 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}

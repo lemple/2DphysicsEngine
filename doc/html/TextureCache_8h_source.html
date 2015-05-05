@@ -62,24 +62,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00024"></a>00024         <a class="code" href="classRandini_1_1TextureCache.html">TextureCache</a>();
 <a name="l00025"></a>00025         ~<a class="code" href="classRandini_1_1TextureCache.html">TextureCache</a>();
 <a name="l00026"></a>00026 
-<a name="l00027"></a>00027     <span class="comment">//returns GLTexture. Look up in the map and see if the texture is there</span>
-<a name="l00028"></a>00028         <span class="comment">//if it is then it will just return the existing texture </span>
-<a name="l00029"></a>00029         <span class="comment">//the texture internally stores the GLuint ID which is a pointer to the actual texture</span>
-<a name="l00030"></a>00030         <span class="comment">//if it dosent create a new which will push it back onto the texture map.</span>
-<a name="l00031"></a>00031         <a class="code" href="structRandini_1_1GLTexture.html">GLTexture</a> getTexture(std::string texturePath);
-<a name="l00032"></a>00032 
-<a name="l00033"></a>00033     <span class="keyword">private</span>:
-<a name="l00034"></a>00034         <span class="comment">//takes two elements. first element is the filepath and the name</span>
-<a name="l00035"></a>00035         std::map&lt;std::string, GLTexture&gt; _textureMap;
-<a name="l00036"></a>00036     };
-<a name="l00037"></a>00037 }
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 
+<a name="l00044"></a>00044         <a class="code" href="structRandini_1_1GLTexture.html" title="The GLTexture struct make is for the id of the texture as well as width and height...">GLTexture</a> <a class="code" href="classRandini_1_1TextureCache.html#a616aab3abb7b12c93ab9204432e9512d" title="getTexture returns GLTexture. Look up in the map and see if the texture is there...">getTexture</a>(std::string texturePath);
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048     <span class="keyword">private</span>:
+<a name="l00049"></a>00049         <span class="comment">//takes two elements. first element is the filepath and the name</span>
+<a name="l00050"></a>00050     std::map&lt;std::string, GLTexture&gt; m_textureMap;
+<a name="l00051"></a>00051     };}
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,7 +87,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr size="1"/><address style="text-align: right;"><small>Generated on 4 May 2015 for Ball Game by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 5 May 2015 for Ball Game by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

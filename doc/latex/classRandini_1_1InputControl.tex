@@ -2,44 +2,96 @@
 \section{Randini::InputControl Class Reference}
 \label{classRandini_1_1InputControl}\index{Randini::InputControl@{Randini::InputControl}}
 }
-\subsection*{Public Member Functions}
+
+
+The \hyperlink{classRandini_1_1InputControl}{InputControl} class Overall stores a key map which maps SDL\_\-Keys to bools If the value is true this means the key has been pressed Anything else means the key has been released.  
+
+
+{\ttfamily \#include $<$InputControl.h$>$}\subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hypertarget{classRandini_1_1InputControl_a8b03756c114cefa983dce5a97b18138d}{
-void {\bfseries update} ()}
+void \hyperlink{classRandini_1_1InputControl_a8b03756c114cefa983dce5a97b18138d}{update} ()}
 \label{classRandini_1_1InputControl_a8b03756c114cefa983dce5a97b18138d}
 
-\item 
-\hypertarget{classRandini_1_1InputControl_a1b1b8d717a70da6874a047d6a83f90df}{
-void {\bfseries pressKey} (unsigned int keyID)}
-\label{classRandini_1_1InputControl_a1b1b8d717a70da6874a047d6a83f90df}
-
-\item 
-\hypertarget{classRandini_1_1InputControl_a64352005e174fb38a18cdee3874a3f2b}{
-void {\bfseries releaseKey} (unsigned int keyID)}
-\label{classRandini_1_1InputControl_a64352005e174fb38a18cdee3874a3f2b}
-
-\item 
-\hypertarget{classRandini_1_1InputControl_a7d59848ed252cba960ed66528460e4e3}{
-void {\bfseries setMouseCoords} (float x, float y)}
-\label{classRandini_1_1InputControl_a7d59848ed252cba960ed66528460e4e3}
-
-\item 
-\hypertarget{classRandini_1_1InputControl_a7afd081b388ab767e5f453af0f944af8}{
-bool {\bfseries isKeyDown} (unsigned int keyID)}
-\label{classRandini_1_1InputControl_a7afd081b388ab767e5f453af0f944af8}
-
-\item 
-\hypertarget{classRandini_1_1InputControl_a1cfe9f5f3d3e551add411776af91ce6f}{
-bool {\bfseries isKeyPressed} (unsigned int keyID)}
-\label{classRandini_1_1InputControl_a1cfe9f5f3d3e551add411776af91ce6f}
-
-\item 
+\begin{DoxyCompactList}\small\item\em update function to update the key when it is pressed \item\end{DoxyCompactList}\item 
+void \hyperlink{classRandini_1_1InputControl_a1b1b8d717a70da6874a047d6a83f90df}{pressKey} (unsigned int keyID)
+\begin{DoxyCompactList}\small\item\em pressKey function to deal when a key is pressed store the ID as a unsinged int \item\end{DoxyCompactList}\item 
+void \hyperlink{classRandini_1_1InputControl_a64352005e174fb38a18cdee3874a3f2b}{releaseKey} (unsigned int keyID)
+\begin{DoxyCompactList}\small\item\em releaseKey Deals with when a key is released \item\end{DoxyCompactList}\item 
+void \hyperlink{classRandini_1_1InputControl_a7d59848ed252cba960ed66528460e4e3}{setMouseCoords} (float x, float y)
+\begin{DoxyCompactList}\small\item\em setMouseCoords Gets the cursors corrdinates so they can be used for camera movment etc \item\end{DoxyCompactList}\item 
+bool \hyperlink{classRandini_1_1InputControl_a7afd081b388ab767e5f453af0f944af8}{isKeyDown} (unsigned int keyID)
+\begin{DoxyCompactList}\small\item\em isKeyDown returns true if key is down \item\end{DoxyCompactList}\item 
+bool \hyperlink{classRandini_1_1InputControl_a1cfe9f5f3d3e551add411776af91ce6f}{isKeyPressed} (unsigned int keyID)
+\begin{DoxyCompactList}\small\item\em isKeyPressed returns true if key was just pressed \item\end{DoxyCompactList}\item 
 \hypertarget{classRandini_1_1InputControl_a0af97c3a0dd5b89cf344867279695a59}{
 glm::vec2 {\bfseries getMouseCoords} () const }
 \label{classRandini_1_1InputControl_a0af97c3a0dd5b89cf344867279695a59}
 
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classRandini_1_1InputControl}{InputControl} class Overall stores a key map which maps SDL\_\-Keys to bools If the value is true this means the key has been pressed Anything else means the key has been released. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classRandini_1_1InputControl_a7afd081b388ab767e5f453af0f944af8}{
+\index{Randini::InputControl@{Randini::InputControl}!isKeyDown@{isKeyDown}}
+\index{isKeyDown@{isKeyDown}!Randini::InputControl@{Randini::InputControl}}
+\subsubsection[{isKeyDown}]{\setlength{\rightskip}{0pt plus 5cm}bool Randini::InputControl::isKeyDown (unsigned int {\em keyID})}}
+\label{classRandini_1_1InputControl_a7afd081b388ab767e5f453af0f944af8}
+
+
+isKeyDown returns true if key is down 
+\begin{DoxyParams}{Parameters}
+\item[{\em keyID}]Check to see if key is in map if not then program won't insert it \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+2 Returns false if key is not down \& Returns it-\/$>$secodn which means it found the key in the map 
+\end{DoxyReturn}
+\hypertarget{classRandini_1_1InputControl_a1cfe9f5f3d3e551add411776af91ce6f}{
+\index{Randini::InputControl@{Randini::InputControl}!isKeyPressed@{isKeyPressed}}
+\index{isKeyPressed@{isKeyPressed}!Randini::InputControl@{Randini::InputControl}}
+\subsubsection[{isKeyPressed}]{\setlength{\rightskip}{0pt plus 5cm}bool Randini::InputControl::isKeyPressed (unsigned int {\em keyID})}}
+\label{classRandini_1_1InputControl_a1cfe9f5f3d3e551add411776af91ce6f}
+
+
+isKeyPressed returns true if key was just pressed 
+\begin{DoxyParams}{Parameters}
+\item[{\em keyID}]\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns Treu if it was Returns false if it wasent 
+\end{DoxyReturn}
+\hypertarget{classRandini_1_1InputControl_a1b1b8d717a70da6874a047d6a83f90df}{
+\index{Randini::InputControl@{Randini::InputControl}!pressKey@{pressKey}}
+\index{pressKey@{pressKey}!Randini::InputControl@{Randini::InputControl}}
+\subsubsection[{pressKey}]{\setlength{\rightskip}{0pt plus 5cm}void Randini::InputControl::pressKey (unsigned int {\em keyID})}}
+\label{classRandini_1_1InputControl_a1b1b8d717a70da6874a047d6a83f90df}
+
+
+pressKey function to deal when a key is pressed store the ID as a unsinged int 
+\begin{DoxyParams}{Parameters}
+\item[{\em keyID}]Check to see if the keyID is in the map returns true if so \end{DoxyParams}
+\hypertarget{classRandini_1_1InputControl_a64352005e174fb38a18cdee3874a3f2b}{
+\index{Randini::InputControl@{Randini::InputControl}!releaseKey@{releaseKey}}
+\index{releaseKey@{releaseKey}!Randini::InputControl@{Randini::InputControl}}
+\subsubsection[{releaseKey}]{\setlength{\rightskip}{0pt plus 5cm}void Randini::InputControl::releaseKey (unsigned int {\em keyID})}}
+\label{classRandini_1_1InputControl_a64352005e174fb38a18cdee3874a3f2b}
+
+
+releaseKey Deals with when a key is released 
+\begin{DoxyParams}{Parameters}
+\item[{\em keyID}]Follows same method as pressKey but checks if its set to false \end{DoxyParams}
+\hypertarget{classRandini_1_1InputControl_a7d59848ed252cba960ed66528460e4e3}{
+\index{Randini::InputControl@{Randini::InputControl}!setMouseCoords@{setMouseCoords}}
+\index{setMouseCoords@{setMouseCoords}!Randini::InputControl@{Randini::InputControl}}
+\subsubsection[{setMouseCoords}]{\setlength{\rightskip}{0pt plus 5cm}void Randini::InputControl::setMouseCoords (float {\em x}, \/  float {\em y})}}
+\label{classRandini_1_1InputControl_a7d59848ed252cba960ed66528460e4e3}
+
+
+setMouseCoords Gets the cursors corrdinates so they can be used for camera movment etc 
+\begin{DoxyParams}{Parameters}
+\item[{\em x}]Sets the mouse coords equal to x axis \item[{\em y}]Sets the mouse coords equal to y axis \end{DoxyParams}
 
 
 The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}

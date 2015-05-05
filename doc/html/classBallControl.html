@@ -60,21 +60,23 @@ Inheritance diagram for BallControl:</div>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBallControl.html#af32a9b232b26af69231966ae3aab98d5">update</a> (std::vector&lt; <a class="el" href="structBall.html">Ball</a> &gt; &amp;_balls, <a class="el" href="classBallGrid.html">BallGrid</a> *_ballGrid, float _deltaTime, int _maxX, int _maxY)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa0b3f2735a09bd485ff70ce76ba0ec4"></a><!-- doxytag: member="BallControl::setGravityDirection" ref="afa0b3f2735a09bd485ff70ce76ba0ec4" args="(GravityControl dir)" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>setGravityDirection</b> (GravityControl dir)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBallControl.html#a4f811993f5e8988eb4f4ab3c03dadf52">mouseBallChecker</a> (<a class="el" href="structBall.html">Ball</a> &amp;b, float mouseX, float mouseY)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abec61f04e0f597dcda76ff75ba86e5b8"></a><!-- doxytag: member="BallControl::mouseDown" ref="abec61f04e0f597dcda76ff75ba86e5b8" args="(std::vector&lt; Ball &gt; &amp;balls, float mouseX, float mouseY)" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>mouseDown</b> (std::vector&lt; <a class="el" href="structBall.html">Ball</a> &gt; &amp;balls, float mouseX, float mouseY)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e7166e0945803af4880498eba1f559e"></a><!-- doxytag: member="BallControl::mouseUp" ref="a3e7166e0945803af4880498eba1f559e" args="(std::vector&lt; Ball &gt; &amp;balls)" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>mouseUp</b> (std::vector&lt; <a class="el" href="structBall.html">Ball</a> &gt; &amp;balls)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a316583a199b92d1f737910c08c550900"></a><!-- doxytag: member="BallControl::mouseMotion" ref="a316583a199b92d1f737910c08c550900" args="(std::vector&lt; Ball &gt; &amp;balls, float mouseX, float mouseY)" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>mouseMotion</b> (std::vector&lt; <a class="el" href="structBall.html">Ball</a> &gt; &amp;balls, float mouseX, float mouseY)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5cc0c3b41404bba171ef3f447043875"></a><!-- doxytag: member="BallControl::updateCollision" ref="ab5cc0c3b41404bba171ef3f447043875" args="(BallGrid *ballGrid)" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>updateCollision</b> (<a class="el" href="classBallGrid.html">BallGrid</a> *ballGrid)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33543f2a175094819e5a3d8631eb34af"></a><!-- doxytag: member="BallControl::collisionChecker" ref="a33543f2a175094819e5a3d8631eb34af" args="(Ball *ball, std::vector&lt; Ball * &gt; &amp;ballsToCheck, int startingIndex)" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>collisionChecker</b> (<a class="el" href="structBall.html">Ball</a> *ball, std::vector&lt; <a class="el" href="structBall.html">Ball</a> * &gt; &amp;ballsToCheck, int startingIndex)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad12ad637d1dc8239634397c445929698"></a><!-- doxytag: member="BallControl::collisionChecker" ref="ad12ad637d1dc8239634397c445929698" args="(Ball &amp;b1, Ball &amp;b2)" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>collisionChecker</b> (<a class="el" href="structBall.html">Ball</a> &amp;b1, <a class="el" href="structBall.html">Ball</a> &amp;b2)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">update Function intakes the vector of the balls which derives from <a class="el" href="structBall.html">Ball</a> class so therefore all values can be set. set mxX and maxY for wall collision detection.  <a href="#af32a9b232b26af69231966ae3aab98d5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBallControl.html#afa0b3f2735a09bd485ff70ce76ba0ec4">setGravityDirection</a> (GravityControl dir)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">setGravityDirection Sets gravity direction control and allows the user to manipulate the direction of the balls  <a href="#afa0b3f2735a09bd485ff70ce76ba0ec4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBallControl.html#a1ba25b7c58a9a6ec39ca54daa9e1f488">mouseDown</a> (std::vector&lt; <a class="el" href="structBall.html">Ball</a> &gt; &amp;_balls, float _mouseX, float _mouseY)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">mouseDown Takes in the values of the balls so they can be altered depending if the ball is grabbed  <a href="#a1ba25b7c58a9a6ec39ca54daa9e1f488"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBallControl.html#adbc3a6859b147973570a0a531942e595">mouseUp</a> (std::vector&lt; <a class="el" href="structBall.html">Ball</a> &gt; &amp;_balls)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">mouseUp takes the values of the balls and apply's them new values when mouse is released  <a href="#adbc3a6859b147973570a0a531942e595"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBallControl.html#a18a2fcfe219f8f28319d8f9dcb2bee77">mouseMotion</a> (std::vector&lt; <a class="el" href="structBall.html">Ball</a> &gt; &amp;_balls, float _mouseX, float _mouseY)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">mouseMotion takes the general location of the cursor and allows the ball to follow the mouse cursor  <a href="#a18a2fcfe219f8f28319d8f9dcb2bee77"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBallControl.html#a85fce07250ce552fd098b6c74d34c588">mouseBallChecker</a> (<a class="el" href="structBall.html">Ball</a> &amp;_b, float _mouseX, float _mouseY)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">mouseBallChecker Takes X and Y location for the mouse so it can be located to the location of the ball Also location of the mouse for when the mouse is clicked down  <a href="#a85fce07250ce552fd098b6c74d34c588"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBallControl.html#a352ac9ed1ddedb11892e92ea75e1d171">updateCollision</a> (<a class="el" href="classBallGrid.html">BallGrid</a> *_ballGrid)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">updateCollision Takes in the <a class="el" href="classBallGrid.html">BallGrid</a> class so the balls can be checked for collision with other balls on the grid  <a href="#a352ac9ed1ddedb11892e92ea75e1d171"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBallControl.html#af84eaea1411dd325db8e94c7adc5d9a3">collisionChecker</a> (<a class="el" href="structBall.html">Ball</a> *_ball, std::vector&lt; <a class="el" href="structBall.html">Ball</a> * &gt; &amp;_ballsToCheck, int _startingIndex)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">collisionChecker Detects the collision made between a ball and a vector of balls starting at a specific index  <a href="#af84eaea1411dd325db8e94c7adc5d9a3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBallControl.html#a062a70454845cbf25fe7f15554676ab9">collisionChecker</a> (<a class="el" href="structBall.html">Ball</a> &amp;_b1, <a class="el" href="structBall.html">Ball</a> &amp;_b2)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">collisionChecker Detects the collision between two balls in same cell  <a href="#a062a70454845cbf25fe7f15554676ab9"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6eb0d955ccad645cd5d8865c3bd899a7"></a><!-- doxytag: member="BallControl::getGravityMovement" ref="a6eb0d955ccad645cd5d8865c3bd899a7" args="()" -->
 glm::vec2&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBallControl.html#a6eb0d955ccad645cd5d8865c3bd899a7">getGravityMovement</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">vec 2 varible for direction of the gravity movement <br/></td></tr>
@@ -89,27 +91,21 @@ glm::vec2&nbsp;</td><td class="memItemRight" valign="bottom"><b>m_cursorOffset</
 GravityControl&nbsp;</td><td class="memItemRight" valign="bottom"><b>m_gravityControl</b></td></tr>
 </table>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a4f811993f5e8988eb4f4ab3c03dadf52"></a><!-- doxytag: member="BallControl::mouseBallChecker" ref="a4f811993f5e8988eb4f4ab3c03dadf52" args="(Ball &amp;b, float mouseX, float mouseY)" -->
+<a class="anchor" id="a062a70454845cbf25fe7f15554676ab9"></a><!-- doxytag: member="BallControl::collisionChecker" ref="a062a70454845cbf25fe7f15554676ab9" args="(Ball &amp;_b1, Ball &amp;_b2)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool BallControl::mouseBallChecker </td>
+          <td class="memname">void BallControl::collisionChecker </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structBall.html">Ball</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>b</em>, </td>
+          <td class="paramname"> <em>_b1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float&nbsp;</td>
-          <td class="paramname"> <em>mouseX</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&nbsp;</td>
-          <td class="paramname"> <em>mouseY</em></td><td>&nbsp;</td>
+          <td class="paramtype"><a class="el" href="structBall.html">Ball</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>_b2</em></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -119,9 +115,252 @@ GravityControl&nbsp;</td><td class="memItemRight" valign="bottom"><b>m_gravityCo
       </table>
 </div>
 <div class="memdoc">
-<p>MouseBallChecker: Takes X and Y location for the mouse so it can be located to the location of the ball /// MouseDown: Takes in the values of the balls so they can be altered depending if the ball is grabbed /// Also location of the mouse for when the mouse is clicked down /// MouseUP: Takes the values of the balls and apply's them new values when mouse is released /// MouseMotion: Takes the general location of the cursor and allows the ball to follow the mouse cursor /// UpdateCollision: Takes in the <a class="el" href="classBallGrid.html">BallGrid</a> class so the balls can be checked for collision with other balls on the grid /// CollisisonChecker: Detects the collision made between a ball and a vector of balls starting at a specific index /// </p>
 
-<p>Reimplemented in <a class="el" href="classColorTransferControl.html#a9bce863f9d08a2dd596a56a432861559">ColorTransferControl</a>.</p>
+<p>collisionChecker Detects the collision between two balls in same cell </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>_b1</em>&nbsp;</td><td>Sets ball one for elastic collision detection </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_b2</em>&nbsp;</td><td>Sets ball two for elastic collision detection </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="classColorTransferControl.html#a9567be01e35663e82691d1756028899a">ColorTransferControl</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af84eaea1411dd325db8e94c7adc5d9a3"></a><!-- doxytag: member="BallControl::collisionChecker" ref="af84eaea1411dd325db8e94c7adc5d9a3" args="(Ball *_ball, std::vector&lt; Ball * &gt; &amp;_ballsToCheck, int _startingIndex)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BallControl::collisionChecker </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBall.html">Ball</a> *&nbsp;</td>
+          <td class="paramname"> <em>_ball</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structBall.html">Ball</a> * &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>_ballsToCheck</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>_startingIndex</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>collisionChecker Detects the collision made between a ball and a vector of balls starting at a specific index </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>_ball</em>&nbsp;</td><td>Takes the data of balls and check collision in same index </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_ballsToCheck</em>&nbsp;</td><td>Registers which ball to check in certain cell </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_startingIndex</em>&nbsp;</td><td>Sets index so ball will check with own cell without duplicating code </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="classColorTransferControl.html#a082bba0dbe1e10809d9fb8dc2386a1da">ColorTransferControl</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a85fce07250ce552fd098b6c74d34c588"></a><!-- doxytag: member="BallControl::mouseBallChecker" ref="a85fce07250ce552fd098b6c74d34c588" args="(Ball &amp;_b, float _mouseX, float _mouseY)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BallControl::mouseBallChecker </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBall.html">Ball</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>_b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>_mouseX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>_mouseY</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>mouseBallChecker Takes X and Y location for the mouse so it can be located to the location of the ball Also location of the mouse for when the mouse is clicked down </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>_b</em>&nbsp;</td><td>Set for returning the ball values </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_mouseX</em>&nbsp;</td><td>Set gets the coordinates of the mouse in X axis </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_mouseY</em>&nbsp;</td><td>Set gets the coordinates of the mouse in X axis </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The coordinates of the mous linked to ball position </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classColorTransferControl.html#ab4db8c5f585065d55e4beaef3d51b940">ColorTransferControl</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1ba25b7c58a9a6ec39ca54daa9e1f488"></a><!-- doxytag: member="BallControl::mouseDown" ref="a1ba25b7c58a9a6ec39ca54daa9e1f488" args="(std::vector&lt; Ball &gt; &amp;_balls, float _mouseX, float _mouseY)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BallControl::mouseDown </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structBall.html">Ball</a> &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>_balls</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>_mouseX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>_mouseY</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>mouseDown Takes in the values of the balls so they can be altered depending if the ball is grabbed </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>_balls</em>&nbsp;</td><td>Applys the data of balls for when the mouse is down </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_mouseX</em>&nbsp;</td><td>Takes coordinates of the mouse in x axis </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_mouseY</em>&nbsp;</td><td>Takes coordinates of the mouse in Y axis </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="classColorTransferControl.html#ac0acd46f1620035c8d7a830206fce6b8">ColorTransferControl</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a18a2fcfe219f8f28319d8f9dcb2bee77"></a><!-- doxytag: member="BallControl::mouseMotion" ref="a18a2fcfe219f8f28319d8f9dcb2bee77" args="(std::vector&lt; Ball &gt; &amp;_balls, float _mouseX, float _mouseY)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BallControl::mouseMotion </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structBall.html">Ball</a> &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>_balls</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>_mouseX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>_mouseY</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>mouseMotion takes the general location of the cursor and allows the ball to follow the mouse cursor </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>_balls</em>&nbsp;</td><td>Sets the ball and allows it to be affected by the mosue </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_mouseX</em>&nbsp;</td><td>Gets the coordinates of the mouse in x axis </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_mouseY</em>&nbsp;</td><td>Gets the coordinates of the mouse in y axis </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="classColorTransferControl.html#a84567646b6a7d814aa8de8660da69543">ColorTransferControl</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adbc3a6859b147973570a0a531942e595"></a><!-- doxytag: member="BallControl::mouseUp" ref="adbc3a6859b147973570a0a531942e595" args="(std::vector&lt; Ball &gt; &amp;_balls)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BallControl::mouseUp </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structBall.html">Ball</a> &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>_balls</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>mouseUp takes the values of the balls and apply's them new values when mouse is released </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>_balls</em>&nbsp;</td><td>Takes the data of balls and applys it to mouse up </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="classColorTransferControl.html#a335ef9511d0cacec325a154c106bb1da">ColorTransferControl</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afa0b3f2735a09bd485ff70ce76ba0ec4"></a><!-- doxytag: member="BallControl::setGravityDirection" ref="afa0b3f2735a09bd485ff70ce76ba0ec4" args="(GravityControl dir)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BallControl::setGravityDirection </td>
+          <td>(</td>
+          <td class="paramtype">GravityControl&nbsp;</td>
+          <td class="paramname"> <em>dir</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>setGravityDirection Sets gravity direction control and allows the user to manipulate the direction of the balls </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>dir</em>&nbsp;</td><td>sets direction of the ball </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -167,9 +406,48 @@ GravityControl&nbsp;</td><td class="memItemRight" valign="bottom"><b>m_gravityCo
       </table>
 </div>
 <div class="memdoc">
-<p>Function intakes the vector of the balls which derives from <a class="el" href="structBall.html">Ball</a> class so therefore all values can be set. <a class="el" href="classBallGrid.html">BallGrid</a> to allow the input of the 2D grid to update each ball with spatial partitioning Delta time as all function need to be set to deltaTime, set mxX and maxY for wall collision detection. </p>
 
-<p>Reimplemented in <a class="el" href="classColorTransferControl.html#acbe9581f0be7624c9bc33d40e2ee1a6b">ColorTransferControl</a>.</p>
+<p>update Function intakes the vector of the balls which derives from <a class="el" href="structBall.html">Ball</a> class so therefore all values can be set. set mxX and maxY for wall collision detection. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>_balls</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_ballGrid</em>&nbsp;</td><td><a class="el" href="classBallGrid.html">BallGrid</a> to allow the input of the 2D grid to update each ball with spatial partitioning </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_deltaTime</em>&nbsp;</td><td>DeltaTime is set to keep motion at a fix rate </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_maxX</em>&nbsp;</td><td>Set for wall collision in X direction </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_maxY</em>&nbsp;</td><td>Set for wall collision in Y direction </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="classColorTransferControl.html#add37c8ee8e911a13ecec98cf09fc81c4">ColorTransferControl</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a352ac9ed1ddedb11892e92ea75e1d171"></a><!-- doxytag: member="BallControl::updateCollision" ref="a352ac9ed1ddedb11892e92ea75e1d171" args="(BallGrid *_ballGrid)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BallControl::updateCollision </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classBallGrid.html">BallGrid</a> *&nbsp;</td>
+          <td class="paramname"> <em>_ballGrid</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>updateCollision Takes in the <a class="el" href="classBallGrid.html">BallGrid</a> class so the balls can be checked for collision with other balls on the grid </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>_ballGrid</em>&nbsp;</td><td>Checks the ballGrid to update collision </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="classColorTransferControl.html#a9f54f20a18940cf66c08a994eb8dfb01">ColorTransferControl</a>.</p>
 
 </div>
 </div>
@@ -183,7 +461,7 @@ GravityControl&nbsp;</td><td class="memItemRight" valign="bottom"><b>m_gravityCo
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -192,7 +470,7 @@ GravityControl&nbsp;</td><td class="memItemRight" valign="bottom"><b>m_gravityCo
 </iframe>
 </div>
 
-<hr size="1"/><address style="text-align: right;"><small>Generated on 4 May 2015 for Ball Game by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 5 May 2015 for Ball Game by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

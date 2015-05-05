@@ -54,65 +54,74 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00016"></a>00016 <span class="preprocessor">#ifndef __GLSLPROGRAM_H_</span>
 <a name="l00017"></a>00017 <span class="preprocessor"></span><span class="preprocessor">#define __GLSLPROGRAM_H_</span>
 <a name="l00018"></a>00018 <span class="preprocessor"></span>
-<a name="l00019"></a>00019 <span class="preprocessor">#include &lt;iostream&gt;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#include &lt;string&gt;</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;GL/glew.h&gt;</span>
-<a name="l00022"></a>00022 
-<a name="l00023"></a>00023 <span class="keyword">namespace </span>Randini
-<a name="l00024"></a>00024 {
-<a name="l00025"></a><a class="code" href="classRandini_1_1GLSLProgram.html">00025</a>     <span class="keyword">class </span><a class="code" href="classRandini_1_1GLSLProgram.html">GLSLProgram</a>
-<a name="l00026"></a>00026     {
-<a name="l00027"></a>00027 
-<a name="l00028"></a>00028     <span class="keyword">public</span>:
-<a name="l00029"></a>00029         <a class="code" href="classRandini_1_1GLSLProgram.html">GLSLProgram</a>();
-<a name="l00030"></a>00030         ~<a class="code" href="classRandini_1_1GLSLProgram.html">GLSLProgram</a>();
+<a name="l00019"></a>00019 <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;GL/glew.h&gt;</span>
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027 <span class="keyword">namespace </span>Randini
+<a name="l00028"></a>00028 {
+<a name="l00029"></a><a class="code" href="classRandini_1_1GLSLProgram.html">00029</a>     <span class="keyword">class </span><a class="code" href="classRandini_1_1GLSLProgram.html">GLSLProgram</a>
+<a name="l00030"></a>00030     {
 <a name="l00031"></a>00031 
-<a name="l00032"></a>00032         <span class="comment">//function compiles the shaders</span>
-<a name="l00033"></a>00033         <span class="comment">//Makes a string varible so the path name of the file can be found and can extract information from the txt document</span>
-<a name="l00034"></a>00034         <span class="comment">//overall reads the file and compiles them to a format that openGL can use</span>
-<a name="l00035"></a>00035         <span class="comment">//make string const as they are never going to change and ti prevents possible bugs</span>
-<a name="l00036"></a>00036         <span class="keywordtype">void</span> compileShaders(<span class="keyword">const</span> std::string&amp; vertexShaderFilePath, <span class="keyword">const</span> std::string&amp; fragmentShaderFilePath);
-<a name="l00037"></a>00037 
-<a name="l00038"></a>00038         <span class="comment">//link shader togehter into the final program</span>
-<a name="l00039"></a>00039         <span class="keywordtype">void</span> linkShader();
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041         
-<a name="l00042"></a>00042         <span class="keywordtype">void</span> addAttribute(<span class="keyword">const</span> std::string&amp; attributeName);
-<a name="l00043"></a>00043 
-<a name="l00044"></a>00044         <span class="comment">//need to ask openGL the location of the of the uniform</span>
-<a name="l00045"></a>00045         <span class="comment">//make a string to askj the name of the uniform</span>
-<a name="l00046"></a>00046         GLint getUniformLocation(<span class="keyword">const</span> std::string&amp; uniformName);
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048         <span class="keywordtype">void</span> use();
-<a name="l00049"></a>00049         <span class="keywordtype">void</span> unuse();
+<a name="l00032"></a>00032     <span class="keyword">public</span>:
+<a name="l00033"></a>00033         <a class="code" href="classRandini_1_1GLSLProgram.html">GLSLProgram</a>();
+<a name="l00034"></a>00034         ~<a class="code" href="classRandini_1_1GLSLProgram.html">GLSLProgram</a>();
+<a name="l00035"></a>00035 
+<a name="l00049"></a>00049         <span class="keywordtype">void</span> <a class="code" href="classRandini_1_1GLSLProgram.html#a73328c415caa63862b713bb840b85532" title="compileShaders Function compiles the shaders Makes a string varible so the path name...">compileShaders</a>(<span class="keyword">const</span> std::string&amp; vertexShaderFilePath, <span class="keyword">const</span> std::string&amp; fragmentShaderFilePath);
 <a name="l00050"></a>00050 
-<a name="l00051"></a>00051     <span class="keyword">private</span>:
-<a name="l00052"></a>00052         <span class="comment">//counts the number of attributes that the shader has</span>
-<a name="l00053"></a>00053         <span class="keywordtype">int</span> _numAttributes;
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055         <span class="comment">//makes it so it compiles both shaders rather then having 2 huge blocks of code </span>
-<a name="l00056"></a>00056         <span class="comment">//restricted to vertex anf frag</span>
-<a name="l00057"></a>00057         <span class="keywordtype">void</span> compileShader(<span class="keyword">const</span> std::string&amp; filePath, GLuint <span class="keywordtype">id</span>);
+<a name="l00051"></a>00051     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00052"></a>00052 
+<a name="l00057"></a>00057         <span class="keywordtype">void</span> <a class="code" href="classRandini_1_1GLSLProgram.html#aa67b3edb1c8eae84dc65d5e913e144cd" title="linkShader link shader togehter into the final program">linkShader</a>();
 <a name="l00058"></a>00058 
-<a name="l00059"></a>00059         <span class="comment">//need id to hold onto the shader program </span>
-<a name="l00060"></a>00060         <span class="comment">//overall the id for the final program</span>
-<a name="l00061"></a>00061         GLuint _programID;
-<a name="l00062"></a>00062 
-<a name="l00063"></a>00063         <span class="comment">//I also need id&apos;s for my individual shader programs</span>
-<a name="l00064"></a>00064         <span class="comment">//Overall this deal with the handles for the shader program</span>
-<a name="l00065"></a>00065         GLuint _vertexShaderID;
-<a name="l00066"></a>00066         GLuint _fragmentShaderID;
-<a name="l00067"></a>00067     };
-<a name="l00068"></a>00068 }
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070 <span class="preprocessor">#endif</span>
+<a name="l00059"></a>00059     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00060"></a>00060 
+<a name="l00067"></a>00067         <span class="keywordtype">void</span> <a class="code" href="classRandini_1_1GLSLProgram.html#ad623f8c42dfa974c7820949905a53d18" title="addAttribute Retrives the shader attributes from the shader file">addAttribute</a>(<span class="keyword">const</span> std::string&amp; attributeName);
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00070"></a>00070 
+<a name="l00080"></a>00080         GLint <a class="code" href="classRandini_1_1GLSLProgram.html#a8ed1430de4e2629d6dcddf8eafd6ce09" title="getUniformLocation need to ask openGL the location of the of the uniform make a string...">getUniformLocation</a>(<span class="keyword">const</span> std::string&amp; uniformName);
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00083"></a>00083 
+<a name="l00088"></a>00088         <span class="keywordtype">void</span> <a class="code" href="classRandini_1_1GLSLProgram.html#a7371ee6e41ba0d03a61663d67551da48" title="use Activates the shader and all its attributes">use</a>();
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00091"></a>00091 
+<a name="l00096"></a>00096         <span class="keywordtype">void</span> <a class="code" href="classRandini_1_1GLSLProgram.html#a29fb698f73e40621ec181ed7c3c3e7be" title="unuse Disables the shader and all its attributes">unuse</a>();
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100     <span class="keyword">private</span>:
+<a name="l00101"></a>00101         <span class="comment">//counts the number of attributes that the shader has</span>
+<a name="l00102"></a>00102     <span class="keywordtype">int</span> m_numAttributes;
+<a name="l00103"></a>00103 
+<a name="l00113"></a>00113         <span class="keywordtype">void</span> compileShader(<span class="keyword">const</span> std::string&amp; filePath, GLuint <span class="keywordtype">id</span>);
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117         <span class="comment">//need id to hold onto the shader program </span>
+<a name="l00118"></a>00118         <span class="comment">//overall the id for the final program</span>
+<a name="l00119"></a>00119     GLuint m_programID;
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121         <span class="comment">//I also need id&apos;s for my individual shader programs</span>
+<a name="l00122"></a>00122         <span class="comment">//Overall this deal with the handles for the shader program</span>
+<a name="l00123"></a>00123     GLuint m_vertexShaderID;
+<a name="l00124"></a>00124     GLuint m_fragmentShaderID;
+<a name="l00125"></a>00125     };
+<a name="l00126"></a>00126 }
+<a name="l00127"></a>00127 
+<a name="l00128"></a>00128 <span class="preprocessor">#endif</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -121,7 +130,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr size="1"/><address style="text-align: right;"><small>Generated on 4 May 2015 for Ball Game by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 5 May 2015 for Ball Game by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

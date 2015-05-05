@@ -54,68 +54,75 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#include &lt;map&gt;</span>
 <a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="keyword">typedef</span> std::map&lt;unsigned int, bool&gt; KeyPair;
+<a name="l00019"></a>00019 <span class="comment">//-------------------------------------------------------------------------------------------------</span>
 <a name="l00020"></a>00020 
-<a name="l00021"></a>00021 <span class="keyword">namespace </span>Randini
-<a name="l00022"></a>00022 {
-<a name="l00023"></a><a class="code" href="classRandini_1_1InputControl.html">00023</a>     <span class="keyword">class </span><a class="code" href="classRandini_1_1InputControl.html">InputControl</a>
-<a name="l00024"></a>00024     {
-<a name="l00025"></a>00025     <span class="keyword">public</span>:
-<a name="l00026"></a>00026         <a class="code" href="classRandini_1_1InputControl.html">InputControl</a>();
-<a name="l00027"></a>00027         ~<a class="code" href="classRandini_1_1InputControl.html">InputControl</a>();
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029         <span class="comment">//Overall stores a key map which maps SDL_Keys to bools</span>
-<a name="l00030"></a>00030         <span class="comment">//If the value is true this means the key has been pressed</span>
-<a name="l00031"></a>00031         <span class="comment">//Anything else means the key has been released</span>
-<a name="l00032"></a>00032 
-<a name="l00033"></a>00033         <span class="comment">//function to update the key when it is pressed</span>
-<a name="l00034"></a>00034         <span class="keywordtype">void</span> update();
-<a name="l00035"></a>00035 
-<a name="l00036"></a>00036         <span class="comment">//function to deal  when a key is pressed   </span>
-<a name="l00037"></a>00037         <span class="comment">//store the ID as a unsinged int</span>
-<a name="l00038"></a>00038 
-<a name="l00039"></a>00039         <span class="keywordtype">void</span> pressKey(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> keyID);
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041         <span class="comment">//Deals with when a key is released</span>
-<a name="l00042"></a>00042         <span class="keywordtype">void</span> releaseKey(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> keyID);
-<a name="l00043"></a>00043 
-<a name="l00044"></a>00044         <span class="comment">//Gets the mcursors corrdinates so they can be used for camera movment etc</span>
-<a name="l00045"></a>00045         <span class="keywordtype">void</span> setMouseCoords(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y);
-<a name="l00046"></a>00046         
-<a name="l00047"></a>00047     <span class="comment">// returns true if key is down</span>
-<a name="l00048"></a>00048         <span class="keywordtype">bool</span> isKeyDown(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> keyID);
-<a name="l00049"></a>00049 
-<a name="l00050"></a>00050         <span class="comment">// returns true if key was just pressed</span>
-<a name="l00051"></a>00051         <span class="keywordtype">bool</span> isKeyPressed(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> keyID);
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053         <span class="comment">//makes a gett function for the mouse coordinates to get the mouses coordinates</span>
-<a name="l00054"></a>00054         glm::vec2 getMouseCoords()<span class="keyword"> const</span>
-<a name="l00055"></a>00055 <span class="keyword">        </span>{
-<a name="l00056"></a>00056             <span class="keywordflow">return</span> _mouseCoords;
-<a name="l00057"></a>00057         }
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059     <span class="keyword">private</span>:
-<a name="l00060"></a>00060         <span class="comment">//made private as it will only be enternally used by is key pressed and therefore adds security</span>
-<a name="l00061"></a>00061     <span class="comment">// returns true if key is down</span>
-<a name="l00062"></a>00062         <span class="keywordtype">bool</span> wasKeyDown(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> keyID);
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064         <span class="comment">//using unordered map as it works faster then a map container as it need to access</span>
-<a name="l00065"></a>00065         <span class="comment">//individual elements since it stores it as a hash table rather then a tree</span>
-<a name="l00066"></a>00066         <span class="comment">//This method uses up more space but works faster and since its a small engine this is not an issue</span>
-<a name="l00067"></a>00067     KeyPair _keyMap;
-<a name="l00068"></a>00068     KeyPair _previousKeyMap;
-<a name="l00069"></a>00069         <span class="comment">//gets the mouse coordinates for shooting</span>
-<a name="l00070"></a>00070         glm::vec2 _mouseCoords;
-<a name="l00071"></a>00071     };
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073 }
+<a name="l00021"></a>00021 <span class="keyword">typedef</span> std::map&lt;unsigned int, bool&gt; KeyPair;
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 <span class="keyword">namespace </span>Randini
+<a name="l00024"></a>00024 {
+<a name="l00032"></a><a class="code" href="classRandini_1_1InputControl.html">00032</a>     <span class="keyword">class </span><a class="code" href="classRandini_1_1InputControl.html" title="The InputControl class Overall stores a key map which maps SDL_Keys to bools If the...">InputControl</a>
+<a name="l00033"></a>00033     {
+<a name="l00034"></a>00034     <span class="keyword">public</span>:
+<a name="l00035"></a>00035         <a class="code" href="classRandini_1_1InputControl.html" title="The InputControl class Overall stores a key map which maps SDL_Keys to bools If the...">InputControl</a>();
+<a name="l00036"></a>00036         ~<a class="code" href="classRandini_1_1InputControl.html" title="The InputControl class Overall stores a key map which maps SDL_Keys to bools If the...">InputControl</a>();
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00039"></a>00039 
+<a name="l00044"></a>00044         <span class="keywordtype">void</span> <a class="code" href="classRandini_1_1InputControl.html#a8b03756c114cefa983dce5a97b18138d" title="update function to update the key when it is pressed">update</a>();
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00047"></a>00047 
+<a name="l00056"></a>00056         <span class="keywordtype">void</span> <a class="code" href="classRandini_1_1InputControl.html#a1b1b8d717a70da6874a047d6a83f90df" title="pressKey function to deal when a key is pressed store the ID as a unsinged int">pressKey</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> keyID);
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00059"></a>00059 
+<a name="l00067"></a>00067         <span class="keywordtype">void</span> <a class="code" href="classRandini_1_1InputControl.html#a64352005e174fb38a18cdee3874a3f2b" title="releaseKey Deals with when a key is released">releaseKey</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> keyID);
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00070"></a>00070 
+<a name="l00080"></a>00080         <span class="keywordtype">void</span> <a class="code" href="classRandini_1_1InputControl.html#a7d59848ed252cba960ed66528460e4e3" title="setMouseCoords Gets the cursors corrdinates so they can be used for camera movment...">setMouseCoords</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y);
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00083"></a>00083         
+<a name="l00095"></a>00095         <span class="keywordtype">bool</span> <a class="code" href="classRandini_1_1InputControl.html#a7afd081b388ab767e5f453af0f944af8" title="isKeyDown returns true if key is down">isKeyDown</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> keyID);
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00098"></a>00098 
+<a name="l00108"></a>00108         <span class="keywordtype">bool</span> <a class="code" href="classRandini_1_1InputControl.html#a1cfe9f5f3d3e551add411776af91ce6f" title="isKeyPressed returns true if key was just pressed">isKeyPressed</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> keyID);
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00111"></a>00111 
+<a name="l00112"></a>00112         <span class="comment">//makes a gett function for the mouse coordinates to get the mouses coordinates</span>
+<a name="l00113"></a>00113         glm::vec2 getMouseCoords()<span class="keyword"> const</span>
+<a name="l00114"></a>00114 <span class="keyword">        </span>{
+<a name="l00115"></a>00115       <span class="keywordflow">return</span> m_mouseCoords;
+<a name="l00116"></a>00116         }
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120     <span class="keyword">private</span>:
+<a name="l00121"></a>00121 
+<a name="l00133"></a>00133         <span class="keywordtype">bool</span> wasKeyDown(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> keyID);
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137         <span class="comment">//using unordered map as it works faster then a map container as it need to access</span>
+<a name="l00138"></a>00138         <span class="comment">//individual elements since it stores it as a hash table rather then a tree</span>
+<a name="l00139"></a>00139         <span class="comment">//This method uses up more space but works faster and since its a small engine this is not an issue</span>
+<a name="l00140"></a>00140     KeyPair m_keyMap;
+<a name="l00141"></a>00141     KeyPair m_previousKeyMap;
+<a name="l00142"></a>00142         <span class="comment">//gets the mouse coordinates for shooting</span>
+<a name="l00143"></a>00143     glm::vec2 m_mouseCoords;
+<a name="l00144"></a>00144     };
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146 }
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -124,7 +131,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr size="1"/><address style="text-align: right;"><small>Generated on 4 May 2015 for Ball Game by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 5 May 2015 for Ball Game by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

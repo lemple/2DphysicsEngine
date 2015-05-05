@@ -5,11 +5,24 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{structRandini_1_1GLTexture}{GLTexture} \hyperlink{classRandini_1_1TextureCache_a616aab3abb7b12c93ab9204432e9512d}{getTexture} (std::string texturePath)
+\begin{DoxyCompactList}\small\item\em getTexture returns \hyperlink{structRandini_1_1GLTexture}{GLTexture}. Look up in the map and see if the texture is there if it is then it will just return the existing texture the texture internally stores the GLuint ID which is a pointer to the actual texture if it dosent create a new which will push it back onto the texture map. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
 \hypertarget{classRandini_1_1TextureCache_a616aab3abb7b12c93ab9204432e9512d}{
-\hyperlink{structRandini_1_1GLTexture}{GLTexture} {\bfseries getTexture} (std::string texturePath)}
+\index{Randini::TextureCache@{Randini::TextureCache}!getTexture@{getTexture}}
+\index{getTexture@{getTexture}!Randini::TextureCache@{Randini::TextureCache}}
+\subsubsection[{getTexture}]{\setlength{\rightskip}{0pt plus 5cm}{\bf GLTexture} Randini::TextureCache::getTexture (std::string {\em texturePath})}}
 \label{classRandini_1_1TextureCache_a616aab3abb7b12c93ab9204432e9512d}
 
-\end{DoxyCompactItemize}
+
+getTexture returns \hyperlink{structRandini_1_1GLTexture}{GLTexture}. Look up in the map and see if the texture is there if it is then it will just return the existing texture the texture internally stores the GLuint ID which is a pointer to the actual texture if it dosent create a new which will push it back onto the texture map. 
+\begin{DoxyParams}{Parameters}
+\item[{\em texturePath}]Gets the texturepath from the texturemap and adds it if its not there\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+//since mit is not pointing to texturemap.end it is pointing to the texture //Therefore return mit to the second pair which will return the texture 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}

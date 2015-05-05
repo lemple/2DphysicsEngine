@@ -6,30 +6,47 @@
 \begin{DoxyCompactItemize}
 \item 
 \hypertarget{classRandini_1_1SpriteLoader_a1929e27cf379b3b957b1acc5362b7331}{
-void {\bfseries init} ()}
+void \hyperlink{classRandini_1_1SpriteLoader_a1929e27cf379b3b957b1acc5362b7331}{init} ()}
 \label{classRandini_1_1SpriteLoader_a1929e27cf379b3b957b1acc5362b7331}
 
-\item 
-\hypertarget{classRandini_1_1SpriteLoader_af4e355ad05c95b85af373d4f3d5a9c30}{
-void {\bfseries begin} (GlyphSortType sortType=GlyphSortType::TEXTURE)}
-\label{classRandini_1_1SpriteLoader_af4e355ad05c95b85af373d4f3d5a9c30}
-
-\item 
+\begin{DoxyCompactList}\small\item\em init Inits the sprite loader and creats vertex array \item\end{DoxyCompactList}\item 
+void \hyperlink{classRandini_1_1SpriteLoader_af4e355ad05c95b85af373d4f3d5a9c30}{begin} (GlyphSortType sortType=GlyphSortType::TEXTURE)
+\begin{DoxyCompactList}\small\item\em calls for whenever we are ready to call sets up everything for drawing \item\end{DoxyCompactList}\item 
 \hypertarget{classRandini_1_1SpriteLoader_af13de8f51b5c6428751cf417aa8efdc8}{
-void {\bfseries end} ()}
+void \hyperlink{classRandini_1_1SpriteLoader_af13de8f51b5c6428751cf417aa8efdc8}{end} ()}
 \label{classRandini_1_1SpriteLoader_af13de8f51b5c6428751cf417aa8efdc8}
 
-\item 
-\hypertarget{classRandini_1_1SpriteLoader_acfb6c713ca114db19e1b724ed08fc645}{
-void {\bfseries draw} (const glm::vec4 \&destinationRect, glm::vec4 \&uvRect, GLuint texture, float depth, const \hyperlink{structRandini_1_1ColorRGBA8}{ColorRGBA8} \&color)}
-\label{classRandini_1_1SpriteLoader_acfb6c713ca114db19e1b724ed08fc645}
-
-\item 
+\begin{DoxyCompactList}\small\item\em end used to sort the glyyphs and genrate batched for the glyphs \item\end{DoxyCompactList}\item 
+void \hyperlink{classRandini_1_1SpriteLoader_acfb6c713ca114db19e1b724ed08fc645}{draw} (const glm::vec4 \&destinationRect, glm::vec4 \&uvRect, GLuint texture, float depth, const \hyperlink{structRandini_1_1ColorRGBA8}{ColorRGBA8} \&color)
+\begin{DoxyCompactList}\small\item\em draw calls void draw through void begin and adds the sprites to the batch and gets them ready to load use glm over SDL Rect so I can import the math easier makes them a const so the reference does not change. prevent copys and increase speed. Make them destination const to prevent values changing \item\end{DoxyCompactList}\item 
 \hypertarget{classRandini_1_1SpriteLoader_ad552f49e04affcffc57936ff1b6c2cc0}{
-void {\bfseries renderLoader} ()}
+void \hyperlink{classRandini_1_1SpriteLoader_ad552f49e04affcffc57936ff1b6c2cc0}{renderLoader} ()}
 \label{classRandini_1_1SpriteLoader_ad552f49e04affcffc57936ff1b6c2cc0}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em renderLoader renders the sprites to the screen and binds them together for rendering \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classRandini_1_1SpriteLoader_af4e355ad05c95b85af373d4f3d5a9c30}{
+\index{Randini::SpriteLoader@{Randini::SpriteLoader}!begin@{begin}}
+\index{begin@{begin}!Randini::SpriteLoader@{Randini::SpriteLoader}}
+\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}void Randini::SpriteLoader::begin (GlyphSortType {\em sortType} = {\ttfamily GlyphSortType::TEXTURE})}}
+\label{classRandini_1_1SpriteLoader_af4e355ad05c95b85af373d4f3d5a9c30}
+
+
+calls for whenever we are ready to call sets up everything for drawing 
+\begin{DoxyParams}{Parameters}
+\item[{\em sortType}]Sets up sorting process for whenever begin is called to begin rendering \end{DoxyParams}
+\hypertarget{classRandini_1_1SpriteLoader_acfb6c713ca114db19e1b724ed08fc645}{
+\index{Randini::SpriteLoader@{Randini::SpriteLoader}!draw@{draw}}
+\index{draw@{draw}!Randini::SpriteLoader@{Randini::SpriteLoader}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void Randini::SpriteLoader::draw (const glm::vec4 \& {\em destinationRect}, \/  glm::vec4 \& {\em uvRect}, \/  GLuint {\em texture}, \/  float {\em depth}, \/  const {\bf ColorRGBA8} \& {\em color})}}
+\label{classRandini_1_1SpriteLoader_acfb6c713ca114db19e1b724ed08fc645}
+
+
+draw calls void draw through void begin and adds the sprites to the batch and gets them ready to load use glm over SDL Rect so I can import the math easier makes them a const so the reference does not change. prevent copys and increase speed. Make them destination const to prevent values changing 
+\begin{DoxyParams}{Parameters}
+\item[{\em destinationRect}]position stored at of the sprite \item[{\em uvRect}]uv coordinates with bottom left hand cornor and dimensions \item[{\em texture}]texture storage \item[{\em depth}]depth of the texture \item[{\em color}]Color of the sprite \end{DoxyParams}
 
 
 The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}

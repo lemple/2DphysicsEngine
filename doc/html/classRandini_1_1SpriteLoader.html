@@ -52,16 +52,103 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1929e27cf379b3b957b1acc5362b7331"></a><!-- doxytag: member="Randini::SpriteLoader::init" ref="a1929e27cf379b3b957b1acc5362b7331" args="()" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af4e355ad05c95b85af373d4f3d5a9c30"></a><!-- doxytag: member="Randini::SpriteLoader::begin" ref="af4e355ad05c95b85af373d4f3d5a9c30" args="(GlyphSortType sortType=GlyphSortType::TEXTURE)" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>begin</b> (GlyphSortType sortType=GlyphSortType::TEXTURE)</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandini_1_1SpriteLoader.html#a1929e27cf379b3b957b1acc5362b7331">init</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">init Inits the sprite loader and creats vertex array <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandini_1_1SpriteLoader.html#af4e355ad05c95b85af373d4f3d5a9c30">begin</a> (GlyphSortType sortType=GlyphSortType::TEXTURE)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">calls for whenever we are ready to call sets up everything for drawing  <a href="#af4e355ad05c95b85af373d4f3d5a9c30"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af13de8f51b5c6428751cf417aa8efdc8"></a><!-- doxytag: member="Randini::SpriteLoader::end" ref="af13de8f51b5c6428751cf417aa8efdc8" args="()" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>end</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acfb6c713ca114db19e1b724ed08fc645"></a><!-- doxytag: member="Randini::SpriteLoader::draw" ref="acfb6c713ca114db19e1b724ed08fc645" args="(const glm::vec4 &amp;destinationRect, glm::vec4 &amp;uvRect, GLuint texture, float depth, const ColorRGBA8 &amp;color)" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>draw</b> (const glm::vec4 &amp;destinationRect, glm::vec4 &amp;uvRect, GLuint texture, float depth, const <a class="el" href="structRandini_1_1ColorRGBA8.html">ColorRGBA8</a> &amp;color)</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandini_1_1SpriteLoader.html#af13de8f51b5c6428751cf417aa8efdc8">end</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">end used to sort the glyyphs and genrate batched for the glyphs <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandini_1_1SpriteLoader.html#acfb6c713ca114db19e1b724ed08fc645">draw</a> (const glm::vec4 &amp;destinationRect, glm::vec4 &amp;uvRect, GLuint texture, float depth, const <a class="el" href="structRandini_1_1ColorRGBA8.html">ColorRGBA8</a> &amp;color)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">draw calls void draw through void begin and adds the sprites to the batch and gets them ready to load use glm over SDL Rect so I can import the math easier makes them a const so the reference does not change. prevent copys and increase speed. Make them destination const to prevent values changing  <a href="#acfb6c713ca114db19e1b724ed08fc645"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad552f49e04affcffc57936ff1b6c2cc0"></a><!-- doxytag: member="Randini::SpriteLoader::renderLoader" ref="ad552f49e04affcffc57936ff1b6c2cc0" args="()" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>renderLoader</b> ()</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandini_1_1SpriteLoader.html#ad552f49e04affcffc57936ff1b6c2cc0">renderLoader</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">renderLoader renders the sprites to the screen and binds them together for rendering <br/></td></tr>
 </table>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="af4e355ad05c95b85af373d4f3d5a9c30"></a><!-- doxytag: member="Randini::SpriteLoader::begin" ref="af4e355ad05c95b85af373d4f3d5a9c30" args="(GlyphSortType sortType=GlyphSortType::TEXTURE)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Randini::SpriteLoader::begin </td>
+          <td>(</td>
+          <td class="paramtype">GlyphSortType&nbsp;</td>
+          <td class="paramname"> <em>sortType</em> = <code>GlyphSortType::TEXTURE</code></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>calls for whenever we are ready to call sets up everything for drawing </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sortType</em>&nbsp;</td><td>Sets up sorting process for whenever begin is called to begin rendering </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="acfb6c713ca114db19e1b724ed08fc645"></a><!-- doxytag: member="Randini::SpriteLoader::draw" ref="acfb6c713ca114db19e1b724ed08fc645" args="(const glm::vec4 &amp;destinationRect, glm::vec4 &amp;uvRect, GLuint texture, float depth, const ColorRGBA8 &amp;color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Randini::SpriteLoader::draw </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec4 &amp;&nbsp;</td>
+          <td class="paramname"> <em>destinationRect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec4 &amp;&nbsp;</td>
+          <td class="paramname"> <em>uvRect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLuint&nbsp;</td>
+          <td class="paramname"> <em>texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>depth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structRandini_1_1ColorRGBA8.html">ColorRGBA8</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>color</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>draw calls void draw through void begin and adds the sprites to the batch and gets them ready to load use glm over SDL Rect so I can import the math easier makes them a const so the reference does not change. prevent copys and increase speed. Make them destination const to prevent values changing </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>destinationRect</em>&nbsp;</td><td>position stored at of the sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>uvRect</em>&nbsp;</td><td>uv coordinates with bottom left hand cornor and dimensions </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>texture</em>&nbsp;</td><td>texture storage </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>depth</em>&nbsp;</td><td>depth of the texture </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Color of the sprite </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Include/Randini/<a class="el" href="SpriteLoader_8h_source.html">SpriteLoader.h</a></li>
 <li>src/Randini/SpriteLoader.cpp</li>
@@ -72,7 +159,7 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><b>renderLoader</b> ()</
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,7 +168,7 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><b>renderLoader</b> ()</
 </iframe>
 </div>
 
-<hr size="1"/><address style="text-align: right;"><small>Generated on 4 May 2015 for Ball Game by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 5 May 2015 for Ball Game by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

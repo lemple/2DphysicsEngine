@@ -4,6 +4,9 @@
 }
 
 
+The \hyperlink{classVelocityBallRendererY}{VelocityBallRendererY} class Visualise the velocity of ball renderers when moving in the y direction as well as visualise the position with different colours.  
+
+
 {\ttfamily \#include $<$BallRenderer.h$>$}Inheritance diagram for VelocityBallRendererY::\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -13,27 +16,42 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classVelocityBallRendererY_acbe922bfa2f2280299d9cb4a0d823395}{
-{\bfseries VelocityBallRendererY} (int screenWidth, int screenHeight)}
-\label{classVelocityBallRendererY_acbe922bfa2f2280299d9cb4a0d823395}
-
-\item 
-virtual void \hyperlink{classVelocityBallRendererY_aee5499c81382f071f58467d2040e36c9}{renderBalls} (\hyperlink{classRandini_1_1SpriteLoader}{Randini::SpriteLoader} \&spriteLoader, const std::vector$<$ \hyperlink{structBall}{Ball} $>$ \&balls, const glm::mat4 \&projectionMatrix)
-\end{DoxyCompactItemize}
+\hyperlink{classVelocityBallRendererY_a7eb5545ad69050dd7bd06f014d1ecb85}{VelocityBallRendererY} (int \_\-screenWidth, int \_\-screenHeight)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classVelocityBallRendererY}{VelocityBallRendererY} Visualise the velocity of ball renderers when moving in the y direction. \item\end{DoxyCompactList}\item 
+virtual void \hyperlink{classVelocityBallRendererY_ac519caa863fba74226b6733dbe033b59}{renderBalls} (\hyperlink{classRandini_1_1SpriteLoader}{Randini::SpriteLoader} \&\_\-spriteLoader, const std::vector$<$ \hyperlink{structBall}{Ball} $>$ \&\_\-balls, const glm::mat4 \&\_\-projectionMatrix)
+\begin{DoxyCompactList}\small\item\em renderBalls Since it inherits from renderballs add it to public. Unfortunately override was a c++11 so there's no way to ensure of this \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Visualise the velocity of ball renderers when moving in the y direction as well as visualise the position with different colours 
+The \hyperlink{classVelocityBallRendererY}{VelocityBallRendererY} class Visualise the velocity of ball renderers when moving in the y direction as well as visualise the position with different colours. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classVelocityBallRendererY_a7eb5545ad69050dd7bd06f014d1ecb85}{
+\index{VelocityBallRendererY@{VelocityBallRendererY}!VelocityBallRendererY@{VelocityBallRendererY}}
+\index{VelocityBallRendererY@{VelocityBallRendererY}!VelocityBallRendererY@{VelocityBallRendererY}}
+\subsubsection[{VelocityBallRendererY}]{\setlength{\rightskip}{0pt plus 5cm}VelocityBallRendererY::VelocityBallRendererY (int {\em \_\-screenWidth}, \/  int {\em \_\-screenHeight})}}
+\label{classVelocityBallRendererY_a7eb5545ad69050dd7bd06f014d1ecb85}
+
+
+\hyperlink{classVelocityBallRendererY}{VelocityBallRendererY} Visualise the velocity of ball renderers when moving in the y direction. 
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-screenWidth}]Takes the screenWidth of the window \item[{\em \_\-screenHeight}]Takes the screenHeight of the window \end{DoxyParams}
+
 
 \subsection{Member Function Documentation}
-\hypertarget{classVelocityBallRendererY_aee5499c81382f071f58467d2040e36c9}{
+\hypertarget{classVelocityBallRendererY_ac519caa863fba74226b6733dbe033b59}{
 \index{VelocityBallRendererY@{VelocityBallRendererY}!renderBalls@{renderBalls}}
 \index{renderBalls@{renderBalls}!VelocityBallRendererY@{VelocityBallRendererY}}
-\subsubsection[{renderBalls}]{\setlength{\rightskip}{0pt plus 5cm}void VelocityBallRendererY::renderBalls ({\bf Randini::SpriteLoader} \& {\em spriteLoader}, \/  const std::vector$<$ {\bf Ball} $>$ \& {\em balls}, \/  const glm::mat4 \& {\em projectionMatrix})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
-\label{classVelocityBallRendererY_aee5499c81382f071f58467d2040e36c9}
-Make this a virtual function as I want to derive form this Imports the sprites from the game engine renders a list of balls to render all the balls Instead of rendering a single ball loop through all the balls 
+\subsubsection[{renderBalls}]{\setlength{\rightskip}{0pt plus 5cm}void VelocityBallRendererY::renderBalls ({\bf Randini::SpriteLoader} \& {\em \_\-spriteLoader}, \/  const std::vector$<$ {\bf Ball} $>$ \& {\em \_\-balls}, \/  const glm::mat4 \& {\em \_\-projectionMatrix})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classVelocityBallRendererY_ac519caa863fba74226b6733dbe033b59}
 
-Reimplemented from \hyperlink{classBallRenderer_a6169ba2a00e8d15fde87a3ee4552cf66}{BallRenderer}.
+
+renderBalls Since it inherits from renderballs add it to public. Unfortunately override was a c++11 so there's no way to ensure of this 
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-spriteLoader}]Imports the spriteLoader so it canrender balls with new renderer \item[{\em \_\-balls}]Takes the data of balls to allow them to be rendered \item[{\em \_\-projectionMatrix}]Grabs camera matrix as its needed for the uniform sampler \end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classBallRenderer_a11d6402983ed53ab7f3d3353244110da}{BallRenderer}.
 
 The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
 \item 

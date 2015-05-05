@@ -4,6 +4,9 @@
 }
 
 
+\hyperlink{classPropulsionBallRenderer}{PropulsionBallRenderer} The \hyperlink{classPropulsionBallRenderer}{PropulsionBallRenderer} class When balls increase in velocity they become brighter Set new renderer using same elements from renderBalls but altered inherits the virtual function.  
+
+
 {\ttfamily \#include $<$BallRenderer.h$>$}Inheritance diagram for PropulsionBallRenderer::\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -13,26 +16,29 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-virtual void \hyperlink{classPropulsionBallRenderer_a9ebdecb973a1a399b4699d7e5c47c0b9}{renderBalls} (\hyperlink{classRandini_1_1SpriteLoader}{Randini::SpriteLoader} \&spriteLoader, const std::vector$<$ \hyperlink{structBall}{Ball} $>$ \&balls, const glm::mat4 \&projectionMatrix)
-\begin{DoxyCompactList}\small\item\em Since it inherits from renderballs add it to public. Unfortunately override was a c++11 so there's no way to ensure of this. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+virtual void \hyperlink{classPropulsionBallRenderer_ad3206abdc61b39c3716eed6ed91acaa0}{renderBalls} (\hyperlink{classRandini_1_1SpriteLoader}{Randini::SpriteLoader} \&\_\-spriteLoader, const std::vector$<$ \hyperlink{structBall}{Ball} $>$ \&\_\-balls, const glm::mat4 \&\_\-projectionMatrix)
+\begin{DoxyCompactList}\small\item\em renderBalls Since it inherits from renderballs add it to public. Unfortunately override was a c++11 so there's no way to ensure of this \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-When balls increase in velocity they become brighter Set new renderer using same elements from renderBalls but altered inherits the virtual function 
+\hyperlink{classPropulsionBallRenderer}{PropulsionBallRenderer} The \hyperlink{classPropulsionBallRenderer}{PropulsionBallRenderer} class When balls increase in velocity they become brighter Set new renderer using same elements from renderBalls but altered inherits the virtual function. 
 
 \subsection{Member Function Documentation}
-\hypertarget{classPropulsionBallRenderer_a9ebdecb973a1a399b4699d7e5c47c0b9}{
+\hypertarget{classPropulsionBallRenderer_ad3206abdc61b39c3716eed6ed91acaa0}{
 \index{PropulsionBallRenderer@{PropulsionBallRenderer}!renderBalls@{renderBalls}}
 \index{renderBalls@{renderBalls}!PropulsionBallRenderer@{PropulsionBallRenderer}}
-\subsubsection[{renderBalls}]{\setlength{\rightskip}{0pt plus 5cm}void PropulsionBallRenderer::renderBalls ({\bf Randini::SpriteLoader} \& {\em spriteLoader}, \/  const std::vector$<$ {\bf Ball} $>$ \& {\em balls}, \/  const glm::mat4 \& {\em projectionMatrix})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
-\label{classPropulsionBallRenderer_a9ebdecb973a1a399b4699d7e5c47c0b9}
+\subsubsection[{renderBalls}]{\setlength{\rightskip}{0pt plus 5cm}void PropulsionBallRenderer::renderBalls ({\bf Randini::SpriteLoader} \& {\em \_\-spriteLoader}, \/  const std::vector$<$ {\bf Ball} $>$ \& {\em \_\-balls}, \/  const glm::mat4 \& {\em \_\-projectionMatrix})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classPropulsionBallRenderer_ad3206abdc61b39c3716eed6ed91acaa0}
 
 
-Since it inherits from renderballs add it to public. Unfortunately override was a c++11 so there's no way to ensure of this. 
+renderBalls Since it inherits from renderballs add it to public. Unfortunately override was a c++11 so there's no way to ensure of this 
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-spriteLoader}]Imports the spriteLoader so it canrender balls with new renderer \item[{\em \_\-balls}]Takes the data of balls to allow them to be rendered \item[{\em \_\-projectionMatrix}]Grabs camera matrix as its needed for the uniform sampler \end{DoxyParams}
+
 
 FOLLOWS SAME BASIC PRINCIPLE FROM RENDERBALLS 
 
-Reimplemented from \hyperlink{classBallRenderer_a6169ba2a00e8d15fde87a3ee4552cf66}{BallRenderer}.
+Reimplemented from \hyperlink{classBallRenderer_a11d6402983ed53ab7f3d3353244110da}{BallRenderer}.
 
 The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
 \item 

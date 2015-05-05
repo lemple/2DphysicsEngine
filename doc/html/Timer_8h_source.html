@@ -53,42 +53,56 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="preprocessor">#ifndef __TIMER_H_</span>
 <a name="l00016"></a>00016 <span class="preprocessor"></span><span class="preprocessor">#define __TIMER_H_</span>
 <a name="l00017"></a>00017 <span class="preprocessor"></span>
-<a name="l00018"></a>00018 <span class="keyword">namespace </span>Randini
-<a name="l00019"></a>00019 {
-<a name="l00020"></a><a class="code" href="classRandini_1_1FPSLimiter.html">00020</a>     <span class="keyword">class </span><a class="code" href="classRandini_1_1FPSLimiter.html">FPSLimiter</a>
-<a name="l00021"></a>00021     {
-<a name="l00022"></a>00022     <span class="keyword">public</span>:
-<a name="l00023"></a>00023         <a class="code" href="classRandini_1_1FPSLimiter.html">FPSLimiter</a>();
-<a name="l00024"></a>00024 
-<a name="l00025"></a>00025         <span class="keywordtype">void</span> init(<span class="keywordtype">float</span> maxFPS);
+<a name="l00018"></a>00018 <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="keyword">namespace </span>Randini
+<a name="l00021"></a>00021 {
+<a name="l00022"></a><a class="code" href="classRandini_1_1FPSLimiter.html">00022</a>     <span class="keyword">class </span><a class="code" href="classRandini_1_1FPSLimiter.html">FPSLimiter</a>
+<a name="l00023"></a>00023     {
+<a name="l00024"></a>00024     <span class="keyword">public</span>:
+<a name="l00025"></a>00025         <a class="code" href="classRandini_1_1FPSLimiter.html">FPSLimiter</a>();
 <a name="l00026"></a>00026 
-<a name="l00027"></a>00027         <span class="keywordtype">void</span> setMaxFPS(<span class="keywordtype">float</span> maxFPS);
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029         <span class="keywordtype">void</span> begin();
-<a name="l00030"></a>00030 
-<a name="l00031"></a>00031         <span class="comment">//limits the FPS to 60</span>
-<a name="l00032"></a>00032         <span class="comment">//and returns the FPS</span>
-<a name="l00033"></a>00033         <span class="keywordtype">float</span> end();
-<a name="l00034"></a>00034     <span class="keyword">private</span>:
-<a name="l00035"></a>00035         <span class="keywordtype">void</span> calculateFPS();
-<a name="l00036"></a>00036 
-<a name="l00037"></a>00037         <span class="comment">//general varibles for FPS functions</span>
-<a name="l00038"></a>00038         <span class="keywordtype">float</span> _fps;
-<a name="l00039"></a>00039         <span class="keywordtype">float</span> _frameTime;
-<a name="l00040"></a>00040         <span class="keywordtype">float</span> _maxFPS;
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042         <span class="comment">//sets the start of the FPS whenever begin is called</span>
-<a name="l00043"></a>00043         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _startTicks;
-<a name="l00044"></a>00044     };
-<a name="l00045"></a>00045 }
-<a name="l00046"></a>00046 <span class="preprocessor">#endif</span>
+<a name="l00034"></a>00034         <span class="keywordtype">void</span> <a class="code" href="classRandini_1_1FPSLimiter.html#a3024a959139c6a9b2d2c583200d69a0c" title="init calls fps lmiter so it can be called for other games">init</a>(<span class="keywordtype">float</span> maxFPS);
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00037"></a>00037 
+<a name="l00044"></a>00044         <span class="keywordtype">void</span> <a class="code" href="classRandini_1_1FPSLimiter.html#ab791c46a558dc4f7dfca408f92563bf5" title="setMaxFPS sets maxFPS for framerate to 60FPS">setMaxFPS</a>(<span class="keywordtype">float</span> maxFPS);
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00047"></a>00047 
+<a name="l00052"></a>00052         <span class="keywordtype">void</span> <a class="code" href="classRandini_1_1FPSLimiter.html#ab3c41c74d451ebdcba9f448fd60efeaa" title="begin Begins the ticks">begin</a>();
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00055"></a>00055 
+<a name="l00063"></a>00063     <span class="keywordtype">float</span> <a class="code" href="classRandini_1_1FPSLimiter.html#adde6384240089bf3e87ce5d5dc114c60" title="end Limits the fps and forces a slight delay for the fps (Seeing the delay only applys...">end</a>();
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067     <span class="keyword">private</span>:
+<a name="l00068"></a>00068 
+<a name="l00075"></a>00075         <span class="keywordtype">void</span> calculateFPS();
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079         <span class="comment">//general varibles for FPS functions</span>
+<a name="l00080"></a>00080     <span class="keywordtype">float</span> m_fps;
+<a name="l00081"></a>00081     <span class="keywordtype">float</span> m_frameTime;
+<a name="l00082"></a>00082     <span class="keywordtype">float</span> m_maxFPS;
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086         <span class="comment">//sets the start of the FPS whenever begin is called</span>
+<a name="l00087"></a>00087     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_startTicks;
+<a name="l00088"></a>00088     };
+<a name="l00089"></a>00089 }
+<a name="l00090"></a>00090 <span class="preprocessor">#endif</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -97,7 +111,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr size="1"/><address style="text-align: right;"><small>Generated on 4 May 2015 for Ball Game by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 5 May 2015 for Ball Game by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

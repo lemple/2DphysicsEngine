@@ -5,36 +5,21 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classRandini_1_1Camera2D_ab658d7f26ed3fec10ac4e16882ea85e0}{
-void {\bfseries init} (int \_\-screenWidth, int \_\-screenHeight)}
-\label{classRandini_1_1Camera2D_ab658d7f26ed3fec10ac4e16882ea85e0}
-
-\item 
+void \hyperlink{classRandini_1_1Camera2D_ab658d7f26ed3fec10ac4e16882ea85e0}{init} (int \_\-screenWidth, int \_\-screenHeight)
+\begin{DoxyCompactList}\small\item\em init \item\end{DoxyCompactList}\item 
 \hypertarget{classRandini_1_1Camera2D_a6624d7fd91cdf68e305568aa2ace5539}{
-void {\bfseries updateCamera} ()}
+void \hyperlink{classRandini_1_1Camera2D_a6624d7fd91cdf68e305568aa2ace5539}{updateCamera} ()}
 \label{classRandini_1_1Camera2D_a6624d7fd91cdf68e305568aa2ace5539}
 
-\item 
-\hypertarget{classRandini_1_1Camera2D_a545b5ce7ca9f2c99b8fc7837d6ee4872}{
-glm::vec2 {\bfseries getWorldScreenCoords} (glm::vec2 screenCoords)}
-\label{classRandini_1_1Camera2D_a545b5ce7ca9f2c99b8fc7837d6ee4872}
-
-\item 
-\hypertarget{classRandini_1_1Camera2D_a13745cf68d6dc73d6759b3a3ee1c4cb1}{
-void {\bfseries setPosition} (const glm::vec2 \&newPosition)}
-\label{classRandini_1_1Camera2D_a13745cf68d6dc73d6759b3a3ee1c4cb1}
-
-\item 
-\hypertarget{classRandini_1_1Camera2D_ad9bb40c09c7f51960574a795124bf1ad}{
-glm::vec2 {\bfseries getPosition} ()}
-\label{classRandini_1_1Camera2D_ad9bb40c09c7f51960574a795124bf1ad}
-
-\item 
-\hypertarget{classRandini_1_1Camera2D_a6446d430b1c5b5c3f3435c5ebc8fdfa6}{
-void {\bfseries setScale} (float newScale)}
-\label{classRandini_1_1Camera2D_a6446d430b1c5b5c3f3435c5ebc8fdfa6}
-
-\item 
+\begin{DoxyCompactList}\small\item\em updateCamera Updates the camera incase the camera needs to be changed or moved \item\end{DoxyCompactList}\item 
+glm::vec2 \hyperlink{classRandini_1_1Camera2D_a545b5ce7ca9f2c99b8fc7837d6ee4872}{getWorldScreenCoords} (glm::vec2 screenCoords)
+\begin{DoxyCompactList}\small\item\em getWorldScreenCoords This takes the screen coordinates convert to the world cooridnates and returns the value \item\end{DoxyCompactList}\item 
+void \hyperlink{classRandini_1_1Camera2D_a13745cf68d6dc73d6759b3a3ee1c4cb1}{setPosition} (const glm::vec2 \&newPosition)
+\begin{DoxyCompactList}\small\item\em setPosition Set of the camera and sotres it in a matrix \item\end{DoxyCompactList}\item 
+glm::vec2 \hyperlink{classRandini_1_1Camera2D_ad9bb40c09c7f51960574a795124bf1ad}{getPosition} ()
+\begin{DoxyCompactList}\small\item\em getPosition a get function to retrive the location of the camera \item\end{DoxyCompactList}\item 
+void \hyperlink{classRandini_1_1Camera2D_a6446d430b1c5b5c3f3435c5ebc8fdfa6}{setScale} (float newScale)
+\begin{DoxyCompactList}\small\item\em setScale ability to zoom in or out of the screen simple settrer function to set the scale of the camera \item\end{DoxyCompactList}\item 
 \hypertarget{classRandini_1_1Camera2D_a6e5515a9d361baef52afc11deba94426}{
 float {\bfseries getScale} ()}
 \label{classRandini_1_1Camera2D_a6e5515a9d361baef52afc11deba94426}
@@ -45,6 +30,62 @@ glm::mat4 {\bfseries getCameraMatrix} ()}
 \label{classRandini_1_1Camera2D_adac18a3635569b0868c5d77e8f8635a8}
 
 \end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classRandini_1_1Camera2D_ad9bb40c09c7f51960574a795124bf1ad}{
+\index{Randini::Camera2D@{Randini::Camera2D}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Randini::Camera2D@{Randini::Camera2D}}
+\subsubsection[{getPosition}]{\setlength{\rightskip}{0pt plus 5cm}glm::vec2 Randini::Camera2D::getPosition ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classRandini_1_1Camera2D_ad9bb40c09c7f51960574a795124bf1ad}
+
+
+getPosition a get function to retrive the location of the camera \begin{DoxyReturn}{Returns}
+location of the camera 
+\end{DoxyReturn}
+\hypertarget{classRandini_1_1Camera2D_a545b5ce7ca9f2c99b8fc7837d6ee4872}{
+\index{Randini::Camera2D@{Randini::Camera2D}!getWorldScreenCoords@{getWorldScreenCoords}}
+\index{getWorldScreenCoords@{getWorldScreenCoords}!Randini::Camera2D@{Randini::Camera2D}}
+\subsubsection[{getWorldScreenCoords}]{\setlength{\rightskip}{0pt plus 5cm}glm::vec2 Randini::Camera2D::getWorldScreenCoords (glm::vec2 {\em screenCoords})}}
+\label{classRandini_1_1Camera2D_a545b5ce7ca9f2c99b8fc7837d6ee4872}
+
+
+getWorldScreenCoords This takes the screen coordinates convert to the world cooridnates and returns the value 
+\begin{DoxyParams}{Parameters}
+\item[{\em screenCoords}]Takes the screencoordinates in x and y directions \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The screen coordinates 
+\end{DoxyReturn}
+\hypertarget{classRandini_1_1Camera2D_ab658d7f26ed3fec10ac4e16882ea85e0}{
+\index{Randini::Camera2D@{Randini::Camera2D}!init@{init}}
+\index{init@{init}!Randini::Camera2D@{Randini::Camera2D}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void Randini::Camera2D::init (int {\em \_\-screenWidth}, \/  int {\em \_\-screenHeight})}}
+\label{classRandini_1_1Camera2D_ab658d7f26ed3fec10ac4e16882ea85e0}
+
+
+init 
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-screenWidth}]Takes the screenWidth of the window and links to camera \item[{\em \_\-screenHeight}]Takes the screenHeight of the window and links to camera \end{DoxyParams}
+\hypertarget{classRandini_1_1Camera2D_a13745cf68d6dc73d6759b3a3ee1c4cb1}{
+\index{Randini::Camera2D@{Randini::Camera2D}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Randini::Camera2D@{Randini::Camera2D}}
+\subsubsection[{setPosition}]{\setlength{\rightskip}{0pt plus 5cm}void Randini::Camera2D::setPosition (const glm::vec2 \& {\em newPosition})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classRandini_1_1Camera2D_a13745cf68d6dc73d6759b3a3ee1c4cb1}
+
+
+setPosition Set of the camera and sotres it in a matrix 
+\begin{DoxyParams}{Parameters}
+\item[{\em newPosition}]Sets the new position of the camera in case there is movement \end{DoxyParams}
+\hypertarget{classRandini_1_1Camera2D_a6446d430b1c5b5c3f3435c5ebc8fdfa6}{
+\index{Randini::Camera2D@{Randini::Camera2D}!setScale@{setScale}}
+\index{setScale@{setScale}!Randini::Camera2D@{Randini::Camera2D}}
+\subsubsection[{setScale}]{\setlength{\rightskip}{0pt plus 5cm}void Randini::Camera2D::setScale (float {\em newScale})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classRandini_1_1Camera2D_a6446d430b1c5b5c3f3435c5ebc8fdfa6}
+
+
+setScale ability to zoom in or out of the screen simple settrer function to set the scale of the camera 
+\begin{DoxyParams}{Parameters}
+\item[{\em newScale}]\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}

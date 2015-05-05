@@ -5,36 +5,63 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classRandini_1_1GLSLProgram_a73328c415caa63862b713bb840b85532}{
-void {\bfseries compileShaders} (const std::string \&vertexShaderFilePath, const std::string \&fragmentShaderFilePath)}
-\label{classRandini_1_1GLSLProgram_a73328c415caa63862b713bb840b85532}
-
-\item 
+void \hyperlink{classRandini_1_1GLSLProgram_a73328c415caa63862b713bb840b85532}{compileShaders} (const std::string \&vertexShaderFilePath, const std::string \&fragmentShaderFilePath)
+\begin{DoxyCompactList}\small\item\em compileShaders Function compiles the shaders Makes a string varible so the path name of the file can be found and can extract information from the txt document overall reads the file and compiles them to a format that openGL can use make string const as they are never going to change and ti prevents possible bugs \item\end{DoxyCompactList}\item 
 \hypertarget{classRandini_1_1GLSLProgram_aa67b3edb1c8eae84dc65d5e913e144cd}{
-void {\bfseries linkShader} ()}
+void \hyperlink{classRandini_1_1GLSLProgram_aa67b3edb1c8eae84dc65d5e913e144cd}{linkShader} ()}
 \label{classRandini_1_1GLSLProgram_aa67b3edb1c8eae84dc65d5e913e144cd}
 
-\item 
-\hypertarget{classRandini_1_1GLSLProgram_ad623f8c42dfa974c7820949905a53d18}{
-void {\bfseries addAttribute} (const std::string \&attributeName)}
-\label{classRandini_1_1GLSLProgram_ad623f8c42dfa974c7820949905a53d18}
-
-\item 
-\hypertarget{classRandini_1_1GLSLProgram_a8ed1430de4e2629d6dcddf8eafd6ce09}{
-GLint {\bfseries getUniformLocation} (const std::string \&uniformName)}
-\label{classRandini_1_1GLSLProgram_a8ed1430de4e2629d6dcddf8eafd6ce09}
-
-\item 
+\begin{DoxyCompactList}\small\item\em linkShader link shader togehter into the final program \item\end{DoxyCompactList}\item 
+void \hyperlink{classRandini_1_1GLSLProgram_ad623f8c42dfa974c7820949905a53d18}{addAttribute} (const std::string \&attributeName)
+\begin{DoxyCompactList}\small\item\em addAttribute Retrives the shader attributes from the shader file \item\end{DoxyCompactList}\item 
+GLint \hyperlink{classRandini_1_1GLSLProgram_a8ed1430de4e2629d6dcddf8eafd6ce09}{getUniformLocation} (const std::string \&uniformName)
+\begin{DoxyCompactList}\small\item\em getUniformLocation need to ask openGL the location of the of the uniform make a string to askj the name of the uniform \item\end{DoxyCompactList}\item 
 \hypertarget{classRandini_1_1GLSLProgram_a7371ee6e41ba0d03a61663d67551da48}{
-void {\bfseries use} ()}
+void \hyperlink{classRandini_1_1GLSLProgram_a7371ee6e41ba0d03a61663d67551da48}{use} ()}
 \label{classRandini_1_1GLSLProgram_a7371ee6e41ba0d03a61663d67551da48}
 
-\item 
+\begin{DoxyCompactList}\small\item\em use Activates the shader and all its attributes \item\end{DoxyCompactList}\item 
 \hypertarget{classRandini_1_1GLSLProgram_a29fb698f73e40621ec181ed7c3c3e7be}{
-void {\bfseries unuse} ()}
+void \hyperlink{classRandini_1_1GLSLProgram_a29fb698f73e40621ec181ed7c3c3e7be}{unuse} ()}
 \label{classRandini_1_1GLSLProgram_a29fb698f73e40621ec181ed7c3c3e7be}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em unuse Disables the shader and all its attributes \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classRandini_1_1GLSLProgram_ad623f8c42dfa974c7820949905a53d18}{
+\index{Randini::GLSLProgram@{Randini::GLSLProgram}!addAttribute@{addAttribute}}
+\index{addAttribute@{addAttribute}!Randini::GLSLProgram@{Randini::GLSLProgram}}
+\subsubsection[{addAttribute}]{\setlength{\rightskip}{0pt plus 5cm}void Randini::GLSLProgram::addAttribute (const std::string \& {\em attributeName})}}
+\label{classRandini_1_1GLSLProgram_ad623f8c42dfa974c7820949905a53d18}
+
+
+addAttribute Retrives the shader attributes from the shader file 
+\begin{DoxyParams}{Parameters}
+\item[{\em attributeName}]Gets the attribute names from the shader and imports them in as strings \end{DoxyParams}
+\hypertarget{classRandini_1_1GLSLProgram_a73328c415caa63862b713bb840b85532}{
+\index{Randini::GLSLProgram@{Randini::GLSLProgram}!compileShaders@{compileShaders}}
+\index{compileShaders@{compileShaders}!Randini::GLSLProgram@{Randini::GLSLProgram}}
+\subsubsection[{compileShaders}]{\setlength{\rightskip}{0pt plus 5cm}void Randini::GLSLProgram::compileShaders (const std::string \& {\em vertexShaderFilePath}, \/  const std::string \& {\em fragmentShaderFilePath})}}
+\label{classRandini_1_1GLSLProgram_a73328c415caa63862b713bb840b85532}
+
+
+compileShaders Function compiles the shaders Makes a string varible so the path name of the file can be found and can extract information from the txt document overall reads the file and compiles them to a format that openGL can use make string const as they are never going to change and ti prevents possible bugs 
+\begin{DoxyParams}{Parameters}
+\item[{\em vertexShaderFilePath}]Gets the path of the vertex shader file \item[{\em fragmentShaderFilePath}]Gets the path for the fragmentshader file \end{DoxyParams}
+\hypertarget{classRandini_1_1GLSLProgram_a8ed1430de4e2629d6dcddf8eafd6ce09}{
+\index{Randini::GLSLProgram@{Randini::GLSLProgram}!getUniformLocation@{getUniformLocation}}
+\index{getUniformLocation@{getUniformLocation}!Randini::GLSLProgram@{Randini::GLSLProgram}}
+\subsubsection[{getUniformLocation}]{\setlength{\rightskip}{0pt plus 5cm}GLint Randini::GLSLProgram::getUniformLocation (const std::string \& {\em uniformName})}}
+\label{classRandini_1_1GLSLProgram_a8ed1430de4e2629d6dcddf8eafd6ce09}
+
+
+getUniformLocation need to ask openGL the location of the of the uniform make a string to askj the name of the uniform 
+\begin{DoxyParams}{Parameters}
+\item[{\em uniformName}]Gets the uniforms location from the shader file \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the location of the uniform 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}

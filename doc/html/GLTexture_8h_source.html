@@ -52,29 +52,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="preprocessor">#ifndef __GLTEXTURE_H_</span>
 <a name="l00015"></a>00015 <span class="preprocessor"></span><span class="preprocessor">#define __GLTEXTURE_H_</span>
 <a name="l00016"></a>00016 <span class="preprocessor"></span>
-<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;GL/glew.h&gt;</span>
+<a name="l00017"></a>00017 <span class="comment">//-------------------------------------------------------------------------------------------------</span>
 <a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="comment">//openGL texture</span>
-<a name="l00020"></a>00020 <span class="keyword">namespace </span>Randini
-<a name="l00021"></a>00021 {
-<a name="l00022"></a><a class="code" href="structRandini_1_1GLTexture.html">00022</a>     <span class="keyword">struct </span><a class="code" href="structRandini_1_1GLTexture.html">GLTexture</a>
-<a name="l00023"></a>00023     {
-<a name="l00024"></a>00024         <span class="comment">//make is for the id of the texture</span>
-<a name="l00025"></a>00025     <span class="comment">//as well as width and height to know the properties of the textures</span>
-<a name="l00026"></a>00026 
-<a name="l00030"></a><a class="code" href="structRandini_1_1GLTexture.html#a3117c23b15d40c3d74839389375c5555">00030</a>         GLuint <a class="code" href="structRandini_1_1GLTexture.html#a3117c23b15d40c3d74839389375c5555" title="id">id</a>;
-<a name="l00031"></a>00031         <span class="keywordtype">int</span> width;
-<a name="l00032"></a>00032         <span class="keywordtype">int</span> height;
-<a name="l00033"></a>00033   };
-<a name="l00034"></a>00034 }
-<a name="l00035"></a>00035 <span class="preprocessor">#endif</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#include &lt;GL/glew.h&gt;</span>
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="comment">//openGL texture</span>
+<a name="l00022"></a>00022 <span class="keyword">namespace </span>Randini
+<a name="l00023"></a>00023 {
+<a name="l00029"></a><a class="code" href="structRandini_1_1GLTexture.html">00029</a>     <span class="keyword">struct </span><a class="code" href="structRandini_1_1GLTexture.html" title="The GLTexture struct make is for the id of the texture as well as width and height...">GLTexture</a>
+<a name="l00030"></a>00030     {
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032     GLuint id;
+<a name="l00033"></a>00033         <span class="keywordtype">int</span> width;
+<a name="l00034"></a>00034         <span class="keywordtype">int</span> height;
+<a name="l00035"></a>00035   };
+<a name="l00036"></a>00036 }
+<a name="l00037"></a>00037 <span class="preprocessor">#endif</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -83,7 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr size="1"/><address style="text-align: right;"><small>Generated on 4 May 2015 for Ball Game by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 5 May 2015 for Ball Game by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

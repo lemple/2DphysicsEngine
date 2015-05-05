@@ -51,19 +51,112 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p><a href="classRandini_1_1GLSLProgram-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a73328c415caa63862b713bb840b85532"></a><!-- doxytag: member="Randini::GLSLProgram::compileShaders" ref="a73328c415caa63862b713bb840b85532" args="(const std::string &amp;vertexShaderFilePath, const std::string &amp;fragmentShaderFilePath)" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>compileShaders</b> (const std::string &amp;vertexShaderFilePath, const std::string &amp;fragmentShaderFilePath)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandini_1_1GLSLProgram.html#a73328c415caa63862b713bb840b85532">compileShaders</a> (const std::string &amp;vertexShaderFilePath, const std::string &amp;fragmentShaderFilePath)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">compileShaders Function compiles the shaders Makes a string varible so the path name of the file can be found and can extract information from the txt document overall reads the file and compiles them to a format that openGL can use make string const as they are never going to change and ti prevents possible bugs  <a href="#a73328c415caa63862b713bb840b85532"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa67b3edb1c8eae84dc65d5e913e144cd"></a><!-- doxytag: member="Randini::GLSLProgram::linkShader" ref="aa67b3edb1c8eae84dc65d5e913e144cd" args="()" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>linkShader</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad623f8c42dfa974c7820949905a53d18"></a><!-- doxytag: member="Randini::GLSLProgram::addAttribute" ref="ad623f8c42dfa974c7820949905a53d18" args="(const std::string &amp;attributeName)" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>addAttribute</b> (const std::string &amp;attributeName)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8ed1430de4e2629d6dcddf8eafd6ce09"></a><!-- doxytag: member="Randini::GLSLProgram::getUniformLocation" ref="a8ed1430de4e2629d6dcddf8eafd6ce09" args="(const std::string &amp;uniformName)" -->
-GLint&nbsp;</td><td class="memItemRight" valign="bottom"><b>getUniformLocation</b> (const std::string &amp;uniformName)</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandini_1_1GLSLProgram.html#aa67b3edb1c8eae84dc65d5e913e144cd">linkShader</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">linkShader link shader togehter into the final program <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandini_1_1GLSLProgram.html#ad623f8c42dfa974c7820949905a53d18">addAttribute</a> (const std::string &amp;attributeName)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">addAttribute Retrives the shader attributes from the shader file  <a href="#ad623f8c42dfa974c7820949905a53d18"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">GLint&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandini_1_1GLSLProgram.html#a8ed1430de4e2629d6dcddf8eafd6ce09">getUniformLocation</a> (const std::string &amp;uniformName)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">getUniformLocation need to ask openGL the location of the of the uniform make a string to askj the name of the uniform  <a href="#a8ed1430de4e2629d6dcddf8eafd6ce09"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7371ee6e41ba0d03a61663d67551da48"></a><!-- doxytag: member="Randini::GLSLProgram::use" ref="a7371ee6e41ba0d03a61663d67551da48" args="()" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>use</b> ()</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandini_1_1GLSLProgram.html#a7371ee6e41ba0d03a61663d67551da48">use</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">use Activates the shader and all its attributes <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29fb698f73e40621ec181ed7c3c3e7be"></a><!-- doxytag: member="Randini::GLSLProgram::unuse" ref="a29fb698f73e40621ec181ed7c3c3e7be" args="()" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>unuse</b> ()</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandini_1_1GLSLProgram.html#a29fb698f73e40621ec181ed7c3c3e7be">unuse</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">unuse Disables the shader and all its attributes <br/></td></tr>
 </table>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="ad623f8c42dfa974c7820949905a53d18"></a><!-- doxytag: member="Randini::GLSLProgram::addAttribute" ref="ad623f8c42dfa974c7820949905a53d18" args="(const std::string &amp;attributeName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Randini::GLSLProgram::addAttribute </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>attributeName</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>addAttribute Retrives the shader attributes from the shader file </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>attributeName</em>&nbsp;</td><td>Gets the attribute names from the shader and imports them in as strings </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a73328c415caa63862b713bb840b85532"></a><!-- doxytag: member="Randini::GLSLProgram::compileShaders" ref="a73328c415caa63862b713bb840b85532" args="(const std::string &amp;vertexShaderFilePath, const std::string &amp;fragmentShaderFilePath)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Randini::GLSLProgram::compileShaders </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>vertexShaderFilePath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>fragmentShaderFilePath</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>compileShaders Function compiles the shaders Makes a string varible so the path name of the file can be found and can extract information from the txt document overall reads the file and compiles them to a format that openGL can use make string const as they are never going to change and ti prevents possible bugs </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>vertexShaderFilePath</em>&nbsp;</td><td>Gets the path of the vertex shader file </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>fragmentShaderFilePath</em>&nbsp;</td><td>Gets the path for the fragmentshader file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a8ed1430de4e2629d6dcddf8eafd6ce09"></a><!-- doxytag: member="Randini::GLSLProgram::getUniformLocation" ref="a8ed1430de4e2629d6dcddf8eafd6ce09" args="(const std::string &amp;uniformName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLint Randini::GLSLProgram::getUniformLocation </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>uniformName</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>getUniformLocation need to ask openGL the location of the of the uniform make a string to askj the name of the uniform </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>uniformName</em>&nbsp;</td><td>Gets the uniforms location from the shader file </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Returns the location of the uniform </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Include/Randini/<a class="el" href="GLSLProgram_8h_source.html">GLSLProgram.h</a></li>
 <li>src/Randini/<a class="el" href="GLSLProgram_8cpp.html">GLSLProgram.cpp</a></li>
@@ -74,7 +167,7 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><b>unuse</b> ()</td></tr
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -83,7 +176,7 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><b>unuse</b> ()</td></tr
 </iframe>
 </div>
 
-<hr size="1"/><address style="text-align: right;"><small>Generated on 4 May 2015 for Ball Game by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 5 May 2015 for Ball Game by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

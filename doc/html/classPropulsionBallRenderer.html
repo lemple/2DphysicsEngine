@@ -46,6 +46,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <h1>PropulsionBallRenderer Class Reference</h1><!-- doxytag: class="PropulsionBallRenderer" --><!-- doxytag: inherits="BallRenderer" -->
+<p><a class="el" href="classPropulsionBallRenderer.html" title="PropulsionBallRenderer The PropulsionBallRenderer class When balls increase in velocity...">PropulsionBallRenderer</a> The <a class="el" href="classPropulsionBallRenderer.html" title="PropulsionBallRenderer The PropulsionBallRenderer class When balls increase in velocity...">PropulsionBallRenderer</a> class When balls increase in velocity they become brighter Set new renderer using same elements from renderBalls but altered inherits the virtual function.  
+<a href="#_details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="BallRenderer_8h_source.html">BallRenderer.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for PropulsionBallRenderer:</div>
@@ -61,13 +64,13 @@ Inheritance diagram for PropulsionBallRenderer:</div>
 <p><a href="classPropulsionBallRenderer-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPropulsionBallRenderer.html#a9ebdecb973a1a399b4699d7e5c47c0b9">renderBalls</a> (<a class="el" href="classRandini_1_1SpriteLoader.html">Randini::SpriteLoader</a> &amp;spriteLoader, const std::vector&lt; <a class="el" href="structBall.html">Ball</a> &gt; &amp;balls, const glm::mat4 &amp;projectionMatrix)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Since it inherits from renderballs add it to public. Unfortunately override was a c++11 so there's no way to ensure of this.  <a href="#a9ebdecb973a1a399b4699d7e5c47c0b9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPropulsionBallRenderer.html#ad3206abdc61b39c3716eed6ed91acaa0">renderBalls</a> (<a class="el" href="classRandini_1_1SpriteLoader.html">Randini::SpriteLoader</a> &amp;_spriteLoader, const std::vector&lt; <a class="el" href="structBall.html">Ball</a> &gt; &amp;_balls, const glm::mat4 &amp;_projectionMatrix)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">renderBalls Since it inherits from renderballs add it to public. Unfortunately override was a c++11 so there's no way to ensure of this  <a href="#ad3206abdc61b39c3716eed6ed91acaa0"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<p>When balls increase in velocity they become brighter Set new renderer using same elements from renderBalls but altered inherits the virtual function </p>
+<p><a class="el" href="classPropulsionBallRenderer.html" title="PropulsionBallRenderer The PropulsionBallRenderer class When balls increase in velocity...">PropulsionBallRenderer</a> The <a class="el" href="classPropulsionBallRenderer.html" title="PropulsionBallRenderer The PropulsionBallRenderer class When balls increase in velocity...">PropulsionBallRenderer</a> class When balls increase in velocity they become brighter Set new renderer using same elements from renderBalls but altered inherits the virtual function. </p>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a9ebdecb973a1a399b4699d7e5c47c0b9"></a><!-- doxytag: member="PropulsionBallRenderer::renderBalls" ref="a9ebdecb973a1a399b4699d7e5c47c0b9" args="(Randini::SpriteLoader &amp;spriteLoader, const std::vector&lt; Ball &gt; &amp;balls, const glm::mat4 &amp;projectionMatrix)" -->
+<a class="anchor" id="ad3206abdc61b39c3716eed6ed91acaa0"></a><!-- doxytag: member="PropulsionBallRenderer::renderBalls" ref="ad3206abdc61b39c3716eed6ed91acaa0" args="(Randini::SpriteLoader &amp;_spriteLoader, const std::vector&lt; Ball &gt; &amp;_balls, const glm::mat4 &amp;_projectionMatrix)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -75,19 +78,19 @@ Inheritance diagram for PropulsionBallRenderer:</div>
           <td class="memname">void PropulsionBallRenderer::renderBalls </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classRandini_1_1SpriteLoader.html">Randini::SpriteLoader</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>spriteLoader</em>, </td>
+          <td class="paramname"> <em>_spriteLoader</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const std::vector&lt; <a class="el" href="structBall.html">Ball</a> &gt; &amp;&nbsp;</td>
-          <td class="paramname"> <em>balls</em>, </td>
+          <td class="paramname"> <em>_balls</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const glm::mat4 &amp;&nbsp;</td>
-          <td class="paramname"> <em>projectionMatrix</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>_projectionMatrix</em></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -98,12 +101,20 @@ Inheritance diagram for PropulsionBallRenderer:</div>
 </div>
 <div class="memdoc">
 
-<p>Since it inherits from renderballs add it to public. Unfortunately override was a c++11 so there's no way to ensure of this. </p>
+<p>renderBalls Since it inherits from renderballs add it to public. Unfortunately override was a c++11 so there's no way to ensure of this </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>_spriteLoader</em>&nbsp;</td><td>Imports the spriteLoader so it canrender balls with new renderer </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_balls</em>&nbsp;</td><td>Takes the data of balls to allow them to be rendered </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_projectionMatrix</em>&nbsp;</td><td>Grabs camera matrix as its needed for the uniform sampler </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p><p>FOLLOWS SAME BASIC PRINCIPLE FROM RENDERBALLS </p>
 </p>
 
-<p>Reimplemented from <a class="el" href="classBallRenderer.html#a6169ba2a00e8d15fde87a3ee4552cf66">BallRenderer</a>.</p>
+<p>Reimplemented from <a class="el" href="classBallRenderer.html#a11d6402983ed53ab7f3d3353244110da">BallRenderer</a>.</p>
 
 </div>
 </div>
@@ -117,7 +128,7 @@ Inheritance diagram for PropulsionBallRenderer:</div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -126,7 +137,7 @@ Inheritance diagram for PropulsionBallRenderer:</div>
 </iframe>
 </div>
 
-<hr size="1"/><address style="text-align: right;"><small>Generated on 4 May 2015 for Ball Game by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 5 May 2015 for Ball Game by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

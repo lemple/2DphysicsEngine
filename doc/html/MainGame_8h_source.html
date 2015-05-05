@@ -53,99 +53,128 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="preprocessor">#ifndef __MAINGAME_H_</span>
 <a name="l00016"></a>00016 <span class="preprocessor"></span><span class="preprocessor">#define __MAINGAME_H_</span>
 <a name="l00017"></a>00017 <span class="preprocessor"></span>
-<a name="l00018"></a>00018 <span class="preprocessor">#include &lt;<a class="code" href="Camera2D_8h.html" title="Creates the camera gains screen coordinates and returns the camera position.">Include/Randini/Camera2D.h</a>&gt;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#include &lt;<a class="code" href="SpriteLoader_8h.html" title="Allows for multiple sprites to be drawn &amp;amp; rendered. Sets vertices for glyphs...">Include/Randini/SpriteLoader.h</a>&gt;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#include &lt;Include/Randini/InputControl.h&gt;</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;<a class="code" href="Window_8h.html" title="Creates the genral SDL handles for settign a window, Swaps buffers and assigns window...">Include/Randini/Window.h</a>&gt;</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;<a class="code" href="GLSLProgram_8h.html" title="Compiles, Links, Enables, &amp;amp; Disables frag and vert shaders and returns the location...">Include/Randini/GLSLProgram.h</a>&gt;</span>
-<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;<a class="code" href="Timer_8h.html" title="Calculates, monitors, and caps the FPS this allows for setting deltaTime later.">Include/Randini/Timer.h</a>&gt;</span>
-<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;memory&gt;</span>
-<a name="l00025"></a>00025 <span class="preprocessor">#include &lt;utility&gt;</span>
-<a name="l00026"></a>00026 <span class="preprocessor">#include &quot;<a class="code" href="BallControl_8h.html" title="Handle different ball controls and tracks mouse for grabbing.">BallControl.h</a>&quot;</span>
-<a name="l00027"></a>00027 <span class="preprocessor">#include &quot;<a class="code" href="BallRenderer_8h.html" title="Contolrs different renders and inits the shaders and textures.">BallRenderer.h</a>&quot;</span>
-<a name="l00028"></a>00028 <span class="preprocessor">#include &quot;<a class="code" href="BallGrid_8h.html" title="Imports the grid/cells to store balls in for spatial partioning.">BallGrid.h</a>&quot;</span>
-<a name="l00029"></a>00029 
-<a name="l00030"></a>00030 <span class="preprocessor">#include &quot;boost/random.hpp&quot;</span>
-<a name="l00031"></a>00031 <span class="preprocessor">#include &quot;boost/generator_iterator.hpp&quot;</span>
-<a name="l00032"></a>00032 
-<a name="l00035"></a><a class="code" href="MainGame_8h.html#a3bbd6868c609bd755d6336c79fad44aa">00035</a> <span class="keyword">typedef</span> boost::uniform_real&lt;float&gt; <a class="code" href="MainGame_8h.html#a3bbd6868c609bd755d6336c79fad44aa">RandomDistribution</a>;
-<a name="l00036"></a>00036 <span class="keyword">typedef</span> boost::uniform_int&lt;int&gt; RandomDistributionInt;
-<a name="l00037"></a>00037 <span class="keyword">typedef</span> boost::mt19937 RNGType;
-<a name="l00038"></a>00038 
-<a name="l00040"></a><a class="code" href="MainGame_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">00040</a> <span class="keyword">enum class</span> <a class="code" href="MainGame_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285" title="basic enum for gamestate">GameState</a>
-<a name="l00041"></a>00041 {
-<a name="l00042"></a>00042   PLAY,
-<a name="l00043"></a>00043   EXIT
-<a name="l00044"></a>00044 };
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046 <span class="comment">//Size of the cells</span>
-<a name="l00047"></a>00047 <span class="keyword">const</span> <span class="keywordtype">int</span> CELL_SIZE = 12;
-<a name="l00048"></a>00048 
-<a name="l00049"></a><a class="code" href="classMainGame.html">00049</a> <span class="keyword">class </span><a class="code" href="classMainGame.html">MainGame</a>
-<a name="l00050"></a>00050 {
-<a name="l00051"></a>00051 <span class="keyword">public</span>:
-<a name="l00052"></a>00052   <a class="code" href="classMainGame.html">MainGame</a>();
+<a name="l00018"></a>00018 <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="preprocessor">#include &lt;<a class="code" href="Camera2D_8h.html" title="Creates the camera gains screen coordinates and returns the camera position.">Include/Randini/Camera2D.h</a>&gt;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;<a class="code" href="SpriteLoader_8h.html" title="Allows for multiple sprites to be drawn &amp;amp; rendered. Sets vertices for glyphs...">Include/Randini/SpriteLoader.h</a>&gt;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;Include/Randini/InputControl.h&gt;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;<a class="code" href="Window_8h.html" title="Creates the genral SDL handles for settign a window, Swaps buffers and assigns window...">Include/Randini/Window.h</a>&gt;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;<a class="code" href="GLSLProgram_8h.html" title="Compiles, Links, Enables, &amp;amp; Disables frag and vert shaders and returns the location...">Include/Randini/GLSLProgram.h</a>&gt;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#include &lt;<a class="code" href="Timer_8h.html" title="Calculates, monitors, and caps the FPS this allows for setting deltaTime later.">Include/Randini/Timer.h</a>&gt;</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#include &lt;memory&gt;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include &lt;utility&gt;</span>
+<a name="l00028"></a>00028 <span class="preprocessor">#include &quot;<a class="code" href="BallControl_8h.html" title="Handle different ball controls and tracks mouse for grabbing.">BallControl.h</a>&quot;</span>
+<a name="l00029"></a>00029 <span class="preprocessor">#include &quot;<a class="code" href="BallRenderer_8h.html" title="Contolrs different renders and inits the shaders and textures.">BallRenderer.h</a>&quot;</span>
+<a name="l00030"></a>00030 <span class="preprocessor">#include &quot;<a class="code" href="BallGrid_8h.html" title="Imports the grid/cells to store balls in for spatial partioning.">BallGrid.h</a>&quot;</span>
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032 <span class="preprocessor">#include &quot;boost/random.hpp&quot;</span>
+<a name="l00033"></a>00033 <span class="preprocessor">#include &quot;boost/generator_iterator.hpp&quot;</span>
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035 <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00036"></a>00036 
+<a name="l00039"></a><a class="code" href="MainGame_8h.html#a3bbd6868c609bd755d6336c79fad44aa">00039</a> <span class="keyword">typedef</span> boost::uniform_real&lt;float&gt; <a class="code" href="MainGame_8h.html#a3bbd6868c609bd755d6336c79fad44aa">RandomDistribution</a>;
+<a name="l00040"></a>00040 <span class="keyword">typedef</span> boost::uniform_int&lt;int&gt; RandomDistributionInt;
+<a name="l00041"></a>00041 <span class="keyword">typedef</span> boost::mt19937 RNGType;
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00044"></a>00044 
+<a name="l00046"></a><a class="code" href="MainGame_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">00046</a> <span class="keyword">enum class</span> <a class="code" href="MainGame_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285" title="basic enum for gamestate">GameState</a>
+<a name="l00047"></a>00047 {
+<a name="l00048"></a>00048   PLAY,
+<a name="l00049"></a>00049   EXIT
+<a name="l00050"></a>00050 };
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 <span class="comment">//-------------------------------------------------------------------------------------------------</span>
 <a name="l00053"></a>00053 
-<a name="l00054"></a>00054   ~<a class="code" href="classMainGame.html">MainGame</a>();
-<a name="l00055"></a>00055 
-<a name="l00062"></a>00062   <span class="keywordtype">void</span> <a class="code" href="classMainGame.html#adacd3f33a9f5e53f33f967d0d66f4d58">run</a>();
+<a name="l00054"></a>00054 <span class="comment">//Size of the cells</span>
+<a name="l00055"></a>00055 <span class="keyword">const</span> <span class="keywordtype">int</span> CELL_SIZE = 12;
+<a name="l00056"></a>00056 
+<a name="l00057"></a><a class="code" href="classMainGame.html">00057</a> <span class="keyword">class </span><a class="code" href="classMainGame.html">MainGame</a>
+<a name="l00058"></a>00058 {
+<a name="l00059"></a>00059 <span class="keyword">public</span>:
+<a name="l00060"></a>00060   <a class="code" href="classMainGame.html">MainGame</a>();
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062   ~<a class="code" href="classMainGame.html">MainGame</a>();
 <a name="l00063"></a>00063 
-<a name="l00064"></a>00064 <span class="keyword">private</span>:
-<a name="l00065"></a>00065 
-<a name="l00074"></a>00074   <span class="keywordtype">void</span> initSystems();
-<a name="l00075"></a>00075 
-<a name="l00081"></a>00081   <span class="keywordtype">void</span> gameLoop();
-<a name="l00082"></a>00082 
-<a name="l00085"></a>00085   <span class="keywordtype">void</span> initRenderers();
-<a name="l00086"></a>00086 
-<a name="l00088"></a>00088   <span class="keywordtype">void</span> initControllers();
-<a name="l00089"></a>00089 
-<a name="l00095"></a>00095   <span class="keywordtype">void</span> drawGame();
-<a name="l00096"></a>00096 
-<a name="l00102"></a>00102   <span class="keywordtype">void</span> initBalls();
-<a name="l00103"></a>00103 
-<a name="l00106"></a>00106   <span class="keywordtype">void</span> update(<span class="keywordtype">float</span> deltaTime);
+<a name="l00073"></a>00073   <span class="keywordtype">void</span> <a class="code" href="classMainGame.html#adacd3f33a9f5e53f33f967d0d66f4d58" title="run calls init systems, initBalls gameLoop drawGame update camera from Randini engine...">run</a>();
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075   <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077 <span class="keyword">private</span>:
+<a name="l00078"></a>00078 
+<a name="l00091"></a>00091   <span class="keywordtype">void</span> initSystems();
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093   <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00094"></a>00094 
+<a name="l00104"></a>00104   <span class="keywordtype">void</span> gameLoop();
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106   <span class="comment">//-------------------------------------------------------------------------------------------------</span>
 <a name="l00107"></a>00107 
-<a name="l00112"></a>00112   <span class="keywordtype">void</span> processInput();
-<a name="l00113"></a>00113 
+<a name="l00113"></a>00113   <span class="keywordtype">void</span> initRenderers();
 <a name="l00114"></a>00114 
-<a name="l00115"></a>00115   <span class="keywordtype">int</span> m_screenWidth<span class="comment">/* = 0*/</span>, m_screenHeight<span class="comment">/* = 0*/</span>;
-<a name="l00116"></a>00116   <span class="keywordtype">int</span> m_currentRenderer<span class="comment">/* = 0*/</span>;
-<a name="l00117"></a>00117   <span class="keywordtype">int</span> m_currentController<span class="comment">/* = 0*/</span>;
-<a name="l00118"></a>00118   std::vector&lt;Ball&gt; _ball;
-<a name="l00119"></a>00119 
-<a name="l00120"></a>00120   <span class="comment">//BallControl m_ballControl;</span>
-<a name="l00121"></a>00121   <span class="comment">//BallRenderer m_ballRenderer;</span>
-<a name="l00122"></a>00122 
-<a name="l00123"></a>00123   std::vector&lt;BallRenderer*&gt; m_ballRenderers;
-<a name="l00124"></a>00124   std::vector&lt;BallControl*&gt; m_ballControllers;
-<a name="l00125"></a>00125 
-<a name="l00126"></a>00126   <span class="comment">//grid of spatial partioning</span>
-<a name="l00127"></a>00127   std::unique_ptr&lt;BallGrid&gt; m_ballGrid;
-<a name="l00128"></a>00128 
-<a name="l00129"></a>00129 
-<a name="l00130"></a>00130   <a class="code" href="classRandini_1_1Window.html">Randini::Window</a> m_window;
-<a name="l00131"></a>00131   <a class="code" href="classRandini_1_1SpriteLoader.html">Randini::SpriteLoader</a> m_spriteLoader;
-<a name="l00132"></a>00132   <a class="code" href="classRandini_1_1Camera2D.html">Randini::Camera2D</a> m_camera;
-<a name="l00133"></a>00133   <a class="code" href="classRandini_1_1InputControl.html">Randini::InputControl</a> m_inputControl;
-<a name="l00134"></a>00134   <a class="code" href="classRandini_1_1GLSLProgram.html">Randini::GLSLProgram</a> m_textureProgram;
-<a name="l00135"></a>00135   <a class="code" href="classRandini_1_1FPSLimiter.html">Randini::FPSLimiter</a> m_fpsLimiter;
-<a name="l00136"></a>00136     
-<a name="l00137"></a>00137   <span class="keywordtype">float</span> m_fps<span class="comment">/* = 0.0f*/</span>;
-<a name="l00138"></a>00138 
-<a name="l00139"></a>00139   <a class="code" href="MainGame_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285" title="basic enum for gamestate">GameState</a> _gameState<span class="comment">/* = GameState::PLAY*/</span>;
-<a name="l00140"></a>00140 
-<a name="l00141"></a>00141 
-<a name="l00142"></a>00142 };
-<a name="l00143"></a>00143 <span class="preprocessor">#endif</span>
-<a name="l00144"></a>00144 <span class="preprocessor"></span>
+<a name="l00115"></a>00115   <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00116"></a>00116 
+<a name="l00120"></a>00120   <span class="keywordtype">void</span> initControllers();
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122   <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00123"></a>00123 
+<a name="l00132"></a>00132   <span class="keywordtype">void</span> drawGame();
+<a name="l00133"></a>00133 
+<a name="l00134"></a>00134   <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00135"></a>00135 
+<a name="l00144"></a>00144   <span class="keywordtype">void</span> initBalls();
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146   <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00147"></a>00147 
+<a name="l00156"></a>00156   <span class="keywordtype">void</span> update(<span class="keywordtype">float</span> _deltaTime);
+<a name="l00157"></a>00157 
+<a name="l00158"></a>00158   <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00159"></a>00159 
+<a name="l00167"></a>00167   <span class="keywordtype">void</span> processInput();
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169   <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171   <span class="keywordtype">int</span> m_screenWidth, m_screenHeight;
+<a name="l00172"></a>00172   <span class="keywordtype">int</span> m_currentRenderer;
+<a name="l00173"></a>00173   <span class="keywordtype">int</span> m_currentController;
+<a name="l00174"></a>00174   std::vector&lt;Ball&gt; _ball;
+<a name="l00175"></a>00175 
+<a name="l00176"></a>00176   <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00177"></a>00177 
+<a name="l00178"></a>00178   std::vector&lt;BallRenderer*&gt; m_ballRenderers;
+<a name="l00179"></a>00179   std::vector&lt;BallControl*&gt; m_ballControllers;
+<a name="l00180"></a>00180 
+<a name="l00181"></a>00181   <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00182"></a>00182 
+<a name="l00183"></a>00183   <span class="comment">//grid of spatial partioning</span>
+<a name="l00184"></a>00184   std::unique_ptr&lt;BallGrid&gt; m_ballGrid;
+<a name="l00185"></a>00185 
+<a name="l00186"></a>00186   <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00187"></a>00187 
+<a name="l00188"></a>00188   <a class="code" href="classRandini_1_1Window.html">Randini::Window</a> m_window;
+<a name="l00189"></a>00189   <a class="code" href="classRandini_1_1SpriteLoader.html">Randini::SpriteLoader</a> m_spriteLoader;
+<a name="l00190"></a>00190   <a class="code" href="classRandini_1_1Camera2D.html">Randini::Camera2D</a> m_camera;
+<a name="l00191"></a>00191   <a class="code" href="classRandini_1_1InputControl.html" title="The InputControl class Overall stores a key map which maps SDL_Keys to bools If the...">Randini::InputControl</a> m_inputControl;
+<a name="l00192"></a>00192   <a class="code" href="classRandini_1_1GLSLProgram.html">Randini::GLSLProgram</a> m_textureProgram;
+<a name="l00193"></a>00193   <a class="code" href="classRandini_1_1FPSLimiter.html">Randini::FPSLimiter</a> m_fpsLimiter;
+<a name="l00194"></a>00194 
+<a name="l00195"></a>00195   <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00196"></a>00196     
+<a name="l00197"></a>00197   <span class="keywordtype">float</span> m_fps;
+<a name="l00198"></a>00198 
+<a name="l00199"></a>00199   <a class="code" href="MainGame_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285" title="basic enum for gamestate">GameState</a> _gameState;
+<a name="l00200"></a>00200 
+<a name="l00201"></a>00201 
+<a name="l00202"></a>00202 };
+<a name="l00203"></a>00203 <span class="preprocessor">#endif</span>
+<a name="l00204"></a>00204 <span class="preprocessor"></span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -154,7 +183,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr size="1"/><address style="text-align: right;"><small>Generated on 4 May 2015 for Ball Game by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 5 May 2015 for Ball Game by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

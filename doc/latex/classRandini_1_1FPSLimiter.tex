@@ -5,26 +5,50 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classRandini_1_1FPSLimiter_a3024a959139c6a9b2d2c583200d69a0c}{
-void {\bfseries init} (float maxFPS)}
-\label{classRandini_1_1FPSLimiter_a3024a959139c6a9b2d2c583200d69a0c}
-
-\item 
-\hypertarget{classRandini_1_1FPSLimiter_ab791c46a558dc4f7dfca408f92563bf5}{
-void {\bfseries setMaxFPS} (float maxFPS)}
-\label{classRandini_1_1FPSLimiter_ab791c46a558dc4f7dfca408f92563bf5}
-
-\item 
+void \hyperlink{classRandini_1_1FPSLimiter_a3024a959139c6a9b2d2c583200d69a0c}{init} (float maxFPS)
+\begin{DoxyCompactList}\small\item\em init calls fps lmiter so it can be called for other games \item\end{DoxyCompactList}\item 
+void \hyperlink{classRandini_1_1FPSLimiter_ab791c46a558dc4f7dfca408f92563bf5}{setMaxFPS} (float maxFPS)
+\begin{DoxyCompactList}\small\item\em setMaxFPS sets maxFPS for framerate to 60FPS \item\end{DoxyCompactList}\item 
 \hypertarget{classRandini_1_1FPSLimiter_ab3c41c74d451ebdcba9f448fd60efeaa}{
-void {\bfseries begin} ()}
+void \hyperlink{classRandini_1_1FPSLimiter_ab3c41c74d451ebdcba9f448fd60efeaa}{begin} ()}
 \label{classRandini_1_1FPSLimiter_ab3c41c74d451ebdcba9f448fd60efeaa}
 
-\item 
+\begin{DoxyCompactList}\small\item\em begin Begins the ticks \item\end{DoxyCompactList}\item 
+float \hyperlink{classRandini_1_1FPSLimiter_adde6384240089bf3e87ce5d5dc114c60}{end} ()
+\begin{DoxyCompactList}\small\item\em end Limits the fps and forces a slight delay for the fps (Seeing the delay only applys if you print FPS to consol) And end the ticking \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
 \hypertarget{classRandini_1_1FPSLimiter_adde6384240089bf3e87ce5d5dc114c60}{
-float {\bfseries end} ()}
+\index{Randini::FPSLimiter@{Randini::FPSLimiter}!end@{end}}
+\index{end@{end}!Randini::FPSLimiter@{Randini::FPSLimiter}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}float Randini::FPSLimiter::end ()}}
 \label{classRandini_1_1FPSLimiter_adde6384240089bf3e87ce5d5dc114c60}
 
-\end{DoxyCompactItemize}
+
+end Limits the fps and forces a slight delay for the fps (Seeing the delay only applys if you print FPS to consol) And end the ticking \begin{DoxyReturn}{Returns}
+The FPS 
+\end{DoxyReturn}
+\hypertarget{classRandini_1_1FPSLimiter_a3024a959139c6a9b2d2c583200d69a0c}{
+\index{Randini::FPSLimiter@{Randini::FPSLimiter}!init@{init}}
+\index{init@{init}!Randini::FPSLimiter@{Randini::FPSLimiter}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void Randini::FPSLimiter::init (float {\em maxFPS})}}
+\label{classRandini_1_1FPSLimiter_a3024a959139c6a9b2d2c583200d69a0c}
+
+
+init calls fps lmiter so it can be called for other games 
+\begin{DoxyParams}{Parameters}
+\item[{\em maxFPS}]Inits the maxFPS to the maxFPS \end{DoxyParams}
+\hypertarget{classRandini_1_1FPSLimiter_ab791c46a558dc4f7dfca408f92563bf5}{
+\index{Randini::FPSLimiter@{Randini::FPSLimiter}!setMaxFPS@{setMaxFPS}}
+\index{setMaxFPS@{setMaxFPS}!Randini::FPSLimiter@{Randini::FPSLimiter}}
+\subsubsection[{setMaxFPS}]{\setlength{\rightskip}{0pt plus 5cm}void Randini::FPSLimiter::setMaxFPS (float {\em maxFPS})}}
+\label{classRandini_1_1FPSLimiter_ab791c46a558dc4f7dfca408f92563bf5}
+
+
+setMaxFPS sets maxFPS for framerate to 60FPS 
+\begin{DoxyParams}{Parameters}
+\item[{\em maxFPS}]Calculates and sets the maxFPS to 60 \end{DoxyParams}
 
 
 The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}

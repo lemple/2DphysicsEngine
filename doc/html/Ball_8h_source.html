@@ -59,55 +59,54 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00021"></a>00021 <span class="preprocessor">#include &lt;glm/glm.hpp&gt;</span>
 <a name="l00022"></a>00022 <span class="preprocessor">#include &lt;<a class="code" href="Vertex_8h.html" title="Handle the data for the ball.">Include/Randini/Vertex.h</a>&gt;</span>
 <a name="l00023"></a>00023 
-<a name="l00024"></a>00024 <span class="keyword">struct </span><a class="code" href="structCell.html" title="Inlcude vector as using vector for the list.">Cell</a>;
-<a name="l00025"></a>00025 
+<a name="l00024"></a>00024 <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00025"></a>00025 <span class="keyword">struct </span><a class="code" href="structCell.html" title="Inlcude vector as using vector for the list.">Cell</a>;
 <a name="l00026"></a>00026 
-<a name="l00027"></a>00027 <span class="comment">//single responsibilty principle</span>
-<a name="l00028"></a>00028 <span class="comment">//data for the ball</span>
-<a name="l00029"></a>00029 
-<a name="l00030"></a>00030 
-<a name="l00032"></a>00032 <span class="comment">//                                                //</span>
-<a name="l00033"></a>00033 <span class="comment">//            PLAIN OLD DATA STRUCT               //</span>
-<a name="l00034"></a>00034 <span class="comment">//                                                //</span>
-<a name="l00036"></a>00036 <span class="comment"></span>
-<a name="l00037"></a>00037 <span class="comment">//contains all public variables due to the nature of the struct.</span>
+<a name="l00028"></a>00028 <span class="comment">//                                                //</span>
+<a name="l00029"></a>00029 <span class="comment">//            PLAIN OLD DATA STRUCT               //</span>
+<a name="l00030"></a>00030 <span class="comment">//                                                //</span>
+<a name="l00032"></a>00032 <span class="comment"></span>
+<a name="l00033"></a>00033 <span class="comment">//contains all public variables due to the nature of the struct.</span>
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035 <span class="comment">//rather then having setter or getters I found it was easier to make everything public</span>
+<a name="l00036"></a>00036 <span class="comment">//As well as that a lot of the variables used are access and used outside of class and therefore</span>
+<a name="l00037"></a>00037 <span class="comment">//having setters and getter in this header would be arbitrary</span>
 <a name="l00038"></a>00038 
-<a name="l00039"></a>00039 <span class="comment">//rather then having setter or getters I found it was easier to make everything public</span>
-<a name="l00040"></a>00040 <span class="comment">//As well as that a lot of the variables used are access and used outside of class and therefore</span>
-<a name="l00041"></a>00041 <span class="comment">//having setters and getter in this header would be arbitrary</span>
-<a name="l00042"></a>00042 
-<a name="l00043"></a>00043 <span class="comment">//main purpose of the struct is to decouple different components such as rendering/controls etc</span>
-<a name="l00044"></a>00044 <span class="keyword">struct </span><a class="code" href="structCell.html" title="Inlcude vector as using vector for the list.">Cell</a>;
+<a name="l00039"></a>00039 <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 <span class="comment">//main purpose of the struct is to decouple different components such as rendering/controls etc</span>
+<a name="l00042"></a>00042 <span class="keyword">struct </span><a class="code" href="structCell.html" title="Inlcude vector as using vector for the list.">Cell</a>;
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 <span class="comment">//-------------------------------------------------------------------------------------------------</span>
 <a name="l00045"></a>00045 
-<a name="l00046"></a>00046 <span class="comment">//This struct simply contains all the data for the ball</span>
-<a name="l00047"></a>00047 <span class="comment">//Parameters: radius of the ball, mass of the ball, position of the ball, velocity of the ball,</span>
-<a name="l00048"></a>00048 <span class="comment">//textureID of the ball to apply textures, color of the balls to alter the texture.</span>
-<a name="l00049"></a>00049 
-<a name="l00050"></a><a class="code" href="structBall.html">00050</a> <span class="keyword">struct </span><a class="code" href="structBall.html">Ball</a>
-<a name="l00051"></a>00051 {
-<a name="l00052"></a>00052   <a class="code" href="structBall.html">Ball</a>(<span class="keywordtype">float</span> _radius, <span class="keywordtype">float</span> _mass, <span class="keyword">const</span> glm::vec2&amp; c_position, <span class="keyword">const</span> glm::vec2&amp; c_velocity, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _textureId, <span class="keyword">const</span> <a class="code" href="structRandini_1_1ColorRGBA8.html">Randini::ColorRGBA8</a>&amp; c_color);
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054   <span class="keywordtype">float</span> m_radius;
-<a name="l00055"></a>00055   <span class="keywordtype">float</span> m_mass;
-<a name="l00056"></a>00056   glm::vec2 m_position;
-<a name="l00057"></a>00057   glm::vec2 m_velocity;
-<a name="l00058"></a>00058   <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_textureId;
-<a name="l00059"></a>00059   <a class="code" href="structRandini_1_1ColorRGBA8.html">Randini::ColorRGBA8</a> m_color;
-<a name="l00060"></a>00060   <a class="code" href="structCell.html" title="Inlcude vector as using vector for the list.">Cell</a>* m_cellLeader;
-<a name="l00061"></a>00061   <span class="comment">//Here make the cell vector index which allows for me to keep track</span>
-<a name="l00062"></a>00062   <span class="comment">//of the cell through the vector</span>
-<a name="l00063"></a>00063   <span class="keywordtype">int</span> m_cellVectorIndex;
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065 };
-<a name="l00066"></a>00066 <span class="preprocessor">#endif</span>
-<a name="l00067"></a>00067 <span class="preprocessor"></span>
+<a name="l00046"></a><a class="code" href="structBall.html">00046</a> <span class="keyword">struct </span><a class="code" href="structBall.html">Ball</a>
+<a name="l00047"></a>00047 {
+<a name="l00059"></a>00059   <a class="code" href="structBall.html#a39a1cb33a6f2e3a4c692144967c3f4ef" title="Ball This struct simply contains all the data for the ball.">Ball</a>(<span class="keywordtype">float</span> _radius, <span class="keywordtype">float</span> _mass, <span class="keyword">const</span> glm::vec2&amp; c_position, <span class="keyword">const</span> glm::vec2&amp; c_velocity,
+<a name="l00060"></a>00060        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _textureId, <span class="keyword">const</span> <a class="code" href="structRandini_1_1ColorRGBA8.html">Randini::ColorRGBA8</a>&amp; c_color);
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062   <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00063"></a>00063   <span class="keywordtype">float</span> m_radius;
+<a name="l00064"></a>00064   <span class="keywordtype">float</span> m_mass;
+<a name="l00065"></a>00065   glm::vec2 m_position;
+<a name="l00066"></a>00066   glm::vec2 m_velocity;
+<a name="l00067"></a>00067   <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_textureId;
+<a name="l00068"></a>00068   <a class="code" href="structRandini_1_1ColorRGBA8.html">Randini::ColorRGBA8</a> m_color;
+<a name="l00069"></a>00069   <a class="code" href="structCell.html" title="Inlcude vector as using vector for the list.">Cell</a>* m_cellLeader;
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071   <span class="comment">//Here make the cell vector index which allows for me to keep track</span>
+<a name="l00072"></a>00072   <span class="comment">//of the cell through the vector</span>
+<a name="l00073"></a>00073   <span class="keywordtype">int</span> m_cellVectorIndex;
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075 };
+<a name="l00076"></a>00076 <span class="preprocessor">#endif</span>
+<a name="l00077"></a>00077 <span class="preprocessor"></span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -116,7 +115,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr size="1"/><address style="text-align: right;"><small>Generated on 4 May 2015 for Ball Game by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 5 May 2015 for Ball Game by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

@@ -51,15 +51,89 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p><a href="classRandini_1_1FPSLimiter-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3024a959139c6a9b2d2c583200d69a0c"></a><!-- doxytag: member="Randini::FPSLimiter::init" ref="a3024a959139c6a9b2d2c583200d69a0c" args="(float maxFPS)" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>init</b> (float maxFPS)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab791c46a558dc4f7dfca408f92563bf5"></a><!-- doxytag: member="Randini::FPSLimiter::setMaxFPS" ref="ab791c46a558dc4f7dfca408f92563bf5" args="(float maxFPS)" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>setMaxFPS</b> (float maxFPS)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandini_1_1FPSLimiter.html#a3024a959139c6a9b2d2c583200d69a0c">init</a> (float maxFPS)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">init calls fps lmiter so it can be called for other games  <a href="#a3024a959139c6a9b2d2c583200d69a0c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandini_1_1FPSLimiter.html#ab791c46a558dc4f7dfca408f92563bf5">setMaxFPS</a> (float maxFPS)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">setMaxFPS sets maxFPS for framerate to 60FPS  <a href="#ab791c46a558dc4f7dfca408f92563bf5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab3c41c74d451ebdcba9f448fd60efeaa"></a><!-- doxytag: member="Randini::FPSLimiter::begin" ref="ab3c41c74d451ebdcba9f448fd60efeaa" args="()" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adde6384240089bf3e87ce5d5dc114c60"></a><!-- doxytag: member="Randini::FPSLimiter::end" ref="adde6384240089bf3e87ce5d5dc114c60" args="()" -->
-float&nbsp;</td><td class="memItemRight" valign="bottom"><b>end</b> ()</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandini_1_1FPSLimiter.html#ab3c41c74d451ebdcba9f448fd60efeaa">begin</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">begin Begins the ticks <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandini_1_1FPSLimiter.html#adde6384240089bf3e87ce5d5dc114c60">end</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">end Limits the fps and forces a slight delay for the fps (Seeing the delay only applys if you print FPS to consol) And end the ticking  <a href="#adde6384240089bf3e87ce5d5dc114c60"></a><br/></td></tr>
 </table>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="adde6384240089bf3e87ce5d5dc114c60"></a><!-- doxytag: member="Randini::FPSLimiter::end" ref="adde6384240089bf3e87ce5d5dc114c60" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Randini::FPSLimiter::end </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>end Limits the fps and forces a slight delay for the fps (Seeing the delay only applys if you print FPS to consol) And end the ticking </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The FPS </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3024a959139c6a9b2d2c583200d69a0c"></a><!-- doxytag: member="Randini::FPSLimiter::init" ref="a3024a959139c6a9b2d2c583200d69a0c" args="(float maxFPS)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Randini::FPSLimiter::init </td>
+          <td>(</td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>maxFPS</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>init calls fps lmiter so it can be called for other games </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>maxFPS</em>&nbsp;</td><td>Inits the maxFPS to the maxFPS </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ab791c46a558dc4f7dfca408f92563bf5"></a><!-- doxytag: member="Randini::FPSLimiter::setMaxFPS" ref="ab791c46a558dc4f7dfca408f92563bf5" args="(float maxFPS)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Randini::FPSLimiter::setMaxFPS </td>
+          <td>(</td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>maxFPS</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>setMaxFPS sets maxFPS for framerate to 60FPS </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>maxFPS</em>&nbsp;</td><td>Calculates and sets the maxFPS to 60 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Include/Randini/<a class="el" href="Timer_8h_source.html">Timer.h</a></li>
 <li>src/Randini/<a class="el" href="Timer_8cpp.html">Timer.cpp</a></li>
@@ -70,7 +144,7 @@ float&nbsp;</td><td class="memItemRight" valign="bottom"><b>end</b> ()</td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -79,7 +153,7 @@ float&nbsp;</td><td class="memItemRight" valign="bottom"><b>end</b> ()</td></tr>
 </iframe>
 </div>
 
-<hr size="1"/><address style="text-align: right;"><small>Generated on 4 May 2015 for Ball Game by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 5 May 2015 for Ball Game by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

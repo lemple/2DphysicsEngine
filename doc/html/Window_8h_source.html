@@ -53,56 +53,64 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="preprocessor">#ifndef __WINDOW_H_</span>
 <a name="l00016"></a>00016 <span class="preprocessor"></span><span class="preprocessor">#define __WINDOW_H_</span>
 <a name="l00017"></a>00017 <span class="preprocessor"></span>
-<a name="l00018"></a>00018 <span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#include &lt;GL/glew.h&gt;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#include &lt;string&gt;</span>
-<a name="l00021"></a>00021 
-<a name="l00022"></a>00022 <span class="keyword">namespace </span>Randini
-<a name="l00023"></a>00023 {
-<a name="l00024"></a>00024 
-<a name="l00025"></a>00025     <span class="comment">//setting flags for the game when its created</span>
-<a name="l00026"></a>00026     <span class="comment">//hidden for hiuding the window, fullscreen for fullscreen and bordeless</span>
-<a name="l00027"></a>00027     <span class="comment">//need each one to represent a certain bit</span>
-<a name="l00028"></a>00028     <span class="keyword">enum</span> WindowFlags { HIDDEN = 0x1, FULLSCREEN = 0x2, BORDERLESS = 0x4 };
-<a name="l00029"></a>00029 
-<a name="l00030"></a><a class="code" href="classRandini_1_1Window.html">00030</a>     <span class="keyword">class </span><a class="code" href="classRandini_1_1Window.html">Window</a>
-<a name="l00031"></a>00031     {
-<a name="l00032"></a>00032     <span class="keyword">public</span>:
-<a name="l00033"></a>00033         <a class="code" href="classRandini_1_1Window.html">Window</a>();
-<a name="l00034"></a>00034         ~<a class="code" href="classRandini_1_1Window.html">Window</a>();
+<a name="l00018"></a>00018 <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;GL/glew.h&gt;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026 <span class="keyword">namespace </span>Randini
+<a name="l00027"></a>00027 {
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029     <span class="comment">//setting flags for the game when its created</span>
+<a name="l00030"></a>00030     <span class="comment">//hidden for hiuding the window, fullscreen for fullscreen and bordeless</span>
+<a name="l00031"></a>00031     <span class="comment">//need each one to represent a certain bit</span>
+<a name="l00032"></a>00032     <span class="keyword">enum</span> WindowFlags { HIDDEN = 0x1, FULLSCREEN = 0x2, BORDERLESS = 0x4 };
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034   <span class="comment">//-------------------------------------------------------------------------------------------------</span>
 <a name="l00035"></a>00035 
-<a name="l00036"></a>00036         <span class="comment">//create window function that overall generates the windwo</span>
-<a name="l00037"></a>00037         <span class="comment">//define the handlews for the window in the parameters</span>
-<a name="l00038"></a>00038         <span class="comment">//use std::string so we can set a windowName to .c_str which will allow us to set the name</span>
-<a name="l00039"></a>00039         <span class="comment">//of the window in another project when linking the engine</span>
-<a name="l00040"></a>00040         <span class="comment">//other varibles are set so that they can be changed when I start up a new project</span>
-<a name="l00041"></a>00041         <span class="keywordtype">int</span> create(std::string windowName, <span class="keywordtype">int</span> screenWidth, <span class="keywordtype">int</span> screenHeight, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> currentFlags);
-<a name="l00042"></a>00042 
-<a name="l00043"></a>00043         <span class="comment">//function to swap the buffers around each frame to prevetn flickering</span>
-<a name="l00044"></a>00044         <span class="keywordtype">void</span> swapBuffers();
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046         <span class="comment">//get functions used to recieve input from the varibles _screenWidth and _screenHeight</span>
-<a name="l00047"></a>00047         <span class="comment">//this includes the screen width and height </span>
-<a name="l00048"></a>00048   <span class="keywordtype">int</span> getScreenWidth() { <span class="keywordflow">return</span> _screenWidth; }
-<a name="l00049"></a>00049   <span class="keywordtype">int</span> getScreenHeight() { <span class="keywordflow">return</span> _screenHeight; }
-<a name="l00050"></a>00050     <span class="keyword">private</span>:
-<a name="l00051"></a>00051         <span class="comment">//creates the SDL_windows for my game engine and allows me to set up the window that can be called in any other new project/solution</span>
-<a name="l00052"></a>00052         <span class="comment">//This creates a private varible which holds the handles to determin the screen basic operations. </span>
-<a name="l00053"></a>00053         <span class="comment">//I used a pointer as thats what the SDL create window fucntion returns </span>
-<a name="l00054"></a>00054     SDL_Window* _sdlWindow;
-<a name="l00055"></a>00055         <span class="comment">//make 2 variables that contain the size of the screen width and height these will work as handles</span>
-<a name="l00056"></a>00056         <span class="keywordtype">int</span> _screenWidth, _screenHeight;
-<a name="l00057"></a>00057     };
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059 }
-<a name="l00060"></a>00060 <span class="preprocessor">#endif</span>
+<a name="l00036"></a><a class="code" href="classRandini_1_1Window.html">00036</a>     <span class="keyword">class </span><a class="code" href="classRandini_1_1Window.html">Window</a>
+<a name="l00037"></a>00037     {
+<a name="l00038"></a>00038     <span class="keyword">public</span>:
+<a name="l00039"></a>00039         <a class="code" href="classRandini_1_1Window.html">Window</a>();
+<a name="l00040"></a>00040         ~<a class="code" href="classRandini_1_1Window.html">Window</a>();
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00043"></a>00043 
+<a name="l00064"></a>00064         <span class="keywordtype">int</span> <a class="code" href="classRandini_1_1Window.html#a74f33cf737af665902138f80cc779cb5" title="create create window function that overall generates the windwo define the handlews...">create</a>(std::string windowName, <span class="keywordtype">int</span> screenWidth, <span class="keywordtype">int</span> screenHeight, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> currentFlags);
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068     <span class="comment">//</span>
+<a name="l00073"></a>00073 <span class="comment"></span>        <span class="keywordtype">void</span> <a class="code" href="classRandini_1_1Window.html#af0fe0a4f666f5c946bb8df997977e40e" title="swapBuffers Function to swap the buffers around each frame to prevetn flickering">swapBuffers</a>();
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075     <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00076"></a>00076 
+<a name="l00083"></a><a class="code" href="classRandini_1_1Window.html#a7b4ddf85609bbe27f2800ff05a0130dc">00083</a>   <span class="keywordtype">int</span> <a class="code" href="classRandini_1_1Window.html#a7b4ddf85609bbe27f2800ff05a0130dc" title="getScreenWidth get functions used to recieve input from the varibles m_screenWidth...">getScreenWidth</a>() { <span class="keywordflow">return</span> m_screenWidth; }
+<a name="l00084"></a>00084   <span class="keywordtype">int</span> getScreenHeight() { <span class="keywordflow">return</span> m_screenHeight; }
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086   <span class="comment">//-------------------------------------------------------------------------------------------------</span>
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088     <span class="keyword">private</span>:
+<a name="l00089"></a>00089         <span class="comment">//creates the SDL_windows for my game engine and allows me to set up the window that can be called in any other new project/solution</span>
+<a name="l00090"></a>00090         <span class="comment">//This creates a private varible which holds the handles to determin the screen basic operations. </span>
+<a name="l00091"></a>00091         <span class="comment">//I used a pointer as thats what the SDL create window fucntion returns </span>
+<a name="l00092"></a>00092     SDL_Window* m_sdlWindow;
+<a name="l00093"></a>00093         <span class="comment">//make 2 variables that contain the size of the screen width and height these will work as handles</span>
+<a name="l00094"></a>00094     <span class="keywordtype">int</span> m_screenWidth, m_screenHeight;
+<a name="l00095"></a>00095     };
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097 }
+<a name="l00098"></a>00098 <span class="preprocessor">#endif</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -111,7 +119,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr size="1"/><address style="text-align: right;"><small>Generated on 4 May 2015 for Ball Game by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 5 May 2015 for Ball Game by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>
