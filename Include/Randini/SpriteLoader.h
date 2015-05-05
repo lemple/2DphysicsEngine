@@ -49,7 +49,7 @@ namespace Randini
 	class Glyph
 	{
 		public:
-      Glyph() {};
+      Glyph() {}
 
       /**
        * @brief Glyph

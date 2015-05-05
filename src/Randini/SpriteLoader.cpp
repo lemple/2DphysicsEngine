@@ -60,7 +60,7 @@ namespace Randini
 
 		//set up all pointers for faster sorting
     m_glyphPointers.resize(m_glyphs.size());
-    for (int i = 0; i < m_glyphs.size(); i++)
+    for (int i = 0; i < (int)m_glyphs.size(); i++)
 		{
       m_glyphPointers[i] = &m_glyphs[i];
 		}
@@ -85,7 +85,7 @@ namespace Randini
     glBindVertexArray(m_vao);
 
 		//loops through all of the loaders
-    for (int i = 0; i < m_renderLoader.size(); i++)
+    for (int i = 0; i < (int)m_renderLoader.size(); i++)
 		{
 			//binds the textures
 			//paramters: type of texture, texture that the progrma will bind
@@ -163,7 +163,7 @@ namespace Randini
 		//cg = currentGlyph
 		//Add all the rest of the glyphs
 		//and overall lets the program make a bunch of diffrent calls on the one renderLoader
-    for (int cg = 1; cg < m_glyphPointers.size(); cg++) {
+    for (int cg = 1; cg < (int)m_glyphPointers.size(); cg++) {
 
 			// Check if this glyph can be part of the current loader
 			//depending of if the texture is diffrent then it will emplace a new render loader
@@ -246,7 +246,7 @@ namespace Randini
 		glEnableVertexAttribArray(2);
 
 		//this is the postion attrubte pointer
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position));
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position));
 		//color attribute pointor
 		glVertexAttribPointer(1, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(Vertex), (void*)offsetof(Vertex, color));
 		//uv attrib pointer
@@ -281,7 +281,8 @@ namespace Randini
 			//praameters: takes in the interator to the begning of the container, the end of the container,
       std::stable_sort(m_glyphPointers.begin(), m_glyphPointers.end(), compareTexture);
 			break;
-			
+    case GlyphSortType::NONE:
+      break;
 		}
 	}
 
