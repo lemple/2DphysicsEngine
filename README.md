@@ -1,9 +1,11 @@
 # 2DphysicsEngine
 
-qmake
-make clean
-make
-./2DphysicsEngine
+Installing Instructions
+
+* qmake
+* make clean
+* make
+* ./2DphysicsEngine
 
 #Instructions
 
